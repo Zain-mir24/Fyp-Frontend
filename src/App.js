@@ -1,7 +1,9 @@
 import logo from "./logo.svg";
 import React, { useState, useEffect } from "react";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
 import Signin from "./components/Signin";
+import Signup from "./components/Signup";
 
 function App() {
   const [getApi, setApi] = useState("");
@@ -17,11 +19,12 @@ function App() {
         <title>Global Reach</title>
       </header>
       <body>
-      
-      
-        <div>
-         <Signin />
-        </div>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/Signin" component={Signin}></Route>
+            <Route path="/Signup" component={Signup}></Route>
+          </Switch>
+        </BrowserRouter>
       </body>
     </div>
   );
