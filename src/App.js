@@ -4,7 +4,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
-
+// getting data from the backend api
 function App() {
   const [getApi, setApi] = useState("");
 
