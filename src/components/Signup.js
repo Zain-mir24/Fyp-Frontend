@@ -17,6 +17,11 @@ import Signin from './Signin';
 // singup form for new users
 export default function SignUp() {
     const classes = useStyles();
+    const [getFname,setFname]=useState('')
+    const [getLname,setLname]=useState('')
+    const [getEmail,setEmail]=useState('')
+    const [getPassword,setPassword]=useState('')
+    
     useEffect(() => {
       const requestOptions = {
         method: 'POST',
@@ -34,7 +39,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Sign up 
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
@@ -48,6 +53,7 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(e) => setFname(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -59,6 +65,7 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="lname"
+                  onChange={(e) => setLname(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -70,6 +77,7 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -82,6 +90,7 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
               <Grid item xs={12}>
