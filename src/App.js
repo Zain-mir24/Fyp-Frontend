@@ -9,6 +9,11 @@ function App() {
   const [getApi, setApi] = useState("");
 
   useEffect(() => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: 'React Hooks POST Request Example' })
+  };
     fetch("http://localhost:9000/testApi")
       .then((res) => res.text())
       .then((res) => setApi(res));
@@ -19,6 +24,7 @@ function App() {
         <title>Global Reach</title>
       </header>
       <body>
+        {getApi}
         <BrowserRouter>
           <Switch>
             <Route path="/Signin" component={Signin}></Route>
