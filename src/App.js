@@ -9,12 +9,8 @@ function App() {
   const [getApi, setApi] = useState("");
 
   useEffect(() => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title: 'React Hooks POST Request Example' })
-  };
-    fetch("http://localhost:9000/testApi")
+    
+    fetch("http://localhost:9000/home")
       .then((res) => res.text())
       .then((res) => setApi(res));
   });
