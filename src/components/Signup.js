@@ -21,23 +21,24 @@ export default function SignUp() {
   const [getLname, setLname] = useState("");
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
-
-  useEffect(() => {
+    
+  const addData= (e) => { 
+    e.preventDefault(); 
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        Firstname: { getFname },
-        Lastname: { getLname },
-        Email: { getEmail },
-        Password: { getPassword },
+        Firstname:  getFname ,
+        Lastname:  getLname ,
+        Email:  getEmail ,
+        Password:  getPassword,
       }),
     };
       
-    fetch("http://localhost:9000/home",requestOptions)
-      .then((res) => res.text())
+    fetch("http://localhost:9000/testApi/add",requestOptions)
+      .then((res) => console.log("res", res ));
 
-  });
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -114,6 +115,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={addData}
           >
             Sign Up
           </Button>
