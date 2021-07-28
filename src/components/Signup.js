@@ -13,7 +13,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Axios from "axios";
+import  axios from 'axios'
 import Signin from "./Signin";
 // singup form for new users
 export default function SignUp() {
@@ -25,25 +25,20 @@ export default function SignUp() {
 
   const addData = (e) => {
     e.preventDefault();
-    // const requestOptions = {
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     Firstname: getFname,
-    //     Lastname: getLname,
-    //     Email: getEmail,
-    //     Password: getPassword,
-    //   }),
-    // };
-
-    Axios.post(
-      "http://localhost:9000/testApi/add",
-      JSON.stringify({
+    
+   
+    axios({
+      method: 'post',
+      url:  "http://localhost:9000/testApi/add",
+      data:   {
         Firstname: getFname,
         Lastname: getLname,
         Email: getEmail,
         Password: getPassword,
-      })
-    ).then((res) => console.log("res", res));
+      }
+    }).then((res) => console.log("res", res));
+
+    
   };
 
   return (
