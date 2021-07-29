@@ -14,7 +14,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import  axios from 'axios'
-import Signin from "./Signin";
+
 // singup form for new users
 export default function SignUp() {
   const classes = useStyles();
