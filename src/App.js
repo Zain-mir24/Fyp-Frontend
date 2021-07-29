@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
+import AdminLogin from "./components/AdminLogin";
 // getting data from the backend api
 function App() {
   const [getApi, setApi] = useState("");
@@ -24,6 +25,7 @@ function App() {
           <Switch>
             <Route path="/Signin" component={Signin}></Route>
             <Route path="/Signup" component={Signup}></Route>
+            <Route path="/Admin" component={AdminLogin}></Route>
           </Switch>
         </BrowserRouter>
       </body>
