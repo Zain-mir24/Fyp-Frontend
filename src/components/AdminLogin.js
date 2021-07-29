@@ -21,17 +21,7 @@ export default function SignIn() {
   const [getApi, setApi] = useState("");
 
   
-  const addData = (e) => {
-    e.preventDefault();
-    
-   
-    axios({
-      method: 'get',
-      url:  "http://localhost:9000/testApi/add",
-    }).then((res) => console.log("res", res));
 
-    
-  };
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
