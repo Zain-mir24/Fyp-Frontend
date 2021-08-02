@@ -19,15 +19,38 @@ export default function SignIn() {
   const [getApi, setApi] = useState("");
 
   return (
-    <div>
+    <div
+      style={{ backgroundImage: "url('./GlobalReachBackgroundTexture.png')" }}
+    >
       <div className="container" style={styles.parentdiv}>
         <div className="row">
-          <div className="col-lg-6 col-md-6" style={styles.upperBoxLeft}></div>
-          <div className="col-lg-6 col-md-6">
-            <div>
-              <img></img>
+          <div className="col-lg-6 col-md-6" style={styles.upperBoxLeft}>
+            <div style={{ textAlign: "center" }}>
+              <img
+                style={styles.rightBannerImage}
+                src="./GlobalReachBannerImage.png"
+              ></img>
             </div>
+            <div
+              style={{
+                textAlign: "center",
+              }}
+            >
+              <h1
+                style={{
+                  textShadow: "1px 1px #aaaaaa",
+                  color: "#8D2828",
+                }}
+              >
+                FEEDBACK <br></br> REPORT <br></br> 2020/2021
+              </h1>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-6" style={styles.rightUpperBox}>
             <div>
+              <img style={styles.logo} src="./globalReachLogo.png"></img>
+            </div>
+            <div style={{ padding: "30px 30px 30px 100px" }}>
               <p style={styles.paragraph}>
                 GLOBAL REACH is providing an update to all our donors who have
                 supported our work through their donations with great generosity
@@ -40,21 +63,44 @@ export default function SignIn() {
               </p>
             </div>
             <div style={styles.table}>
-              <table style={{ borderCollapse: "Collapse" }}>
-                <tr>
+              <table
+                border="4px"
+                style={{ borderCollapse: "Collapse", marginLeft: "auto" }}
+              >
+                <tr style={{ backgroundColor: "lightgreen" }}>
                   <th style={styles.td}>Donations can be made to:</th>
                 </tr>
                 <tr>
                   <td style={styles.td}>GLOBAL REACH</td>
                 </tr>
                 <tr>
-                  <td style={styles.td}>BANK LLOYDS BANK</td>
+                  <td
+                    style={
+                      (styles.td,
+                      {
+                        backgroundColor: "lightpink",
+                        border: "1px solid black",
+                      })
+                    }
+                  >
+                    BANK LLOYDS BANK
+                  </td>
                 </tr>
                 <tr>
                   <td style={styles.td}>SORT CODE: 309897</td>
                 </tr>
                 <tr>
-                  <td style={styles.td}>ACCOUNT: 81119160</td>
+                  <td
+                    style={
+                      (styles.td,
+                      {
+                        backgroundColor: "lightpink",
+                        border: "1px solid black",
+                      })
+                    }
+                  >
+                    ACCOUNT: 81119160
+                  </td>
                 </tr>
               </table>
             </div>
@@ -71,16 +117,32 @@ const styles = {
   parentdiv: {
     textAlign: "left",
   },
-  upperBoxLeft: {
-    backgroundColor: "green",
-  },
-  table: {
-    textAlign: "right",
-  },
+  upperBoxLeft: {},
+  table: {},
   paragraph: {
-    fontSize: "28px",
+    fontSize: "24px",
+    fontWeight: "600",
   },
   td: {
     border: "1px solid #333",
+  },
+  rightUpperBox: {
+    backgroundColor: "white",
+    boxShadow: "-3px 0px 10px 2px #000000",
+  },
+  logo: {
+    display: "block",
+    marginLeft: "auto",
+    textAlign: "right",
+    width: "200px",
+    height: "100px",
+  },
+  rightBannerImage: {
+    height: "500px",
+    width: "500px",
+    marginTop: "50px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    display: "block",
   },
 };
