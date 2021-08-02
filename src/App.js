@@ -4,6 +4,7 @@ import "./App.css";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import AdminLogin from "./components/AdminLogin";
+import home from "./components/homepage/home";
 // getting data from the backend api
 function App() {
   const [getApi, setApi] = useState("");
@@ -26,6 +27,7 @@ function App() {
             <Route path="/Signin" component={Signin}></Route>
             <Route path="/Signup" component={Signup}></Route>
             <Route path="/Admin" component={AdminLogin}></Route>
+            <Route path="/" component={home}></Route>
           </Switch>
         </BrowserRouter>
       </body>
