@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     
-    fetch("http://localhost:9000/home")
+    fetch("http://localhost:9000/admin")
       .then((res) => res.text())
       .then((res) => setApi(res));
   });
