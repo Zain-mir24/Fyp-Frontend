@@ -29,10 +29,9 @@ export default function SignUp() {
    
     axios({
       method: 'post',
-      url:  "http://localhost:9000/testApi/add",
+      url:  "http://localhost:9000/User/Signup",
       data:   {
         Firstname: getFname,
-        Lastname: getLname,
         Email: getEmail,
         Password: getPassword,
       }
@@ -53,31 +52,20 @@ export default function SignUp() {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} >
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="Name"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Name"
                 autoFocus
                 onChange={(e) => setFname(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                onChange={(e) => setLname(e.target.value)}
-              />
-            </Grid>
+          
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
