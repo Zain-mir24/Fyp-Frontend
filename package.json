@@ -10,11 +10,23 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
+<<<<<<< HEAD
     "bootstrap": "^5.0.2",
+=======
+    "chartist": "^0.11.4",
+    "classnames": "^2.3.1",
+>>>>>>> 4b96bd1c9964bb55c440e3050d09c440b4f9bf8a
     "express": "^4.17.1",
+    "hooks": "^0.3.2",
     "nodemon": "^2.0.12",
+    "perfect-scrollbar": "^1.5.2",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
+<<<<<<< HEAD
     "react-bootstrap": "^1.6.1",
+=======
+    "react-chartist": "^0.14.4",
+>>>>>>> 4b96bd1c9964bb55c440e3050d09c440b4f9bf8a
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
