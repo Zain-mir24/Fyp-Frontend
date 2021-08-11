@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Navbar1 from "../design/Navbar"
+import Navbar from "../design/Navbar"
 import { makeStyles } from "@material-ui/core/styles";
 // import Container from '@material-ui/core/Container';
 
 export default function SignIn() {
   const classes = useStyles();
+  const [getApi, setApi] = useState("");
 
   return (
-   
     <div
       style={{ backgroundImage: "url('./GlobalReachBackgroundTexture.png')" }}
     >
-       <Navbar1 />
       <div className="container" style={styles.parentdiv}>
         <div className="row">
           <div className="col-lg-6 col-md-6" style={styles.upperBoxLeft}>
