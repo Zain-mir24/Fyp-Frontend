@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import AdminLogin from "./components/AdminLogin";
 import home from "./components/homepage/home";
 import Admin from "./components/AdminPanel/Admin";
+import NAVbar from "./components/design/Navbar"
 // getting data from the backend api
 function App() {
   const [getApi, setApi] = useState("");
@@ -21,7 +22,7 @@ function App() {
         <title>Global Reach</title>
       </header>
       <body>
-        {getApi}
+       <NAVbar />
         <BrowserRouter>
           <Switch>
             <Route path="/Signin" component={Signin}></Route>

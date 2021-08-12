@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../design/Navbar"
+import NAVbar from "../design/Navbar"
 import { makeStyles } from "@material-ui/core/styles";
 // import Container from '@material-ui/core/Container';
 
@@ -9,6 +9,7 @@ export default function SignIn() {
 
   return (
     <div>
+   
       <div className="container" style={styles.parentdiv}>
         <div className="row">
           <div className="col-lg-6 col-md-6" style={styles.upperBoxLeft}></div>
