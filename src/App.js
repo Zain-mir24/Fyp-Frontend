@@ -5,7 +5,7 @@ import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import AdminLogin from "./components/AdminLogin";
 import home from "./components/homepage/home";
-import Admin from "./layouts/Admin";
+import Admin from "./components/AdminPanel/Admin";
 // getting data from the backend api
 function App() {
   const [getApi, setApi] = useState("");
