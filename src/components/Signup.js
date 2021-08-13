@@ -18,8 +18,8 @@ import  axios from 'axios'
 // singup form for new users
 export default function SignUp() {
   const classes = useStyles();
-  const [getFname, setFname] = useState("");
-  const [getLname, setLname] = useState("");
+  const [getname, setname] = useState("");
+ 
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
 
@@ -31,7 +31,7 @@ export default function SignUp() {
       method: 'post',
       url:  "http://localhost:9000/User/Signup",
       data:   {
-        Firstname: getFname,
+        name: getname,
         Email: getEmail,
         Password: getPassword,
       }
@@ -62,7 +62,7 @@ export default function SignUp() {
                 id="firstName"
                 label="Name"
                 autoFocus
-                onChange={(e) => setFname(e.target.value)}
+                onChange={(e) => setname(e.target.value)}
               />
             </Grid>
           
