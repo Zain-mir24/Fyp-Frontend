@@ -5,7 +5,7 @@ import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import AdminLogin from "./components/AdminLogin";
 import home from "./components/homepage/home";
-import Admin from "./components/AdminPanel/Admin";
+import Adminn from "./components/AdminPanel/Admin";
 import NAVbar from "./components/design/Navbar"
 // getting data from the backend api
 function App() {
@@ -28,7 +28,7 @@ function App() {
             <Route path="/Signin" component={Signin}></Route>
             <Route path="/Signup" component={Signup}></Route>
             <Route path="/Admin" component={AdminLogin}></Route>
-            <Route path="/Administrator" component={Admin}></Route>
+            <Route path="/Administrator" component={Adminn}></Route>
             <Route path="/" component={home}></Route>
           </Switch>
         </BrowserRouter>

@@ -18,6 +18,6 @@ export default function Sidebar() {
       <li>
         Check donations
       </li>
-      </ul>;
-  </div>;
+      </ul>
+  </div>
 }
