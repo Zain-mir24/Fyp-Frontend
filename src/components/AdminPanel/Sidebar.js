@@ -1,46 +1,34 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { DataGrid } from "@material-ui/data-grid";
-const style = {
-  float: "left",
-};
-export default function Sidebar() {
-  const [getApi, setApi] = useState([]);
-  const getData = async () => {
-    const response = await axios.get("http://localhost:9000/admin/users");
-    const data = await response.data;
-    setApi(data);
-  };
-  useEffect(async () => {
-    getData();
-  }, []);
+import React from "react";
+import Paper from "@material-ui/core/Paper";
+import { withThemeCreator } from "@material-ui/styles";
 
+export default function Sidebar() {
   return (
-    <div style={{ height: 250, width: "100%" }}>
-      {getApi.map((user) => {
-        const { _id, name, email } = user;
-        const rows = [
-          {
-            id: _id,
-            username: name,
-            Email: email,
-          },
-        ];
-        console.log(name);
-        return (
-          <DataGrid
-            columns={[
-              { field: "id", width: 200 },
-              {
-                field: "username",
-                width: 200,
-              },
-              { field: "Email", width: 200 },
-            ]}
-            rows={rows}
-          />
-        );
-      })}
+    <div style={{ backgroundColor: "blue" }}>
+      <Paper
+        align="left"
+        style={{
+          paddingTop: "20px",
+          fontFamily: "sans-serif",
+          backgroundColor: "#368B85",
+          color: "white",
+        }}
+      >
+        <p style={styles.text}>Dashboard</p>
+        <p style={styles.text}>Analytics</p>
+        <p style={styles.text}>Campaign</p>
+        <p style={styles.text}>Revenue</p>
+        <p style={styles.text}>Orphans</p>
+        <p style={styles.text}>Set Carousel</p>
+        <p style={styles.text}>Upcoming Events</p>
+      </Paper>
     </div>
   );
 }
+
+const styles = {
+  text: {
+    paddingLeft: "10px",
+    borderBottom: "0.5px solid white",
+  },
+};
