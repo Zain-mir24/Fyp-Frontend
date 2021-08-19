@@ -1,10 +1,19 @@
 import React from 'react'
 
 function Campaign() {
+    const mainDiv={
+        border:"1px solid black",
+        width:"100%"
+        
+    }
+    const bodyDivImg={
+        border:"1px solid black"
+    }
     function Header(){
         const styleHeader={
-            backgroundColor:"green"
-        }
+            backgroundColor:"#CCFFCC",
+            fontSize    :"20px",
+        textAlign:"left"     }
 return(
     <div style={styleHeader}>
     My head
@@ -12,8 +21,12 @@ return(
 )
     }
     function Subject(){
+        const subjectDiv={
+            
+            textAlign:"left" 
+        }
         return(
-            <div>
+            <div style={subjectDiv}>
                 This is the subject
             </div>
       
@@ -21,8 +34,8 @@ return(
     }
     function Paragraph(){
         return(
-  <div>
-      This is the body
+  <div style={bodyDivImg}>
+      This is the body:
   </div>
         )
 
@@ -38,7 +51,7 @@ return(
 
     }
     return (
-        <div>
+        <div style={mainDiv}>
             <Header />
             <Subject />
             <Paragraph />
