@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import RightSide from "./RightSide";
 import Sidebar from "./Sidebar";
+import Campaign from "./Campaign";
 import Paper from "@material-ui/core/Paper";
 import { withThemeCreator } from "@material-ui/styles";
 
 function Body() {
   const [rightBar, setRightBar] = useState("Dashboard");
 
+
   function displayComponent() {
     if (rightBar === "Dashboard") {
       return <RightSide />;
-    } else {
-      return <h1>HELLO WORLD</h1>;
+    } else if(rightBar ==="Campaign"){
+      return <Campaign />;
     }
   }
 
@@ -34,7 +36,7 @@ function Body() {
             <p style={styles.text} onClick={() => setRightBar("Analytics")}>
               Analytics
             </p>
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+            <p style={styles.text} onClick={() => setRightBar("Campaign")}>
               Campaign
             </p>
             <p style={styles.text} onClick={() => setRightBar("Analytics")}>
