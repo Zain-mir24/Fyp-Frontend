@@ -28,15 +28,27 @@ function Body() {
               color: "white",
             }}
           >
-            <p style={styles.text}>Dashboard</p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              Dashboard
+            </p>
             <p style={styles.text} onClick={() => setRightBar("Analytics")}>
               Analytics
             </p>
-            <p style={styles.text}>Campaign</p>
-            <p style={styles.text}>Revenue</p>
-            <p style={styles.text}>Orphans</p>
-            <p style={styles.text}>Set Carousel</p>
-            <p style={styles.text}>Upcoming Events</p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              Campaign
+            </p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              Revenue
+            </p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              Orphans
+            </p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              Set Carousel
+            </p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              Upcoming Events
+            </p>
           </Paper>
         </div>
       </div>
