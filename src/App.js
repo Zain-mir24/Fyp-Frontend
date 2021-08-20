@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import AdminLogin from "./components/AdminLogin";
 import home from "./components/homepage/home";
 import Adminn from "./components/AdminPanel/Admin";
+import Campaign from "./components/Campaign/CampaignBody";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/Signup" component={Signup}></Route>
             <Route path="/Admin" component={AdminLogin}></Route>
             <Route path="/Administrator" component={Adminn}></Route>
+            <Route path="/Campaign" component={Campaign}></Route>
             <Route path="/" component={home}></Route>
           </Switch>
         </BrowserRouter>
