@@ -7,9 +7,9 @@ function CampaignCard() {
     <div style={styles.container}>
       <h1 style={styles.heading}>Rikshaw Campaign For Chaudhary Zain</h1>
       <h3 style={styles.heading}>
-        Chaudhary Zain Naeem Mir Khawaja is very in need of Rikshaw as he cannot
-        find suitable job in field of Computer Science. Kindly donate some money
-        to help my mazloom friend.
+          Chaudhary Zain Naeem Mir Khawaja is very in need of Rikshaw as he cannot
+          find suitable job in field of Computer Science. Kindly donate some money
+          to help my mazloom friend.
       </h3>
       <button className="btn btn-danger">DONATE NOW</button>
     </div>
