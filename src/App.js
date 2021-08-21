@@ -6,7 +6,7 @@ import Signup from "./components/Signup";
 import AdminLogin from "./components/AdminLogin";
 import home from "./components/homepage/home";
 import Adminn from "./components/AdminPanel/Admin";
-import Campaign from "./components/Campaign/CampaignBody";
+import Campaign from "./components/AdminPanel/adminCampaign";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {

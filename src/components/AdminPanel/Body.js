@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RightSide from "./RightSide";
 import Sidebar from "./Sidebar";
-import CampaignBody from "../Campaign/CampaignBody";
+import AdminCampaign from "./adminCampaign";
 import Paper from "@material-ui/core/Paper";
 import { withThemeCreator } from "@material-ui/styles";
 
@@ -13,7 +13,7 @@ function Body() {
     if (rightBar === "Dashboard") {
       return <RightSide />;
     } else if(rightBar ==="Campaign"){
-      return <CampaignBody   />;
+      return <AdminCampaign />;
     }
   }
 
