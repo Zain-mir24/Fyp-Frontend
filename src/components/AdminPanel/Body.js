@@ -62,7 +62,7 @@ function Body() {
 const styles = {
   text: {
     paddingLeft: "10px",
-    borderBottom: "0.5px solid white",
+    borderBottom: "0.5px solid white"
   },
 };
 export default Body;

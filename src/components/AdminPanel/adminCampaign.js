@@ -1,21 +1,19 @@
 import { TextField } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
 function Form() {
-    const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <form className={classes.form} >
+      <form className={classes.form}>
         <TextField
           variant="outlined"
           margin="normal"
           required
           fullWidth
-    
           label="Campaign header"
-          name="email"
-          autoComplete="email"
+          name="Campaign header"
           autoFocus
         />
 
@@ -24,24 +22,43 @@ function Form() {
           margin="normal"
           required
           fullWidth
-         
           label="Campaign Subject"
+          name="Campaign Subject"
           name="email"
-          autoComplete="email"
           autoFocus
         />
         <TextField
           variant="outlined"
           margin="normal"
           required
-          fullWidth
-        
+         fullWidth
           label="description"
-          name="email"
-          autoComplete="email"
+          name="description"   
           autoFocus
         />
+          <TextField
+          name="upload-photo"
+          type="file"
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth  
+           autoFocus
+        />
       </form>
+    </div>
+  );
+}
+function CampaignCard() {
+  return (
+    <div style={styles.container}>
+      <h1 style={styles.heading}>Rikshaw Campaign For Chaudhary Zain</h1>
+      <h3 style={styles.heading}>
+        Chaudhary Zain Naeem Mir Khawaja is very in need of Rikshaw as he cannot
+        find suitable job in field of Computer Science. Kindly donate some money
+        to help my mazloom friend.
+      </h3>
+      <button className="btn btn-danger">DONATE NOW</button>
     </div>
   );
 }
@@ -49,22 +66,42 @@ function AdminCampaign() {
   return (
     <div>
       <Form />
+      <CampaignCard />
     </div>
   );
 }
+const styles = {
+  container: {
+    backgroundImage: "url('./Hepkursus-header.jpg')",
+    backgroundRepeat: "no-repeat",
+    height: "300px",
+    paddingTop: "50px",
+    marginBottom: "30px",
+    marginTop:"100px",
+    padding:"10px"
+  },
+  heading: {
+    color: "white",
+    fontFamily: "Roboto-Mono",
+  },
+};
 const useStyles = makeStyles((theme) => ({
-    root: {
-      height: '50vh',
-      border:"2px solid black"
-    },
-    
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
+  root: {
+    height: "40vh",
+ 
+  },
+
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1)
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    '@media (max-width: 900px)': {
+      color: 'blue',
+  }
+  
+}
+}));
 
 export default AdminCampaign;
