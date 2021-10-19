@@ -5,16 +5,15 @@
     font-size: 20px;
 }
 .signInButton{
-    background-color: chartreuse;
+    background-color: rgba(128, 255, 0, 0.493);
     margin:1px
 
 }
 .tags{
     color:black
 }
-.hamburger{
-    display:none
-}
+
+  
 /* Extra Small Devices, Phones */ 
 @media only screen and (min-width : 480px) {
 .hamburger{

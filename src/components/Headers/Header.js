@@ -4,7 +4,7 @@ function Header() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-expand-sm navbar-expand-md  mainNavbar">
-        <a class="navbar-brand heading" style={{color:"black"}} href="#">
+        <a class="navbar-brand heading" style={{ color: "black" }} href="#">
           Global Reach
         </a>
 
@@ -63,57 +63,7 @@ function Header() {
           </button>
         </form>
 
-        {/* Button that will appear only on mobile */}
-        <button
-          type="button"
-          class="navbar-toggle collapsed"
-          data-toggle="collapse"
-          data-target="#bs-example-navbar-collapse-1"
-        >
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Our Team
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Latest News
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="#">
-                Contact us
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Campaigns
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
-                  Ramzan drive
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  Sadqah
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
-          </ul>
-        </button>
+     
       </nav>
     </div>
   );
