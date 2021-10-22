@@ -55,12 +55,16 @@ function Header() {
         </div>
 
         <form class="form-inline">
+        <a href="/Signin">
           <button class="btn btn-outline-success signInButton" type="button">
             Signin
           </button>
-          <button class="btn btn-outline-success signInButton " type="button">
+          </a>
+        <a href="/Signup">
+            <button class="btn btn-outline-success signInButton " type="button">
             Signup
           </button>
+        </a>
         </form>
 
      

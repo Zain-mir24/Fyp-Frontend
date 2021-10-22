@@ -3,6 +3,7 @@ import NAVbar from "../design/Navbar";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "../Headers/Header";
 import Row from "./Row"
+import Whyus from "./Whyus";
 // import Container from '@material-ui/core/Container';
 
 export default function SignIn() {
@@ -37,6 +38,7 @@ export default function SignIn() {
                 </p>
               </div>
          <Row />
+         <Whyus />
             </div>
           </div>
         </div>
