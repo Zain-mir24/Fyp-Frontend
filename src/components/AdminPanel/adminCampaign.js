@@ -1,12 +1,42 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import React from "react";
+import React, { useEffect, useState } from "react";
+const axios = require("axios");
 function Form() {
   const classes = useStyles();
+  const [getApi, setApi] = useState([]);
+  const [name,setName]=useState()
+  const [description,setdesc]=useState()
+  const[file,setFile]=useState()
+  const [fileName, setFileName] = useState("");
+  const saveFile = (e) => {
+  
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
 
+  const getData= async()=>{
+    const formData = new FormData();
+    formData.append("name",name)
+    formData.append("description",description)
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    try {
+      const res = await axios.post(
+        "http://localhost:9000/admin/addNews",
+        formData
+      );
+      console.log(res);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+
+ 
   return (
     <div className={classes.root}>
-      <form className={classes.form}>
+      <form className={classes.form} >
         <TextField
           variant="outlined"
           margin="normal"
@@ -15,36 +45,40 @@ function Form() {
           label="Campaign header"
           name="Campaign header"
           autoFocus
+          onChange={(e)=>{
+            setName(e.target.value)
+          }}
+
         />
 
+       
         <TextField
           variant="outlined"
           margin="normal"
           required
           fullWidth
-          label="Campaign Subject"
-          name="Campaign Subject"
-          name="email"
+          label="description"
+          name="description"
           autoFocus
+          onChange={(e)=>{
+            setdesc(e.target.value)
+          }}
+
+
         />
         <TextField
-          variant="outlined"
-          margin="normal"
-          required
-         fullWidth
-          label="description"
-          name="description"   
-          autoFocus
-        />
-          <TextField
-          name="upload-photo"
           type="file"
           variant="outlined"
           margin="normal"
+          name="file"
           required
-          fullWidth  
-           autoFocus
+          fullWidth
+          autoFocus
+          onChange={saveFile}
         />
+        <button onClick={getData}>
+          submit
+        </button>
       </form>
     </div>
   );
@@ -77,8 +111,8 @@ const styles = {
     height: "300px",
     paddingTop: "50px",
     marginBottom: "30px",
-    marginTop:"100px",
-    padding:"10px"
+    marginTop: "100px",
+    padding: "10px",
   },
   heading: {
     color: "white",
@@ -88,20 +122,18 @@ const styles = {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "40vh",
- 
   },
 
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    '@media (max-width: 900px)': {
-      color: 'blue',
-  }
-  
-}
+    "@media (max-width: 900px)": {
+      color: "blue",
+    },
+  },
 }));
 
 export default AdminCampaign;
