@@ -1,8 +1,22 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import React from "react";
+import React, { useEffect, useState } from "react";
+const axios = require("axios");
 function Form() {
   const classes = useStyles();
+  const [getApi, setApi] = useState([]);
+  const[image,setimage]=useState()
+  const getData = async () => {
+    await axios({
+      method: "post",
+      url: "http://localhost:9000/admin/addNews",
+      data: {
+        Name: "Finn",
+        desc: "This is our data",
+        img:image
+      },
+    });
+  };
 
   return (
     <div className={classes.root}>
@@ -31,20 +45,29 @@ function Form() {
           variant="outlined"
           margin="normal"
           required
-         fullWidth
+          fullWidth
           label="description"
-          name="description"   
+          name="description"
           autoFocus
         />
-          <TextField
+        <TextField
           name="upload-photo"
           type="file"
           variant="outlined"
           margin="normal"
+          name="file"
           required
-          fullWidth  
-           autoFocus
+          fullWidth
+          autoFocus
+          onChange={e => setimage(e)}
         />
+        <button
+          onClick={() => {
+            getData();
+          }}
+        >
+          submit
+        </button>
       </form>
     </div>
   );
@@ -77,8 +100,8 @@ const styles = {
     height: "300px",
     paddingTop: "50px",
     marginBottom: "30px",
-    marginTop:"100px",
-    padding:"10px"
+    marginTop: "100px",
+    padding: "10px",
   },
   heading: {
     color: "white",
@@ -88,20 +111,18 @@ const styles = {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "40vh",
- 
   },
 
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    '@media (max-width: 900px)': {
-      color: 'blue',
-  }
-  
-}
+    "@media (max-width: 900px)": {
+      color: "blue",
+    },
+  },
 }));
 
 export default AdminCampaign;
