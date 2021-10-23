@@ -5,22 +5,38 @@ const axios = require("axios");
 function Form() {
   const classes = useStyles();
   const [getApi, setApi] = useState([]);
-  const[image,setimage]=useState()
-  const getData = async () => {
-    await axios({
-      method: "post",
-      url: "http://localhost:9000/admin/addNews",
-      data: {
-        Name: "Finn",
-        desc: "This is our data",
-        img:image
-      },
-    });
+  const [name,setName]=useState()
+  const [description,setdesc]=useState()
+  const[file,setFile]=useState()
+  const [fileName, setFileName] = useState("");
+  const saveFile = (e) => {
+  
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
   };
 
+  const getData= async()=>{
+    const formData = new FormData();
+    formData.append("name",name)
+    formData.append("description",description)
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    try {
+      const res = await axios.post(
+        "http://localhost:9000/admin/addNews",
+        formData
+      );
+      console.log(res);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+
+ 
   return (
     <div className={classes.root}>
-      <form className={classes.form}>
+      <form className={classes.form} >
         <TextField
           variant="outlined"
           margin="normal"
@@ -29,18 +45,13 @@ function Form() {
           label="Campaign header"
           name="Campaign header"
           autoFocus
+          onChange={(e)=>{
+            setName(e.target.value)
+          }}
+
         />
 
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          label="Campaign Subject"
-          name="Campaign Subject"
-          name="email"
-          autoFocus
-        />
+       
         <TextField
           variant="outlined"
           margin="normal"
@@ -49,9 +60,13 @@ function Form() {
           label="description"
           name="description"
           autoFocus
+          onChange={(e)=>{
+            setdesc(e.target.value)
+          }}
+
+
         />
         <TextField
-          name="upload-photo"
           type="file"
           variant="outlined"
           margin="normal"
@@ -59,13 +74,9 @@ function Form() {
           required
           fullWidth
           autoFocus
-          onChange={e => setimage(e)}
+          onChange={saveFile}
         />
-        <button
-          onClick={() => {
-            getData();
-          }}
-        >
+        <button onClick={getData}>
           submit
         </button>
       </form>
