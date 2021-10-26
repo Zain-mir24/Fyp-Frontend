@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
-import Signin from "./components/Signin";
-import Signup from "./components/Signup";
+import Signin from "./components/SignUser/Signin";
+import Signup from "./components/SignUser/Signup";
 import AdminLogin from "./components/AdminLogin";
 import home from "./components/homepage/home";
 import Adminn from "./components/AdminPanel/Admin";
@@ -12,11 +12,11 @@ import Campaign from "./components/AdminPanel/adminCampaign";
 function App() {
   const [getApi, setApi] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:9000/home")
-      .then((res) => res.text())
-      .then((res) => setApi(res));
-  });
+  // useEffect(() => {
+  //   fetch("http://localhost:9000/home")
+  //     .then((res) => res.text())
+  //     .then((res) => setApi(res));
+  // });
   return (
     <div className="App">
       <header className="App-header">
