@@ -3,8 +3,12 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -13,31 +17,32 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import  axios from 'axios'
+import axios from "axios";
 
 // singup form for new users
 export default function SignUp() {
   const classes = useStyles();
   const [getname, setname] = useState("");
- 
+
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
+  const [donor, setDonor] = useState(Boolean);
+  const [beneficiary, setBeneficiary] = useState(Boolean);
 
   const addData = (e) => {
     e.preventDefault();
-    
-   
-    axios({
-      method: 'post',
-      url:  "http://localhost:9000/User/Signup",
-      data:   {
-        name: getname,
-        Email: getEmail,
-        Password: getPassword,
-      }
-    }).then((res) => console.log("res", res));
 
-    
+    axios({
+      method: "post",
+      url: "http://localhost:9000/User/Signup",
+      data: {
+        name: getname,
+        email: getEmail,
+        password: getPassword,
+        donor: donor,
+        beneficiary: beneficiary,
+      },
+    }).then((res) => console.log("res", res));
   };
 
   return (
@@ -52,7 +57,34 @@ export default function SignUp() {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} >
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Gender</FormLabel>
+              <RadioGroup
+                row
+                aria-label="gender"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="beneficiary"
+                  onClick={() => {
+                    setBeneficiary(true);
+                    setDonor(false);
+                  }}
+                  control={<Radio />}
+                  label="benficiary"
+                />
+                <FormControlLabel
+                  value="donor"
+                  onClick={() => {
+                    setBeneficiary(false);
+                    setDonor(true);
+                  }}
+                  control={<Radio />}
+                  label="donor"
+                />
+              </RadioGroup>
+            </FormControl>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
                 name="Name"
@@ -65,7 +97,7 @@ export default function SignUp() {
                 onChange={(e) => setname(e.target.value)}
               />
             </Grid>
-          
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -93,7 +125,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                control={<Radio value="allowExtraEmails" color="primary" />}
                 label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
