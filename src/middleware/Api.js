@@ -6,7 +6,7 @@ const api =({dispatch})=>(next)=>async(action)=>{
 
   try{  
     const result= await axios.request({
-        baseURL:"http://localhost:9000/User",
+        baseURL:process.env.BASE_URL,
         url,
         method,
         data
