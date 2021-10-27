@@ -12,11 +12,7 @@ import Campaign from "./components/AdminPanel/adminCampaign";
 function App() {
   const [getApi, setApi] = useState("");
 
-  // useEffect(() => {
-  //   fetch("http://localhost:9000/home")
-  //     .then((res) => res.text())
-  //     .then((res) => setApi(res));
-  // });
+
   return (
     <div className="App">
       <header className="App-header">

@@ -12,38 +12,37 @@ import FormLabel from "@mui/material/FormLabel";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-
+import {connect, useDispatch} from "react-redux"
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-
+import { ADD_USER,LOGIN_USER } from "../../store/Actions/userAction";
+import { addingUser } from "../../store/reducers/User";
 // singup form for new users
-export default function SignUp() {
+ function SignUp({
+
+   ...props
+ }) {
   const classes = useStyles();
   const [getname, setname] = useState("");
-
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const [donor, setDonor] = useState(Boolean);
   const [beneficiary, setBeneficiary] = useState(Boolean);
+ const dispatch = useDispatch()
 
-  const addData = (e) => {
-    e.preventDefault();
-
-    axios({
-      method: "post",
-      url: "http://localhost:9000/User/Signup",
-      data: {
-        name: getname,
+const handlesubmit =(e)=>{
+  e.preventDefault()
+  dispatch(addingUser({
+         name: getname,
         email: getEmail,
         password: getPassword,
         donor: donor,
         beneficiary: beneficiary,
-      },
-    }).then((res) => console.log("res", res));
-  };
+  }))
+}
 
   return (
     <Container component="main" maxWidth="xs">
@@ -55,10 +54,12 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={(e)=>{
+          handlesubmit(e)
+        }}>
           <Grid container spacing={2}>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Gender</FormLabel>
+              <FormLabel component="legend">Please choose your role carefully</FormLabel>
               <RadioGroup
                 row
                 aria-label="gender"
@@ -94,6 +95,7 @@ export default function SignUp() {
                 id="firstName"
                 label="Name"
                 autoFocus
+                value={getname}
                 onChange={(e) => setname(e.target.value)}
               />
             </Grid>
@@ -107,6 +109,7 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={getEmail}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
@@ -120,6 +123,7 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={getPassword}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
@@ -136,7 +140,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={addData}
+            
           >
             Sign Up
           </Button>
@@ -171,3 +175,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+const mapStateToProps = (state) => ({
+  users: state.user.users,
+  
+});
+
+export default connect(mapStateToProps,{ADD_USER})(SignUp)
