@@ -29,7 +29,7 @@ function App() {
             <Route path="/Administrator" component={Adminn}></Route>
             <Route path="/Campaign" component={Campaign}></Route>
             <Route path="/" component={home}></Route>
-            <Routee path="/userPanel" component={Userpanel}></Routee>
+            <Route path="/userPanel" component={Userpanel}></Route>
           </Switch>
         </BrowserRouter>
       </body>
