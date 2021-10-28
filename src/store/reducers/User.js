@@ -2,7 +2,10 @@ import {createReducer} from "@reduxjs/toolkit"
 import {ADD_USER,LOGIN_USER, LOGOUT_USER} from "../Actions/userAction"
 import {apiBegan} from "../Actions/Apiaction"
 let lastid=0
-export const userReducer=createReducer(({users:[]}),{
+const initialState={
+    users:[]
+}
+export const userReducer=createReducer((initialState),{
     [ADD_USER.type]:(state,action)=>{
      state.users.push({
          id:++lastid,

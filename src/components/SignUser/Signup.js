@@ -12,37 +12,39 @@ import FormLabel from "@mui/material/FormLabel";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import {connect, useDispatch} from "react-redux"
+import { connect, useDispatch } from "react-redux";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-import { ADD_USER,LOGIN_USER } from "../../store/Actions/userAction";
+import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import { addingUser } from "../../store/reducers/User";
+import { withRouter } from "react-router";
+import PasswordField from 'material-ui-password-field'
 // singup form for new users
- function SignUp({
-
-   ...props
- }) {
+function SignUp({ ...props }) {
   const classes = useStyles();
   const [getname, setname] = useState("");
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const [donor, setDonor] = useState(Boolean);
   const [beneficiary, setBeneficiary] = useState(Boolean);
- const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-const handlesubmit =(e)=>{
-  e.preventDefault()
-  dispatch(addingUser({
-         name: getname,
+  const handlesubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(
+      addingUser({
+        name: getname,
         email: getEmail,
         password: getPassword,
         donor: donor,
         beneficiary: beneficiary,
-  }))
-}
+      })
+    );
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -54,12 +56,12 @@ const handlesubmit =(e)=>{
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} onSubmit={(e)=>{
-          handlesubmit(e)
-        }}>
+        <form className={classes.form} onSubmit={(e) => handlesubmit(e)}>
           <Grid container spacing={2}>
             <FormControl component="fieldset">
-              <FormLabel component="legend">Please choose your role carefully</FormLabel>
+              <FormLabel component="legend">
+                Please choose your role carefully
+              </FormLabel>
               <RadioGroup
                 row
                 aria-label="gender"
@@ -110,20 +112,25 @@ const handlesubmit =(e)=>{
                 name="email"
                 autoComplete="email"
                 value={getEmail}
+                required={true}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <PasswordField
                 variant="outlined"
                 required
                 fullWidth
+                placeholder="password"
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
                 value={getPassword}
+                inputProps={{minLength:7}}
+                minLength={7}
+                required={true}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
@@ -140,7 +147,6 @@ const handlesubmit =(e)=>{
             variant="contained"
             color="primary"
             className={classes.submit}
-            
           >
             Sign Up
           </Button>
@@ -178,7 +184,6 @@ const useStyles = makeStyles((theme) => ({
 
 const mapStateToProps = (state) => ({
   users: state.user.users,
-  
 });
 
-export default connect(mapStateToProps,{ADD_USER})(SignUp)
+export default withRouter(connect(mapStateToProps, { ADD_USER })(SignUp));
