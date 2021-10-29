@@ -28,8 +28,9 @@ function App() {
             <Route path="/Admin" component={AdminLogin}></Route>
             <Route path="/Administrator" component={Adminn}></Route>
             <Route path="/Campaign" component={Campaign}></Route>
-            <Route path="/" component={home}></Route>
             <Route path="/userPanel" component={Userpanel}></Route>
+            <Route path="/" component={home}></Route>
+           
           </Switch>
         </BrowserRouter>
       </body>

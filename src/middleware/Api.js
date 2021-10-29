@@ -6,20 +6,21 @@ const api =({dispatch})=>(next)=>async(action)=>{
 
   try{  
     const result= await axios.request({
-        baseURL:process.env.BASE_URL,
+        baseURL:"http://localhost:9000/User",
         url,
         method,
         data
     })
     if(!result) {
       throw new Error('myerror');
+      
     }
     dispatch(apiSuccess(data))
    if(onSuccess)  dispatch({type:onSuccess,payload:data})
   
   }catch(e){
-    dispatch(apiFail(e.message))
-    console.log(e)
+   dispatch(apiFail(e.message))
+    console.log("ye ha error",e.message)
   }
 
 

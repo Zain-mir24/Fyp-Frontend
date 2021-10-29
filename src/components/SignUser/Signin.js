@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,11 +13,23 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Signup from "./Signup";
+import { connect, useDispatch } from "react-redux";
+import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
+import { withRouter } from "react-router";
 // signin for already registered user
-export default function SignIn() {
+ function SignIn({history, ...props }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const [getEmail, setEmail] = useState("");
+  const [getPassword, setPassword] = useState("");
+   const handlesubmit=async(e)=>{
+   e.preventDefault();
+     dispatch(LOGIN_USER({
+    email:getEmail,
+    password:getPassword
+     })).then(history.push("/userPanel"))
 
+   }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -30,29 +42,35 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
           Global Reach  Sign in
           </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+          <form className={classes.form} onSubmit={(e)=>handlesubmit(e)}>
+          <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={getEmail}
+                required={true}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+           <TextField
+                variant="outlined"
+                required
+                fullWidth
+                placeholder="password"
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={getPassword}
+             
+                minLength={7}
+                required={true}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -116,3 +134,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+const mapStateToProps = (state) => ({
+  users: state.user.myuser,
+});
+
+export default withRouter(connect(mapStateToProps, { LOGIN_USER })(SignIn));

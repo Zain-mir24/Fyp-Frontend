@@ -23,7 +23,7 @@ import { addingUser } from "../../store/reducers/User";
 import { withRouter } from "react-router";
 import PasswordField from 'material-ui-password-field'
 // singup form for new users
-function SignUp({ ...props }) {
+function SignUp({history, ...props }) {
   const classes = useStyles();
   const [getname, setname] = useState("");
   const [getEmail, setEmail] = useState("");
@@ -32,10 +32,10 @@ function SignUp({ ...props }) {
   const [beneficiary, setBeneficiary] = useState(Boolean);
   const dispatch = useDispatch();
 
-  const handlesubmit = (e) => {
+  const handlesubmit =async (e) => {
     e.preventDefault();
 
-    dispatch(
+    await dispatch(
       addingUser({
         name: getname,
         email: getEmail,
@@ -43,7 +43,12 @@ function SignUp({ ...props }) {
         donor: donor,
         beneficiary: beneficiary,
       })
-    );
+    ).then(
+      history.push("/userPanel")
+    ).catch(e=>{
+      console.log(e)
+    })
+   
   };
 
   return (
@@ -117,7 +122,7 @@ function SignUp({ ...props }) {
               />
             </Grid>
             <Grid item xs={12}>
-              <PasswordField
+              <TextField
                 variant="outlined"
                 required
                 fullWidth
