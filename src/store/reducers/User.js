@@ -40,5 +40,5 @@ export const addingUser = (user) =>
     method: "post",
     url,
     data: user,
-    onSuccess: ADD_USER.type,
+    onSuccess: LOGIN_USER.type,
   });
