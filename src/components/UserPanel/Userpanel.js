@@ -6,6 +6,7 @@ import { selectUser } from "../../store/reducers/User";
 function Userpanel({ history, ...props }) {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
@@ -14,7 +15,7 @@ function Userpanel({ history, ...props }) {
     <div>
       {user ? (
           <div>
-          Hello mr {props.users.email}
+          Hello mr {user.getEmail}
           <button onClick={(e) => logout(e)}>logout</button>
         </div>
         

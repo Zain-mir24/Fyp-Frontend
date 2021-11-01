@@ -33,12 +33,3 @@ export const addingUser = (user) =>
     onSuccess: ADD_USER.type,
   });
 
-  const loginurl="/login"
-  export const LoggingUser = (user) =>
-  apiBegan({
-    onStart: apiBegan.type,
-    method: "post",
-    url,
-    data: user,
-    onSuccess: LOGIN_USER.type,
-  });

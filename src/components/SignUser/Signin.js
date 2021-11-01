@@ -16,6 +16,8 @@ import Container from '@material-ui/core/Container';
 import { connect, useDispatch } from "react-redux";
 import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import { withRouter } from "react-router";
+import { LoggingUser } from "../../store/reducers/User";
+import axios from "axios";
 // signin for already registered user
  function SignIn({history, ...props }) {
   const classes = useStyles();
@@ -24,10 +26,27 @@ import { withRouter } from "react-router";
   const [getPassword, setPassword] = useState("");
    const handlesubmit=async(e)=>{
    e.preventDefault();
-     dispatch(LOGIN_USER({
-    email:getEmail,
-    password:getPassword
-     })).then(history.push("/userPanel"))
+    await axios
+        .request({
+          baseURL:"http://localhost:9000/User",
+          url:"/login",
+          method:"post",
+          data:{
+            getEmail,
+            getPassword
+          }
+        }).then(res=>{
+          if(res.status==200){
+            dispatch(LOGIN_USER({
+              getEmail,
+              getPassword
+            }))
+            history.push("/userPanel")
+          }
+        }) .catch(e=>{
+       console.log("our error",e)
+     })
+
 
    }
   return (
