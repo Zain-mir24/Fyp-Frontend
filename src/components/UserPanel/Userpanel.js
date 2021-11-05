@@ -17,6 +17,7 @@ function Userpanel({ history, ...props }) {
           <div>
           Hello mr {user.getEmail}
           <button onClick={(e) => logout(e)}>logout</button>
+          <button onClick={(e)=>{history.push("/changePassword")}}>Changepassword</button>
         </div>
         
       ) : (

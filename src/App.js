@@ -8,6 +8,7 @@ import home from "./components/homepage/home";
 import Adminn from "./components/AdminPanel/Admin";
 import Campaign from "./components/AdminPanel/adminCampaign";
 import Userpanel from "./components/UserPanel/Userpanel";
+import Changepassword from "./components/UserPanel/Changepassword";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/Administrator" component={Adminn}></Route>
             <Route path="/Campaign" component={Campaign}></Route>
             <Route path="/userPanel" component={Userpanel}></Route>
+            <Route path="/changePassword"component={Changepassword}></Route>
             <Route path="/" component={home}></Route>
            
           </Switch>
