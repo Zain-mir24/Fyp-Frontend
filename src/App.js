@@ -9,6 +9,8 @@ import Adminn from "./components/AdminPanel/Admin";
 import Campaign from "./components/AdminPanel/adminCampaign";
 import Userpanel from "./components/UserPanel/Userpanel";
 import Changepassword from "./components/UserPanel/Changepassword";
+import Forgotpassword from "./components/UserPanel/Forgotpassword";
+import Resetpassword from "./components/UserPanel/ResetPassword";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -31,6 +33,8 @@ function App() {
             <Route path="/Campaign" component={Campaign}></Route>
             <Route path="/userPanel" component={Userpanel}></Route>
             <Route path="/changePassword"component={Changepassword}></Route>
+            <Route path="/forgotPassword"component={Forgotpassword}></Route>
+            <Route path="/resetPassword/:_id/:token" component={Resetpassword}></Route>
             <Route path="/" component={home}></Route>
            
           </Switch>
