@@ -4,8 +4,9 @@ import { Form, Input,Button } from "antd";
 import { withRouter } from "react-router";
 import axios from "axios";
 import { selectUser } from "../../store/reducers/User";
-
-function Forgotpassword () {
+const dotenv = require("dotenv");
+dotenv.config();
+function Forgotpassword ({history}) {
     const [email,newEmail]=useState("")
 
     const sendlink= async(e)=>{
@@ -16,7 +17,7 @@ function Forgotpassword () {
             data:{
               email  }
           }).then(res=>{
-              
+              history.push("/Signin")
           }).catch(e=>{
               console.log("error",e)
           })
@@ -31,10 +32,10 @@ function Forgotpassword () {
                initialValues={{ remember: true }}
                autoComplete="off">
                 <Form.Item
-                label="email"
+                label="Enter recovery email"
                 name="email"
                 onChange={(e)=>{newEmail(e.target.value)}}
-                rules={[{ required: true, message: "Please input your password!" }]}
+                rules={[{ required: true, message: "Please input your Email!" }]}
                 >
                       <Input/>
                     </Form.Item>
