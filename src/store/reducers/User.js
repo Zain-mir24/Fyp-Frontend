@@ -1,10 +1,10 @@
-import { createReducer,createSelector } from "@reduxjs/toolkit";
+import { createReducer, createSelector } from "@reduxjs/toolkit";
 import { ADD_USER, LOGIN_USER, LOGOUT_USER } from "../Actions/userAction";
 import { apiBegan, apiFail } from "../Actions/Apiaction";
 let lastid = 0;
 const initialState = {
   users: [],
-  user:null
+  user: null,
 };
 export const userReducer = createReducer(initialState, {
   [ADD_USER.type]: (state, action) => {
@@ -13,8 +13,8 @@ export const userReducer = createReducer(initialState, {
       description: action.payload,
     });
   },
-  [LOGIN_USER.type]:(state,action)=>{
-  state.user=action.payload
+  [LOGIN_USER.type]: (state, action) => {
+    state.user = action.payload;
   },
   [LOGOUT_USER.type]: (state, action) => {
     state.user = null;
@@ -23,7 +23,9 @@ export const userReducer = createReducer(initialState, {
 
 export const selectUser = (state) => state.user.user;
 //Action Creators
-const url = "/Signup";
+
+//User signup url
+const url = "/User/Signup";
 export const addingUser = (user) =>
   apiBegan({
     onStart: apiBegan.type,
@@ -32,4 +34,13 @@ export const addingUser = (user) =>
     data: user,
     onSuccess: ADD_USER.type,
   });
-
+//Admin signup url
+const adminurl = "Admin/Signup";
+export const addingAdmin = (admin) =>
+  apiBegan({
+    onStart: apiBegan.type,
+    method: "post",
+    url: adminurl,
+    data: admin,
+    onSuccess: ADD_USER.type,
+  });

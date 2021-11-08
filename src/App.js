@@ -11,6 +11,7 @@ import Changepassword from "./components/UserPanel/Changepassword";
 import Forgotpassword from "./components/UserPanel/Forgotpassword";
 import Resetpassword from "./components/UserPanel/ResetPassword";
 import Adminlogin from "./components/Signadmin/Adminlogin"
+import Adminsignup from "./components/Signadmin/Adminsignup"
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -30,6 +31,7 @@ function App() {
             <Route path="/Signup" component={Signup}></Route>
             <Route path="/Administrator" component={Adminn}></Route>
             <Route path="/Adminlogin" component={Adminlogin}></Route>
+            <Route path="/Adminsignup" component={Adminsignup}></Route>
             <Route path="/Campaign" component={Campaign}></Route>
             <Route path="/userPanel" component={Userpanel}></Route>
             <Route path="/changePassword"component={Changepassword}></Route>
