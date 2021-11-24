@@ -8,18 +8,20 @@ import {
   FileOutlined,
   TeamOutlined,
   UserOutlined,
+  ExclamationCircleFilled
 } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/reducers/User";
 
 import { CreateContext } from "../../contexts/Customecontexts";
-
+import CampaignAppeal from "./campaignAppeal";
 import { Redirect, withRouter } from "react-router";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 function Beneficiarypanel({ history, ...props }) {
   const [collapsed, setCollapsed] = useState(false);
+  const[content,setContent]=useState("")
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
@@ -31,6 +33,7 @@ function Beneficiarypanel({ history, ...props }) {
     console.log(collapsed);
     setCollapsed({ collapsed });
   }
+ 
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
@@ -58,12 +61,13 @@ function Beneficiarypanel({ history, ...props }) {
               <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
+            <Menu.Item key="9" icon={<  ExclamationCircleFilled />} onClick={(e)=>{
+              setContent("campaign")
+            }} >
+              Appeal for campaign
+            </Menu.Item>
+            <Menu.Item key="2" icon={<DesktopOutlined />}>
+              Appeal for loan
             </Menu.Item>
           </Menu>
         </Sider>
@@ -78,7 +82,18 @@ function Beneficiarypanel({ history, ...props }) {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-          {user.username} is a user
+              {content=="campaign"?<CampaignAppeal />:null}
+              {content==""?
+                <div>
+                       {user.username} is a user
+                  </div>
+                  
+                  :null}
+
+
+         
+     
+
             </div>
           </Content>
 
