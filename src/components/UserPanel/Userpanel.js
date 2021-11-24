@@ -3,6 +3,8 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { selectUser } from "../../store/reducers/User";
+import { CreateContext } from "../../contexts/Customecontexts";
+import Body from "./Body";
 function Userpanel({ history, ...props }) {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
@@ -14,12 +16,13 @@ function Userpanel({ history, ...props }) {
   return (
     <div>
       {user ? (
-          <div>
-          Hello mr {user.getEmail}
+        <div>
+         
+          <Body />
+          
           <button onClick={(e) => logout(e)}>logout</button>
-          <button onClick={(e)=>{history.push("/changePassword")}}>Changepassword</button>
+         
         </div>
-        
       ) : (
         history.push("/Signin")
       )}

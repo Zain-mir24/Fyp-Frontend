@@ -38,6 +38,7 @@ import axios from "axios";
         }).then(res=>{
           if(res.status==200){
             dispatch(LOGIN_USER({
+              
               getEmail,
               getPassword
             }))
