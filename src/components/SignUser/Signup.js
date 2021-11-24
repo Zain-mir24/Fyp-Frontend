@@ -28,20 +28,17 @@ function SignUp({history, ...props }) {
   const [getname, setname] = useState("");
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
-  const [donor, setDonor] = useState(Boolean);
-  const [beneficiary, setBeneficiary] = useState(Boolean);
+  const [type, setType] = useState("");
   const dispatch = useDispatch();
 
   const handlesubmit =async (e) => {
     e.preventDefault();
-
     await dispatch(
       addingUser({
         name: getname,
         email: getEmail,
         password: getPassword,
-        donor: donor,
-        beneficiary: beneficiary,
+        userType:type
       })
     ).then(
       history.push("/userPanel")
@@ -75,8 +72,8 @@ function SignUp({history, ...props }) {
                 <FormControlLabel
                   value="beneficiary"
                   onClick={() => {
-                    setBeneficiary(true);
-                    setDonor(false);
+                    setType("beneficiary")
+
                   }}
                   control={<Radio />}
                   label="benficiary"
@@ -84,8 +81,7 @@ function SignUp({history, ...props }) {
                 <FormControlLabel
                   value="donor"
                   onClick={() => {
-                    setBeneficiary(false);
-                    setDonor(true);
+                    setType("donor")
                   }}
                   control={<Radio />}
                   label="donor"

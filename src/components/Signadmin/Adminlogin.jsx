@@ -63,7 +63,7 @@ export default function Adminlogin() {
           >
             Log in
           </Button>
-          Or <a href="">register now!</a>
+          Or <a href="/Adminsignup">register now!</a>
         </Form.Item>
       </Form>
     </div>

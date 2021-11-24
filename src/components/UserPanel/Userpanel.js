@@ -4,24 +4,21 @@ import { Redirect, withRouter } from "react-router";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { selectUser } from "../../store/reducers/User";
 import { CreateContext } from "../../contexts/Customecontexts";
-import Body from "./Body";
+import BeneficiaryPanel from "./beneficiaryPanel";
+import DonorPanel from "./donorPanel";
 function Userpanel({ history, ...props }) {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
-  const logout = async (e) => {
-    e.preventDefault();
-    await dispatch(LOGOUT_USER());
-  };
   return (
     <div>
       {user ? (
         <div>
-         
-          <Body />
-          
-          <button onClick={(e) => logout(e)}>logout</button>
-         
+          {user.userType == "beneficiary" ? (
+            <BeneficiaryPanel />
+          ) : (
+            <DonorPanel />
+          )}
         </div>
       ) : (
         history.push("/Signin")
