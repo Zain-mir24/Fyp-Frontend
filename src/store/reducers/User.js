@@ -22,6 +22,7 @@ export const userReducer = createReducer(initialState, {
 });
 
 export const selectUser = (state) => state.user.user;
+
 //Action Creators
 
 //User signup url
