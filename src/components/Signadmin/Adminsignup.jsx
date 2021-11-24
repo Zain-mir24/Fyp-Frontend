@@ -30,7 +30,10 @@ function Adminsignup({ history, ...props }) {
   return (
     <div>
       <p style={{ textAlign: "center" }}>
-        <UserOutlined className="site-form-item-icon" /> Admin Signup
+        <UserOutlined className="site-form-item-icon" /> Global reach 
+      </p> 
+      <p style={{ textAlign: "center" }}>
+        <UserOutlined className="site-form-item-icon" />  Admin Signup
       </p>
       <Form
         name="normal_login"

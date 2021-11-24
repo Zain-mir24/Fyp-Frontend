@@ -38,8 +38,7 @@ function App() {
             <Route path="/forgotPassword"component={Forgotpassword}></Route>
             <Route path="/resetPassword/:_id/:token" component={Resetpassword}></Route>
             <Route path="/" component={home}></Route>
-           
-          </Switch>
+            </Switch>
         </BrowserRouter>
       </body>
     </div>

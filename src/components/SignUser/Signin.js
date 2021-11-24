@@ -36,11 +36,14 @@ import axios from "axios";
             getPassword
           }
         }).then(res=>{
+         var username=res.data.user.name
+         var userType=res.data.user.userType
           if(res.status==200){
             dispatch(LOGIN_USER({
-              
               getEmail,
-              getPassword
+              getPassword,
+              username ,
+              userType            
             }))
             history.push("/userPanel")
           }
@@ -91,10 +94,10 @@ import axios from "axios";
                 required={true}
                 onChange={(e) => setPassword(e.target.value)}
               />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
