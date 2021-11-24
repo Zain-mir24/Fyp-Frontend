@@ -12,16 +12,43 @@ import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import  axios from 'axios'
 import Container from '@material-ui/core/Container';
-import Signup from "./Signup";
+import { connect, useDispatch } from "react-redux";
+import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
+import { withRouter } from "react-router";
+import { LoggingUser } from "../../store/reducers/User";
+import axios from "axios";
 // signin for already registered user
-export default function SignIn() {
+ function SignIn({history, ...props }) {
   const classes = useStyles();
-  const [getApi, setApi] = useState("");
+  const dispatch = useDispatch();
+  const [getEmail, setEmail] = useState("");
+  const [getPassword, setPassword] = useState("");
+   const handlesubmit=async(e)=>{
+   e.preventDefault();
+    await axios
+        .request({
+          baseURL:"http://localhost:9000/User",
+          url:"/login",
+          method:"post",
+          data:{
+            getEmail,
+            getPassword
+          }
+        }).then(res=>{
+          if(res.status==200){
+            dispatch(LOGIN_USER({
+              getEmail,
+              getPassword
+            }))
+            history.push("/userPanel")
+          }
+        }) .catch(e=>{
+       console.log("our error",e)
+     })
 
-  
 
+   }
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
@@ -32,31 +59,37 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Admin Sign in
+          Global Reach  Sign in
           </Typography>
-          <form className={classes.form} noValidate>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Admin name"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
+          <form className={classes.form} onSubmit={(e)=>handlesubmit(e)}>
+          <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={getEmail}
+                required={true}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+           <TextField
+                variant="outlined"
+                required
+                fullWidth
+                placeholder="password"
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={getPassword}
+             
+                minLength={7}
+                required={true}
+                onChange={(e) => setPassword(e.target.value)}
+              />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
@@ -72,7 +105,7 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="/forgotPassword" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
@@ -80,6 +113,7 @@ export default function SignIn() {
                 <Link href="/Signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
+               
               </Grid>
             </Grid>
            
@@ -120,3 +154,9 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
+
+const mapStateToProps = (state) => ({
+  users: state.user.myuser,
+});
+
+export default withRouter(connect(mapStateToProps, { LOGIN_USER })(SignIn));
