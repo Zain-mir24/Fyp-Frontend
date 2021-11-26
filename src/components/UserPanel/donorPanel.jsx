@@ -71,7 +71,7 @@ function DonorPanel({ history, ...props }) {
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Beneficiary</Breadcrumb.Item>
               <Breadcrumb.Item>{User.username}</Breadcrumb.Item>
             </Breadcrumb>
             <div
