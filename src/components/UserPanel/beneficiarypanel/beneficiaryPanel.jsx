@@ -43,7 +43,7 @@ function Beneficiarypanel({ history, ...props }) {
               {user.username}
             </Menu.Item>
             <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Beneficiary Panel
+             Home
             </Menu.Item>
             
             <Menu.Item
@@ -61,6 +61,9 @@ function Beneficiarypanel({ history, ...props }) {
               Appeal for loan
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
+            <Menu.Item>
+               <Button >My profile</Button>
+              </Menu.Item>
               <Menu.Item key="5">
                 <Button
                   onClick={(e) => {
