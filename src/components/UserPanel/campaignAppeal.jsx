@@ -19,6 +19,9 @@ function CampaignAppeal() {
   const [getPassword, setPassword] = useState("");
   return (
     <div>
+      <h1>
+       Campaign Appeal
+      </h1>
       <Form
         name="normal_login"
         className="login-form"

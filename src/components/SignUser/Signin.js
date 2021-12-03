@@ -77,6 +77,7 @@ import axios from "axios";
                 value={getEmail}
                 required={true}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{padding:"4px"}}
               />
            <TextField
                 variant="outlined"
@@ -88,11 +89,11 @@ import axios from "axios";
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value={getPassword}
-             
+                value={getPassword}              
                 minLength={7}
                 required={true}
                 onChange={(e) => setPassword(e.target.value)}
+                style={{padding:"4px"}}
               />
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
