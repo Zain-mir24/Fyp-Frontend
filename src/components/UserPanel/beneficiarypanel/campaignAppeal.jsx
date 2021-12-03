@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, Upload, message } from "antd";
 import { UserOutlined, LockOutlined, UploadOutlined } from "@ant-design/icons";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { Redirect, withRouter } from "react-router";
+import { selectUser } from "../../../store/reducers/User";
+
+const axios = require("axios");
 
 function onChange(info) {
   if (info.file.status !== "uploading") {
@@ -14,14 +19,37 @@ function onChange(info) {
 }
 
 function CampaignAppeal() {
-  const [getname, setname] = useState("");
-  const [getEmail, setEmail] = useState("");
-  const [getPassword, setPassword] = useState("");
+  const [name, setname] = useState("");
+  const [description, setdesc] = useState();
+  const [file, setFile] = useState("");
+  const [fileName, setFileName] = useState("");
+  const user = useSelector(selectUser);
+
+  const saveFile = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
+  const getData = async () => {
+    const formData = new FormData();
+    formData.append("bid",user.userId)
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    try {
+      const res = await axios.post(
+        "http://localhost:9000/beneficiary/addCampaignappeal",
+        formData
+      );
+      console.log(res,"Successfully send");
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
   return (
     <div>
-      <h1>
-       Campaign Appeal
-      </h1>
+      <h1>Campaign Appeal</h1>
       <Form
         name="normal_login"
         className="login-form"
@@ -47,6 +75,9 @@ function CampaignAppeal() {
         <Form.Item
           name="Description"
           label="Description"
+          onChange={(e)=>{
+            setdesc(e.target.value)
+          }}
           rules={[{ required: true, message: "Please Describe your campaign" }]}
         >
           <Input.TextArea showCount maxLength={500} />
@@ -54,9 +85,7 @@ function CampaignAppeal() {
         <Form.Item
           name="Campaign media"
           label=" Give pictures or videos of the campaign here"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
+          onChange={saveFile}
           rules={[
             {
               required: true,
@@ -69,11 +98,7 @@ function CampaignAppeal() {
           </Upload>
         </Form.Item>
         <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-           
-          >
+          <Button type="primary" htmlType="submit" onClick={getData}>
             Submit proposal
           </Button>
         </Form.Item>
@@ -82,4 +107,8 @@ function CampaignAppeal() {
   );
 }
 
-export default CampaignAppeal;
+const mapStateToProps = (state) => ({
+  users: state.user.user,
+});
+
+export default withRouter(connect(mapStateToProps)(CampaignAppeal));

@@ -13,9 +13,10 @@ import {
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../store/reducers/User";
 import { CreateContext } from "../../../contexts/Customecontexts";
-import CampaignAppeal from "../campaignAppeal";
+import CampaignAppeal from "./campaignAppeal";
+import HomePanel from "./homePanel";
 import { Redirect, withRouter } from "react-router";
-import LoanAppeal from "../loanAppeal"
+import LoanAppeal from "./loanAppeal"
 import "./beneficiary.css"
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -42,7 +43,12 @@ function Beneficiarypanel({ history, ...props }) {
             }}>
               {user.username}
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
+            <Menu.Item key="2" icon={<DesktopOutlined />}
+            onClick={
+              (e)=>{
+                setContent("home")
+              }
+            }>
              Home
             </Menu.Item>
             
@@ -95,7 +101,7 @@ function Beneficiarypanel({ history, ...props }) {
             >
               {content == "campaign" ? <CampaignAppeal /> : null}
               {content == "loan" ? <LoanAppeal /> : null}
-              {content == "" ? <div>{user.username} is a user</div> : null}
+              {content == "home" ? <HomePanel /> : null}
             </div>
           </Content>
 

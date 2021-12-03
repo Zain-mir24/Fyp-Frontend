@@ -38,12 +38,15 @@ import axios from "axios";
         }).then(res=>{
          var username=res.data.user.name
          var userType=res.data.user.userType
+         var userId=res.data.user._id
           if(res.status==200){
             dispatch(LOGIN_USER({
+
               getEmail,
               getPassword,
               username ,
-              userType            
+              userType,
+              userId        
             }))
             history.push("/userPanel")
           }
