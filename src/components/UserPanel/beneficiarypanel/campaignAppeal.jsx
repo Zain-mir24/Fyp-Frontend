@@ -4,7 +4,7 @@ import { UserOutlined, LockOutlined, UploadOutlined } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
-
+require('dotenv').config({ debug: process.env.DEBUG })
 const axios = require("axios");
 
 function CampaignAppeal() {
@@ -28,7 +28,7 @@ function CampaignAppeal() {
     formData.append("amountneeded",donation)
     try {
       const res = await axios.post(
-        "http://localhost:9000/beneficiary/addCampaignappeal",
+        process.env.REACT_APP_CAMPAIGN_URL,
         formData
       );
       console.log(res, "Successfully send");
@@ -53,7 +53,7 @@ function CampaignAppeal() {
       >
         <Form.Item
           name="Campaignname"
-          label="Campaigname"
+          label="Campaig name"
           onChange={(e) => {
             setname(e.target.value);
           }}
@@ -64,17 +64,21 @@ function CampaignAppeal() {
             },
           ]}
         >
+          <Col span={10}>
           <Input />
+          </Col>
         </Form.Item>{" "}
         <Form.Item
           name="Description"
-          label="Description"
+          label="Description needed"
           onChange={(e) => {
             setdesc(e.target.value);
           }}
           rules={[{ required: true, message: "Please Describe your campaign" }]}
         >
+          <Col span={10}>
           <Input.TextArea showCount maxLength={500} />
+          </Col>
         </Form.Item>  
          <Form.Item
           name="Donation amount"
