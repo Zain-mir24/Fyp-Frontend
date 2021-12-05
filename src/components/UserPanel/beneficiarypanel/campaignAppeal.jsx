@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, Upload, message } from "antd";
+import { Form, Input, Button, Checkbox, Upload, message,Col } from "antd";
 import { UserOutlined, LockOutlined, UploadOutlined } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
@@ -12,6 +12,7 @@ function CampaignAppeal() {
   const [description, setdesc] = useState();
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
+  const [donation,setDonation]=useState()
   const user = useSelector(selectUser);
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -24,6 +25,7 @@ function CampaignAppeal() {
     formData.append("description", description);
     formData.append("file", file);
     formData.append("fileName", fileName);
+    formData.append("amountneeded",donation)
     try {
       const res = await axios.post(
         "http://localhost:9000/beneficiary/addCampaignappeal",
@@ -33,6 +35,8 @@ function CampaignAppeal() {
       alert(`${user.username} \n 
         Your form has been submitted`);
     } catch (ex) {
+      alert(`${user.username} \n 
+      Your form was not  submitted`);
       console.log(ex);
     }
   };
@@ -71,6 +75,18 @@ function CampaignAppeal() {
           rules={[{ required: true, message: "Please Describe your campaign" }]}
         >
           <Input.TextArea showCount maxLength={500} />
+        </Form.Item>  
+         <Form.Item
+          name="Donation amount"
+          label="Donation amount"
+          onChange={(e) => {
+            setDonation(e.target.value);
+          }}
+          rules={[{ required: true, message: "Please enter donation amount needed" }]}
+        >
+          <Col span={5}>
+          <Input />
+          </Col> 
         </Form.Item>
         <Form.Item
           name="Campaign media"
