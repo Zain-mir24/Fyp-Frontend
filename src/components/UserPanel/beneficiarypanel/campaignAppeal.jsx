@@ -7,31 +7,19 @@ import { selectUser } from "../../../store/reducers/User";
 
 const axios = require("axios");
 
-function onChange(info) {
-  if (info.file.status !== "uploading") {
-    console.log(info.file, info.fileList);
-  }
-  if (info.file.status === "done") {
-    message.success(`${info.file.name} file uploaded successfully`);
-  } else if (info.file.status === "error") {
-    message.error(`${info.file.name} file upload failed.`);
-  }
-}
-
 function CampaignAppeal() {
   const [name, setname] = useState("");
   const [description, setdesc] = useState();
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
   const user = useSelector(selectUser);
-
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
   const getData = async () => {
     const formData = new FormData();
-    formData.append("bid",user.userId)
+    formData.append("bid", user.userId);
     formData.append("name", name);
     formData.append("description", description);
     formData.append("file", file);
@@ -41,7 +29,9 @@ function CampaignAppeal() {
         "http://localhost:9000/beneficiary/addCampaignappeal",
         formData
       );
-      console.log(res,"Successfully send");
+      console.log(res, "Successfully send");
+      alert(`${user.username} \n 
+        Your form has been submitted`);
     } catch (ex) {
       console.log(ex);
     }
@@ -75,8 +65,8 @@ function CampaignAppeal() {
         <Form.Item
           name="Description"
           label="Description"
-          onChange={(e)=>{
-            setdesc(e.target.value)
+          onChange={(e) => {
+            setdesc(e.target.value);
           }}
           rules={[{ required: true, message: "Please Describe your campaign" }]}
         >
