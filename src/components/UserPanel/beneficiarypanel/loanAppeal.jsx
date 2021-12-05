@@ -19,7 +19,7 @@ const axios = require("axios");
 function LoanAppeal() {
   const [LoanType, setLoantype] = useState("Select Loan type");
   const [loanDesc, setDesc] = useState("");
-  const [loanamount, setLoan] = useState();
+  const [loanamount, setLoan] = useState(0);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
   const { SubMenu } = Menu;
@@ -33,9 +33,9 @@ function LoanAppeal() {
     const formData = new FormData();
     formData.append("bid", user.userId);
     formData.append("name", user.username);
-    formData.append("description", loanDesc);
-    formData.append("amountneeded", loanamount);
-    formData.append("loantype", LoanType);
+    formData.append("loandescription", loanDesc);
+    formData.append("Loanamount", loanamount);
+    formData.append("loanType", LoanType);
     formData.append("file", file);
     formData.append("fileName", fileName);
     try {
@@ -45,7 +45,7 @@ function LoanAppeal() {
        Your form has been submitted`);
     } catch (ex) {
       alert(`${user.username} \n 
-      Your form was not  submitted`);
+      Your form was not submitted`);
       console.log(ex);
     }
   };
@@ -128,16 +128,16 @@ function LoanAppeal() {
         </Form.Item>
         <Form.Item
           name="Donation amount"
-          label="Donation amount"
-          onChange={(e) => {
-            setLoan(e.target.value);
-          }}
+          label="Loan amount in rupees"
+         
           rules={[
             { required: true, message: "Please enter donation amount needed" },
           ]}
         >
           <Col span={5}>
-            <Input />
+            <Input  onChange={(e) => {
+            setLoan(e.target.value);
+          }}/>
           </Col>
         </Form.Item>
         <Form.Item>
