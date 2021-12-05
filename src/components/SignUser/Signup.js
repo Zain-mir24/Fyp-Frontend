@@ -8,7 +8,8 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-
+import Paper from "@material-ui/core/Paper";
+import "./Signup.css";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -21,9 +22,9 @@ import axios from "axios";
 import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import { addingUser } from "../../store/reducers/User";
 import { withRouter } from "react-router";
-import PasswordField from 'material-ui-password-field'
+import PasswordField from "material-ui-password-field";
 // singup form for new users
-function SignUp({history, ...props }) {
+function SignUp({ history, ...props }) {
   const classes = useStyles();
   const [getname, setname] = useState("");
   const [getEmail, setEmail] = useState("");
@@ -31,136 +32,141 @@ function SignUp({history, ...props }) {
   const [type, setType] = useState("");
   const dispatch = useDispatch();
 
-  const handlesubmit =async (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
     await dispatch(
       addingUser({
         name: getname,
         email: getEmail,
         password: getPassword,
-        userType:type
+        userType: type,
       })
-    ).then(
-      history.push("/userPanel")
-    ).catch(e=>{
-      console.log(e)
-    })
-   
+    )
+      .then(history.push("/userPanel"))
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} onSubmit={(e) => handlesubmit(e)}>
-          <Grid container spacing={2}>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">
-                Please choose your role carefully
-              </FormLabel>
-              <RadioGroup
-                row
-                aria-label="gender"
-                name="row-radio-buttons-group"
+    <div className="mainSignup">
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Grid container component="main" sx={{ height: "100vh" }}>
+          <CssBaseline />
+
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Global reach Sign up
+            </Typography>
+
+            <form className={classes.form} onSubmit={(e) => handlesubmit(e)}>
+              <Grid component={Paper} container spacing={2}>
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">
+                    Please choose your role carefully
+                  </FormLabel>
+                  <RadioGroup
+                    row
+                    aria-label="gender"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="beneficiary"
+                      onClick={() => {
+                        setType("beneficiary");
+                      }}
+                      control={<Radio />}
+                      label="benficiary"
+                    />
+                    <FormControlLabel
+                      value="donor"
+                      onClick={() => {
+                        setType("donor");
+                      }}
+                      control={<Radio />}
+                      label="donor"
+                    />
+                  </RadioGroup>
+                </FormControl>
+                <Grid item xs={12}>
+                  <TextField
+                    autoComplete="fname"
+                    name="Name"
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="firstName"
+                    label="Name"
+                    autoFocus
+                    value={getname}
+                    onChange={(e) => setname(e.target.value)}
+                  />
+                </Grid>
+
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    value={getEmail}
+                    required={true}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    placeholder="password"
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    value={getPassword}
+                    inputProps={{ minLength: 7 }}
+                    minLength={7}
+                    required={true}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <FormControlLabel
+                    control={<Radio value="allowExtraEmails" color="primary" />}
+                    label="I want to receive inspiration, marketing promotions and updates via email."
+                  />
+                </Grid>
+              </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
               >
-                <FormControlLabel
-                  value="beneficiary"
-                  onClick={() => {
-                    setType("beneficiary")
-
-                  }}
-                  control={<Radio />}
-                  label="benficiary"
-                />
-                <FormControlLabel
-                  value="donor"
-                  onClick={() => {
-                    setType("donor")
-                  }}
-                  control={<Radio />}
-                  label="donor"
-                />
-              </RadioGroup>
-            </FormControl>
-            <Grid item xs={12}>
-              <TextField
-                autoComplete="fname"
-                name="Name"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="Name"
-                autoFocus
-                value={getname}
-                onChange={(e) => setname(e.target.value)}
-              />
-            </Grid>
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={getEmail}
-                required={true}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                placeholder="password"
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={getPassword}
-                inputProps={{minLength:7}}
-                minLength={7}
-                required={true}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Radio value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justifyContent="flex-end">
-            <Grid item>
-              <Link href="/Signin" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+                Sign Up
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Link href="/Signin" variant="body2">
+                    Already have an account? Sign in
+                  </Link>
+                </Grid>
+              </Grid>
+            </form>
+          </div>
+        </Grid>
+      </Container>
+    </div>
   );
 }
 const useStyles = makeStyles((theme) => ({
