@@ -9,6 +9,7 @@ import {
   TeamOutlined,
   UserOutlined,
   ExclamationCircleFilled,
+  CheckCircleFilled
 } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../store/reducers/User";
@@ -61,10 +62,13 @@ function Beneficiarypanel({ history, ...props }) {
             >
               Appeal for campaign
             </Menu.Item>
-            <Menu.Item key="10" icon={<DesktopOutlined />} onClick={()=>{
+            <Menu.Item key="10"    icon={<ExclamationCircleFilled />} onClick={()=>{
               setContent("loan")
             }}>
               Appeal for loan
+            </Menu.Item>
+            <Menu.Item key="11"    icon={<CheckCircleFilled/>} >
+              Approved campaigns
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
             <Menu.Item>
