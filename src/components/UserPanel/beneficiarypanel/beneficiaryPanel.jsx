@@ -18,6 +18,7 @@ import CampaignAppeal from "./campaignAppeal";
 import HomePanel from "./homePanel";
 import { Redirect, withRouter } from "react-router";
 import LoanAppeal from "./loanAppeal"
+import Approvecampaigns from "./approvCampaigns";
 import "./beneficiary.css"
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -35,7 +36,7 @@ function Beneficiarypanel({ history, ...props }) {
 
   return (
     <div>
-      <Layout style={{ minHeight: "100vh" , color:"green"}}>
+      <Layout style={{ minHeight: "100vh" }}>
         <Sider trigger ={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline" >
@@ -67,7 +68,9 @@ function Beneficiarypanel({ history, ...props }) {
             }}>
               Appeal for loan
             </Menu.Item>
-            <Menu.Item key="11"    icon={<CheckCircleFilled/>} >
+            <Menu.Item key="11"    icon={<CheckCircleFilled/>} onClick={()=>{
+              setContent("Approve")
+            }} >
               Approved campaigns
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
@@ -91,10 +94,11 @@ function Beneficiarypanel({ history, ...props }) {
           
         </Sider>
         <Layout className="site-layout" >
-          <Header className="site-layout-background" style={{ padding: 0  }} />
+          <Header class=" realHeader" style={{ padding: 0  }} />
            
           <Content style={{ margin: "0 16px",color:"green" }}>
-            <h1>Global Reach beneficiary panel   </h1>
+            <h1>Global Reach </h1>
+            
             <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>Beneficiary</Breadcrumb.Item>
               <Breadcrumb.Item>{user.username}</Breadcrumb.Item>
@@ -106,7 +110,10 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "campaign" ? <CampaignAppeal /> : null}
               {content == "loan" ? <LoanAppeal /> : null}
               {content == "home" ? <HomePanel /> : null}
+              {content == "Approve" ? <Approvecampaigns /> : null}
+              
             </div>
+           
           </Content>
 
      

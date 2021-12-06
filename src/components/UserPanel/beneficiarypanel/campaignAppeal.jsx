@@ -53,7 +53,7 @@ function CampaignAppeal() {
       >
         <Form.Item
           name="Campaignname"
-          label="Campaig name"
+          label="Campaign name"
           onChange={(e) => {
             setname(e.target.value);
           }}

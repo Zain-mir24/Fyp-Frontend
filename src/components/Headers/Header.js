@@ -4,6 +4,9 @@ function Header() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-expand-sm navbar-expand-md  mainNavbar">
+        <a href="/">
+          <img class="glob" src="./Images/Global.png" />
+        </a>
         <a class="navbar-brand heading" style={{ color: "black" }} href="#">
           Global Reach
         </a>
@@ -55,19 +58,17 @@ function Header() {
         </div>
 
         <form class="form-inline">
-        <a href="/Signin">
-          <button class="btn btn-outline-success signInButton" type="button">
-            Signin
-          </button>
+          <a href="/Signin">
+            <button class="btn btn-outline-success signInButton" type="button">
+              Signin
+            </button>
           </a>
-        <a href="/Signup">
+          <a href="/Signup">
             <button class="btn btn-outline-success signInButton " type="button">
-            Signup
-          </button>
-        </a>
+              Signup
+            </button>
+          </a>
         </form>
-
-     
       </nav>
     </div>
   );
