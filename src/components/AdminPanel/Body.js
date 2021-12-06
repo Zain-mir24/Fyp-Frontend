@@ -7,6 +7,7 @@ import { selectUser } from "../../store/reducers/User";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { Redirect, withRouter } from "react-router";
 import AppealedCampaigns from "./appealedCampaigns";
+import Email from "./Email";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import {
   DesktopOutlined,
@@ -36,6 +37,8 @@ function Body({ history, ...props }) {
       return <AdminCampaign />;
     } else if (content === "appealCampaign") {
       return <AppealedCampaigns />;
+    } else if (content === "Email") {
+      return <Email />;
     }
   }
 
@@ -100,6 +103,15 @@ function Body({ history, ...props }) {
             >
               Manage Audit
             </Menu.Item>
+            <Menu.Item
+              key="8"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Email");
+              }}
+            >
+              Send Email
+            </Menu.Item>
           </Menu>
         </Sider>
 
@@ -107,8 +119,6 @@ function Body({ history, ...props }) {
           <Header class=" realHeader" style={{ padding: 0 }} />
 
           <Content style={{ margin: "0 16px", color: "green" }}>
-            <h1>Admin panel</h1>
-
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
