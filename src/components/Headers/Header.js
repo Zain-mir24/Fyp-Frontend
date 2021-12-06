@@ -12,9 +12,9 @@ function Header() {
         </a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto content">
             <li class="nav-item">
-              <a class="nav-link tags" href="#">
+              <a class="nav-link tags"  href="#">
                 Our Team
               </a>
             </li>

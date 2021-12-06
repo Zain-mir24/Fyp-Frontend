@@ -26,7 +26,7 @@ function Body() {
             style={{
               paddingTop: "20px",
               fontFamily: "sans-serif",
-              backgroundColor: "#09EB81",
+              backgroundColor: "#664873",
               color: "white",
             }}
           >
@@ -51,8 +51,14 @@ function Body() {
             <p style={styles.text} onClick={() => setRightBar("Analytics")}>
               Manage admins
             </p> 
-             <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
               Manage audit Team
+            </p>  
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              See requested Campaign
+            </p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              See requested Loan
             </p>
           </Paper>
         </div>
