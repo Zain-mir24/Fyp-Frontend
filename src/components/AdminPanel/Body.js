@@ -2,68 +2,122 @@ import React, { useState, useEffect } from "react";
 import RightSide from "./RightSide";
 import Sidebar from "./Sidebar";
 import AdminCampaign from "./adminCampaign";
-import Paper from "@material-ui/core/Paper";
-import { withThemeCreator } from "@material-ui/styles";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../store/reducers/User";
+import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
+import { Redirect, withRouter } from "react-router";
+import AppealedCampaigns from "./appealedCampaigns";
+import { Layout, Menu, Breadcrumb, Button } from "antd";
+import {
+  DesktopOutlined,
+  PieChartOutlined,
+  FileOutlined,
+  TeamOutlined,
+  UserOutlined,
+  ExclamationCircleFilled,
+  CheckCircleFilled,
+} from "@ant-design/icons";
+const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
 
-function Body() {
-  const [rightBar, setRightBar] = useState("Dashboard");
+function Body({ history, ...props }) {
+  const [content, setContent] = useState("Dashboard");
 
+  const dispatch = useDispatch();
+  const logout = async (e) => {
+    e.preventDefault();
+    await dispatch(LOGOUT_USER());
+  };
 
   function displayComponent() {
-    if (rightBar === "Dashboard") {
+    if (content === "Dashboard") {
       return <RightSide />;
-    } else if(rightBar ==="Campaign"){
+    } else if (content === "Campaign") {
       return <AdminCampaign />;
+    } else if (content === "appealCampaign") {
+      return <AppealedCampaigns />;
     }
   }
 
   return (
     <div className="row">
-      <div className="col-lg-2">
-        <div style={{ backgroundColor: "blue" }}>
-          <Paper
-            align="left"
-            style={{
-              paddingTop: "20px",
-              fontFamily: "sans-serif",
-              backgroundColor: "#664873",
-              color: "white",
-            }}
-          >
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Dashboard
-            </p>
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Analytics
-            </p>
-            <p style={styles.text} onClick={() => setRightBar("Campaign")}>
-              Campaign
-            </p>
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Revenue
-            </p>
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Orphans
-            </p>
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Set Carousel
-            </p>
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Manage admins
-            </p> 
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Manage audit Team
-            </p>  
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              See requested Campaign
-            </p>
-            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              See requested Loan
-            </p>
-          </Paper>
-        </div>
-      </div>
-      <div className="col-lg-10">{displayComponent()}</div>
+      <Layout style={{ minHeight: "100vh" }}>
+        <Sider trigger={null}>
+          <div className="logo" />
+          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+            <Menu.Item
+              key="2"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("home");
+              }}
+            >
+              Home
+            </Menu.Item>
+
+            <Menu.Item
+              key="3"
+              icon={<ExclamationCircleFilled />}
+              onClick={(e) => {
+                setContent("appealCampaign");
+              }}
+            >
+              Campaign Appeals
+            </Menu.Item>
+            <Menu.Item
+              key="4"
+              icon={<ExclamationCircleFilled />}
+              onClick={() => {
+                setContent("loan");
+              }}
+            >
+              Loan Appeals
+            </Menu.Item>
+            <Menu.Item
+              key="5"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Campaign");
+              }}
+            >
+              Create campaign
+            </Menu.Item>
+            <Menu.Item
+              key="6"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Approve");
+              }}
+            >
+              Manage admin
+            </Menu.Item>
+            <Menu.Item
+              key="7"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Approve");
+              }}
+            >
+              Manage Audit
+            </Menu.Item>
+          </Menu>
+        </Sider>
+
+        <Layout className="site-layout">
+          <Header class=" realHeader" style={{ padding: 0 }} />
+
+          <Content style={{ margin: "0 16px", color: "green" }}>
+            <h1>Admin panel</h1>
+
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              {displayComponent()}
+            </div>
+          </Content>
+        </Layout>
+      </Layout>
     </div>
   );
 }
@@ -71,7 +125,11 @@ function Body() {
 const styles = {
   text: {
     paddingLeft: "10px",
-    borderBottom: "0.5px solid white"
+    borderBottom: "0.5px solid white",
   },
 };
-export default Body;
+const mapStateToProps = (state) => ({
+  users: state.user.user,
+});
+
+export default withRouter(connect(mapStateToProps)(Body));

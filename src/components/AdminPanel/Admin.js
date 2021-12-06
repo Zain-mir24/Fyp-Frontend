@@ -6,7 +6,7 @@ import Navbar from "../Headers/AdminPanelHeader";
 export default function Adminn() {
   return (
     <div>
-      <Navbar />
+
       <Body />
     </div>
   );
