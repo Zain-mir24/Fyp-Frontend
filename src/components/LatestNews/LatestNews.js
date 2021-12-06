@@ -9,7 +9,6 @@ import { Card } from "antd";
 const { Option } = Select;
 
 export default function LatestNews() {
-  
   function handleChange(value) {
     console.log(`selected ${value}`);
   }

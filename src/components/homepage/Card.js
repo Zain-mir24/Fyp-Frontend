@@ -8,10 +8,16 @@ export default function Cards() {
   return (
     <div class="container card">
       <Row>
-        <Col span={8}>
+        <Col
+          span={8}
+          xs={{ order: 4 }}
+          sm={{ order: 3 }}
+          md={{ order: 1 }}
+          lg={{ order: 2 }}
+        >
           <Card
             hoverable
-            style={{ width: "100%", padding: "0 10px" }}
+            style={{ width: "100%" }}
             cover={
               <img
                 alt="example"
@@ -26,10 +32,16 @@ export default function Cards() {
             />
           </Card>
         </Col>
-        <Col span={8}>
+        <Col
+          span={8}
+          xs={{ order: 4 }}
+          sm={{ order: 3 }}
+          md={{ order: 1 }}
+          lg={{ order: 2 }}
+        >
           <Card
             hoverable
-            style={{ width: "100%", padding: "0 10px" }}
+            style={{ width: "100%" }}
             cover={
               <img
                 alt="example"
@@ -44,19 +56,28 @@ export default function Cards() {
             />
           </Card>
         </Col>
-        <Col span={8}>
+        <Col
+          span={8}
+          xs={{ order: 4 }}
+          sm={{ order: 3 }}
+          md={{ order: 1 }}
+          lg={{ order: 2 }}
+        >
           <Card
             hoverable
-            style={{ width: "100%", padding: "0 10px" }}
+            style={{ width: "100%" }}
             cover={
               <img
                 alt="example"
-                src="./Images/Charity.png"
+                src="./Images/Project.jpg"
                 style={{ height: "500px" }}
               />
             }
           >
-            <Meta title="Europe Street beat" description="www.instagram.com" />
+            <Meta
+              title="Our Project"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+            />
           </Card>
         </Col>
       </Row>
