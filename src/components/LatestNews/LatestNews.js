@@ -1,4 +1,5 @@
-import { React, useState, useEffect } from "react"; // requires a loader
+import { React, useState, useEffect } from "react";
+
 import "./LatestNews.css";
 import axios from "axios";
 import { Carousel } from "antd";
@@ -8,26 +9,6 @@ import { Card } from "antd";
 const { Option } = Select;
 
 export default function LatestNews() {
-  // const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const { data: response } = await axios.get(
-  //         "http://localhost:9000/admin/LatestNews"
-  //       );
-  //       setData(response);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error(error.message);
-  //     }
-  //     setLoading(false);
-  //   };
-
-  //   fetchData();
-  // }, []);
   function handleChange(value) {
     console.log(`selected ${value}`);
   }

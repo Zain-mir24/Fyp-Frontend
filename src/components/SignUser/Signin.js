@@ -38,12 +38,15 @@ import axios from "axios";
         }).then(res=>{
          var username=res.data.user.name
          var userType=res.data.user.userType
+         var userId=res.data.user._id
           if(res.status==200){
             dispatch(LOGIN_USER({
+
               getEmail,
               getPassword,
               username ,
-              userType            
+              userType,
+              userId        
             }))
             history.push("/userPanel")
           }
@@ -56,8 +59,8 @@ import axios from "axios";
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
+      <Grid item xs={12} sm={8} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -77,6 +80,7 @@ import axios from "axios";
                 value={getEmail}
                 required={true}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{padding:"4px"}}
               />
            <TextField
                 variant="outlined"
@@ -88,11 +92,11 @@ import axios from "axios";
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value={getPassword}
-             
+                value={getPassword}              
                 minLength={7}
                 required={true}
                 onChange={(e) => setPassword(e.target.value)}
+                style={{padding:"4px"}}
               />
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}

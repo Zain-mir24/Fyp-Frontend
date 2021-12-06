@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
-import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
+import { LOGIN_USER, LOGOUT_USER } from "../../../store/Actions/userAction";
 
 import {
   DesktopOutlined,
@@ -10,9 +10,9 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../store/reducers/User";
+import { selectUser } from "../../../store/reducers/User";
 
-import { CreateContext } from "../../contexts/Customecontexts";
+import { CreateContext } from "../../../contexts/Customecontexts";
 
 import { Redirect, withRouter } from "react-router";
 
@@ -71,7 +71,7 @@ function DonorPanel({ history, ...props }) {
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Beneficiary</Breadcrumb.Item>
               <Breadcrumb.Item>{User.username}</Breadcrumb.Item>
             </Breadcrumb>
             <div

@@ -1,76 +1,83 @@
 import React from "react";
 import "./Header.css";
-function Header() {
+
+function Headers() {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-expand-sm navbar-expand-md  mainNavbar">
-        <a class="navbar-brand heading" style={{ color: "black" }} href="#">
-          Global Reach
-        </a>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link tags" href="#">
-                Our Team
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link tags" href="#">
-                Latest News
-              </a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link tags" href="#">
-                Contact us
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle tags"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Campaigns
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item tags" href="#">
-                  Ramzan drive
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  Sadqah
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
-                  Something else here
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <form class="form-inline">
-        <a href="/Signin">
-          <button class="btn btn-outline-success signInButton" type="button">
-            Signin
-          </button>
+      <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img
+              src="./Images/Logo.png"
+              style={{ width: "50px", height: "50px" }}
+            />
           </a>
-        <a href="/Signup">
-            <button class="btn btn-outline-success signInButton " type="button">
-            Signup
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </a>
-        </form>
-
-     
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  Features
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  Pricing
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown link
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Action
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Another action
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Something else here
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
     </div>
   );
 }
 
-export default Header;
+export default Headers;

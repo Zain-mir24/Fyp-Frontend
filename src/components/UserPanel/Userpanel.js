@@ -4,8 +4,8 @@ import { Redirect, withRouter } from "react-router";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { selectUser } from "../../store/reducers/User";
 import { CreateContext } from "../../contexts/Customecontexts";
-import BeneficiaryPanel from "./beneficiaryPanel";
-import DonorPanel from "./donorPanel";
+import BeneficiaryPanel from "./beneficiarypanel/beneficiaryPanel";
+import DonorPanel from "./donorpanel/donorPanel";
 function Userpanel({ history, ...props }) {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);

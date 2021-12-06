@@ -80,6 +80,12 @@ function Changepassword({history,...props}) {
           onClick={(e)=>{
             checkpassword(e)
           }}>Change password</Button>
+          <Button 
+          onClick={(e) => {
+            history.goBack()
+          }}>
+            Back
+          </Button>
         </Form>
       </div>
     </div>
