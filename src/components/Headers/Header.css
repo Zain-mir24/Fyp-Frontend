@@ -1,5 +1,9 @@
 .mainNavbar{
-    
+    height:80px;
+}
+.glob{
+    height: 80px;
+    border-radius: 20px;
 }
 .heading{
     font-size: 20px;
@@ -7,10 +11,16 @@
 .signInButton{
     background-color: rgba(128, 255, 0, 0.493);
     margin:1px
-
+}
+.content{
+    margin-left:50px;
 }
 .tags{
     color:black
+}
+/* list items */
+.items{
+    padding:20px;
 }
 
   

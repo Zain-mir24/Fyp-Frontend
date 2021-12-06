@@ -18,6 +18,7 @@ import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import { withRouter } from "react-router";
 import { LoggingUser } from "../../store/reducers/User";
 import axios from "axios";
+
 // signin for already registered user
  function SignIn({history, ...props }) {
   const classes = useStyles();
@@ -59,8 +60,8 @@ import axios from "axios";
   return (
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      {/* <Grid item xs={false} sm={4} md={7} className={classes.image} /> */}
-      <Grid item xs={12} sm={8} md={12} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={4} md={7} className={classes.image} />
+      <Grid component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -68,6 +69,7 @@ import axios from "axios";
           <Typography component="h1" variant="h5">
           Global Reach  Sign in
           </Typography>
+          
           <form className={classes.form} onSubmit={(e)=>handlesubmit(e)}>
           <TextField
                 variant="outlined"
@@ -137,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage: 'url(./Images/Charity.png)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],

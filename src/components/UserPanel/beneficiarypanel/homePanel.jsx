@@ -12,17 +12,7 @@ function HomePanel({ history, ...props }) {
         <div>
              <h1>
              {user.username}
-
-              </ h1>
-
-             <h1>
-                 Welcome to our beneifciary panel! <br />
-
-                 Your loan request can be made 
-             </h1>
-             <h1>
-                 Your campaign can request can be made
-             </h1>
+             </ h1>
         </div>
     )
 }

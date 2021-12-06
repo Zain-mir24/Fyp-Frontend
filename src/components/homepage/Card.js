@@ -69,7 +69,7 @@ export default function Cards() {
             cover={
               <img
                 alt="example"
-                src="./Images/Project.jpg"
+                src="./Images/Charity.png"
                 style={{ height: "500px" }}
               />
             }

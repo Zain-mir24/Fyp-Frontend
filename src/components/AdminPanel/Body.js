@@ -26,7 +26,7 @@ function Body() {
             style={{
               paddingTop: "20px",
               fontFamily: "sans-serif",
-              backgroundColor: "#368B85",
+              backgroundColor: "#664873",
               color: "white",
             }}
           >
@@ -49,7 +49,16 @@ function Body() {
               Set Carousel
             </p>
             <p style={styles.text} onClick={() => setRightBar("Analytics")}>
-              Upcoming Events
+              Manage admins
+            </p> 
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              Manage audit Team
+            </p>  
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              See requested Campaign
+            </p>
+            <p style={styles.text} onClick={() => setRightBar("Analytics")}>
+              See requested Loan
             </p>
           </Paper>
         </div>
