@@ -44,7 +44,7 @@ function Form() {
           fullWidth
           label="Campaign header"
           name="Campaign header"
-          autoFocus
+        
           onChange={(e)=>{
             setName(e.target.value)
           }}
@@ -59,7 +59,7 @@ function Form() {
           fullWidth
           label="description"
           name="description"
-          autoFocus
+          
           onChange={(e)=>{
             setdesc(e.target.value)
           }}
@@ -70,10 +70,10 @@ function Form() {
           type="file"
           variant="outlined"
           margin="normal"
-          name="file"
+        
           required
           fullWidth
-          autoFocus
+          
           onChange={saveFile}
         />
         <button onClick={getData}>

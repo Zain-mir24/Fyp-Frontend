@@ -6,7 +6,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/reducers/User";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { Redirect, withRouter } from "react-router";
-
+import AppealedCampaigns from "./appealedCampaigns";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import {
   DesktopOutlined,
@@ -15,13 +15,12 @@ import {
   TeamOutlined,
   UserOutlined,
   ExclamationCircleFilled,
-  CheckCircleFilled
+  CheckCircleFilled,
 } from "@ant-design/icons";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-function Body({history,...props}) {
-  
+function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
 
   const dispatch = useDispatch();
@@ -33,82 +32,92 @@ function Body({history,...props}) {
   function displayComponent() {
     if (content === "Dashboard") {
       return <RightSide />;
-    } else if(content ==="Campaign"){
+    } else if (content === "Campaign") {
       return <AdminCampaign />;
+    } else if (content === "appealCampaign") {
+      return <AppealedCampaigns />;
     }
   }
 
   return (
     <div className="row">
-   
-        <Layout style={{ minHeight: "100vh" }}>
-        <Sider trigger ={null}>
+      <Layout style={{ minHeight: "100vh" }}>
+        <Sider trigger={null}>
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline" >
-        
-            <Menu.Item key="2" icon={<DesktopOutlined />}
-            onClick={
-              (e)=>{
-                setContent("home")
-              }
-            }>
-             Home
+          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+            <Menu.Item
+              key="2"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("home");
+              }}
+            >
+              Home
             </Menu.Item>
-            
+
             <Menu.Item
               key="3"
               icon={<ExclamationCircleFilled />}
               onClick={(e) => {
-                setContent("campaign");
+                setContent("appealCampaign");
               }}
             >
-             Campaign Appeals
+              Campaign Appeals
             </Menu.Item>
-            <Menu.Item key="4"    icon={<ExclamationCircleFilled />} onClick={()=>{
-              setContent("loan")
-            }}>
+            <Menu.Item
+              key="4"
+              icon={<ExclamationCircleFilled />}
+              onClick={() => {
+                setContent("loan");
+              }}
+            >
               Loan Appeals
             </Menu.Item>
-            <Menu.Item key="5"    icon={<CheckCircleFilled/>} onClick={()=>{
-              setContent("Campaign")
-            }} >
+            <Menu.Item
+              key="5"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Campaign");
+              }}
+            >
               Create campaign
             </Menu.Item>
-            <Menu.Item key="6"    icon={<CheckCircleFilled/>} onClick={()=>{
-              setContent("Approve")
-            }} >
+            <Menu.Item
+              key="6"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Approve");
+              }}
+            >
               Manage admin
             </Menu.Item>
-            <Menu.Item key="7"    icon={<CheckCircleFilled/>} onClick={()=>{
-              setContent("Approve")
-            }} >
+            <Menu.Item
+              key="7"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Approve");
+              }}
+            >
               Manage Audit
             </Menu.Item>
-        
           </Menu>
-          
         </Sider>
-  
-        <Layout className="site-layout" >
-          <Header class=" realHeader" style={{ padding: 0  }} />
-           
-          <Content style={{ margin: "0 16px",color:"green" }}>
+
+        <Layout className="site-layout">
+          <Header class=" realHeader" style={{ padding: 0 }} />
+
+          <Content style={{ margin: "0 16px", color: "green" }}>
             <h1>Admin panel</h1>
-            
-        
+
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-             {displayComponent()}
+              {displayComponent()}
             </div>
-           
           </Content>
-
-     
         </Layout>
-        </ Layout>  
-     
+      </Layout>
     </div>
   );
 }
@@ -116,7 +125,7 @@ function Body({history,...props}) {
 const styles = {
   text: {
     paddingLeft: "10px",
-    borderBottom: "0.5px solid white"
+    borderBottom: "0.5px solid white",
   },
 };
 const mapStateToProps = (state) => ({
