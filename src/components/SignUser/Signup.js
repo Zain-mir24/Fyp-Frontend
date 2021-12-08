@@ -19,12 +19,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-import { withRouter,useParams } from "react-router";
 
-import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
-import { addingUser } from "../../store/reducers/User";
-
-import PasswordField from "material-ui-password-field";
 // singup form for new users
 export default function SignUp({ history, ...props }) {
   const classes = useStyles();
@@ -32,10 +27,7 @@ export default function SignUp({ history, ...props }) {
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const [type, setType] = useState("");
-  const {_id,token}=useParams()
-  const dispatch = useDispatch();
-
-  const handlesubmit = async (e) => {
+   const handlesubmit = async (e) => {
     e.preventDefault();
     await axios
     .request({

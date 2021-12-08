@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Card } from "antd";
 import { withRouter, useParams } from "react-router";
 import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 
@@ -14,26 +14,27 @@ function AddUser({ history }) {
   const senddata = async (e) => {
     await axios
       .request({
-        baseURL: "http://localhost:9000/User",
+        baseURL: process.env.REACT_APP_BASE_URL,
         url: `/signup/${_id}/${token}`,
         method: "post",
         data: {
           name,
           email,
           password,
-          userType
+          userType,
         },
       })
       .then(async (res) => {
+        alert(`You Are Verified`);
+        history.push("/Signin");
         await dispatch(
           addingUser({
             name: name,
             email: email,
             password: password,
-            userType:userType,
+            userType: userType,
           })
         );
-        history.push("/Signin");
         res.status(200).send("user verified and added");
       })
       .catch((e) => {
@@ -42,14 +43,19 @@ function AddUser({ history }) {
   };
   return (
     <div>
-      <h1>Adding user</h1>
-      <Button
-        onClick={() => {
-          senddata();
-        }}
+      <Card
+        title="Global Reach Verification"
+        bordered={false}
+        style={{ width: 300 }}
       >
-        VERIFY THE EMAIL
-      </Button>
+        <Button
+          onClick={() => {
+            senddata();
+          }}
+        >
+          VERIFY THE EMAIL
+        </Button>
+      </Card>
     </div>
   );
 }
