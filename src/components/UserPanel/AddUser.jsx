@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { Form, Input, Button, Card } from "antd";
+import { Form, Input, Button, Card, Col, Row, Image } from "antd";
 import { withRouter, useParams } from "react-router";
 import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
-
+import "./verify.css";
 import axios from "axios";
 import { addingUser } from "../../store/reducers/User";
 
@@ -42,20 +42,34 @@ function AddUser({ history }) {
       });
   };
   return (
-    <div>
-      <Card
-        title="Global Reach Verification"
-        bordered={false}
-        style={{ width: 300 }}
-      >
-        <Button
-          onClick={() => {
-            senddata();
-          }}
+    <div className="mainVerify" style={{ position:"relative", alignItems: "center", justifyContent: "center" }}>
+      <Row >
+        <Col span={24}        
         >
-          VERIFY THE EMAIL
-        </Button>
-      </Card>
+          <Card
+           
+            bordered={false}
+            style={{ width: 300,left:"40%",position:"absolute",textAlign:"center" }}
+            cover={
+              <img
+                alt="example"
+                src="/Images/Verify.png"
+              />
+            }
+          >
+            <Button
+            style={{backgroundColor:"#A2FFC8",marginTop:"50px"}}
+              onClick={() => {
+                senddata();
+              }}
+            >
+              VERIFY THE EMAIL
+            </Button>
+           
+          </Card>
+        </Col>
+       
+      </Row>
     </div>
   );
 }
