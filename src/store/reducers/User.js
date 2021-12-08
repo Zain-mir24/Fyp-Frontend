@@ -26,7 +26,7 @@ export const selectUser = (state) => state.user.user;
 //Action Creators
 
 //User signup url
-const url = "/User/Signup";
+const url = "/User/Signup/:_id/:token";
 export const addingUser = (user) =>
   apiBegan({
     onStart: apiBegan.type,

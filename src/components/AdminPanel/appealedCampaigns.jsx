@@ -4,16 +4,15 @@ const axios = require("axios");
 require("dotenv").config({ debug: process.env.DEBUG });
 function AppealedCampaigns() {
   const [campaigndata, setcampaigndata] = useState([]);
-  const [beneficiarydata, setBeneficiary] = useState([]);
+
   useEffect(() => {
     viewData();
   }, []);
   const viewData = async () => {
     try {
       const res = await axios.get(process.env.REACT_APP_CAMPAPPEAL);
-      console.log(res, "myresponse");
-     
-      setcampaigndata(
+      
+       setcampaigndata(
         res.data.appeal.map((i) => ({
           key: i._id,
           Cname: i.name,
@@ -55,7 +54,7 @@ function AppealedCampaigns() {
 
   return (
     <div>
-      {/* <Table columns={columns} dataSource={campaigndata}/> */}
+     
       <Table columns={columns} dataSource={campaigndata} />
       <button
         onClick={() => {
