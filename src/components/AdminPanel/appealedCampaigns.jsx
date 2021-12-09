@@ -1,71 +1,70 @@
 import React,{useEffect,useState} from 'react'
 import { Table, Tag, Space } from 'antd';
 const axios = require("axios");
+require("dotenv").config({ debug: process.env.DEBUG });
+function AppealedCampaigns() {
+  const [campaigndata, setcampaigndata] = useState([]);
 
+  useEffect(() => {
+    viewData();
+  }, []);
+  const viewData = async () => {
+    try {
+      const res = await axios.get(process.env.REACT_APP_CAMPAPPEAL);
+      
+       setcampaigndata(
+        res.data.appeal.map((i) => ({
+          key: i._id,
+          Cname: i.name,
+           bid: i.bid,
+           amountneeded:i.amountneeded,
+           description:i.description
+        }))
+      );
 
-function AppealedCampaigns()  {
-    
-    const viewData= async()=>{
-        try{
-            const res= await axios.get("http://localhost:9000/admin/viewAppeals");
-            console.log(res)
-          }catch(e){
-            console.log(e)
-          }
+      console.log(campaigndata, "campaign");
+    } catch (e) {
+      console.log(e);
     }
+  };
 
-    const columns = [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
-          render: text => <a>{text}</a>,
-        },
-        {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
-        },
-        {
-            title:"Beneficiary",
-            dataIndex:"Beneficiary",
-            key:"beneficiary"
-        }
-    ];
-        const data = [
-            {
-              key: '1',
-              name: 'John Brown',
-              age: 32,
-              address: 'New York No. 1 Lake Park',
-              tags: ['nice', 'developer'],
-            },
-            {
-              key: '2',
-              name: 'Jim Green',
-              age: 42,
-              address: 'London No. 1 Lake Park',
-              tags: ['loser'],
-            },
-            {
-              key: '3',
-              name: 'Joe Black',
-              age: 32,
-              address: 'Sidney No. 1 Lake Park',
-              tags: ['cool', 'teacher'],
-            },
-          ];
- 
-    return (
-        <div>
-           <Table columns={columns} dataSource={data} />
-        </div>
-    )
+  const columns = [
+    
+    {
+      title: "Campaign title",
+      dataIndex: "Cname",
+      key: "name",
+    },
+     {
+      title: "beneficiaryid",
+      dataIndex: "bid",
+      key: "bid",
+    },
+    {
+      title: "description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "amountneeded",
+      dataIndex: "amountneeded",
+      key: "amountneeded",
+    },
+  ];
+
+  return (
+    <div>
+     
+      <Table columns={columns} dataSource={campaigndata} />
+      <button
+        onClick={() => {
+          viewData();
+        }}
+      >
+        view data
+      </button>
+    </div>
+  );
 }
 
-export default AppealedCampaigns
+export default AppealedCampaigns;

@@ -25,10 +25,7 @@ function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
 
   const dispatch = useDispatch();
-  const logout = async (e) => {
-    e.preventDefault();
-    await dispatch(LOGOUT_USER());
-  };
+ 
 
   function displayComponent() {
     if (content === "Dashboard") {
@@ -71,19 +68,20 @@ function Body({ history, ...props }) {
               key="4"
               icon={<ExclamationCircleFilled />}
               onClick={() => {
-                setContent("loan");
+                setContent("Campaign");
+                
               }}
             >
-              Loan Appeals
+              Create Campaign
             </Menu.Item>
             <Menu.Item
               key="5"
-              icon={<CheckCircleFilled />}
+              icon={<ExclamationCircleFilled />}
               onClick={() => {
-                setContent("Campaign");
+                setContent("loan");
               }}
             >
-              Create campaign
+              Loan appeals
             </Menu.Item>
             <Menu.Item
               key="6"

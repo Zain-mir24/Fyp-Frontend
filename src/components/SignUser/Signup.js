@@ -19,35 +19,38 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
-import { addingUser } from "../../store/reducers/User";
-import { withRouter } from "react-router";
-import PasswordField from "material-ui-password-field";
+
 // singup form for new users
-function SignUp({ history, ...props }) {
+export default function SignUp({ history, ...props }) {
   const classes = useStyles();
   const [getname, setname] = useState("");
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const [type, setType] = useState("");
-  const dispatch = useDispatch();
-
-  const handlesubmit = async (e) => {
+   const handlesubmit = async (e) => {
     e.preventDefault();
-    await dispatch(
-      addingUser({
+    await axios
+    .request({
+      baseURL: "http://localhost:9000/User",
+      url: `/Signup`,
+      method: "post",
+      data: {
         name: getname,
-        email: getEmail,
+        email:getEmail,
         password: getPassword,
-        userType: type,
+        userType: type
+      },
+    })
+      .then(res=>{
+        alert(`${getname} \n 
+        You have recieved veirfication email. Check your mail`);
+        console.log("email sent")
+        res.status(201).send("email sent")
       })
-    )
-      .then(history.push("/userPanel"))
       .catch((e) => {
         console.log(e);
       });
-  };
-
+    }
   return (
     <div className="mainSignup">
       <Container component="main" maxWidth="xs">
@@ -187,10 +190,5 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
-
-const mapStateToProps = (state) => ({
-  users: state.user.users,
-});
-
-export default withRouter(connect(mapStateToProps, { ADD_USER })(SignUp));
+})
+)

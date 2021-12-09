@@ -11,7 +11,7 @@ function Forgotpassword ({history}) {
 
     const sendlink= async(e)=>{
         await axios.request({
-            baseURL:"http://localhost:9000/User",
+            baseURL:process.env.REACT_APP_BASE_URL,
             url:"/forgotpassword",
             method:"post",
             data:{
