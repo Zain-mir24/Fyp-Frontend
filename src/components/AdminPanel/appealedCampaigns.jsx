@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Table, Tag, Space } from "antd";
+import React,{useEffect,useState} from 'react'
+import { Table, Tag, Space } from 'antd';
 const axios = require("axios");
 require("dotenv").config({ debug: process.env.DEBUG });
 function AppealedCampaigns() {

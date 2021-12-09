@@ -6,7 +6,8 @@ import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import "./verify.css";
 import axios from "axios";
 import { addingUser } from "../../store/reducers/User";
-
+const dotenv = require("dotenv");
+dotenv.config();
 function AddUser({ history }) {
   const { _id, token, name, email, password, userType } = useParams();
   const dispatch = useDispatch();

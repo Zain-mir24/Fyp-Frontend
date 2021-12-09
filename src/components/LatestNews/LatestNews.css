@@ -7,6 +7,7 @@
 
 #carousel {
   position: relative;
+  margin-top: -20px;
 }
 
 #filter-box {
