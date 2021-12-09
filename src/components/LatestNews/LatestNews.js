@@ -5,6 +5,9 @@ import axios from "axios";
 import { Carousel } from "antd";
 import { Select } from "antd";
 import { Card } from "antd";
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const { Option } = Select;
 
@@ -15,7 +18,7 @@ export default function LatestNews() {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/latestnews");
+      const res = await axios.get(process.env.REACT_APP_VIEW_LATEST_NEWS);
       await setData(res.data);
       console.log(data, "TESTING");
     } catch (err) {

@@ -118,10 +118,13 @@ function AdminCampaign() {
       title: "Action",
       key: "action",
       render: (text, record) => (
-        <Space size="middle">
-          <a>Invite</a>
-          {/* <a onClick={deleteData(record._id)}>Delete</a> */}
-        </Space>
+        <button
+          onClick={() => {
+            deleteData(record._id);
+          }}
+        >
+          Delete
+        </button>
       ),
     },
   ];
