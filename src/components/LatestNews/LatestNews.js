@@ -12,11 +12,36 @@ export default function LatestNews() {
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
+  const [data, setData] = useState([]);
+  const getData = async () => {
+    try {
+      const res = await axios.get("http://localhost:9000/admin/latestnews");
+      await setData(res.data);
+      console.log(data, "TESTING");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(getData, []);
 
   return (
     <div id="carousel">
       <Carousel>
-        <div>
+        {data.map((item) => {
+          return (
+            <div>
+              <div
+                className="carousel-parent"
+                style={{
+                  backgroundImage:
+                    "url('http://localhost:9000/uploads/" + item.file + "')",
+                }}
+              ></div>
+            </div>
+          );
+        })}
+        {/* <div>
           <div
             className="carousel-parent"
             style={{
@@ -31,7 +56,7 @@ export default function LatestNews() {
               backgroundImage: "url('./Images/Rescuse.jpg')",
             }}
           ></div>
-        </div>
+        </div> */}
       </Carousel>
       <div id="filter-box">
         {" "}

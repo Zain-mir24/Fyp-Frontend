@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-  import axios from "axios";
+import axios from "axios";
 import { DataGrid } from "@material-ui/data-grid";
 const style = {
   float: "left",
@@ -11,9 +11,9 @@ export default function Sidebar() {
     const data = await response.data;
     setApi(data);
   };
-  useEffect(async () => {
-    getData();
-  }, []);
+  // useEffect(async () => {
+  //   getData();
+  // }, []);
 
   return (
     <div style={{ height: 250, width: "100%" }}>

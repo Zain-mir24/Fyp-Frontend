@@ -6,81 +6,88 @@ const { Meta } = Card;
 
 export default function Cards() {
   return (
-    <div class="container card">
-      <Row>
-        <Col
-          span={8}
-          xs={{ order: 4 }}
-          sm={{ order: 3 }}
-          md={{ order: 1 }}
-          lg={{ order: 2 }}
-        >
-          <Card
-            hoverable
-            style={{ width: "100%" }}
-            cover={
-              <img
-                alt="example"
-                src="./Images/poster.jpg"
-                style={{ height: "500px" }}
-              />
-            }
+    <div
+      style={{
+        backgroundImage: "url('./Images/Background Card.png')",
+        backgroundSize: "cover",
+      }}
+    >
+      <div class="container card">
+        <Row>
+          <Col
+            span={8}
+            xs={{ order: 4 }}
+            sm={{ order: 3 }}
+            md={{ order: 1 }}
+            lg={{ order: 2 }}
           >
-            <Meta
-              title="Plantation Drive"
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-            />
-          </Card>
-        </Col>
-        <Col
-          span={8}
-          xs={{ order: 4 }}
-          sm={{ order: 3 }}
-          md={{ order: 1 }}
-          lg={{ order: 2 }}
-        >
-          <Card
-            hoverable
-            style={{ width: "100%" }}
-            cover={
-              <img
-                alt="example"
-                src="./Images/Campaign.jpg"
-                style={{ height: "500px" }}
+            <Card
+              hoverable
+              style={{ width: "100%" }}
+              cover={
+                <img
+                  alt="example"
+                  src="./Images/poster.jpg"
+                  style={{ height: "500px" }}
+                />
+              }
+            >
+              <Meta
+                title="Plantation Drive"
+                description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
               />
-            }
+            </Card>
+          </Col>
+          <Col
+            span={8}
+            xs={{ order: 4 }}
+            sm={{ order: 3 }}
+            md={{ order: 1 }}
+            lg={{ order: 2 }}
           >
-            <Meta
-              title="Campaigns"
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-            />
-          </Card>
-        </Col>
-        <Col
-          span={8}
-          xs={{ order: 4 }}
-          sm={{ order: 3 }}
-          md={{ order: 1 }}
-          lg={{ order: 2 }}
-        >
-          <Card
-            hoverable
-            style={{ width: "100%" }}
-            cover={
-              <img
-                alt="example"
-                src="./Images/Project.jpg"
-                style={{ height: "500px" }}
+            <Card
+              hoverable
+              style={{ width: "100%" }}
+              cover={
+                <img
+                  alt="example"
+                  src="./Images/Campaign.jpg"
+                  style={{ height: "500px" }}
+                />
+              }
+            >
+              <Meta
+                title="Campaigns"
+                description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
               />
-            }
+            </Card>
+          </Col>
+          <Col
+            span={8}
+            xs={{ order: 4 }}
+            sm={{ order: 3 }}
+            md={{ order: 1 }}
+            lg={{ order: 2 }}
           >
-            <Meta
-              title="Our Project"
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-            />
-          </Card>
-        </Col>
-      </Row>
+            <Card
+              hoverable
+              style={{ width: "100%" }}
+              cover={
+                <img
+                  alt="example"
+                  src="./Images/Project.jpg"
+                  style={{ height: "500px" }}
+                />
+              }
+            >
+              <Meta
+                title="Our Project"
+                description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+              />
+            </Card>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }
