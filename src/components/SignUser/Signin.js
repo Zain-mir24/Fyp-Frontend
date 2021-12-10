@@ -18,7 +18,8 @@ import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import { withRouter } from "react-router";
 import { LoggingUser } from "../../store/reducers/User";
 import axios from "axios";
-
+const dotenv = require("dotenv");
+dotenv.config();
 // signin for already registered user
  function SignIn({history, ...props }) {
   const classes = useStyles();
@@ -29,7 +30,7 @@ import axios from "axios";
    e.preventDefault();
     await axios
         .request({
-          baseURL:"http://localhost:9000/User",
+          baseURL:process.env.REACT_APP__SIGN_IN,
           url:"/login",
           method:"post",
           data:{

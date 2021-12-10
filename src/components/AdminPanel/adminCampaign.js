@@ -87,7 +87,7 @@ function AdminCampaign() {
   const deleteData = async (id) => {
     try {
       const res = await axios.delete(
-        "http://localhost:9000/admin/deleteNews/" + id
+       ` http://localhost:9000/admin/deleteNews/${id}`
       );
       console.log(res);
     } catch (e) {
@@ -120,7 +120,7 @@ function AdminCampaign() {
       render: (text, record) => (
         <Space size="middle">
           <a>Invite</a>
-          {/* <a onClick={deleteData(record._id)}>Delete</a> */}
+          <a onClick={deleteData(record._id)}>Delete</a>
         </Space>
       ),
     },
@@ -131,27 +131,7 @@ function AdminCampaign() {
     Title: item.name,
     Description: item.description,
   }));
-  // {
-  //   key: "1",
-  //   name: "John Brown",
-  //   age: 32,
-  //   address: "New York No. 1 Lake Park",
-  //   tags: ["nice", "developer"],
-  // },
-  // {
-  //   key: "2",
-  //   name: "Jim Green",
-  //   age: 42,
-  //   address: "London No. 1 Lake Park",
-  //   tags: ["loser"],
-  // },
-  // {
-  //   key: "3",
-  //   name: "Joe Black",
-  //   age: 32,
-  //   address: "Sidney No. 1 Lake Park",
-  //   tags: ["cool", "teacher"],
-  // },
+ 
 
   return (
     <div>
