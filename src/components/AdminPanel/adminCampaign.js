@@ -1,7 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
-import { Table, Tag, Space } from "antd";
+import { Table, Tag, Space,Button} from "antd";
 const axios = require("axios");
 function Form() {
   const [getApi, setApi] = useState([]);
@@ -87,8 +87,9 @@ function AdminCampaign() {
   const deleteData = async (id) => {
     try {
       const res = await axios.delete(
-       ` http://localhost:9000/admin/deleteNews/${id}`
+        ` http://localhost:9000/admin/deleteNews/${id}`
       );
+      res.send("news deleted");
       console.log(res);
     } catch (e) {
       console.log(e);
@@ -118,10 +119,7 @@ function AdminCampaign() {
       title: "Action",
       key: "action",
       render: (text, record) => (
-        <Space size="middle">
-          <a>Invite</a>
-          <a onClick={deleteData(record._id)}>Delete</a>
-        </Space>
+        <Button onClick={()=>{deleteData(record._id)}}>Delete</Button>
       ),
     },
   ];
@@ -131,7 +129,6 @@ function AdminCampaign() {
     Title: item.name,
     Description: item.description,
   }));
- 
 
   return (
     <div>
