@@ -7,6 +7,7 @@ import { selectUser } from "../../store/reducers/User";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { Redirect, withRouter } from "react-router";
 import AppealedCampaigns from "./appealedCampaigns";
+import AppealedLoan from "./appealedLoans";
 import Email from "./Email";
 import Beneficiary from "./Beneficiary";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
@@ -38,6 +39,8 @@ function Body({ history, ...props }) {
       return <Email />;
     } else if (content === "User") {
       return <Beneficiary />;
+    }else if (content === "appealLoan") {
+      return <AppealedLoan />;
     }
   }
 
@@ -79,7 +82,7 @@ function Body({ history, ...props }) {
               key="5"
               icon={<ExclamationCircleFilled />}
               onClick={() => {
-                setContent("loan");
+                setContent("appealLoan");
               }}
             >
               Loan appeals
@@ -97,10 +100,10 @@ function Body({ history, ...props }) {
               key="7"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("Approve");
+                setContent("Email");
               }}
             >
-              Manage Audit
+              Send Email
             </Menu.Item>
             <Menu.Item
               key="8"
@@ -115,10 +118,10 @@ function Body({ history, ...props }) {
               key="9"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("Email");
+                setContent("approve");
               }}
             >
-              Send Email
+              Manage audit
             </Menu.Item>
           </Menu>
         </Sider>
