@@ -38,38 +38,38 @@ function AppealedCampaigns() {
     }
   };
 
-  const downloadFile = async (file) => {
-    try {
-      // const path = Path.resolve(__dirname, "Images", file);
-      const res = await axios({
-        url: process.env.REACT_APP_CAMPAPPEAL,
-        method: "GET",
-        responseType: "blob",
-      });
-      // console.log(res.data.appeal);
-      // res.data.appeal.pipe(Fs.createWriteStream(path));
-      // return new Promise((resolve,reject)=>{
-      //   res.data.on('end',()=>{
-      //     resolve()
-      //   })
-      //   res.data.on('error',(err)=>{
-      //     reject(err)
-      //   })
-      // })
+  // const downloadFile = async (file) => {
+  //   try {
+  //     // const path = Path.resolve(__dirname, "Images", file);
+  //     const res = await axios({
+  //       url: process.env.REACT_APP_CAMPAPPEAL,
+  //       method: "GET",
+  //       responseType: "blob",
+  //     });
+  //     // console.log(res.data.appeal);
+  //     // res.data.appeal.pipe(Fs.createWriteStream(path));
+  //     // return new Promise((resolve,reject)=>{
+  //     //   res.data.on('end',()=>{
+  //     //     resolve()
+  //     //   })
+  //     //   res.data.on('error',(err)=>{
+  //     //     reject(err)
+  //     //   })
+  //     // })
 
-      const url = window.URL.createObjectURL(new Blob([res.data.appeal]));
+  //     const url = window.URL.createObjectURL(new Blob([res.data.appeal]));
 
-      const link = document.createElement("a");
+  //     const link = document.createElement("a");
 
-      link.href = url;
+  //     link.href = url;
 
-      link.setAttribute("download", file);
-      document.body.appendChild(link);
-      link.click();
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  //     link.setAttribute("download", file);
+  //     document.body.appendChild(link);
+  //     link.click();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   const columns = [
     {
       title: "Campaign title",
@@ -96,13 +96,16 @@ function AppealedCampaigns() {
       dataIndex: "file",
       key: "file",
       render: (text, record) => (
-        <Button
-          onClick={() => {
-            downloadFile(record.file);
-          }}
-        >
-          download {record.file}
-        </Button>
+        // <Button
+        //   onClick={() => {
+        //     downloadFile(record.file);
+        //   }}
+        // >
+        //   download {record.file}
+        // </Button>
+        <a href={"http://localhost:9000/uploads/" + record.file} download>
+          Download {record.file}
+        </a>
       ),
     },
   ];
