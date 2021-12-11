@@ -7,8 +7,10 @@ import { selectUser } from "../../store/reducers/User";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { Redirect, withRouter } from "react-router";
 import AppealedCampaigns from "./appealedCampaigns";
+import AppealedLoan from "./appealedLoans";
 import Email from "./Email";
 import News from "./LatestNews";
+import Beneficiary from "./Beneficiary";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import {
   DesktopOutlined,
@@ -38,6 +40,10 @@ function Body({ history, ...props }) {
       return <Email />;
     } else if (content === "News") {
       return <News />;
+    } else if (content === "User") {
+      return <Beneficiary />;
+    } else if (content === "appealLoan") {
+      return <AppealedLoan />;
     }
   }
 
@@ -59,21 +65,21 @@ function Body({ history, ...props }) {
 
             <Menu.Item
               key="3"
-              icon={<ExclamationCircleFilled />}
+              icon={<UserOutlined />}
               onClick={(e) => {
-                setContent("appealCampaign");
+                setContent("User");
               }}
             >
-              Campaign Appeals
+              Users
             </Menu.Item>
             <Menu.Item
               key="4"
-              icon={<ExclamationCircleFilled />}
+              icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Campaign");
               }}
             >
-              Create Campaign
+              Campaign Management
             </Menu.Item>
             <Menu.Item
               key="5"
@@ -88,19 +94,28 @@ function Body({ history, ...props }) {
               key="6"
               icon={<ExclamationCircleFilled />}
               onClick={() => {
-                setContent("loan");
+                setContent("appealLoan");
               }}
             >
               Loan appeals
             </Menu.Item>
             <Menu.Item
+              key="6"
+              icon={<ExclamationCircleFilled />}
+              onClick={(e) => {
+                setContent("appealCampaign");
+              }}
+            >
+              Appealed Campaigns
+            </Menu.Item>
+            <Menu.Item
               key="7"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("Approve");
+                setContent("Email");
               }}
             >
-              Manage admin
+              Send Email
             </Menu.Item>
             <Menu.Item
               key="8"
@@ -109,16 +124,16 @@ function Body({ history, ...props }) {
                 setContent("Approve");
               }}
             >
-              Manage Audit
+              Beneficiary
             </Menu.Item>
             <Menu.Item
               key="9"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("Email");
+                setContent("approve");
               }}
             >
-              Send Email
+              Manage audit
             </Menu.Item>
           </Menu>
         </Sider>

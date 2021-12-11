@@ -19,7 +19,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-
+const dotenv = require("dotenv");
+dotenv.config();
 // singup form for new users
 export default function SignUp({ history, ...props }) {
   const classes = useStyles();
@@ -31,7 +32,7 @@ export default function SignUp({ history, ...props }) {
     e.preventDefault();
     await axios
     .request({
-      baseURL: "http://localhost:9000/User",
+      baseURL: process.env.REACT_APP__BASE_URL,
       url: `/Signup`,
       method: "post",
       data: {
