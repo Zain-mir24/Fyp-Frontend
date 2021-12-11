@@ -62,21 +62,21 @@ function Body({ history, ...props }) {
 
             <Menu.Item
               key="3"
-              icon={<ExclamationCircleFilled />}
+              icon={<UserOutlined/>}
               onClick={(e) => {
-                setContent("appealCampaign");
+                setContent("User");
               }}
             >
-              Campaign Appeals
+              Users
             </Menu.Item>
             <Menu.Item
               key="4"
-              icon={<ExclamationCircleFilled />}
+              icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Campaign");
               }}
             >
-              Create Campaign
+              Campaign Management
             </Menu.Item>
             <Menu.Item
               key="5"
@@ -89,12 +89,12 @@ function Body({ history, ...props }) {
             </Menu.Item>
             <Menu.Item
               key="6"
-              icon={<CheckCircleFilled />}
-              onClick={() => {
-                setContent("User");
+              icon={<ExclamationCircleFilled />}
+              onClick={(e) => {
+                setContent("appealCampaign");
               }}
             >
-              Users
+              Appealed Campaigns
             </Menu.Item>
             <Menu.Item
               key="7"
