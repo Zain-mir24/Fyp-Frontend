@@ -8,6 +8,7 @@ import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { Redirect, withRouter } from "react-router";
 import AppealedCampaigns from "./appealedCampaigns";
 import Email from "./Email";
+import Beneficiary from "./Beneficiary";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import {
   DesktopOutlined,
@@ -25,7 +26,6 @@ function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
 
   const dispatch = useDispatch();
- 
 
   function displayComponent() {
     if (content === "Dashboard") {
@@ -36,6 +36,8 @@ function Body({ history, ...props }) {
       return <AppealedCampaigns />;
     } else if (content === "Email") {
       return <Email />;
+    } else if (content === "User") {
+      return <Beneficiary />;
     }
   }
 
@@ -69,7 +71,6 @@ function Body({ history, ...props }) {
               icon={<ExclamationCircleFilled />}
               onClick={() => {
                 setContent("Campaign");
-                
               }}
             >
               Create Campaign
@@ -87,10 +88,10 @@ function Body({ history, ...props }) {
               key="6"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("Approve");
+                setContent("User");
               }}
             >
-              Manage admin
+              Users
             </Menu.Item>
             <Menu.Item
               key="7"
@@ -103,6 +104,15 @@ function Body({ history, ...props }) {
             </Menu.Item>
             <Menu.Item
               key="8"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Approve");
+              }}
+            >
+              Beneficiary
+            </Menu.Item>
+            <Menu.Item
+              key="9"
               icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Email");

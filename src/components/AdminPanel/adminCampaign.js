@@ -23,7 +23,7 @@ function Form() {
     formData.append("fileName", fileName);
     try {
       const res = await axios.post(
-        "http://localhost:9000/admin/addNews",
+        "http://localhost:9000/admin/addCampaign",
         formData
       );
       console.log(res);
@@ -72,73 +72,73 @@ function Form() {
   );
 }
 
-function AdminCampaign() {
-  const [data, setData] = useState([]);
-  const getData = async () => {
-    try {
-      const res = await axios.get("http://localhost:9000/admin/latestnews");
-      setData(res.data);
-      console.log(data, "TESTING");
-    } catch (err) {
-      console.log(err);
-    }
-  };
+// function AdminCampaign() {
+//   const [data, setData] = useState([]);
+//   const getData = async () => {
+//     try {
+//       const res = await axios.get("http://localhost:9000/admin/latestnews");
+//       setData(res.data);
+//       console.log(data, "TESTING");
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   };
 
-  const deleteData = async (id) => {
-    try {
-      const res = await axios.delete(
-        ` http://localhost:9000/admin/deleteNews/${id}`
-      );
-      res.send("news deleted");
-      console.log(res);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+//   const deleteData = async (id) => {
+//     try {
+//       const res = await axios.delete(
+//         ` http://localhost:9000/admin/deleteNews/${id}`
+//       );
+//       res.send("news deleted");
+//       console.log(res);
+//     } catch (e) {
+//       console.log(e);
+//     }
+//   };
 
-  useEffect(getData, []);
-  const columns = [
-    {
-      title: "_id",
-      dataIndex: "_id",
-      key: "_id",
-      render: (text) => <a>{text}</a>,
-    },
-    {
-      title: "Title",
-      dataIndex: "Title",
-      key: "Title",
-    },
-    {
-      title: "Description",
-      dataIndex: "Description",
-      key: "Description",
-    },
+//   useEffect(getData, []);
+//   const columns = [
+//     {
+//       title: "_id",
+//       dataIndex: "_id",
+//       key: "_id",
+//       render: (text) => <a>{text}</a>,
+//     },
+//     {
+//       title: "Title",
+//       dataIndex: "Title",
+//       key: "Title",
+//     },
+//     {
+//       title: "Description",
+//       dataIndex: "Description",
+//       key: "Description",
+//     },
 
-    {
-      title: "Action",
-      key: "action",
-      render: (text, record) => (
-        <Button onClick={()=>{deleteData(record._id)}}>Delete</Button>
-      ),
-    },
-  ];
+//     {
+//       title: "Action",
+//       key: "action",
+//       render: (text, record) => (
+//         <Button onClick={()=>{deleteData(record._id)}}>Delete</Button>
+//       ),
+//     },
+//   ];
 
-  const value = data.map((item) => ({
-    _id: item._id,
-    Title: item.name,
-    Description: item.description,
-  }));
+//   const value = data.map((item) => ({
+//     _id: item._id,
+//     Title: item.name,
+//     Description: item.description,
+//   }));
 
-  return (
-    <div>
-      <Form />
-      <br />
-      <div className="LatestNews-render">
-        <Table columns={columns} dataSource={value} />
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       <Form />
+//       <br />
+//       <div className="LatestNews-render">
+//         <Table columns={columns} dataSource={value} />
+//       </div>
+//     </div>
+//   );
+// }
 
-export default AdminCampaign;
+export default Form;

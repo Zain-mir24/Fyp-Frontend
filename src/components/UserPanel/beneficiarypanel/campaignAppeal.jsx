@@ -44,6 +44,13 @@ function CampaignAppeal() {
   return (
     <div>
       <h1>Campaign Appeal</h1>
+      <h4>
+      Note Please give us detailed docs and images so we can verify your appeal.
+      <br />
+      <br />
+      Put it in a zipFolder
+      Thankyou!
+      </h4>
       <Form
         name="normal_login"
         className="login-form"
@@ -94,7 +101,7 @@ function CampaignAppeal() {
         </Form.Item>
         <Form.Item
           name="Campaign media"
-          label=" Give pictures or videos of the campaign here"
+          label=" Upload zip folder containing all media and doc"
           onChange={saveFile}
           rules={[
             {
