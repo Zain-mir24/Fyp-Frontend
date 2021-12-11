@@ -2,6 +2,7 @@ import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
 import { Table, Tag, Space, Select } from "antd";
+import { combineReducers } from "@reduxjs/toolkit";
 const { Option } = Select;
 const axios = require("axios");
 function Form() {
@@ -12,6 +13,7 @@ function Form() {
   const [fileName, setFileName] = useState("");
   const [category, setCategory] = useState("");
   const [categoryData, setCategoryData] = useState([]);
+  const [assignCategory, setAssignCategory] = useState("");
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -24,6 +26,7 @@ function Form() {
     formData.append("description", description);
     formData.append("file", file);
     formData.append("fileName", fileName);
+    formData.append("category", assignCategory)
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addNews",
@@ -59,15 +62,11 @@ function Form() {
     }
   }
 
-  const sCategory = async () =>{
-    try{
-      const res = await axios.get("http://localhost:9000/admin/sendcategory");
-      await setCategoryData (res.data)
-      console.log(res);
-    }
-    catch(e){
-      console.log(e);
-    }
+
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+    setAssignCategory(value)
   }
 
 
@@ -160,13 +159,12 @@ function Form() {
             borderRadius: "0px",
             backgroundColor: "transparent",
           }}
-          // onChange={handleChange}
+          onChange={handleChange}
         >
-          <Option value="All">All</Option>
-          <Option value="Disaster">Disaster</Option>
-          <Option value="Orphans">Orphans</Option>
-          <Option value="Loan Plans">Loan Plans</Option>
-          <Option value="Help Appeals">Help Appeals</Option>
+          {categoryData.map((item)=>{
+            return <Option value={item._id}>{item.name}</Option>
+          })}
+         
         </Select>
         <button onClick={postData}>submit</button>
       </form>
@@ -193,6 +191,7 @@ function Form() {
 
 function AdminCampaign() {
   const [data, setData] = useState([]);
+  const [selectCategory, setSelectCategory] = useState("")
   const getData = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/latestnews");
@@ -214,6 +213,18 @@ function AdminCampaign() {
     }
   };
 
+  const singleCategory = async (id) =>{
+    try{
+      const res = await axios.get("http://localhost:9000/admin/sendcategory/"+id);
+      console.log(res.data.name)
+      return res.data.name;
+     
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
   useEffect(getData, []);
   const columns = [
     {
@@ -232,7 +243,11 @@ function AdminCampaign() {
       dataIndex: "Description",
       key: "Description",
     },
-
+    {
+      title: "Category",
+      dataIndex: "Category",
+      key: "Category",
+    },
     {
       title: "Action",
       key: "action",
@@ -248,11 +263,14 @@ function AdminCampaign() {
     },
   ];
 
-  const value = data.map((item) => ({
+ 
+
+  const value = data.map((item)=> ({
     _id: item._id,
     Title: item.name,
     Description: item.description,
-  }));
+    Category: singleCategory(item.category)
+  }))
  
 
   return (
@@ -260,6 +278,7 @@ function AdminCampaign() {
       <Form />
       <br />
       <div className="LatestNews-render">
+      
         <Table columns={columns} dataSource={value} />
       </div>
     </div>

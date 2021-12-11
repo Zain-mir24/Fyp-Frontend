@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Table, Tag, Space, Button } from "antd";
-import { saveAs } from "file-saver";
-const FileDownload = require("js-file-download");
 const axios = require("axios");
 const Path = require("path");
 const Fs = require("fs");
