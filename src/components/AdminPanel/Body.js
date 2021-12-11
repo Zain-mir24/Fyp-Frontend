@@ -8,6 +8,7 @@ import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { Redirect, withRouter } from "react-router";
 import AppealedCampaigns from "./appealedCampaigns";
 import Email from "./Email";
+import News from "./LatestNews";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import {
   DesktopOutlined,
@@ -25,7 +26,6 @@ function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
 
   const dispatch = useDispatch();
- 
 
   function displayComponent() {
     if (content === "Dashboard") {
@@ -36,6 +36,8 @@ function Body({ history, ...props }) {
       return <AppealedCampaigns />;
     } else if (content === "Email") {
       return <Email />;
+    } else if (content === "News") {
+      return <News />;
     }
   }
 
@@ -69,13 +71,21 @@ function Body({ history, ...props }) {
               icon={<ExclamationCircleFilled />}
               onClick={() => {
                 setContent("Campaign");
-                
               }}
             >
               Create Campaign
             </Menu.Item>
             <Menu.Item
               key="5"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("News");
+              }}
+            >
+              Manage Latest News
+            </Menu.Item>
+            <Menu.Item
+              key="6"
               icon={<ExclamationCircleFilled />}
               onClick={() => {
                 setContent("loan");
@@ -84,7 +94,7 @@ function Body({ history, ...props }) {
               Loan appeals
             </Menu.Item>
             <Menu.Item
-              key="6"
+              key="7"
               icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Approve");
@@ -93,7 +103,7 @@ function Body({ history, ...props }) {
               Manage admin
             </Menu.Item>
             <Menu.Item
-              key="7"
+              key="8"
               icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Approve");
@@ -102,7 +112,7 @@ function Body({ history, ...props }) {
               Manage Audit
             </Menu.Item>
             <Menu.Item
-              key="8"
+              key="9"
               icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Email");
