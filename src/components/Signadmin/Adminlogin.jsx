@@ -1,71 +1,107 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "antd/dist/antd.css";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { withRouter } from "react-router";
+import { connect, useDispatch } from "react-redux";
+import {  LOGIN_USER } from "../../store/Actions/userAction";
 
-export default function Adminlogin() {
+function Adminlogin({ history, ...props }) {
+  const [getEmail, setEmail] = useState("");
+  const [getPassword, setPassword] = useState("");
+  const dispatch = useDispatch();
+
+  const Check = () => {
+    if (getEmail == "zainmir2000j@gmail.com" && getPassword == "zainzain12") {
+      dispatch(
+        LOGIN_USER({
+          getEmail,
+          getPassword,
+        })
+      );
+      history.push("/Administrator");
+    } else {
+      alert("Incorrect Email or password");
+      history.push("/Adminlogin");
+    }
+  };
   return (
     <div>
-      <p style={{textAlign:"center"}}>
-     <UserOutlined className="site-form-item-icon" />   Admin Login
-        </p>
-      <Form
-        name="normal_login"
-        className="login-form"
-        initialValues={{
-          remember: true,
-        }}
-      >
-        <Form.Item
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Username!",
-            },
-          ]}
+      <p style={{ textAlign: "center" }}>
+        <UserOutlined className="site-form-item-icon" /> Admin Login
+      </p>
+      <div style={{ top: "50%", left: "50%" }}>
+        <Form
+          name="normal_login"
+          className="login-form"
+          initialValues={{
+            remember: true,
+          }}
         >
-          <Input
-            prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
-          />
-        </Form.Item>
-        <Form.Item
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your Password!",
-            },
-          ]}
-        >
-          <Input
-            prefix={<LockOutlined className="site-form-item-icon" />}
-            type="password"
-            placeholder="Password"
-          />
-        </Form.Item>
-        <Form.Item>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
+          <Form.Item
+            name="username"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            rules={[
+              {
+                type: "email",
+                message: "The input is not valid E-mail!",
+              },
+              {
+                required: true,
+                message: "Please input your E-mail!",
+              },
+            ]}
+          >
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Email"
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            rules={[
+              {
+                required: true,
+                message: "Please input your Password!",
+              },
+            ]}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Password"
+            />
+          </Form.Item>
+          <Form.Item>
+            <a className="login-form-forgot" href="">
+              Forgot password
+            </a>
           </Form.Item>
 
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-        </Form.Item>
-
-        <Form.Item>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className="login-form-button"
-          >
-            Log in
-          </Button>
-          Or <a href="/Adminsignup">register now!</a>
-        </Form.Item>
-      </Form>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+              onClick={() => {
+                Check();
+              }}
+            >
+              Log in
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  users: state.user.myuser,
+});
+
+export default withRouter(connect(mapStateToProps, { LOGIN_USER })(Adminlogin));

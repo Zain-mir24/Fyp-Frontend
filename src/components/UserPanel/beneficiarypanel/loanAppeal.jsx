@@ -36,8 +36,9 @@ function LoanAppeal() {
     formData.append("loandescription", loanDesc);
     formData.append("Loanamount", loanamount);
     formData.append("loanType", LoanType);
-    // formData.append("file", file);
-    // formData.append("fileName", fileName);
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    console.log(formData)
     try {
       const res = await axios.post(process.env.REACT_APP_LOAN_URL, formData);
       console.log(res, "Successfully send");
@@ -115,7 +116,7 @@ function LoanAppeal() {
             </Option>
           </Select>
         </Form.Item>
-        {/* <Form.Item
+        <Form.Item
           name="Loan Documents"
           label=" Give Documents of your loan here"
           onChange={saveFile}
@@ -129,7 +130,7 @@ function LoanAppeal() {
           <Upload>
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
-        </Form.Item> */}
+        </Form.Item>
         <Form.Item
           name="Donation amount"
           label="Loan amount in rupees"

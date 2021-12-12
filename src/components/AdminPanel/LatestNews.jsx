@@ -35,55 +35,52 @@ function Form() {
     }
   };
 
-  const postCategory = async () =>{
+  const postCategory = async () => {
     const formData = new FormData();
     formData.append("name", name);
-    try{
+    try {
       console.log(formData, "TESTING");
-      const res = await axios.post("http://localhost:9000/admin/addcategory",{"name": category});
+      const res = await axios.post("http://localhost:9000/admin/addcategory", {
+        name: category,
+      });
       console.log(res);
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
-  const getCategory = async () =>{
-    try{
+  const getCategory = async () => {
+    try {
       const res = await axios.get("http://localhost:9000/admin/sendcategory");
-      await setCategoryData (res.data)
+      await setCategoryData(res.data);
       console.log(res);
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
-  const sCategory = async () =>{
-    try{
+  const sCategory = async () => {
+    try {
       const res = await axios.get("http://localhost:9000/admin/sendcategory");
-      await setCategoryData (res.data)
+      await setCategoryData(res.data);
       console.log(res);
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
-
-
-
-  const deleteCategory= async (id) =>{
-    try{
-      const res = axios.delete("http://localhost:9000/admin/deletecategory/"+id);
+  const deleteCategory = async (id) => {
+    try {
+      const res = axios.delete(
+        "http://localhost:9000/admin/deletecategory/" + id
+      );
       console.log(res);
-    }
-    catch(e){
+    } catch (e) {
       console.log(e);
     }
-  }
+  };
 
-  useEffect(getCategory, [])
+  useEffect(getCategory, []);
 
   const columns = [
     {
@@ -92,7 +89,7 @@ function Form() {
       key: "_id",
       render: (text) => <a>{text}</a>,
     },
-    
+
     {
       title: "Title",
       dataIndex: "Title",
@@ -110,70 +107,80 @@ function Form() {
           Delete
         </button>
       ),
-    },]
+    },
+  ];
 
-    const value = categoryData.map((item) => ({
-      _id: item._id,
-      Title: item.name,
-    }));
-
+  const value = categoryData.map((item) => ({
+    _id: item._id,
+    Title: item.name,
+  }));
 
   return (
     <div className="row">
-    <div className="col-lg-6">
-      <form>
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          label="Campaign header"
-          name="Campaign header"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
+      <div className="col-lg-6">
+        <form>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            label="Campaign header"
+            name="Campaign header"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
 
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          label="description"
-          name="description"
-          onChange={(e) => {
-            setdesc(e.target.value);
-          }}
-        />
-        <TextField
-          type="file"
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          onChange={saveFile}
-        />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            label="description"
+            name="description"
+            onChange={(e) => {
+              setdesc(e.target.value);
+            }}
+          />
+          <TextField
+            type="file"
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            onChange={saveFile}
+          />
           <Select
-          defaultValue="Select Category"
-          style={{
-            width: 180,
-            borderRadius: "0px",
-            backgroundColor: "transparent",
-          }}
-          // onChange={handleChange}
-        >
-          <Option value="All">All</Option>
-          <Option value="Disaster">Disaster</Option>
-          <Option value="Orphans">Orphans</Option>
-          <Option value="Loan Plans">Loan Plans</Option>
-          <Option value="Help Appeals">Help Appeals</Option>
-        </Select>
-        <button onClick={postData}>submit</button>
-      </form>
-    </div>
-    <div className="col-lg-6">
-    <h3>Category</h3>
-    <TextField
+            defaultValue="Select Category"
+            style={{
+              width: 180,
+              borderRadius: "0px",
+              backgroundColor: "transparent",
+            }}
+            // onChange={handleChange}
+          >
+            <Option value="All">
+              <p style={{ color: "black" }}> All</p>
+            </Option>
+            <Option value="Disaster">
+              <p style={{ color: "black" }}>Disaster</p>
+            </Option>
+            <Option value="Orphans">
+              <p style={{ color: "black" }}>Orphans</p>
+            </Option>
+            <Option value="Loan Plans">
+              <p style={{ color: "black" }}>Loan Plans</p>
+            </Option>
+            <Option value="Help Appeals">
+              <p style={{ color: "black" }}>Help Appeals</p>
+            </Option>
+          </Select>
+          <button onClick={postData}>submit</button>
+        </form>
+      </div>
+      <div className="col-lg-6">
+        <h3>Category</h3>
+        <TextField
           variant="outlined"
           margin="normal"
           required
@@ -186,7 +193,7 @@ function Form() {
         />
         <button onClick={postCategory}>submit</button>
         <Table columns={columns} dataSource={value} />
-    </div>
+      </div>
     </div>
   );
 }
@@ -253,7 +260,6 @@ function AdminCampaign() {
     Title: item.name,
     Description: item.description,
   }));
- 
 
   return (
     <div>
