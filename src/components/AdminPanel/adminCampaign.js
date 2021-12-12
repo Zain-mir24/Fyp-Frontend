@@ -1,144 +1,287 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
-import { Table, Tag, Space, Button } from "antd";
+import { Table, Button, Input, Upload, Col, Form } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
 const axios = require("axios");
-function Form() {
-  const [getApi, setApi] = useState([]);
-  const [name, setName] = useState();
-  const [description, setdesc] = useState();
+function Foorm() {
+  const [camp, setCamp] = useState([]);
+  const [name, setName] = useState("");
+  const [description, setdesc] = useState("");
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
+  const [ID, setId] = useState("");
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
-
+  useEffect(() => {
+    viewCamp();
+  }, []);
   const postData = async () => {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
     formData.append("file", file);
     formData.append("fileName", fileName);
+
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addCampaign",
         formData
       );
+      if (!res) {
+        return console.log("couldnt add");
+      }
+      alert(`Campaign has been added`);
       console.log(res);
     } catch (ex) {
       console.log(ex);
     }
   };
+  const viewCamp = async () => {
+    try {
+      const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
+      console.log(res, "Response from the backend");
+      setCamp(
+        res.data.map((i) => ({
+          _id: i._id,
+          name: i.name,
+          description: i.description,
+        }))
+      );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const deleteCamp = async (id) => {
+    try {
+      const res = await axios.delete(
+        "http://localhost:9000/admin/Deletecampaign/" + id
+      );
+      console.log(res, "Response from the backend");
+      if (!res) {
+        throw new Error("The campaign doesnt exist");
+      }
+      alert(`Campaign has been deleted`);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const updateCampaign = async () => {
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("description", description);
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    console.log(formData,"This is the form at the frontend")
+    try {
+      const res = await axios.patch(
+        "http://localhost:9000/admin/updateCampaign/" + ID,
+        formData
+      );
+      if(!res){
+        throw new Error("Could not update the campaign")
+      }
+      alert(`Campaign has been updated`);
+
+    } catch (e) {
+      console.log(e)
+    }
+  };
+  const columns = [
+    {
+      title: "_id",
+      dataIndex: "_id",
+      key: "_id",
+      render: (text) => <a>{text}</a>,
+    },
+
+    {
+      title: "Title",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <button
+          onClick={() => {
+            deleteCamp(record._id);
+          }}
+        >
+          Delete
+        </button>
+      ),
+    },
+  ];
+
+  const column2 = [
+    {
+      title: "_id",
+      dataIndex: "_id",
+      key: "_id",
+      render: (text) => <a>{text}</a>,
+    },
+
+    {
+      title: "Title",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "description",
+      dataIndex: "description",
+      key: "description",
+    },
+  ];
 
   return (
-    <div>
-      <form>
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          label="Campaign header"
-          name="Campaign header"
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
+    <div className="row">
+      <h1> Campaign managment </h1>
+      <div className="col-lg-6">
+        <Form>
+          <p>Add campaign</p>
+          <Form.Item
+            rules={[{ required: true, message: "Please Enter campaign name" }]}
+          >
+            <Col span={15}>
+              <Input
+                required
+                placeholder="Campaign name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+            </Col>
+          </Form.Item>
+          <Col span={15}>
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input.TextArea
+                required
+                placeholder="Campaign Description"
+                onChange={(e) => {
+                  setdesc(e.target.value);
+                }}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item
+              rules={[{ required: true, message: "Please uplaod doc" }]}
+              onChange={saveFile}
+            >
+              <Upload>
+                <Button icon={<UploadOutlined />}>Upload media files</Button>
+              </Upload>
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" onClick={postData}>
+                submit
+              </Button>
+            </Form.Item>
+          </Col>
+        </Form>
+      </div>
+      {/* Deleting the campaigns */}
+      <div className="col-lg-6">
+        <Table
+          title={() => " Delete campaigns"}
+          columns={columns}
+          dataSource={camp}
         />
+      </div>
 
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          label="description"
-          name="description"
-          onChange={(e) => {
-            setdesc(e.target.value);
-          }}
+    {/* Viewing the campaigns */}
+      <div className="col-lg-6">
+        <Table
+          title={() => " All campaigns"}
+          columns={column2}
+          dataSource={camp}
         />
-        <TextField
-          type="file"
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          onChange={saveFile}
-        />
-        <button onClick={postData}>submit</button>
-      </form>
+      </div>
+      {/* Updating campaingn */}
+      <div className="col-lg-6">
+        <Form>
+          <p>Update campaign</p>
+          <Form.Item
+            rules={[{ required: true, message: "Please Enter campaign name" }]}
+          >
+            <Col span={15}>
+              <Input
+                required
+                placeholder="Enter campaign id"
+                onChange={(e) => {
+                  setId(e.target.value);
+                }}
+              />
+            </Col>
+          </Form.Item>
+          <Form.Item
+            rules={[{ required: true, message: "Please Enter campaign name" }]}
+          >
+            <Col span={15}>
+              <Input
+                required
+                placeholder="Campaign name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+            </Col>
+          </Form.Item>
+          <Col span={15}>
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input.TextArea
+                required
+                placeholder="Campaign Description"
+                onChange={(e) => {
+                  setdesc(e.target.value);
+                }}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item
+              rules={[{ required: true, message: "Please uplaod doc" }]}
+              onChange={saveFile}
+            >
+              <Upload>
+                <Button icon={<UploadOutlined />}>Upload media files</Button>
+              </Upload>
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" onClick={updateCampaign}>
+                submit
+              </Button>
+            </Form.Item>
+          </Col>
+        </Form>
+      </div>
     </div>
   );
 }
 
-// function AdminCampaign() {
-//   const [data, setData] = useState([]);
-//   const getData = async () => {
-//     try {
-//       const res = await axios.get("http://localhost:9000/admin/latestnews");
-//       setData(res.data);
-//       console.log(data, "TESTING");
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
-
-//   const deleteData = async (id) => {
-//     try {
-//       const res = await axios.delete(
-//         ` http://localhost:9000/admin/deleteNews/${id}`
-//       );
-//       res.send("news deleted");
-//       console.log(res);
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   };
-
-//   useEffect(getData, []);
-//   const columns = [
-//     {
-//       title: "_id",
-//       dataIndex: "_id",
-//       key: "_id",
-//       render: (text) => <a>{text}</a>,
-//     },
-//     {
-//       title: "Title",
-//       dataIndex: "Title",
-//       key: "Title",
-//     },
-//     {
-//       title: "Description",
-//       dataIndex: "Description",
-//       key: "Description",
-//     },
-
-//     {
-//       title: "Action",
-//       key: "action",
-//       render: (text, record) => (
-//         <Button onClick={()=>{deleteData(record._id)}}>Delete</Button>
-//       ),
-//     },
-//   ];
-
-//   const value = data.map((item) => ({
-//     _id: item._id,
-//     Title: item.name,
-//     Description: item.description,
-//   }));
-
-//   return (
-//     <div>
-//       <Form />
-//       <br />
-//       <div className="LatestNews-render">
-//         <Table columns={columns} dataSource={value} />
-//       </div>
-//     </div>
-//   );
-// }
-
-export default Form;
+export default Foorm;

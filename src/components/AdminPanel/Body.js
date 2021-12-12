@@ -100,7 +100,7 @@ function Body({ history, ...props }) {
               Loan appeals
             </Menu.Item>
             <Menu.Item
-              key="6"
+              key="7"
               icon={<ExclamationCircleFilled />}
               onClick={(e) => {
                 setContent("appealCampaign");
@@ -109,7 +109,7 @@ function Body({ history, ...props }) {
               Appealed Campaigns
             </Menu.Item>
             <Menu.Item
-              key="7"
+              key="8"
               icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Email");
@@ -118,7 +118,7 @@ function Body({ history, ...props }) {
               Send Email
             </Menu.Item>
             <Menu.Item
-              key="8"
+              key="9"
               icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Approve");
@@ -127,7 +127,7 @@ function Body({ history, ...props }) {
               Beneficiary
             </Menu.Item>
             <Menu.Item
-              key="9"
+              key="10"
               icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("approve");
