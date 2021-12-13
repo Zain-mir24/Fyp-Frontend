@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Input, Space, Typography } from "antd";
+import { Input, Space, Typography ,Button} from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import axios from "axios";
 const { Title } = Typography;
@@ -10,9 +10,11 @@ export default function Newsletter() {
   const [email, setEmail] = useState("");
   const onSearch = async () => {
     try {
-      await axios.post("http://localhost:9000/adminPanel/saveemail", {
-        Email: email,
-      });
+      await axios.post("http://localhost:9000/adminPanel/saveEmail", 
+      { Email: email}
+      );
+      alert('Check your email to verify')
+      console.log(email)
     } catch (e) {
       console.log(e);
     }
@@ -25,13 +27,22 @@ export default function Newsletter() {
             Newsletter SignUp
           </Title>
         </div>
-        <Search
-          placeholder="input search text"
+        <div>
+
+        
+        <Input
+          placeholder="input your email"
           allowClear
-          enterButton="Sign Up"
           size="medium"
-          onPressEnter={onSearch}
+          onChange={(e)=>{
+            setEmail(e.target.value)  
+          }}
+          
         />
+           <Button placeholder="signup"onClick={onSearch} >
+             Signup
+           </Button>
+           </div>
       </div>
     </div>
   );

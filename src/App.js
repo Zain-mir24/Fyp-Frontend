@@ -13,6 +13,7 @@ import Resetpassword from "./components/UserPanel/ResetPassword";
 import Adminlogin from "./components/Signadmin/Adminlogin";
 import Adminsignup from "./components/Signadmin/Adminsignup";
 import AddUser from "./components/UserPanel/AddUser";
+import Addemail from "./components/UserPanel/Addemail";
 import Chatbot from "react-chatbot-kit";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
@@ -39,6 +40,7 @@ function App() {
             <Route path="/forgotPassword"component={Forgotpassword}></Route>
             <Route path="/resetPassword/:_id/:token" component={Resetpassword}></Route>
             <Route path="/addUser/:_id/:token/:name/:email/:password/:userType" component={AddUser}></Route>
+            <Route path="/emailVerification/:_id/:token/:Email" component={Addemail}></Route>
             <Route path="/" component={home}></Route>
           </Switch>
         </BrowserRouter>

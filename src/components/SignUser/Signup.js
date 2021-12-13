@@ -32,7 +32,7 @@ export default function SignUp({ history, ...props }) {
     e.preventDefault();
     await axios
     .request({
-      baseURL: process.env.REACT_APP__BASE_URL,
+      baseURL: 'http://localhost:9000/User',
       url: `/Signup`,
       method: "post",
       data: {
@@ -49,6 +49,8 @@ export default function SignUp({ history, ...props }) {
         res.status(201).send("email sent")
       })
       .catch((e) => {
+        alert(`${getname} \n 
+        Error`);
         console.log(e);
       });
     }
