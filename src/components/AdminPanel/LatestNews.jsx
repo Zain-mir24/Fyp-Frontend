@@ -2,6 +2,7 @@ import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
 import { Table, Tag, Space, Select } from "antd";
+import { combineReducers } from "@reduxjs/toolkit";
 const { Option } = Select;
 const axios = require("axios");
 function Form() {
@@ -12,6 +13,7 @@ function Form() {
   const [fileName, setFileName] = useState("");
   const [category, setCategory] = useState("");
   const [categoryData, setCategoryData] = useState([]);
+  const [assignCategory, setAssignCategory] = useState("");
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -24,6 +26,7 @@ function Form() {
     formData.append("description", description);
     formData.append("file", file);
     formData.append("fileName", fileName);
+    formData.append("category", assignCategory);
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addNews",
@@ -59,15 +62,10 @@ function Form() {
     }
   };
 
-  const sCategory = async () => {
-    try {
-      const res = await axios.get("http://localhost:9000/admin/sendcategory");
-      await setCategoryData(res.data);
-      console.log(res);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+    setAssignCategory(value);
+  }
 
   const deleteCategory = async (id) => {
     try {
@@ -157,23 +155,11 @@ function Form() {
               borderRadius: "0px",
               backgroundColor: "transparent",
             }}
-            // onChange={handleChange}
+            onChange={handleChange}
           >
-            <Option value="All">
-              <p style={{ color: "black" }}> All</p>
-            </Option>
-            <Option value="Disaster">
-              <p style={{ color: "black" }}>Disaster</p>
-            </Option>
-            <Option value="Orphans">
-              <p style={{ color: "black" }}>Orphans</p>
-            </Option>
-            <Option value="Loan Plans">
-              <p style={{ color: "black" }}>Loan Plans</p>
-            </Option>
-            <Option value="Help Appeals">
-              <p style={{ color: "black" }}>Help Appeals</p>
-            </Option>
+            {categoryData.map((item) => {
+              return <Option value={item._id}>{item.name}</Option>;
+            })}
           </Select>
           <button onClick={postData}>submit</button>
         </form>
@@ -200,6 +186,7 @@ function Form() {
 
 function AdminCampaign() {
   const [data, setData] = useState([]);
+  const [sCategory, setCategory] = useState([]);
   const getData = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/latestnews");
@@ -221,7 +208,26 @@ function AdminCampaign() {
     }
   };
 
-  useEffect(getData, []);
+  async function singleCategory(id) {
+    var name="my name"
+    return name
+    // try {
+    //   const res = await axios.get(
+    //     "http://localhost:9000/admin/sendcategory/" + id
+    //   );
+    //     name= res.data.name
+    //   console.log(res.data.name,"Call twice")
+    //   return res.data.name;
+    // } catch (e) {
+    //   return e;
+    // }
+   
+  }
+
+  useEffect(() => {
+    getData();
+   
+  }, []);
   const columns = [
     {
       title: "_id",
@@ -239,7 +245,11 @@ function AdminCampaign() {
       dataIndex: "Description",
       key: "Description",
     },
-
+    {
+      title: "Category",
+      dataIndex: "Category",
+      key: "Category",
+    },
     {
       title: "Action",
       key: "action",
@@ -259,6 +269,7 @@ function AdminCampaign() {
     _id: item._id,
     Title: item.name,
     Description: item.description,
+    Category: item.category
   }));
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import {
   Form,
   Input,
@@ -10,8 +10,8 @@ import {
   Upload,
   Col,
 } from "antd";
-import { DownOutlined, UploadOutlined, UserOutlined } from "@ant-design/icons";
-import { connect, useDispatch, useSelector } from "react-redux";
+import {  UploadOutlined } from "@ant-design/icons";
+import { connect,useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
 const axios = require("axios");
@@ -29,6 +29,8 @@ function LoanAppeal() {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
+
+ 
   const getData = async () => {
     const formData = new FormData();
     formData.append("bid", user.userId);
@@ -38,7 +40,7 @@ function LoanAppeal() {
     formData.append("loanType", LoanType);
     formData.append("file", file);
     formData.append("fileName", fileName);
-    console.log(formData)
+   
     try {
       const res = await axios.post(process.env.REACT_APP_LOAN_URL, formData);
       console.log(res, "Successfully send");
@@ -88,29 +90,26 @@ function LoanAppeal() {
               message: "Please enter you loan plan",
             },
           ]}
+          
         >
-          <Select placeholder={LoanType}>
+          <Select placeholder={LoanType} onChange={value => setLoantype(value)}
+          value={LoanType}
+          >
             <Option
               value="6 month installment plan"
-              onClick={(e) => {
-                setLoantype(e.target.value);
-              }}
+              
             >
               <p style={{ color: "black" }}>6 month installment plan</p>
             </Option>
             <Option
               value="12 month installment plan"
-              onClick={(e) => {
-                setLoantype(e.target.value);
-              }}
+           
             >
               <p style={{ color: "black" }}>12 month installment plan</p>
             </Option>
             <Option
               value="Fullcash"
-              onClick={(e) => {
-                setLoantype(e.target.value);
-              }}
+             
             >
               <p style={{ color: "black" }}>Full cash</p>
             </Option>
