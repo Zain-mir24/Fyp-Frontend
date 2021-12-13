@@ -8,6 +8,7 @@ function Foorm() {
   const [camp, setCamp] = useState([]);
   const [name, setName] = useState("");
   const [description, setdesc] = useState("");
+  const [donation,setDonation]=useState(0)
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [ID, setId] = useState("");
@@ -23,6 +24,7 @@ function Foorm() {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
+    formData.append("donation", donation);
     formData.append("file", file);
     formData.append("fileName", fileName);
 
@@ -49,6 +51,7 @@ function Foorm() {
           _id: i._id,
           name: i.name,
           description: i.description,
+          donation:i.donation
         }))
       );
     } catch (e) {
@@ -138,6 +141,11 @@ function Foorm() {
       dataIndex: "description",
       key: "description",
     },
+     {
+      title: "donationRequested",
+      dataIndex: "donation",
+      key: "donation",
+    },
   ];
 
   return (
@@ -180,6 +188,26 @@ function Foorm() {
           </Col>
           <Col span={15}>
             <Form.Item
+            label="donation needed (RS)"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter donation needed",
+                },
+              ]}
+            >
+              <Input
+                required
+                placeholder="Only Digits"
+                onChange={(e) => {
+                  setDonation(e.target.value);
+                }}
+              
+              />
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item
               rules={[{ required: true, message: "Please uplaod doc" }]}
               onChange={saveFile}
             >
@@ -207,7 +235,7 @@ function Foorm() {
       </div>
 
     {/* Viewing the campaigns */}
-      <div className="col-lg-6">
+      <div className="col-lg-12">
         <Table
           title={() => " All campaigns"}
           columns={column2}
@@ -215,7 +243,7 @@ function Foorm() {
         />
       </div>
       {/* Updating campaingn */}
-      <div className="col-lg-6">
+      <div className="col-lg-8">
         <Form>
           <p>Update campaign</p>
           <Form.Item
@@ -264,6 +292,26 @@ function Foorm() {
           </Col>
           <Col span={15}>
             <Form.Item
+            label="donation needed (RS)"
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter donation needed",
+                },
+              ]}
+            >
+              <Input
+                required
+                placeholder="Only Digits"
+                onChange={(e) => {
+                  setDonation(e.target.value);
+                }}
+              
+              />
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item
               rules={[{ required: true, message: "Please uplaod doc" }]}
               onChange={saveFile}
             >
@@ -272,6 +320,7 @@ function Foorm() {
               </Upload>
             </Form.Item>
           </Col>
+
           <Col span={15}>
             <Form.Item>
               <Button type="primary" htmlType="submit" onClick={updateCampaign}>
