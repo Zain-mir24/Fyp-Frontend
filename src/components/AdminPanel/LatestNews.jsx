@@ -27,7 +27,7 @@ function Form() {
     formData.append("description", description);
     formData.append("file", file);
     formData.append("fileName", fileName);
-    formData.append("category", assignCategory)
+    formData.append("category", assignCategory);
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addNews",
@@ -37,7 +37,6 @@ function Form() {
     } catch (ex) {
       console.log(ex);
     }
-
   };
 
   const postCategory = async () => {
@@ -64,15 +63,10 @@ function Form() {
     }
   };
 
-
-
   function handleChange(value) {
     console.log(`selected ${value}`);
-    setAssignCategory(value)
+    setAssignCategory(value);
   }
-
-
-
 
   const deleteCategory = async (id) => {
     try {
@@ -156,25 +150,24 @@ function Form() {
             onChange={saveFile}
           />
           <Select
-          defaultValue="Select Category"
-          style={{
-            width: 180,
-            borderRadius: "0px",
-            backgroundColor: "transparent",
-          }}
-          onChange={handleChange}
-        >
-          {categoryData.map((item)=>{
-            return <Option value={item._id}>{item.name}</Option>
-          })}
-         
-        </Select>
-        <button onClick={postData}>submit</button>
-      </form>
-    </div>
-    <div className="col-lg-6">
-    <h3>Category</h3>
-    <TextField
+            defaultValue="Select Category"
+            style={{
+              width: 180,
+              borderRadius: "0px",
+              backgroundColor: "transparent",
+            }}
+            onChange={handleChange}
+          >
+            {categoryData.map((item) => {
+              return <Option value={item._id}>{item.name}</Option>;
+            })}
+          </Select>
+          <button onClick={postData}>submit</button>
+        </form>
+      </div>
+      <div className="col-lg-6">
+        <h3>Category</h3>
+        <TextField
           variant="outlined"
           margin="normal"
           required
@@ -194,7 +187,7 @@ function Form() {
 
 function AdminCampaign() {
   const [data, setData] = useState([]);
-  const [selectCategory, setSelectCategory] = useState("")
+  const [selectCategory, setSelectCategory] = useState("");
   // const [categoryy, setcategoryy] = useState("");
   const getData = async () => {
     try {
@@ -217,7 +210,7 @@ function AdminCampaign() {
     }
   };
 
-  async function singleCategory (id){
+  async function singleCategory(id) {
     // try{
     //   const res = await  axios.get("http://localhost:9000/admin/sendcategory/"+id);
     //   console.log(res.data.name,"HELLOOOOO")
@@ -226,13 +219,15 @@ function AdminCampaign() {
     // catch(e){
     //   console.log(e);
     // }
-    axios.get("http://localhost:9000/admin/sendcategory/"+id).then((res)=>{
-      console.log(res.data.name,"HELLOOOOO")
-      return res.data.name
-    })
+    axios.get("http://localhost:9000/admin/sendcategory/" + id).then((res) => {
+      console.log(res.data.name, "HELLOOOOO");
+      return res.data.name;
+    });
   }
 
-  useEffect(()=>{getData()}, []);
+  useEffect(() => {
+    getData();
+  }, []);
   const columns = [
     {
       title: "_id",
@@ -270,32 +265,28 @@ function AdminCampaign() {
     },
   ];
 
- 
-
-
-
   const value = data.map((item) => ({
     _id: item._id,
     Title: item.name,
     Description: item.description,
-    Category: singleCategory(item.category) 
-  }))
+    Category: singleCategory(item.category),
+  }));
 
-  console.log(data.map(async (item) => ({
-    _id: item._id,
-    Title: item.name,
-    Description: item.description,
-    Category: await singleCategory(item.category) 
-  })), "YEST")
-
- 
+  console.log(
+    data.map(async (item) => ({
+      _id: item._id,
+      Title: item.name,
+      Description: item.description,
+      Category: await singleCategory(item.category),
+    })),
+    "YEST"
+  );
 
   return (
     <div>
       <Form />
       <br />
       <div className="LatestNews-render">
-      
         <Table columns={columns} dataSource={value} />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Form,
   Input,
@@ -9,9 +9,10 @@ import {
   Select,
   Upload,
   Col,
+  InputNumber,
 } from "antd";
-import { DownOutlined, UploadOutlined, UserOutlined } from "@ant-design/icons";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { UploadOutlined } from "@ant-design/icons";
+import { connect, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
 const axios = require("axios");
@@ -22,14 +23,16 @@ function LoanAppeal() {
   const [loanamount, setLoan] = useState(0);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const { SubMenu } = Menu;
+  
   const { Option } = Select;
   const user = useSelector(selectUser);
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
+
   const getData = async () => {
+   console.log(loanamount)
     const formData = new FormData();
     formData.append("bid", user.userId);
     formData.append("name", user.username);
@@ -38,7 +41,7 @@ function LoanAppeal() {
     formData.append("loanType", LoanType);
     formData.append("file", file);
     formData.append("fileName", fileName);
-    console.log(formData)
+
     try {
       const res = await axios.post(process.env.REACT_APP_LOAN_URL, formData);
       console.log(res, "Successfully send");
@@ -53,10 +56,7 @@ function LoanAppeal() {
   return (
     <div>
       <h1>Loan Appeal</h1>
-      <h4>
-        Give us description and reason of your loan
-
-        </h4>
+      <h4>* Give us description and Enter all your documents including CNIC photocopy and Address and reason of your loan</h4>
       <Form
         name="normal_login"
         className="login-form"
@@ -89,29 +89,18 @@ function LoanAppeal() {
             },
           ]}
         >
-          <Select placeholder={LoanType}>
-            <Option
-              value="6 month installment plan"
-              onClick={(e) => {
-                setLoantype(e.target.value);
-              }}
-            >
+          <Select
+            placeholder={LoanType}
+            onChange={(value) => setLoantype(value)}
+            value={LoanType}
+          >
+            <Option value="6 month installment plan">
               <p style={{ color: "black" }}>6 month installment plan</p>
             </Option>
-            <Option
-              value="12 month installment plan"
-              onClick={(e) => {
-                setLoantype(e.target.value);
-              }}
-            >
+            <Option value="12 month installment plan">
               <p style={{ color: "black" }}>12 month installment plan</p>
             </Option>
-            <Option
-              value="Fullcash"
-              onClick={(e) => {
-                setLoantype(e.target.value);
-              }}
-            >
+            <Option value="Fullcash">
               <p style={{ color: "black" }}>Full cash</p>
             </Option>
           </Select>
@@ -133,16 +122,18 @@ function LoanAppeal() {
         </Form.Item>
         <Form.Item
           name="Donation amount"
-          label="Loan amount in rupees"
-         
+          label="Loan amount in rupees (RS)"
           rules={[
             { required: true, message: "Please enter donation amount needed" },
           ]}
         >
           <Col span={5}>
-            <Input  onChange={(e) => {
-            setLoan(e.target.value);
-          }}/>
+            <Input
+              onChange={(e) => {
+                setLoan(e.target.value);
+              }}
+            
+            />
           </Col>
         </Form.Item>
         <Form.Item>

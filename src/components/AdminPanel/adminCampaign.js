@@ -174,6 +174,7 @@ function Foorm() {
                 onChange={(e) => {
                   setdesc(e.target.value);
                 }}
+                maxLength={1000}
               />
             </Form.Item>
           </Col>
