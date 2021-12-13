@@ -1,5 +1,4 @@
-import { TextField } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+
 import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
@@ -45,9 +44,9 @@ function Foorm() {
   const viewCamp = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
-      console.log(res, "Response from the backend");
+      console.log(res.data, "Response from the backend");
       setCamp(
-        res.data.map((i) => ({
+        res.data.campaign.map((i) => ({
           _id: i._id,
           name: i.name,
           description: i.description,
@@ -79,6 +78,7 @@ function Foorm() {
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
+    formData.append("donation", donation);
     formData.append("file", file);
     formData.append("fileName", fileName);
     console.log(formData, "This is the form at the frontend");
