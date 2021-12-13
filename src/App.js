@@ -5,7 +5,8 @@ import Signin from "./components/SignUser/Signin";
 import Signup from "./components/SignUser/Signup";
 import home from "./components/homepage/home";
 import Adminn from "./components/AdminPanel/Admin";
-import Campaign from "./components/AdminPanel/adminCampaign";
+import Campaign from "./components/Frontend/Campaign";
+import CampaignDetail from "./components/Frontend/CampaignDetails";
 import Userpanel from "./components/UserPanel/Userpanel";
 import Changepassword from "./components/UserPanel/Changepassword";
 import Forgotpassword from "./components/UserPanel/Forgotpassword";
@@ -35,12 +36,22 @@ function App() {
             <Route path="/Adminlogin" component={Adminlogin}></Route>
             <Route path="/Adminsignup" component={Adminsignup}></Route>
             <Route path="/Campaign" component={Campaign}></Route>
+            <Route path="/CampaignDetail" component={CampaignDetail}></Route>
             <Route path="/userPanel" component={Userpanel}></Route>
-            <Route path="/changePassword"component={Changepassword}></Route>
-            <Route path="/forgotPassword"component={Forgotpassword}></Route>
-            <Route path="/resetPassword/:_id/:token" component={Resetpassword}></Route>
-            <Route path="/addUser/:_id/:token/:name/:email/:password/:userType" component={AddUser}></Route>
-            <Route path="/emailVerification/:_id/:token/:Email" component={Addemail}></Route>
+            <Route path="/changePassword" component={Changepassword}></Route>
+            <Route path="/forgotPassword" component={Forgotpassword}></Route>
+            <Route
+              path="/resetPassword/:_id/:token"
+              component={Resetpassword}
+            ></Route>
+            <Route
+              path="/addUser/:_id/:token/:name/:email/:password/:userType"
+              component={AddUser}
+            ></Route>
+            <Route
+              path="/emailVerification/:_id/:token/:Email"
+              component={Addemail}
+            ></Route>
             <Route path="/" component={home}></Route>
           </Switch>
         </BrowserRouter>

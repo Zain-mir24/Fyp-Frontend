@@ -8,7 +8,7 @@ function Foorm() {
   const [camp, setCamp] = useState([]);
   const [name, setName] = useState("");
   const [description, setdesc] = useState("");
-  const [donation,setDonation]=useState(0)
+  const [donation, setDonation] = useState(0);
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [ID, setId] = useState("");
@@ -51,7 +51,8 @@ function Foorm() {
           _id: i._id,
           name: i.name,
           description: i.description,
-          donation:i.donation
+          donation: i.donation,
+          file: i.fileName,
         }))
       );
     } catch (e) {
@@ -80,19 +81,18 @@ function Foorm() {
     formData.append("description", description);
     formData.append("file", file);
     formData.append("fileName", fileName);
-    console.log(formData,"This is the form at the frontend")
+    console.log(formData, "This is the form at the frontend");
     try {
       const res = await axios.patch(
         "http://localhost:9000/admin/updateCampaign/" + ID,
         formData
       );
-      if(!res){
-        throw new Error("Could not update the campaign")
+      if (!res) {
+        throw new Error("Could not update the campaign");
       }
       alert(`Campaign has been updated`);
-
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
   const columns = [
@@ -141,10 +141,20 @@ function Foorm() {
       dataIndex: "description",
       key: "description",
     },
-     {
+    {
       title: "donationRequested",
       dataIndex: "donation",
       key: "donation",
+    },
+    {
+      title: "File",
+      dataIndex: "fileName",
+      key: "fileName",
+      render: (text, record) => (
+        <a href={"http://localhost:9000/uploads/" + record.file} download>
+          <Button>Download {record.file}</Button>
+        </a>
+      ),
     },
   ];
 
@@ -188,7 +198,7 @@ function Foorm() {
           </Col>
           <Col span={15}>
             <Form.Item
-            label="donation needed (RS)"
+              label="donation needed (RS)"
               rules={[
                 {
                   required: true,
@@ -202,7 +212,6 @@ function Foorm() {
                 onChange={(e) => {
                   setDonation(e.target.value);
                 }}
-              
               />
             </Form.Item>
           </Col>
@@ -234,7 +243,7 @@ function Foorm() {
         />
       </div>
 
-    {/* Viewing the campaigns */}
+      {/* Viewing the campaigns */}
       <div className="col-lg-12">
         <Table
           title={() => " All campaigns"}
@@ -292,7 +301,7 @@ function Foorm() {
           </Col>
           <Col span={15}>
             <Form.Item
-            label="donation needed (RS)"
+              label="donation needed (RS)"
               rules={[
                 {
                   required: true,
@@ -306,7 +315,6 @@ function Foorm() {
                 onChange={(e) => {
                   setDonation(e.target.value);
                 }}
-              
               />
             </Form.Item>
           </Col>

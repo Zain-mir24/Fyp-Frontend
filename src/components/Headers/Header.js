@@ -21,7 +21,7 @@ function Headers() {
             <div class="collapse navbar-collapse" id="navcol-1">
               <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="/campaign">
                     Campaigns
                   </a>
                 </li>
