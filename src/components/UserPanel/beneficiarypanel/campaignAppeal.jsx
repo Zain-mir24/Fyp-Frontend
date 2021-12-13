@@ -12,7 +12,7 @@ function CampaignAppeal() {
   const [description, setdesc] = useState();
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [donation,setDonation]=useState()
+  const [donation,setDonation]=useState(0)
   const user = useSelector(selectUser);
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -45,10 +45,10 @@ function CampaignAppeal() {
     <div>
       <h1>Campaign Appeal</h1>
       <h4>
-      Note Please give us detailed docs and images so we can verify your appeal.
+      *Give us description and Enter all your documents including CNIC photocopy and Address so we can verify your appeal.
       <br />
       <br />
-      Put it in a zipFolder
+      Put it in a zip Folder
       Thankyou!
       </h4>
       <Form
@@ -84,7 +84,7 @@ function CampaignAppeal() {
           rules={[{ required: true, message: "Please Describe your campaign" }]}
         >
           <Col span={10}>
-          <Input.TextArea showCount maxLength={500} />
+          <Input.TextArea showCount maxLength={1000} />
           </Col>
         </Form.Item>  
          <Form.Item

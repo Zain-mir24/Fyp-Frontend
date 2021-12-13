@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import "antd/dist/antd.css";
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button,Row,Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { withRouter } from "react-router";
 import { connect, useDispatch } from "react-redux";
@@ -26,17 +26,18 @@ function Adminlogin({ history, ...props }) {
     }
   };
   return (
-    <div>
-      <p style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "center" }}>
+      <h1 style={{ textAlign: "center" }}>
         <UserOutlined className="site-form-item-icon" /> Admin Login
-      </p>
-      <div style={{ top: "50%", left: "50%" }}>
+      </h1>
+      <Row type="flex" justify="center" align="middle" >
         <Form
           name="normal_login"
           className="login-form"
           initialValues={{
             remember: true,
           }}
+         
         >
           <Form.Item
             name="username"
@@ -53,6 +54,7 @@ function Adminlogin({ history, ...props }) {
                 message: "Please input your E-mail!",
               },
             ]}
+            
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -70,6 +72,7 @@ function Adminlogin({ history, ...props }) {
                 message: "Please input your Password!",
               },
             ]}
+         
           >
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
@@ -96,7 +99,7 @@ function Adminlogin({ history, ...props }) {
             </Button>
           </Form.Item>
         </Form>
-      </div>
+      </Row>
     </div>
   );
 }

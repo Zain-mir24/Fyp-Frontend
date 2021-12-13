@@ -23,7 +23,7 @@ function LoanAppeal() {
   const [loanamount, setLoan] = useState(0);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const { SubMenu } = Menu;
+  
   const { Option } = Select;
   const user = useSelector(selectUser);
   const saveFile = (e) => {
@@ -32,6 +32,7 @@ function LoanAppeal() {
   };
 
   const getData = async () => {
+   console.log(loanamount)
     const formData = new FormData();
     formData.append("bid", user.userId);
     formData.append("name", user.username);
@@ -55,7 +56,7 @@ function LoanAppeal() {
   return (
     <div>
       <h1>Loan Appeal</h1>
-      <h4>Give us description and reason of your loan</h4>
+      <h4>* Give us description and Enter all your documents including CNIC photocopy and Address and reason of your loan</h4>
       <Form
         name="normal_login"
         className="login-form"
@@ -121,20 +122,17 @@ function LoanAppeal() {
         </Form.Item>
         <Form.Item
           name="Donation amount"
-          label="Loan amount in rupees"
+          label="Loan amount in rupees (RS)"
           rules={[
             { required: true, message: "Please enter donation amount needed" },
           ]}
         >
           <Col span={5}>
-            <InputNumber
-            onChange={(value) => {
-              setLoan(value);
-            }}
-              defaultValue={0}
-              formatter={value => `RS ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-              parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-               
+            <Input
+              onChange={(e) => {
+                setLoan(e.target.value);
+              }}
+            
             />
           </Col>
         </Form.Item>
