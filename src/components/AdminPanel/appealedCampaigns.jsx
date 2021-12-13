@@ -61,7 +61,7 @@ function AppealedCampaigns() {
       dataIndex: "file",
       key: "file",
       render: (text, record) => (
-        <a href={"http://localhost:9000/uploads/" + record.file} download>
+        <a href={"http://localhost:9000/uploads/" + record.file} download  >
           <Button>Download {record.file}</Button>
         </a>
       ),

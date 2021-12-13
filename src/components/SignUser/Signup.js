@@ -49,8 +49,7 @@ export default function SignUp({ history, ...props }) {
         res.status(201).send("email sent")
       })
       .catch((e) => {
-        alert(`${getname} \n 
-        Error`);
+       
         console.log(e);
       });
     }

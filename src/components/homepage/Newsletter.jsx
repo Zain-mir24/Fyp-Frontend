@@ -16,6 +16,7 @@ export default function Newsletter() {
       alert('Check your email to verify')
       console.log(email)
     } catch (e) {
+      alert('email not subscibed! Sorry for inconvenience. Try again later ')
       console.log(e);
     }
   };
