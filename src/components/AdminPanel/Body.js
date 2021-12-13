@@ -3,14 +3,13 @@ import RightSide from "./RightSide";
 import Sidebar from "./Sidebar";
 import AdminCampaign from "./adminCampaign";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../store/reducers/User";
-import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { Redirect, withRouter } from "react-router";
 import AppealedCampaigns from "./appealedCampaigns";
 import AppealedLoan from "./appealedLoans";
 import Email from "./Email";
 import News from "./LatestNews";
 import Beneficiary from "./Beneficiary";
+import LoanManagement from "./LoanManagement";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import {
   DesktopOutlined,
@@ -26,9 +25,6 @@ const { SubMenu } = Menu;
 
 function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
-
-  const dispatch = useDispatch();
-
   function displayComponent() {
     if (content === "Dashboard") {
       return <RightSide />;
@@ -44,6 +40,8 @@ function Body({ history, ...props }) {
       return <Beneficiary />;
     } else if (content === "appealLoan") {
       return <AppealedLoan />;
+    }else if (content === "LoanManagment") {
+      return <LoanManagement />;
     }
   }
 
@@ -134,6 +132,15 @@ function Body({ history, ...props }) {
               }}
             >
               Manage audit
+            </Menu.Item>
+             <Menu.Item
+              key="11"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("LoanManagment");
+              }}
+            >
+              Loan Managment
             </Menu.Item>
           </Menu>
         </Sider>
