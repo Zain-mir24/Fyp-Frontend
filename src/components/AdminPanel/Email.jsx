@@ -1,9 +1,61 @@
-import React from 'react'
-import { Form, Input, Button, Checkbox, Select } from 'antd';
+import {React, useState, useEffect} from 'react'
+import { Form, Input, Button, Checkbox, Select, Table } from 'antd';
 import axios from "axios";
 const { Option } = Select;
 
 export default function Email() {
+    const [data, setData] = useState([]);
+
+    async function collectData(){
+      axios.get("http://localhost:9000/adminPanel/displayEmail").then((response)=>{
+        setData(response.data);
+      })
+    }
+    const deleteCategory = async (id) => {
+      try {
+        console.log(id, "HE::")
+        const res = await axios.delete(
+          "http://localhost:9000/adminPanel/deleteEmail/" + id
+        );
+        console.log(res);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    useEffect(collectData, []);
+    const columns = [
+      {
+        title: "_id",
+        dataIndex: "_id",
+        key: "_id",
+        render: (text) => <a>{text}</a>,
+      },
+  
+      {
+        title: "Email Address",
+        dataIndex: "Email",
+        key: "Email",
+      },
+      {
+        title: "Action",
+        key: "action",
+        render: (text, record) => (
+          <button
+            onClick={() => {
+              deleteCategory(record._id);
+            }}
+          >
+            Delete
+          </button>
+        ),
+      },
+    ];
+
+    const value = data.map((item) => ({
+      _id: item._id,
+      Email: item.Email,
+    }));
+
     const onFinish = async (values) => {
           console.log('Success:', values);
           await axios
@@ -136,6 +188,9 @@ export default function Email() {
       </Form.Item>
     </Form>
 
+
+        <h3>SAVED EMAILS</h3>
+        <Table columns={columns} dataSource={value} />
 
         </div>
     )

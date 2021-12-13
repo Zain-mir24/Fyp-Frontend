@@ -15,6 +15,8 @@ export default function LatestNews() {
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
+  const [categoryData, setCategoryData] = useState([]);
+  const [assignCategory, setAssignCategory] = useState("");
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
@@ -26,7 +28,29 @@ export default function LatestNews() {
     }
   };
 
-  useEffect(getData, []);
+  async function handleChange(value) {
+    console.log(`selected ${value}`);
+    setAssignCategory(value);
+    const res = await axios.get(
+      "http://localhost:9000/admin/LatestNews/" + value
+    );
+    console.log(res.data);
+    await setData(res.data);
+  }
+  const getCategory = async () => {
+    try {
+      const res = await axios.get("http://localhost:9000/admin/sendcategory");
+      await setCategoryData(res.data);
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+    getCategory();
+  }, []);
 
   return (
     <div id="carousel">
@@ -72,11 +96,9 @@ export default function LatestNews() {
           }}
           onChange={handleChange}
         >
-          <Option value="All">All</Option>
-          <Option value="Disaster">Disaster</Option>
-          <Option value="Orphans">Orphans</Option>
-          <Option value="Loan Plans">Loan Plans</Option>
-          <Option value="Help Appeals">Help Appeals</Option>
+          {categoryData.map((item) => {
+            return <Option value={item._id}>{item.name}</Option>;
+          })}
         </Select>
       </div>
     </div>
