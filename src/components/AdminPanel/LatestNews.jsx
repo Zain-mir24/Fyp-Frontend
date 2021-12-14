@@ -123,7 +123,7 @@ function Neews() {
     <div className="row">
       <div className="col-lg-6">
       <Form>
-          <p>Add campaign</p>
+          <p>Add News</p>
           <Form.Item
             rules={[{ required: true, message: "Please Enter campaign name" }]}
           >

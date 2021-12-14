@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Input, Space, Typography ,Button} from "antd";
+import { Input, Space, Typography, Button } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import axios from "axios";
 const { Title } = Typography;
@@ -10,13 +10,13 @@ export default function Newsletter() {
   const [email, setEmail] = useState("");
   const onSearch = async () => {
     try {
-      await axios.post("http://localhost:9000/adminPanel/saveEmail", 
-      { Email: email}
-      );
-      alert('Check your email to verify')
-      console.log(email)
+      await axios.post("http://localhost:9000/adminPanel/saveEmail", {
+        Email: email,
+      });
+      alert("Check your email to verify");
+      console.log(email);
     } catch (e) {
-      alert('email not subscibed! Sorry for inconvenience. Try again later ')
+      alert("email not subscibed! Sorry for inconvenience. Try again later ");
       console.log(e);
     }
   };
@@ -28,22 +28,24 @@ export default function Newsletter() {
             Newsletter SignUp
           </Title>
         </div>
-        <div>
-
-        
-        <Input
-          placeholder="input your email"
-          allowClear
-          size="medium"
-          onChange={(e)=>{
-            setEmail(e.target.value)  
-          }}
+        <div className="row">
+          <div className="col-lg-10">
+            <Input
+              placeholder="input your email"
+              allowClear
+              size="medium"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+          </div>
+          <div className="col-lg-2">
+          <Button placeholder="signup" onClick={onSearch}>
+            Signup
+          </Button>
+          </div>
           
-        />
-           <Button placeholder="signup"onClick={onSearch} >
-             Signup
-           </Button>
-           </div>
+        </div>
       </div>
     </div>
   );
