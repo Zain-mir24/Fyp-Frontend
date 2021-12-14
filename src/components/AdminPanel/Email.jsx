@@ -19,6 +19,7 @@ export default function Email() {
       const res = await axios.delete(
         "http://localhost:9000/adminPanel/deleteEmail/" + id
       );
+      alert("Email Deleted")
       console.log(res);
     } catch (e) {
       console.log(e);
