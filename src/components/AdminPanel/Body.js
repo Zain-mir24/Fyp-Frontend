@@ -11,6 +11,8 @@ import News from "./LatestNews";
 import Beneficiary from "./Beneficiary";
 import LoanManagement from "./LoanManagement";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
+import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
+
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -25,6 +27,12 @@ const { SubMenu } = Menu;
 
 function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
+  const dispatch = useDispatch();
+
+  const logout = async (e) => {
+    e.preventDefault();
+    await dispatch(LOGOUT_USER());
+  };
   function displayComponent() {
     if (content === "Dashboard") {
       return <RightSide />;
@@ -142,6 +150,11 @@ function Body({ history, ...props }) {
             >
               Loan Managment
             </Menu.Item>
+            <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
+                       <Menu.Item>
+                <Button onClick={(e) => logout(e)}>logout</Button>
+              </Menu.Item>
+            </SubMenu>
           </Menu>
         </Sider>
 

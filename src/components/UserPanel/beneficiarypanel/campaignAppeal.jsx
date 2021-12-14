@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, Upload, message,Col } from "antd";
+import { Form, Input, Button, Checkbox, Upload, message, Col } from "antd";
 import { UserOutlined, LockOutlined, UploadOutlined } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
-require('dotenv').config({ debug: process.env.DEBUG })
+require("dotenv").config({ debug: process.env.DEBUG });
 const axios = require("axios");
 
 function CampaignAppeal() {
@@ -12,7 +12,7 @@ function CampaignAppeal() {
   const [description, setdesc] = useState();
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [donation,setDonation]=useState(0)
+  const [donation, setDonation] = useState(0);
   const user = useSelector(selectUser);
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -25,7 +25,7 @@ function CampaignAppeal() {
     formData.append("description", description);
     formData.append("file", file);
     formData.append("fileName", fileName);
-    formData.append("amountneeded",donation)
+    formData.append("amountneeded", donation);
     try {
       const res = await axios.post(
         process.env.REACT_APP_CAMPAIGN_URL,
@@ -45,11 +45,11 @@ function CampaignAppeal() {
     <div>
       <h1>Campaign Appeal</h1>
       <h4>
-      *Give us description and Enter all your documents including CNIC photocopy and Address so we can verify your appeal.
-      <br />
-      <br />
-      Put it in a zip Folder
-      Thankyou!
+        *Give us description and Enter all your documents including CNIC
+        photocopy and Address so we can verify your appeal.
+        <br />
+        <br />
+        Put it in a zip Folder Thankyou!
       </h4>
       <Form
         name="normal_login"
@@ -72,7 +72,7 @@ function CampaignAppeal() {
           ]}
         >
           <Col span={10}>
-          <Input />
+            <Input />
           </Col>
         </Form.Item>{" "}
         <Form.Item
@@ -84,20 +84,22 @@ function CampaignAppeal() {
           rules={[{ required: true, message: "Please Describe your campaign" }]}
         >
           <Col span={10}>
-          <Input.TextArea showCount maxLength={1000} />
+            <Input.TextArea showCount maxLength={1000} />
           </Col>
-        </Form.Item>  
-         <Form.Item
+        </Form.Item>
+        <Form.Item
           name="Donation amount"
           label="Donation amount"
           onChange={(e) => {
             setDonation(e.target.value);
           }}
-          rules={[{ required: true, message: "Please enter donation amount needed" }]}
+          rules={[
+            { required: true, message: "Please enter donation amount needed" },
+          ]}
         >
           <Col span={5}>
-          <Input />
-          </Col> 
+            <Input />
+          </Col>
         </Form.Item>
         <Form.Item
           name="Campaign media"

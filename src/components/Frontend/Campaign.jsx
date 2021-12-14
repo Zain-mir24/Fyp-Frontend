@@ -10,7 +10,7 @@ export default function Campaign() {
   const getData = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
-      await setData(res.data);
+      await setData(res.data.campaign);
       console.log(res);
     } catch (e) {
       console.log(e);
