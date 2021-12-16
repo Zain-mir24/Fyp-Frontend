@@ -18,7 +18,9 @@ function ResetPassword() {
           pass
         },
       })
-      .then((res) => {})
+      .then((res) => {
+        alert("Password has been updated")
+      })
       .catch((e) => {
         console.log("error", e);
       });
