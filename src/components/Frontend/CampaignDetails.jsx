@@ -13,7 +13,7 @@ export default function CampaignDetails() {
   const description = queryParams.get("description");
   const img = queryParams.get("img");
   const donation = queryParams.get("donation");
-  const collected = 50000000;
+  const collected = 50000000000;
 
   function percentageFormula() {
     var x = (collected / donation) * 100;
