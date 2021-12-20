@@ -44,7 +44,6 @@ function Foorm() {
   const viewCamp = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
-      console.log(res.data, "Response from the backend");
       setCamp(
         res.data.campaign.map((i) => ({
           _id: i._id,
@@ -136,12 +135,7 @@ function Foorm() {
       dataIndex: "name",
       key: "name",
     },
-    {
-      title: "description",
-      dataIndex: "description",
-      key: "description",
-    },
-    {
+     {
       title: "donationRequested",
       dataIndex: "donation",
       key: "donation",
@@ -192,6 +186,7 @@ function Foorm() {
                 onChange={(e) => {
                   setdesc(e.target.value);
                 }}
+                showCount
                 maxLength={1000}
               />
             </Form.Item>

@@ -144,12 +144,7 @@ export default function SignUp({ history, ...props }) {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <FormControlLabel
-                    control={<Radio value="allowExtraEmails" color="primary" />}
-                    label="I want to receive inspiration, marketing promotions and updates via email."
-                  />
-                </Grid>
+               
               </Grid>
               <Button
                 type="submit"

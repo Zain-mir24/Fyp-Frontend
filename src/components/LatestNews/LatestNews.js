@@ -97,7 +97,9 @@ export default function LatestNews() {
           onChange={handleChange}
         >
           {categoryData.map((item) => {
-            return <Option value={item._id}>{item.name}</Option>;
+            return <Option value={item._id} style={{color:"black"}}>
+        <p style={{color:"black"}}>      {item.name} </p>
+              </Option>;
           })}
         </Select>
       </div>

@@ -68,11 +68,11 @@ function Beneficiarypanel({ history, ...props }) {
             }}>
               Appeal for loan
             </Menu.Item>
-            <Menu.Item key="11"    icon={<CheckCircleFilled/>} onClick={()=>{
+            {/* <Menu.Item key="11"    icon={<CheckCircleFilled/>} onClick={()=>{
               setContent("Approve")
             }} >
               Approved campaigns
-            </Menu.Item>
+            </Menu.Item> */}
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
             <Menu.Item>
                <Button >My profile</Button>

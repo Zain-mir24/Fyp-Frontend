@@ -7,7 +7,7 @@ function Headers() {
       <div class="header-blue">
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
               GLOBAL REACH
             </a>
             <button
@@ -25,12 +25,7 @@ function Headers() {
                     Campaigns
                   </a>
                 </li>
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="#">
-                    Projects
-                  </a>
-                </li>
-                <li class="nav-item" role="presentation">
+                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/Signin">
                     <span class="glyphicon glyphicon-log-in"></span> Log in
                   </a>

@@ -1,11 +1,13 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
-import { Table, Tag, Space, Select } from "antd";
+import { Table,  Button, Input, Upload, Col, Form, Select } from "antd";
 import { combineReducers } from "@reduxjs/toolkit";
+import { UploadOutlined } from "@ant-design/icons";
+
 const { Option } = Select;
 const axios = require("axios");
-function Form() {
+function Neews() {
   const [getApi, setApi] = useState([]);
   const [name, setName] = useState();
   const [description, setdesc] = useState();
@@ -33,8 +35,11 @@ function Form() {
         "http://localhost:9000/admin/addNews",
         formData
       );
+      alert(`News has been Created`);
       console.log(res);
     } catch (ex) {
+      alert(`News not Created`);
+
       console.log(ex);
     }
   };
@@ -117,38 +122,53 @@ function Form() {
   return (
     <div className="row">
       <div className="col-lg-6">
-        <form>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            label="Campaign header"
-            name="Campaign header"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          />
-
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            label="description"
-            name="description"
-            onChange={(e) => {
-              setdesc(e.target.value);
-            }}
-          />
-          <TextField
-            type="file"
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            onChange={saveFile}
-          />
+      <Form>
+          <p>Add News</p>
+          <Form.Item
+            rules={[{ required: true, message: "Please Enter campaign name" }]}
+          >
+            <Col span={15}>
+              <Input
+                required
+                placeholder="Campaign name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+            </Col>
+          </Form.Item>
+          <Col span={15}>
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input.TextArea
+                required
+                placeholder="Campaign Description"
+                onChange={(e) => {
+                  setdesc(e.target.value);
+                }}
+                showCount
+                maxLength={1000}
+              />
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item
+              rules={[{ required: true, message: "Please uplaod doc" }]}
+              onChange={saveFile}
+            >
+              <Upload>
+                <Button icon={<UploadOutlined />}>Upload media files</Button>
+              </Upload>
+            </Form.Item>
+          </Col>
+          <Col span={15}>
+            <Form.Item>
           <Select
             defaultValue="Select Category"
             style={{
@@ -162,8 +182,17 @@ function Form() {
               return <Option value={item._id}>{item.name}</Option>;
             })}
           </Select>
-          <button onClick={postData}>submit</button>
-        </form>
+          </Form.Item>
+          </Col>
+         
+         < Col span={15}>
+            <Form.Item>
+              <Button type="primary" htmlType="submit" onClick={postData}>
+                submit
+              </Button>
+            </Form.Item>
+            </Col>
+        </Form>
       </div>
       <div className="col-lg-6">
         <h3>Category</h3>
@@ -193,7 +222,7 @@ function AdminCampaign() {
     try {
       const res = await axios.get("http://localhost:9000/admin/latestnews");
       setData(res.data);
-      console.log(data, "TESTING");
+      console.log(res.data, "TESTING");
     } catch (err) {
       console.log(err);
     }
@@ -204,8 +233,11 @@ function AdminCampaign() {
       const res = await axios.delete(
         "http://localhost:9000/admin/deleteNews/" + id
       );
+      alert("Campaign Deleted")
+
       console.log(res);
     } catch (e) {
+      alert("campaign not deleted")
       console.log(e);
     }
   };
@@ -269,7 +301,7 @@ function AdminCampaign() {
     _id: item._id,
     Title: item.name,
     Description: item.description,
-    Category: singleCategory(item.category),
+    Category: item.category,
   }));
 
   console.log(
@@ -277,14 +309,14 @@ function AdminCampaign() {
       _id: item._id,
       Title: item.name,
       Description: item.description,
-      Category: await singleCategory(item.category),
+      Category: item.category
     })),
     "YEST"
   );
 
   return (
     <div>
-      <Form />
+      <Neews />
       <br />
       <div className="LatestNews-render">
         <Table columns={columns} dataSource={value} />

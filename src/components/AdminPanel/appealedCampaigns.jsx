@@ -46,12 +46,7 @@ function AppealedCampaigns() {
       dataIndex: "bid",
       key: "bid",
     },
-    {
-      title: "Header",
-      dataIndex: "description",
-      key: "description",
-    },
-    {
+     {
       title: "amountneeded(PKR)",
       dataIndex: "amountneeded",
       key: "amountneeded",
