@@ -9,7 +9,7 @@ function Beneficiary() {
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/users");
+      const res = await axios.get("https://damp-stream-39096.herokuapp.com/admin/users");
       console.log(res.data, "Users");
       setUsers(
         res.data.map((i) => ({

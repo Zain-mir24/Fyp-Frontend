@@ -32,7 +32,7 @@ export default function SignUp({ history, ...props }) {
     e.preventDefault();
     await axios
     .request({
-      baseURL: 'http://localhost:9000/User',
+      baseURL: '"https://damp-stream-39096.herokuapp.com/User',
       url: `/Signup`,
       method: "post",
       data: {
