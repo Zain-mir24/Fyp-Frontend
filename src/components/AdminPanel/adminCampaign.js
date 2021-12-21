@@ -43,9 +43,10 @@ function Foorm() {
   };
   const viewCamp = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
+      const res = await axios.get("https://damp-stream-39096.herokuapp.com/admin/viewCampaigns");
+      console.log(res)
       setCamp(
-        res.data.campaign.map((i) => ({
+        res.data.map((i) => ({
           _id: i._id,
           name: i.name,
           description: i.description,
@@ -53,6 +54,7 @@ function Foorm() {
           file: i.fileName,
         }))
       );
+      console.log(res)
     } catch (e) {
       console.log(e);
     }

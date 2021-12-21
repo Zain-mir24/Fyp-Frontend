@@ -8,7 +8,7 @@ const api =  ({ dispatch }) =>  (next) =>  async (action) => {
 
     try {
       const result = await axios.request({
-        baseURL: "https://fyp1-server.herokuapp.com/",
+        baseURL: "http://localhost:9000",
         url,
         method,
         data,

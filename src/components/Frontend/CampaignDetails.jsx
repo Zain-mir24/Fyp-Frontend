@@ -30,7 +30,7 @@ export default function CampaignDetails() {
             <Content>
               <h1>{name}</h1>
               <Image
-                src={"http://localhost:9000/uploads/" + img}
+                src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
                 style={{ width: "100%", height: "500px" }}
               />
               <br />

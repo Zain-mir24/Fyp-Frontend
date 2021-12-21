@@ -9,8 +9,10 @@ export default function Campaign() {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
-      await setData(res.data.campaign);
+      const res = await axios.get(
+        "https://damp-stream-39096.herokuapp.com/admin/viewCampaigns"
+      );
+      await setData(res.data);
       console.log(res);
     } catch (e) {
       console.log(e);

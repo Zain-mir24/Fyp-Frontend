@@ -15,11 +15,10 @@ import Adminlogin from "./components/Signadmin/Adminlogin";
 import Adminsignup from "./components/Signadmin/Adminsignup";
 import AddUser from "./components/UserPanel/AddUser";
 import Addemail from "./components/UserPanel/Addemail";
-import Chatbot from "react-chatbot-kit";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
-  const [getApi, setApi] = useState("");
+  
 
   return (
     <div className="App">
