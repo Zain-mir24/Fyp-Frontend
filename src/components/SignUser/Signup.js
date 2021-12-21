@@ -28,31 +28,30 @@ export default function SignUp({ history, ...props }) {
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const [type, setType] = useState("");
-   const handlesubmit = async (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
     await axios
-    .request({
-      baseURL: '"https://damp-stream-39096.herokuapp.com/User',
-      url: `/Signup`,
-      method: "post",
-      data: {
-        name: getname,
-        email:getEmail,
-        password: getPassword,
-        userType: type
-      },
-    })
-      .then(res=>{
+      .request({
+        baseURL: '"http://localhost:9000/User',
+        url: `/Signup`,
+        method: "post",
+        data: {
+          name: getname,
+          email: getEmail,
+          password: getPassword,
+          userType: type,
+        },
+      })
+      .then((res) => {
         alert(`${getname} \n 
         You have recieved veirfication email. Check your mail`);
-        console.log("email sent")
-        res.status(201).send("email sent")
+        console.log("email sent");
+        res.status(201).send("email sent");
       })
       .catch((e) => {
-       
         console.log(e);
       });
-    }
+  };
   return (
     <div className="mainSignup">
       <Container component="main" maxWidth="xs">
@@ -144,7 +143,6 @@ export default function SignUp({ history, ...props }) {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Grid>
-               
               </Grid>
               <Button
                 type="submit"
@@ -187,5 +185,4 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-})
-)
+}));

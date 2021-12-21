@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
@@ -43,8 +42,10 @@ function Foorm() {
   };
   const viewCamp = async () => {
     try {
-      const res = await axios.get("https://damp-stream-39096.herokuapp.com/admin/viewCampaigns");
-      console.log(res)
+      const res = await axios.get(
+        "https://damp-stream-39096.herokuapp.com/admin/viewCampaigns"
+      );
+      console.log(res);
       setCamp(
         res.data.map((i) => ({
           _id: i._id,
@@ -54,7 +55,7 @@ function Foorm() {
           file: i.fileName,
         }))
       );
-      console.log(res)
+      console.log(res);
     } catch (e) {
       console.log(e);
     }
@@ -85,7 +86,7 @@ function Foorm() {
     console.log(formData, "This is the form at the frontend");
     try {
       const res = await axios.patch(
-        "http://localhost:9000/admin/updateCampaign/" + ID,
+        "https://damp-stream-39096.herokuapp.com/admin/updateCampaign/" + ID,
         formData
       );
       if (!res) {
@@ -137,7 +138,7 @@ function Foorm() {
       dataIndex: "name",
       key: "name",
     },
-     {
+    {
       title: "donationRequested",
       dataIndex: "donation",
       key: "donation",
@@ -147,7 +148,12 @@ function Foorm() {
       dataIndex: "fileName",
       key: "fileName",
       render: (text, record) => (
-        <a href={"http://localhost:9000/uploads/" + record.file} download>
+        <a
+          href={
+            "https://damp-stream-39096.herokuapp.com/uploads/" + record.file
+          }
+          download
+        >
           <Button>Download {record.file}</Button>
         </a>
       ),

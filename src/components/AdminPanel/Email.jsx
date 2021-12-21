@@ -8,7 +8,7 @@ export default function Email() {
 
   async function collectData() {
     axios
-      .get("http://localhost:9000/adminPanel/displayEmail")
+      .get("https://damp-stream-39096.herokuapp.com/adminPanel/displayEmail")
       .then((response) => {
         setData(response.data);
       });
@@ -17,9 +17,9 @@ export default function Email() {
     try {
       console.log(id, "HE::");
       const res = await axios.delete(
-        "http://localhost:9000/adminPanel/deleteEmail/" + id
+        "https://damp-stream-39096.herokuapp.com/adminPanel/deleteEmail/" + id
       );
-      alert("Email Deleted")
+      alert("Email Deleted");
       console.log(res);
     } catch (e) {
       console.log(e);
@@ -64,7 +64,7 @@ export default function Email() {
     console.log("Success:", values);
     await axios
       .request({
-        baseURL: "http://localhost:9000/adminPanel",
+        baseURL: "https://damp-stream-39096.herokuapp.com/adminPanel",
         url: "/sendAllEmail",
         method: "post",
         data: {

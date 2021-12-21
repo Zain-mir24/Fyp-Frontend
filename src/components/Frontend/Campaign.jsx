@@ -49,7 +49,10 @@ export default function Campaign() {
                     <img
                       style={{ height: "300px" }}
                       alt="example"
-                      src={"http://localhost:9000/uploads/" + item.fileName}
+                      src={
+                        "https://damp-stream-39096.herokuapp.com/uploads/" +
+                        item.fileName
+                      }
                     />
                   }
                 >
