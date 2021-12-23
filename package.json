@@ -26,6 +26,7 @@
     "express": "^4.17.1",
     "file-saver": "^2.0.5",
     "fs": "0.0.1-security",
+    "heroku": "^7.59.2",
     "hooks": "^0.3.2",
     "js-file-download": "^0.4.12",
     "material-ui-password-field": "^2.1.2",
