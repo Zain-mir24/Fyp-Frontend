@@ -10,7 +10,8 @@ function Adminn({ history, ...props }) {
   return (
     <div>
       {user ? (
-        <div>{user.getEmail == "zainmir2000j@gmail.com" ? <Body /> : history.push("/Adminlogin")}</div>
+        <div>{user.getEmail == "zainmir2000j@gmail.com" ? <Body /> : 
+        history.push("/Adminlogin")}</div>
       ) : (
         history.push("/Adminlogin")
       )}

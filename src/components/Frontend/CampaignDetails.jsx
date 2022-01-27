@@ -1,10 +1,10 @@
 import { React, useState, useEffect } from "react";
 import Header from "../Headers/Header";
-import { Layout, Image, Card, Progress } from "antd";
+import { Layout, Image, Card, Progress,Button } from "antd";
 
 const { Footer, Sider, Content } = Layout;
 
-export default function CampaignDetails() {
+export default function CampaignDetails({history}) {
   const [percentage, setPercentage] = useState();
 
   const queryParams = new URLSearchParams(window.location.search);
@@ -54,6 +54,14 @@ export default function CampaignDetails() {
                   percent={percentage}
                 />
               </Card>
+              <Button 
+
+              >
+                <a href="/donationStripe">
+
+                Donate to this campaign
+                </a>
+              </Button>
             </Sider>
           </Layout>
         </Layout>
