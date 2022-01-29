@@ -41,8 +41,15 @@ function DonorPanel({ history, ...props }) {
               {User.username}
             </Menu.Item>
             <Menu.Item key="2" icon={<DesktopOutlined />}>
-              DonorPanel
+              Donate
             </Menu.Item>
+            <Menu.Item key="3" icon={<DesktopOutlined />}>
+              Chat
+            </Menu.Item> 
+            <Menu.Item key="4" icon={<DesktopOutlined />}>
+              Adopt / fund Children
+            </Menu.Item>
+            
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item key="5">
                 <Button
@@ -58,20 +65,15 @@ function DonorPanel({ history, ...props }) {
               <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
-            </Menu.Item>
+           
+            
           </Menu>
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>Beneficiary</Breadcrumb.Item>
+              <Breadcrumb.Item>Donor</Breadcrumb.Item>
               <Breadcrumb.Item>{User.username}</Breadcrumb.Item>
             </Breadcrumb>
             <div

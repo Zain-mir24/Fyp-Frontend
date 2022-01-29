@@ -1,11 +1,15 @@
 import { React, useState, useEffect } from "react";
 import Header from "../Headers/Header";
-import { Layout, Image, Card, Progress,Button } from "antd";
+import { Layout, Image, Card, Progress, Button, Input } from "antd";
+import axios from "axios";
+import StripeCheckout from "react-stripe-checkout";
 
 const { Footer, Sider, Content } = Layout;
-
-export default function CampaignDetails({history}) {
+const dotenv = require("dotenv");
+dotenv.config();
+export default function CampaignDetails({ history }) {
   const [percentage, setPercentage] = useState();
+  const [collection, setCollection] = useState();
 
   const queryParams = new URLSearchParams(window.location.search);
 
@@ -13,14 +17,57 @@ export default function CampaignDetails({history}) {
   const description = queryParams.get("description");
   const img = queryParams.get("img");
   const donation = queryParams.get("donation");
-  const collected = 50000000;
+  let cid = queryParams.get("campaignid");
+  var collected;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getAmount = async () => {
+    try {
+      const result = await axios.get(
+        `http://localhost:9000/donation/viewDonation/${cid}`
+      );
+      if (!result) {
+        console.log("error fetching data");
+      }
+      collected = result.data.amount;
+      setCollection(result.data.amount);
+      console.log(result.data.amount);
+      console.log("from variable collected", collected);
+     
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  // function percentageFormula() {
+  //   var x = (collection / donation) * 100;
+  //   setPercentage(x);
+  //   console.log("value of percentage",percentage)
+  // }
+  const [campaign, setCampaign] = useState({
+    name: "Campaign for masjid",
+  });
+  const [amount, setAmount] = useState(0);
+  const sendPayment = (token) => {
+    const body = {
+      token,
+      campaign,
+      amount,
+      campaignId: cid,
+    };
 
-  function percentageFormula() {
-    var x = (collected / donation) * 100;
-    setPercentage(Math.floor(x));
-  }
+    return axios
+      .post("http://localhost:9000/stripe/pay", body)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
+  };
 
-  useEffect(percentageFormula, []);
+  useEffect(() => {
+    getAmount();
+    // percentageFormula()
+  }, []);
   return (
     <div>
       <Header />
@@ -46,22 +93,28 @@ export default function CampaignDetails({history}) {
                 title={"Donation Amount: " + donation + " PKR"}
                 style={{ width: 300 }}
               >
-                <p>Amount Collected: {collected}</p>
+                <p>Amount Collected: {collection}</p>
                 Percentage:{" "}
                 <Progress
                   style={{ marginLeft: "20px" }}
                   type="circle"
-                  percent={percentage}
+                  percent={(collection / donation) * 100}
                 />
               </Card>
-              <Button 
-
+              <Input
+                placeholder="enter donation amount (pkr)"
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                }}
+              />
+              <StripeCheckout
+                stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
+                token={sendPayment}
+                name="Donate to campaign"
+                amount={amount * 100}
               >
-                <a href="/donationStripe">
-
-                Donate to this campaign
-                </a>
-              </Button>
+                <Button>You are donating{amount}</Button>
+              </StripeCheckout>
             </Sider>
           </Layout>
         </Layout>
