@@ -7,7 +7,12 @@ const { Meta } = Card;
 function Campaigndonation() {
   const [data, setData] = useState([]);
   const [content, setContent] = useState("");
-  let name, description, img, id, donation;
+  const [Name,setName]=useState("")
+  const [description,setDesc]=useState("")
+  const [img,setImg]=useState("")
+  const [id,setId]=useState("")
+  const [donation,setDonation]=useState(0)
+
   const getData = async () => {
     try {
       const res = await axios.get(
@@ -27,7 +32,7 @@ function Campaigndonation() {
         <div className="row">
           {content == "campaign" ? (
             <CampaignDetail
-              name={name}
+              name={Name}
               description={description}
               img={img}
               id={id}
@@ -39,12 +44,11 @@ function Campaigndonation() {
                 <div className="col-lg-4">
                   <Card
                     onClick={() => {
-                      name = item.name;
-                      description = item.description;
-                      img = item.fileName;
-                      id = item._id;
-                      donation = item.donation;
-                      console.log(name, description);
+                      setName(item.name)
+                      setDesc(item.description)
+                      setImg(item.fileName)
+                      setId(item._id)
+                      setDonation(item.donation)                  
                       setContent("campaign");
                     }}
                     hoverable
