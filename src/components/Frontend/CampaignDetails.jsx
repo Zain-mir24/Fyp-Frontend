@@ -8,7 +8,7 @@ const { Footer, Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
 export default function CampaignDetails({ history }) {
-  const [percentage, setPercentage] = useState();
+  
   const [collection, setCollection] = useState();
 
   const queryParams = new URLSearchParams(window.location.search);
@@ -18,7 +18,7 @@ export default function CampaignDetails({ history }) {
   const img = queryParams.get("img");
   const donation = queryParams.get("donation");
   let cid = queryParams.get("campaignid");
-  var collected;
+  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getAmount = async () => {
     try {
@@ -28,7 +28,6 @@ export default function CampaignDetails({ history }) {
       if (!result) {
         console.log("error fetching data");
       }
-      collected = result.data.amount;
       setCollection(result.data.amount);
     } catch (e) {
       console.log(e);

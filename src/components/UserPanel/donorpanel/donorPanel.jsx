@@ -10,6 +10,7 @@ import { CreateContext } from "../../../contexts/Customecontexts";
 
 import { Redirect, withRouter } from "react-router";
 import Campaigndonation from "./Campaigndonation";
+import Chat from "./Chat"
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -47,7 +48,9 @@ function DonorPanel({ history, ...props }) {
             >
               Campaigns
             </Menu.Item>
-            <Menu.Item key="3" icon={<DesktopOutlined />}>
+            <Menu.Item key="3" icon={<DesktopOutlined />} onClick={(e) => {
+                setContent("Chat");
+              }}>
               Chat
             </Menu.Item>
             <Menu.Item key="4" icon={<DesktopOutlined />}>
@@ -83,6 +86,7 @@ function DonorPanel({ history, ...props }) {
             >
               {content == "" ? <div>{User.username} is a user</div> : null}
               {content == "campaign" ? <Campaigndonation /> : null}
+              {content == "Chat" ? <Chat />: null}
             </div>
           </Content>
 
