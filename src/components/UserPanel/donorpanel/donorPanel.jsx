@@ -2,24 +2,20 @@ import React, { useState, useContext } from "react";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../../store/Actions/userAction";
 
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { DesktopOutlined, UserOutlined } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../store/reducers/User";
 
 import { CreateContext } from "../../../contexts/Customecontexts";
 
 import { Redirect, withRouter } from "react-router";
+import Campaigndonation from "./Campaigndonation";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 function DonorPanel({ history, ...props }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [content, setContent] = useState("");
   const dispatch = useDispatch();
 
   const User = useSelector(selectUser);
@@ -37,19 +33,27 @@ function DonorPanel({ history, ...props }) {
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item key="1" icon={<UserOutlined />}>
+            <Menu.Item key="1" icon={<UserOutlined />} onClick={()=>{
+              setContent("")
+            }}>
               {User.username}
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Donate
+            <Menu.Item
+              key="2"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("campaign");
+              }}
+            >
+              Campaigns
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
               Chat
-            </Menu.Item> 
+            </Menu.Item>
             <Menu.Item key="4" icon={<DesktopOutlined />}>
               Adopt / fund Children
             </Menu.Item>
-            
+
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item key="5">
                 <Button
@@ -59,20 +63,17 @@ function DonorPanel({ history, ...props }) {
                 >
                   Changepassword
                 </Button>
-              
               </Menu.Item>
               <Menu.Item>
-              <Button onClick={(e) => logout(e)}>logout</Button>
+                <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
-           
-            
           </Menu>
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
+          <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>Donor</Breadcrumb.Item>
               <Breadcrumb.Item>{User.username}</Breadcrumb.Item>
             </Breadcrumb>
@@ -80,13 +81,12 @@ function DonorPanel({ history, ...props }) {
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-          {User.username} is a user
+              {content == "" ? <div>{User.username} is a user</div> : null}
+              {content == "campaign" ? <Campaigndonation /> : null}
             </div>
           </Content>
 
-          <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
+      
         </Layout>
       </Layout>
     </div>

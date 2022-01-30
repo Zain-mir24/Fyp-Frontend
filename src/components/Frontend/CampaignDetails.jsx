@@ -30,18 +30,11 @@ export default function CampaignDetails({ history }) {
       }
       collected = result.data.amount;
       setCollection(result.data.amount);
-      console.log(result.data.amount);
-      console.log("from variable collected", collected);
-     
     } catch (e) {
       console.log(e);
     }
   };
-  // function percentageFormula() {
-  //   var x = (collection / donation) * 100;
-  //   setPercentage(x);
-  //   console.log("value of percentage",percentage)
-  // }
+
   const [campaign, setCampaign] = useState({
     name: "Campaign for masjid",
   });

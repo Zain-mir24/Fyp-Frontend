@@ -1,11 +1,9 @@
-import { React, useEffect, useState } from "react";
-import Header from "../Headers/Header";
+import React, { useState, useEffect } from "react";
 import { Card } from "antd";
 import axios from "axios";
-import CampaignDetails from "./CampaignDetails";
 const { Meta } = Card;
 
-export default function Campaign() {
+function Campaigndonation() {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
@@ -20,15 +18,12 @@ export default function Campaign() {
   };
 
   useEffect(getData, []);
-
   return (
     <div>
-      <Header />
       <div className="container">
         <div className="row">
           {data.map((item) => {
-                    return (
-              
+            return (
               <div
                 className="col-lg-4"
                 onClick={() => {
@@ -41,7 +36,7 @@ export default function Campaign() {
                     item.fileName +
                     "&donation=" +
                     item.donation +
-                    "&campaignid="+
+                    "&campaignid=" +
                     item._id;
                 }}
               >
@@ -52,7 +47,7 @@ export default function Campaign() {
                     <img
                       style={{ height: "300px" }}
                       alt="example"
-                      src={"https://damp-stream-39096.herokuapp.com/uploads/" + item.fileName}
+                      src={"http://localhost:9000/uploads/" + item.fileName}
                     />
                   }
                 >
@@ -69,3 +64,5 @@ export default function Campaign() {
     </div>
   );
 }
+
+export default Campaigndonation;
