@@ -3,8 +3,7 @@ import Header from "../Headers/Header";
 import { Layout, Image, Card, Progress, Button, Input } from "antd";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
-
-const { Footer, Sider, Content } = Layout;
+const {  Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
 export default function CampaignDetails({ history }) {
@@ -34,14 +33,11 @@ export default function CampaignDetails({ history }) {
     }
   };
 
-  const [campaign, setCampaign] = useState({
-    name: "Campaign for masjid",
-  });
   const [amount, setAmount] = useState(0);
   const sendPayment = (token) => {
     const body = {
       token,
-      campaign,
+     name,
       amount,
       campaignId: cid,
     };
@@ -99,6 +95,7 @@ export default function CampaignDetails({ history }) {
                   setAmount(e.target.value);
                 }}
               />
+              
               <StripeCheckout
                 stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
                 token={sendPayment}
