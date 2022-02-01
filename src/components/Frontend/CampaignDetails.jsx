@@ -3,11 +3,10 @@ import Header from "../Headers/Header";
 import { Layout, Image, Card, Progress, Button, Input } from "antd";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
-const {  Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
 export default function CampaignDetails({ history }) {
-  
   const [collection, setCollection] = useState();
 
   const queryParams = new URLSearchParams(window.location.search);
@@ -17,7 +16,7 @@ export default function CampaignDetails({ history }) {
   const img = queryParams.get("img");
   const donation = queryParams.get("donation");
   let cid = queryParams.get("campaignid");
-  
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getAmount = async () => {
     try {
@@ -27,7 +26,7 @@ export default function CampaignDetails({ history }) {
       if (!result) {
         console.log("error fetching data");
       }
-      setCollection(result.data.amount);
+      setCollection(result.data.totalamount);
     } catch (e) {
       console.log(e);
     }
@@ -37,9 +36,10 @@ export default function CampaignDetails({ history }) {
   const sendPayment = (token) => {
     const body = {
       token,
-     name,
+      name,
       amount,
       campaignId: cid,
+      userId: null,
     };
 
     return axios
@@ -95,7 +95,6 @@ export default function CampaignDetails({ history }) {
                   setAmount(e.target.value);
                 }}
               />
-              
               <StripeCheckout
                 stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
                 token={sendPayment}

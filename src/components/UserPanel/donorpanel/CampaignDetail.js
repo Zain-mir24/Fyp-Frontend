@@ -31,7 +31,7 @@ function CampaignDetail(props) {
       if (!result) {
         console.log("error fetching data");
       }
-      setCollection(result.data.amount);
+      setCollection(result.data.totalamount);
     } catch (e) {
       console.log(e);
     }
@@ -42,11 +42,11 @@ function CampaignDetail(props) {
       name,
       amount,
       campaignId: cid,
-      userid:user.userId
+      userId:user.userId
     };
 
     return axios
-      .post("http://localhost:9000/stripe/donorpay", body)
+      .post("http://localhost:9000/stripe/pay", body)
       .then((res) => {
         console.log(res);
       })
