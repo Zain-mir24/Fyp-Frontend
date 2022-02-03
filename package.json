@@ -2,8 +2,7 @@
   "name": "globalreach",
   "version": "0.1.0",
   "engines": {
-    "node": "14.x",
-    "npm": "6.x"
+    "node": "6.11.1"
   },
   "private": true,
   "dependencies": {
@@ -56,9 +55,6 @@
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
-  "engines": { 
-    "node": "6.11.1" 
-  }, 
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
