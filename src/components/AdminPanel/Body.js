@@ -10,6 +10,7 @@ import Email from "./Email";
 import News from "./LatestNews";
 import Beneficiary from "./Beneficiary";
 import LoanManagement from "./LoanManagement";
+import ChildrenManagment from "./ChildrenManagment";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 
@@ -21,6 +22,8 @@ import {
   UserOutlined,
   ExclamationCircleFilled,
   CheckCircleFilled,
+  IdcardOutlined 
+
 } from "@ant-design/icons";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -50,6 +53,8 @@ function Body({ history, ...props }) {
       return <AppealedLoan />;
     }else if (content === "LoanManagment") {
       return <LoanManagement />;
+    }else if (content === "AdoptChildren") {
+      return <ChildrenManagment />;
     }
   }
 
@@ -116,7 +121,7 @@ function Body({ history, ...props }) {
             </Menu.Item>
             <Menu.Item
               key="8"
-              icon={<CheckCircleFilled />}
+              icon={<IdcardOutlined />}
               onClick={() => {
                 setContent("Email");
               }}
@@ -149,6 +154,15 @@ function Body({ history, ...props }) {
               }}
             >
               Loan Managment
+            </Menu.Item>
+            <Menu.Item
+              key="12"
+              icon={<TeamOutlined />}
+              onClick={() => {
+                setContent("AdoptChildren");
+              }}
+            >
+              Adopting Children
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
                        <Menu.Item>
