@@ -39,7 +39,9 @@ export default function Campaign() {
                     "&img=" +
                     item.fileName +
                     "&donation=" +
-                    item.donation;
+                    item.donation +
+                    "&campaignid=" +
+                    item._id;
                 }}
               >
                 <Card

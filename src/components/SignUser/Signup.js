@@ -32,8 +32,13 @@ export default function SignUp({ history, ...props }) {
     e.preventDefault();
     await axios
       .request({
+<<<<<<< HEAD
         baseURL: '"http://localhost:9000/User',
         url: `/Signup`,
+=======
+        baseURL: "http://localhost:9000/User",
+        url: "/Signup",
+>>>>>>> 07dff5b2833a2eb80d74f705265ce38b266708a5
         method: "post",
         data: {
           name: getname,
@@ -49,7 +54,11 @@ export default function SignUp({ history, ...props }) {
         res.status(201).send("email sent");
       })
       .catch((e) => {
+<<<<<<< HEAD
         console.log(e);
+=======
+        console.log("My error", e);
+>>>>>>> 07dff5b2833a2eb80d74f705265ce38b266708a5
       });
   };
   return (

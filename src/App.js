@@ -15,6 +15,7 @@ import Adminlogin from "./components/Signadmin/Adminlogin";
 import Adminsignup from "./components/Signadmin/Adminsignup";
 import AddUser from "./components/UserPanel/AddUser";
 import Addemail from "./components/UserPanel/Addemail";
+import Donation from "./components/DonationPage/Donation";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -39,6 +40,9 @@ function App() {
             <Route path="/userPanel" component={Userpanel}></Route>
             <Route path="/changePassword" component={Changepassword}></Route>
             <Route path="/forgotPassword" component={Forgotpassword}></Route>
+            <Route path="/donationStripe" component={Donation}>
+              <Donation />
+            </Route>
             <Route
               path="/resetPassword/:_id/:token"
               component={Resetpassword}
@@ -52,6 +56,7 @@ function App() {
               component={Addemail}
             ></Route>
             <Route path="/" component={home}></Route>
+           
           </Switch>
         </BrowserRouter>
       </body>

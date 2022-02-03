@@ -8,7 +8,6 @@ import { UploadOutlined } from "@ant-design/icons";
 const { Option } = Select;
 const axios = require("axios");
 function Neews() {
-  const [getApi, setApi] = useState([]);
   const [name, setName] = useState();
   const [description, setdesc] = useState();
   const [file, setFile] = useState();
