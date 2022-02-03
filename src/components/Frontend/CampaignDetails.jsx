@@ -15,6 +15,7 @@ export default function CampaignDetails({ history }) {
   const description = queryParams.get("description");
   const img = queryParams.get("img");
   const donation = queryParams.get("donation");
+<<<<<<< HEAD
   let cid = queryParams.get("campaignid");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,6 +32,9 @@ export default function CampaignDetails({ history }) {
       console.log(e);
     }
   };
+=======
+  const collected = 50000000000;
+>>>>>>> e061a86c35a1b1d76f3a15fbcc130831b826826d
 
   const [amount, setAmount] = useState(0);
   const sendPayment = (token) => {

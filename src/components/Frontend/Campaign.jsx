@@ -52,7 +52,14 @@ export default function Campaign() {
                     <img
                       style={{ height: "300px" }}
                       alt="example"
+<<<<<<< HEAD
                       src={"https://damp-stream-39096.herokuapp.com/uploads/" + item.fileName}
+=======
+                      src={
+                        "https://damp-stream-39096.herokuapp.com/uploads/" +
+                        item.fileName
+                      }
+>>>>>>> e061a86c35a1b1d76f3a15fbcc130831b826826d
                     />
                   }
                 >

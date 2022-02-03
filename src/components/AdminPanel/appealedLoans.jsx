@@ -13,7 +13,7 @@ function AppealedLoans() {
   const viewData = async () => {
     try {
       const res = await axios({
-        url:"http://localhost:9000/admin/viewLoanAppeals",
+        url: "https://damp-stream-39096.herokuapp.com/admin/viewLoanAppeals",
         method: "GET",
         responseType: "stream",
       });
@@ -25,7 +25,7 @@ function AppealedLoans() {
           bid: i.bid,
           amountneeded: i.Loanamount,
           description: i.loandescription,
-          loanType:i.loanType,
+          loanType: i.loanType,
           file: i.file,
         }))
       );
@@ -35,7 +35,7 @@ function AppealedLoans() {
       console.log(e);
     }
   };
-  
+
   const columns = [
     {
       title: "LoanId",
@@ -67,7 +67,12 @@ function AppealedLoans() {
       dataIndex: "file",
       key: "file",
       render: (text, record) => (
-        <a href={"http://localhost:9000/uploads/" + record.file} download>
+        <a
+          href={
+            "https://damp-stream-39096.herokuapp.com/uploads/" + record.file
+          }
+          download
+        >
           <Button> {record.file}</Button>
         </a>
       ),

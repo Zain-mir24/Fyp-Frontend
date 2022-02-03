@@ -1,7 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
-import { Table,  Button, Input, Upload, Col, Form, Select } from "antd";
+import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 import { combineReducers } from "@reduxjs/toolkit";
 import { UploadOutlined } from "@ant-design/icons";
 
@@ -121,7 +121,7 @@ function Neews() {
   return (
     <div className="row">
       <div className="col-lg-6">
-      <Form>
+        <Form>
           <p>Add News</p>
           <Form.Item
             rules={[{ required: true, message: "Please Enter campaign name" }]}
@@ -168,29 +168,29 @@ function Neews() {
           </Col>
           <Col span={15}>
             <Form.Item>
-          <Select
-            defaultValue="Select Category"
-            style={{
-              width: 180,
-              borderRadius: "0px",
-              backgroundColor: "transparent",
-            }}
-            onChange={handleChange}
-          >
-            {categoryData.map((item) => {
-              return <Option value={item._id}>{item.name}</Option>;
-            })}
-          </Select>
-          </Form.Item>
+              <Select
+                defaultValue="Select Category"
+                style={{
+                  width: 180,
+                  borderRadius: "0px",
+                  backgroundColor: "transparent",
+                }}
+                onChange={handleChange}
+              >
+                {categoryData.map((item) => {
+                  return <Option value={item._id}>{item.name}</Option>;
+                })}
+              </Select>
+            </Form.Item>
           </Col>
-         
-         < Col span={15}>
+
+          <Col span={15}>
             <Form.Item>
               <Button type="primary" htmlType="submit" onClick={postData}>
                 submit
               </Button>
             </Form.Item>
-            </Col>
+          </Col>
         </Form>
       </div>
       <div className="col-lg-6">
@@ -219,7 +219,9 @@ function AdminCampaign() {
   // const [categoryy, setcategoryy] = useState("");
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/latestnews");
+      const res = await axios.get(
+        "https://damp-stream-39096.herokuapp.com/admin/latestnews"
+      );
       setData(res.data);
       console.log(res.data, "TESTING");
     } catch (err) {
@@ -230,13 +232,13 @@ function AdminCampaign() {
   const deleteData = async (id) => {
     try {
       const res = await axios.delete(
-        "http://localhost:9000/admin/deleteNews/" + id
+        "https://damp-stream-39096.herokuapp.com/admin/deleteNews/" + id
       );
-      alert("Campaign Deleted")
+      alert("Campaign Deleted");
 
       console.log(res);
     } catch (e) {
-      alert("campaign not deleted")
+      alert("campaign not deleted");
       console.log(e);
     }
   };
@@ -250,10 +252,12 @@ function AdminCampaign() {
     // catch(e){
     //   console.log(e);
     // }
-    axios.get("http://localhost:9000/admin/sendcategory/" + id).then((res) => {
-      console.log(res.data.name, "HELLOOOOO");
-      return res.data.name;
-    });
+    axios
+      .get("https://damp-stream-39096.herokuapp.com/admin/sendcategory/" + id)
+      .then((res) => {
+        console.log(res.data.name, "HELLOOOOO");
+        return res.data.name;
+      });
   }
 
   useEffect(() => {
@@ -308,7 +312,7 @@ function AdminCampaign() {
       _id: item._id,
       Title: item.name,
       Description: item.description,
-      Category: item.category
+      Category: item.category,
     })),
     "YEST"
   );

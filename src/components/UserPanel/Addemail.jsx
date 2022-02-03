@@ -6,12 +6,12 @@ import axios from "axios";
 const dotenv = require("dotenv");
 dotenv.config();
 function Addemail({ history }) {
-  const { _id, token, Email} = useParams();
-  console.log(Email)
+  const { _id, token, Email } = useParams();
+  console.log(Email);
   const senddata = async (e) => {
     await axios
       .request({
-        baseURL: "http://localhost:9000/adminPanel",
+        baseURL: "https://damp-stream-39096.herokuapp.com/adminPanel",
         url: `/saveEmail/${_id}/${token}`,
         method: "post",
         data: {
@@ -20,7 +20,7 @@ function Addemail({ history }) {
       })
       .then(async (res) => {
         alert(`Thankyou for subscribing`);
-        history.push("/");      
+        history.push("/");
         res.status(200).send("user verified and added");
       })
       .catch((e) => {

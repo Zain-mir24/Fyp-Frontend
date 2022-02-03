@@ -21,6 +21,7 @@ function ChildrenManagment() {
               </h1>
       <div className="col-lg-6">
       <Form>
+        add children
           
           <Form.Item
             rules={[{ required: true, message: "Please Enter campaign name" }]}

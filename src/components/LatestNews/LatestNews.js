@@ -32,14 +32,16 @@ export default function LatestNews() {
     console.log(`selected ${value}`);
     setAssignCategory(value);
     const res = await axios.get(
-      "http://localhost:9000/admin/LatestNews/" + value
+      "https://damp-stream-39096.herokuapp.com/admin/LatestNews/" + value
     );
     console.log(res.data);
     await setData(res.data);
   }
   const getCategory = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/sendcategory");
+      const res = await axios.get(
+        "https://damp-stream-39096.herokuapp.com/admin/sendcategory"
+      );
       await setCategoryData(res.data);
       console.log(res);
     } catch (e) {
@@ -62,7 +64,9 @@ export default function LatestNews() {
                 className="carousel-parent"
                 style={{
                   backgroundImage:
-                    "url('http://localhost:9000/uploads/" + item.file + "')",
+                    "url('https://damp-stream-39096.herokuapp.com/uploads/" +
+                    item.file +
+                    "')",
                 }}
               ></div>
             </div>
@@ -97,9 +101,11 @@ export default function LatestNews() {
           onChange={handleChange}
         >
           {categoryData.map((item) => {
-            return <Option value={item._id} style={{color:"black"}}>
-        <p style={{color:"black"}}>      {item.name} </p>
-              </Option>;
+            return (
+              <Option value={item._id} style={{ color: "black" }}>
+                <p style={{ color: "black" }}> {item.name} </p>
+              </Option>
+            );
           })}
         </Select>
       </div>
