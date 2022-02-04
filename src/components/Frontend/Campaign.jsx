@@ -27,8 +27,7 @@ export default function Campaign() {
       <div className="container">
         <div className="row">
           {data.map((item) => {
-                    return (
-              
+            return (
               <div
                 className="col-lg-4"
                 onClick={() => {
@@ -41,7 +40,7 @@ export default function Campaign() {
                     item.fileName +
                     "&donation=" +
                     item.donation +
-                    "&campaignid="+
+                    "&campaignid=" +
                     item._id;
                 }}
               >

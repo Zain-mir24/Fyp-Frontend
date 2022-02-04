@@ -10,7 +10,8 @@ import { CreateContext } from "../../../contexts/Customecontexts";
 
 import { Redirect, withRouter } from "react-router";
 import Campaigndonation from "./Campaigndonation";
-import Chat from "./Chat"
+import Chat from "./Chat";
+import Orphan from "./Orphan";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -34,9 +35,13 @@ function DonorPanel({ history, ...props }) {
         <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item key="1" icon={<UserOutlined />} onClick={()=>{
-              setContent("")
-            }}>
+            <Menu.Item
+              key="1"
+              icon={<UserOutlined />}
+              onClick={() => {
+                setContent("");
+              }}
+            >
               {User.username}
             </Menu.Item>
             <Menu.Item
@@ -48,12 +53,22 @@ function DonorPanel({ history, ...props }) {
             >
               Campaigns
             </Menu.Item>
-            <Menu.Item key="3" icon={<DesktopOutlined />} onClick={(e) => {
+            <Menu.Item
+              key="3"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
                 setContent("Chat");
-              }}>
+              }}
+            >
               Chat
             </Menu.Item>
-            <Menu.Item key="4" icon={<DesktopOutlined />}>
+            <Menu.Item
+              key="4"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("Orphan");
+              }}
+            >
               Adopt / fund Children
             </Menu.Item>
 
@@ -76,7 +91,7 @@ function DonorPanel({ history, ...props }) {
         <Layout className="site-layout">
           
           <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
+            <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>Donor</Breadcrumb.Item>
               <Breadcrumb.Item>{User.username}</Breadcrumb.Item>
             </Breadcrumb>
@@ -86,11 +101,10 @@ function DonorPanel({ history, ...props }) {
             >
               {content == "" ? <div>{User.username} is a user</div> : null}
               {content == "campaign" ? <Campaigndonation /> : null}
-              {content == "Chat" ? <Chat />: null}
+              {content == "Chat" ? <Chat /> : null}
+              {content == "Orphan" ? <Orphan /> : null}
             </div>
           </Content>
-
-      
         </Layout>
       </Layout>
     </div>

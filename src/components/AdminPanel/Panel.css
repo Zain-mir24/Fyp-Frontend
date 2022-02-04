@@ -1,3 +1,7 @@
-.heading{
-    justify-content: center;
+.heading {
+  justify-content: center;
+}
+
+.ant-col-12 {
+  padding: 20px;
 }

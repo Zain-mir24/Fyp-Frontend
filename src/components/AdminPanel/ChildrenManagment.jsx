@@ -11,7 +11,7 @@ import axios from "axios";
 
 function ChildrenManagment() {
   const [name, setName] = useState();
-  const [childrenData, setChildrenData] = useState();
+  const [childrenData, setChildrenData] = useState([]);
   const [age, setAge] = useState();
   const [file, setFile] = useState();
   // const [fileName, setFileName] = useState("");
@@ -20,21 +20,16 @@ function ChildrenManagment() {
   const [gender, setGender] = useState([]);
   const [disability, setDisability] = useState("");
 
-  async function sendData() {
-    try {
-      const res = await axios.post("http://localhost:9000/admin/addchild", {
-        name: name,
-        age: age,
-        fileName: file,
-        DOB: DOB,
-        POB: POB,
-        disability: disability,
-        fileName: file,
-      });
-      console.log(res);
-    } catch (e) {
-      console.log(e);
-    }
+  async function collectData() {
+    const res = await axios.post("http://localhost:9000/admin/addChild", {
+      name: name,
+      age: age,
+      fileName: file,
+      DOB: DOB,
+      POB: POB,
+      disability: disability,
+      fileName: file,
+    });
   }
 
   const getData = async () => {
@@ -306,12 +301,9 @@ function ChildrenManagment() {
                 </Upload>
               </Form.Item>
 
-              <Button
-                type="primary"
-                onSubmit={() => {
-                  getData();
-                }}
-              >
+              <Button type="primary" onSubmit={()=>{
+                getData()
+              }}>
                 Submit
               </Button>
             </Form>
