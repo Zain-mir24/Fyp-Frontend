@@ -40,7 +40,7 @@ export default function LatestNews() {
   const getCategory = async () => {
     try {
       const res = await axios.get(
-        "https://damp-stream-39096.herokuapp.com/admin/sendcategory"
+        "https://localhost:9000/admin/sendcategory"
       );
       await setCategoryData(res.data);
       console.log(res);
