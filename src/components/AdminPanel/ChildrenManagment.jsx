@@ -2,12 +2,15 @@ import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form, Select, Row } from "antd";
+
 import { combineReducers } from "@reduxjs/toolkit";
 import { UploadOutlined } from "@ant-design/icons";
 
 import { DatePicker, Space } from "antd";
 import "./Panel.css";
 import axios from "axios";
+
+const { Option } = Select;
 
 function ChildrenManagment() {
   const [name, setName] = useState();
@@ -19,39 +22,114 @@ function ChildrenManagment() {
   const [POB, setPOB] = useState("");
   const [gender, setGender] = useState([]);
   const [disability, setDisability] = useState("");
+  const [updateID, setUpdateID] = useState("");
 
   async function collectData() {
     const res = await axios.post("http://localhost:9000/admin/addChild", {
       name: name,
       age: age,
       fileName: file,
+      gender: gender,
       DOB: DOB,
       POB: POB,
       disability: disability,
-      fileName: file,
     });
   }
 
   const getData = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/viewChildren");
-      setChildrenData(res.data);
+
+      await setChildrenData(res.data);
       console.log(res.data, "TESTING");
     } catch (err) {
       console.log(err);
     }
   };
 
-  const deleteCategory = async (id) => {
+  async function updateData() {
+    const res = await axios.patch(
+      "http://localhost:9000/admin//updatechild/" + updateID,
+      {
+        name: name,
+        age: age,
+        fileName: file,
+        gender: gender,
+        DOB: DOB,
+        POB: POB,
+        disability: disability,
+      }
+    );
+  }
+
+  const deleteData = async (cid) => {
     try {
-      const res = axios.delete(
-        "http://localhost:9000/admin/deletecategory/" + id
+      const res = await axios.delete(
+        "http://localhost:9000/admin/deleteChildren/" + cid
       );
+      alert("Children data Deleted");
+
       console.log(res);
     } catch (e) {
+      alert("campaign not deleted");
       console.log(e);
     }
   };
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+    setUpdateID(value);
+  }
+
+  useEffect(() => {
+    getData();
+    console.log(childrenData, "HELL");
+  }, []);
+
+  const columns = [
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Gender",
+      dataIndex: "gender",
+      key: "gender",
+    },
+    {
+      title: "Age",
+      dataIndex: "age",
+      key: "age",
+    },
+    {
+      title: "DOB",
+      dataIndex: "DOB",
+      key: "DOB",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <button
+          onClick={() => {
+            deleteData(record._id);
+          }}
+        >
+          Delete
+        </button>
+      ),
+    },
+  ];
+
+  const value = childrenData.map((item) => ({
+    _id: item._id,
+    name: item.name,
+    gender: item.gender,
+    age: item.age,
+    DOB: item.DOB,
+  }));
 
   return (
     <div>
@@ -125,8 +203,8 @@ function ChildrenManagment() {
                 ]}
               >
                 <DatePicker
-                  onChange={(e) => {
-                    setDOB(e.target.value);
+                  onChange={(date, dateString) => {
+                    setDOB(date);
                   }}
                   placeholder="Select Date Of Birth"
                   style={{ width: "100%" }}
@@ -141,8 +219,8 @@ function ChildrenManagment() {
                 ]}
               >
                 <DatePicker
-                  onChange={(e) => {
-                    setPOB(e.target.value);
+                  onChange={(date, dateString) => {
+                    setPOB(date);
                   }}
                   placeholder="Select Place Of Birth"
                   style={{ width: "100%" }}
@@ -179,13 +257,30 @@ function ChildrenManagment() {
                 </Upload>
               </Form.Item>
 
-              <Button type="primary">Submit</Button>
+              <Button type="primary" onClick={collectData}>
+                Submit
+              </Button>
             </Form>
           </Col>
 
           <Col span={12}>
             <h3>Update Children</h3>
             <Form>
+              <Form.Item>
+                <Select
+                  defaultValue="Select Category"
+                  style={{
+                    width: 180,
+                    borderRadius: "0px",
+                    backgroundColor: "transparent",
+                  }}
+                  onChange={handleChange}
+                >
+                  {childrenData.map((item) => {
+                    return <Option value={item._id}>{item.name}</Option>;
+                  })}
+                </Select>
+              </Form.Item>
               <Form.Item
                 rules={[
                   { required: true, message: "Please Enter campaign name" },
@@ -247,8 +342,8 @@ function ChildrenManagment() {
                 ]}
               >
                 <DatePicker
-                  onChange={(e) => {
-                    setDOB(e.target.value);
+                  onChange={(date, dateString) => {
+                    setDOB(date);
                   }}
                   placeholder="Select Date Of Birth"
                   style={{ width: "100%" }}
@@ -263,8 +358,8 @@ function ChildrenManagment() {
                 ]}
               >
                 <DatePicker
-                  onChange={(e) => {
-                    setPOB(e.target.value);
+                  onChange={(date, dateString) => {
+                    setPOB(date);
                   }}
                   placeholder="Select Place Of Birth"
                   style={{ width: "100%" }}
@@ -291,7 +386,7 @@ function ChildrenManagment() {
               </Form.Item>
 
               <Form.Item
-                rules={[{ required: true, message: "Please uplaod doc" }]}
+                rules={[{ message: "Please uplaod doc" }]}
                 //   onChange={saveFile}
               >
                 <Upload>
@@ -301,14 +396,18 @@ function ChildrenManagment() {
                 </Upload>
               </Form.Item>
 
-              <Button type="primary" onSubmit={()=>{
-                getData()
-              }}>
+              <Button
+                type="primary"
+                onClick={() => {
+                  updateData();
+                }}
+              >
                 Submit
               </Button>
             </Form>
           </Col>
         </Row>
+        <Table columns={columns} dataSource={value} />
       </div>
     </div>
   );
