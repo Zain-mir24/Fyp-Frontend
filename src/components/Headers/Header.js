@@ -20,15 +20,41 @@ function Headers() {
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
               <ul class="nav navbar-nav navbar-right">
-              <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/">
                     Homepage
                   </a>
                 </li>
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/campaign">
-                    Campaigns
-                  </a>
+                <li class="nav-item dropdown" role="presentation">
+                  <div class="dropdown show" style={{marginTop:"8px"}}>
+                    <a
+                      class="btn dropdown-toggle"
+                      href="#"
+                      role="button"
+                      id="dropdownMenuLink"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      style={{color:"white"}}
+                    >
+                     donate us
+                    </a>
+
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <a class="dropdown-item" href="#">
+                       Donate us
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        Campaign donations
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        Zakat
+                      </a>
+                    </div>
+                  </div>
                 </li>
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/campaign">
@@ -39,22 +65,22 @@ function Headers() {
                   <a class="nav-link" href="/">
                     <span class="glyphicon glyphicon-user"></span> Services
                   </a>
-                </li> 
+                </li>
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/">
-                   Media
+                    Media
                   </a>
-                </li>  <li class="nav-item" role="presentation">
+                </li>{" "}
+                <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/">
-                   Contact us
+                    Contact us
                   </a>
                 </li>
-                 <li class="nav-item" role="presentation">
+                <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/Signin">
                     <span class="glyphicon glyphicon-log-in"></span> My Account
                   </a>
                 </li>
-             
                 {/* <li class="nav-item dropdown">
                   <a
                     class="dropdown-toggle nav-link"
