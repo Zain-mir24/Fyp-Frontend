@@ -10,6 +10,7 @@ import Email from "./Email";
 import News from "./LatestNews";
 import Beneficiary from "./Beneficiary";
 import LoanManagement from "./LoanManagement";
+import ViewDonations from "./viewDonations";
 import ChildrenManagment from "./ChildrenManagment";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
@@ -22,7 +23,8 @@ import {
   UserOutlined,
   ExclamationCircleFilled,
   CheckCircleFilled,
-  IdcardOutlined 
+  IdcardOutlined ,
+  MoneyCollectOutlined
 
 } from "@ant-design/icons";
 const { Header, Content, Footer, Sider } = Layout;
@@ -55,6 +57,8 @@ function Body({ history, ...props }) {
       return <LoanManagement />;
     }else if (content === "AdoptChildren") {
       return <ChildrenManagment />;
+    }else if (content === "Donations") {
+      return <ViewDonations />;
     }
   }
 
@@ -101,6 +105,7 @@ function Body({ history, ...props }) {
             >
               Manage Latest News
             </Menu.Item>
+
             <Menu.Item
               key="6"
               icon={<ExclamationCircleFilled />}
@@ -163,6 +168,16 @@ function Body({ history, ...props }) {
               }}
             >
               Adopting Children
+            </Menu.Item>
+
+            <Menu.Item
+              key="13"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Donations");
+              }}
+            >
+              View Donations
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
                        <Menu.Item>
