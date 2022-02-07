@@ -20,21 +20,41 @@ function Headers() {
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
               <ul class="nav navbar-nav navbar-right">
+              <li class="nav-item" role="presentation">
+                  <a class="nav-link" href="/">
+                    Homepage
+                  </a>
+                </li>
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/campaign">
                     Campaigns
                   </a>
                 </li>
-                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/Signin">
-                    <span class="glyphicon glyphicon-log-in"></span> Log in
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" href="/campaign">
+                    About us
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/Signup">
-                    <span class="glyphicon glyphicon-user"></span> Sign up
+                  <a class="nav-link" href="/">
+                    <span class="glyphicon glyphicon-user"></span> Services
+                  </a>
+                </li> 
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" href="/">
+                   Media
+                  </a>
+                </li>  <li class="nav-item" role="presentation">
+                  <a class="nav-link" href="/">
+                   Contact us
                   </a>
                 </li>
+                 <li class="nav-item" role="presentation">
+                  <a class="nav-link" href="/Signin">
+                    <span class="glyphicon glyphicon-log-in"></span> My Account
+                  </a>
+                </li>
+             
                 {/* <li class="nav-item dropdown">
                   <a
                     class="dropdown-toggle nav-link"
