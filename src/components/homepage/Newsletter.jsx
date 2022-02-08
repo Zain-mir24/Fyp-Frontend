@@ -21,10 +21,10 @@ export default function Newsletter() {
     }
   };
   return (
-    <div style={{ backgroundColor: "#007a00" }}>
-      <div class="container" style={{ padding: "60px 0" }}>
+    <div style={{ backgroundColor: "#98FB98",width:"50%", marginLeft:"25%",marginBottom:"30px",borderRadius:"5px" }}>
+      <div class="container" style={{ padding: "60px 0",width:"50%" }}>
         <div style={{ textAlign: "center" }}>
-          <Title style={{ color: "white" }} level={2}>
+          <Title style={{ color: "black" }} level={2}>
             Newsletter SignUp
           </Title>
         </div>
