@@ -41,6 +41,7 @@ function LoanAppeal() {
     formData.append("loanType", LoanType);
     formData.append("file", file);
     formData.append("fileName", fileName);
+    formData.append("isApproved",false);
 
     try {
       const res = await axios.post(process.env.REACT_APP_LOAN_URL, formData);

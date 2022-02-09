@@ -9,24 +9,26 @@ function AppealedLoans() {
   const [Loans, SetLoans] = useState([]);
   useEffect(() => {
     viewData();
+    console.log(Loans)
   }, []);
   const viewData = async () => {
     try {
       const res = await axios({
-        url: "https://damp-stream-39096.herokuapp.com/admin/viewLoanAppeals",
+        url: "http://localhost:9000/admin/viewLoanAppeals",
         method: "GET",
         responseType: "stream",
       });
 
       SetLoans(
-        res.data.appeal.map((i) => ({
+        res.data.map((i) => ({
           key: i._id,
           Cname: i.name,
-          bid: i.bid,
+          bid: i.bid._id,
           amountneeded: i.Loanamount,
           description: i.loandescription,
           loanType: i.loanType,
           file: i.file,
+          isApproved:i.isApproved.toString()
         }))
       );
 
@@ -62,6 +64,7 @@ function AppealedLoans() {
       dataIndex: "loanType",
       key: "loanType",
     },
+    
     {
       title: "Download File",
       dataIndex: "file",
@@ -72,10 +75,19 @@ function AppealedLoans() {
             "https://damp-stream-39096.herokuapp.com/uploads/" + record.file
           }
           download
+       
         >
-          <Button> {record.file}</Button>
+          <Button style={{width:"100%",wordWrap:"break-word",whiteSpace:"normal",height:"100%"}}>
+          
+             {record.file}
+            
+             </Button>
         </a>
       ),
+    },{
+      title: "approval Status",
+      dataIndex: "isApproved",
+      key: "isApproved"
     },
   ];
   return (

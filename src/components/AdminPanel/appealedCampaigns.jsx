@@ -26,6 +26,7 @@ function AppealedCampaigns() {
           amountneeded: i.amountneeded,
           description: i.description,
           file: i.file,
+        
         }))
       );
 
