@@ -25,6 +25,17 @@ export default function Campaign() {
     <div>
       <Header />
       <div className="container">
+        <div>
+          <p>
+            <a style={{ color: "#1B9834" }} href="/">
+              Home
+            </a>{" "}
+            /{" "}
+            <a style={{ color: "#1B9834" }} href="/campaign">
+              Campaigns
+            </a>
+          </p>
+        </div>
         <div className="row">
           {data.map((item) => {
             return (
