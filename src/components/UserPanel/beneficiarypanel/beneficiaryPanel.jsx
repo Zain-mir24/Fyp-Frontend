@@ -53,6 +53,10 @@ function Beneficiarypanel({ history, ...props }) {
             }>
              Home
             </Menu.Item>
+            <Menu.Item key="3" icon={<DesktopOutlined />}
+>
+             Loan status
+            </Menu.Item>
             
             <Menu.Item
               key="9"
