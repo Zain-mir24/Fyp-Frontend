@@ -20,10 +20,10 @@ function ViewDonation() {
 
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/donations");
+      const res = await axios.get("http://localhost:9000/admin/Donations");
 
-      await setData(res);
-      console.log(res, "TESTING");
+      await setData(res.data);
+      console.log(res.data, "TESTING");
     } catch (err) {
       console.log(err);
     }
@@ -70,7 +70,7 @@ function ViewDonation() {
           <h1 className="heading">View Donations</h1>
         </div>
         <div>
-          {data.map((item) => {
+          {/* {data.map((item) => {
             return (
               <div>
                 <h3>{item.campaignname}</h3>
@@ -85,15 +85,15 @@ function ViewDonation() {
                 />
               </div>
             );
-          })}
+          })} */}
           <Table
             columns={columns}
-            dataSource={data.map((item) => ({
-              Name: item.registeredUser.userId.name,
-              Email: item.registeredUser.userId.email,
-              Donation: item.registeredUser.donation,
-              Date: item.registeredUser.userId.createdAt,
-            }))}
+            // dataSource={data.map((item) => ({
+            //   Name: item.registeredUser.userId.name,
+            //   Email: item.registeredUser.userId.email,
+            //   Donation: item.registeredUser.donation,
+            //   Date: item.registeredUser.userId.createdAt,
+            // }))}
           />
         </div>
       </div>

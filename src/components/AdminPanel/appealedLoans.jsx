@@ -23,7 +23,7 @@ function AppealedLoans() {
         res.data.map((i) => ({
           key: i._id,
           Cname: i.name,
-          bid: i.bid._id,
+          bname: i.bid.name,
           amountneeded: i.Loanamount,
           description: i.loandescription,
           loanType: i.loanType,
@@ -39,18 +39,19 @@ function AppealedLoans() {
   };
 
   const columns = [
-   
     {
-      title: "beneficiaryid",
-      dataIndex: "bid",
-      key: "bid",
-      width: "30%",
+      title: "beneficiary name",
+      dataIndex: "bname",
+      key: "bname",
     },
     {
       title: "Loan requested",
       dataIndex: "amountneeded",
       key: "amountneeded",
       width: "30%",
+    },
+    {
+      title: "Credit Card",
     },
     {
       title: "description",

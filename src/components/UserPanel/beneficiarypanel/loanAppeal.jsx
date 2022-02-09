@@ -23,6 +23,7 @@ function LoanAppeal() {
   const [loanamount, setLoan] = useState(0);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
+  const [bankAcc,setbankAcc] =useState(0)
   
   const { Option } = Select;
   const user = useSelector(selectUser);
@@ -42,6 +43,7 @@ function LoanAppeal() {
     formData.append("file", file);
     formData.append("fileName", fileName);
     formData.append("isApproved",false);
+
 
     try {
       const res = await axios.post(process.env.REACT_APP_LOAN_URL, formData);
@@ -132,6 +134,22 @@ function LoanAppeal() {
             <Input
               onChange={(e) => {
                 setLoan(e.target.value);
+              }}
+            
+            />
+          </Col>
+        </Form.Item>
+        <Form.Item
+          name="credit card number"
+          label="credit card number"
+          rules={[
+            { required: true, message: "Please enter 16 digit bank card number" },
+          ]}
+        >
+          <Col span={5}>
+            <Input
+              onChange={(e) => {
+                setbankAcc(e.target.value);
               }}
             
             />
