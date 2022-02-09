@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 export default function CampaignDetails({ history }) {
   const [collection, setCollection] = useState();
+  const [data, setData] = useState([]);
 
   const queryParams = new URLSearchParams(window.location.search);
 
@@ -26,7 +27,9 @@ export default function CampaignDetails({ history }) {
       if (!result) {
         console.log("error fetching data");
       }
-      setCollection(result.data.totalamount);
+      await setCollection(result.data.totalamount);
+      await setData(result.data.registeredUser);
+      console.log(data);
     } catch (e) {
       console.log(e);
     }
@@ -54,22 +57,99 @@ export default function CampaignDetails({ history }) {
 
   useEffect(() => {
     getAmount();
+
     // percentageFormula()
   }, []);
   return (
     <div>
       <Header />
       <div className="container">
-        <Layout>
-          <Layout style={{ backgroundColor: "white" }}>
-            <Content>
-              <h1>{name}</h1>
+        <div className="row">
+          <div className="col-lg-6">
+            <p>
+              <a style={{ color: "#1B9834" }} href="/">
+                Home
+              </a>{" "}
+              /{" "}
+              <a style={{ color: "#1B9834" }} href="/campaign">
+                Campaigns
+              </a>{" "}
+              / {name}
+            </p>
+          </div>
+          <div className="col-lg-6" style={{ textAlign: "right" }}>
+            <button
+              style={{
+                background: "transparent",
+                border: "2px solid green",
+                padding: "5px 10px",
+              }}
+            >
+              Amount To Be Collected: {donation - collection} PKR
+            </button>
+          </div>
+        </div>
+
+        <section style={{ margin: "40px 0" }}>
+          <div className="row">
+            <div className="col-lg-6">
               <Image
                 src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
-                style={{ width: "100%", height: "500px" }}
+                style={{ width: "100%" }}
               />
-              <br />
-              <br />
+            </div>
+            <div className="col-lg-6">
+              <h2>{name}</h2>
+              <p>{description}</p>
+              <Input
+                placeholder="enter donation amount (pkr)"
+                onChange={(e) => {
+                  setAmount(e.target.value);
+                }}
+              />
+              <StripeCheckout
+                stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
+                token={sendPayment}
+                name="Donate to campaign"
+                amount={amount * 100}
+              >
+                <br />
+                <br />
+                <Button
+                  style={{
+                    width: "100%",
+                    backgroundColor: "#1B9834",
+                    color: "white",
+                  }}
+                >
+                  You are donating {amount}
+                </Button>
+              </StripeCheckout>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ margin: "50px 0" }}>
+          <div style={{ textAlign: "center" }}>
+            <h3>Percentage</h3>
+            <Progress
+              strokeColor={"#1B9834"}
+              percent={Math.floor((collection / donation) * 100)}
+            />
+          </div>
+        </section>
+        {/* <Layout>
+          <Layout style={{ backgroundColor: "white" }}>
+            <Content>
+              <div
+                style={{ width: "100%", height: "500px", textAlign: "center" }}
+              >
+                <Image
+                  src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
+                  style={{ width: "100%", height: "500px" }}
+                />
+              </div>
+
               <h3>Description</h3>
               <p>{description}</p>
               <br />
@@ -89,6 +169,7 @@ export default function CampaignDetails({ history }) {
                   percent={(collection / donation) * 100}
                 />
               </Card>
+              <br />
               <Input
                 placeholder="enter donation amount (pkr)"
                 onChange={(e) => {
@@ -101,11 +182,13 @@ export default function CampaignDetails({ history }) {
                 name="Donate to campaign"
                 amount={amount * 100}
               >
-                <Button>You are donating{amount}</Button>
+                <Button type="primary" style={{ width: "100%" }}>
+                  You are donating {amount}
+                </Button>
               </StripeCheckout>
             </Sider>
           </Layout>
-        </Layout>
+        </Layout> */}
       </div>
     </div>
   );
