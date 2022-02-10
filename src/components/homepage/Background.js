@@ -55,7 +55,7 @@ function Background() {
               margin: "10%",
               backgroundColor: "#fe8a01",
               width: "70%",
-              height:"20%"
+              height:"10%"
             }}
           >
             Services

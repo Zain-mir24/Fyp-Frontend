@@ -22,10 +22,10 @@ function Footer() {
         <div className="col-lg-4">
         <div className="footerHeading">Services</div>
             <p className="about">
-                <CheckOutlined style={{color:"#98FB98"}} /> Donation
+                <CheckOutlined style={{color:"#98FB98"}} /> Giving Loans
               </p>
               <p className="about" >
-                <CheckOutlined style={{color:"#98FB98"}}/> Beneficiary
+                <CheckOutlined style={{color:"#98FB98"}}/> Donations to cause  
               </p>
               <p className="about" >
                 <CheckOutlined style={{color:"#98FB98"}}/> Live chat
