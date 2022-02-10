@@ -1,5 +1,23 @@
 .footerDiv{
     text-align: center;
-         height: 250px;
+        
          background-color: #1e1d24;
+}
+.footerHeading{
+    color: #ffffff;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.44em;
+    margin:20px;
+}
+.about{
+    color: #79777c;
+    font-family: "Roboto", Sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.643em
+}
+.about:hover{
+    color:#98FB98
 }
