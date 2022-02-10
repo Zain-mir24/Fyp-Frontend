@@ -70,31 +70,23 @@ function ViewDonation() {
           <h1 className="heading">View Donations</h1>
         </div>
         <div>
-          {/* {data.map((item) => {
+          {data.map((item) => {
             return (
               <div>
-                <h3>{item.campaignname}</h3>
+                <h3>Donations for {item.campaignname}</h3>
                 <Table
                   columns={columns}
-                  dataSource={data.map((item) => ({
-                    Name: item.registeredUser.userId.name,
-                    Email: item.registeredUser.userId.email,
-                    Donation: item.registeredUser.donation,
-                    Date: item.registeredUser.userId.createdAt,
+                  dataSource={item.registeredUser.map((item) => ({
+                    Name: item.userId.name,
+                    Email: item.userId.email,
+                    Donation: item.donation,
+                    Date: item.userId.createdAt,
                   }))}
                 />
               </div>
             );
-          })} */}
-          <Table
-            columns={columns}
-            // dataSource={data.map((item) => ({
-            //   Name: item.registeredUser.userId.name,
-            //   Email: item.registeredUser.userId.email,
-            //   Donation: item.registeredUser.donation,
-            //   Date: item.registeredUser.userId.createdAt,
-            // }))}
-          />
+          })}
+       
         </div>
       </div>
     </div>
