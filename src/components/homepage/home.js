@@ -22,7 +22,6 @@ export default function SignIn() {
       <Card />
       <Donateus />
       <Wedo />
-
       <Background />
       <Newsletter />
       <BackTop />
