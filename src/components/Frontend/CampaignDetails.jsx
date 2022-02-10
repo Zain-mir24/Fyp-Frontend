@@ -27,6 +27,7 @@ export default function CampaignDetails({ history }) {
       if (!result) {
         console.log("error fetching data");
       }
+      
       await setCollection(result.data.totalamount);
       await setData(result.data.registeredUser);
       console.log(data);

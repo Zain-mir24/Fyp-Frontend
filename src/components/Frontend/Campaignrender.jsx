@@ -7,7 +7,7 @@ function Campaignrender(props) {
     <div>
       <article>
         <img
-          style={{ width: "100%", height: "600px", borderRadius: "5px" }}
+          style={{ width: "100%", borderRadius: "5px" }}
           src={"https://damp-stream-39096.herokuapp.com/uploads/" + props.img}
         ></img>
         <div className="camp">
