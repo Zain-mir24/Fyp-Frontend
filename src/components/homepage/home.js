@@ -4,9 +4,9 @@ import LatestNews from "../LatestNews/LatestNews";
 import Card from "./Card";
 import Newsletter from "./Newsletter";
 import SocialIcons from "./SocialIcons";
-import Donateus from "./Donateus";
 import Background from "./Background";
 import Footer from "../Footer/Footer";
+import Whychooseus from "./whychooseus";
 
 import Wedo from "./Wedo";
 import { BackTop } from "antd";
@@ -19,8 +19,7 @@ export default function SignIn() {
       <Header />
       <SocialIcons />
       <LatestNews />
-      <Card />
-      <Donateus />
+      <Whychooseus />
       <Wedo />
       <Background />
       <Newsletter />

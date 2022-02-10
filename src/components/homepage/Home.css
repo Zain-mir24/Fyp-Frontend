@@ -5,6 +5,26 @@
 .whyus {
   text-align: center;
 }
+
+/* WHY CHOOSE US */
+.choose-block {
+  position: relative;
+}
+
+.choose-block i {
+  color: white;
+  font-size: 35px;
+}
+.choose-block p {
+  color: white;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.choose-block div {
+  padding: 20px;
+  background-color: #06c24e;
+}
 /* What we do  */
 .weDomaindiv {
   background-color: #f6f6f6;
