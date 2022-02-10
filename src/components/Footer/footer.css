@@ -11,13 +11,16 @@
     font-weight: 500;
     line-height: 1.44em;
     margin:20px;
+    text-align:left !important;
+ 
 }
 .about{
     color: #79777c;
     font-family: "Roboto", Sans-serif;
     font-size: 14px;
     font-weight: 400;
-    line-height: 1.643em
+    line-height: 1.643em;
+    text-align:left !important;
 }
 .about:hover{
     color:#62be1e
