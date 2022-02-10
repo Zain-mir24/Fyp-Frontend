@@ -7,8 +7,10 @@ import SocialIcons from "./SocialIcons";
 import Donateus from "./Donateus";
 import Background from "./Background";
 import Footer from "../Footer/Footer";
+
+import Wedo from "./Wedo";
 import { BackTop } from "antd";
-import "./fonts.css";
+
 // import Container from '@material-ui/core/Container';
 
 export default function SignIn() {
@@ -19,6 +21,7 @@ export default function SignIn() {
       <LatestNews />
       <Card />
       <Donateus />
+      <Wedo />
       <Background />
       <Newsletter />
       <BackTop />

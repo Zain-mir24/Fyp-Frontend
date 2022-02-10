@@ -1,5 +1,5 @@
 .rowDiv{
-    background-color:  #E0E0E0;
+    
   
 }
 .wholeDiv{
@@ -8,6 +8,22 @@
   
 } 
 .textDiv{
-   font-family: 'Courier New', Courier, monospace;
-    margin:20px   
+    color: #79787f;
+    font-family: "Roboto", Sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.643em; 
+    margin: 10px;
+}
+.miniText{
+    font-family:"Montserrat", Sans-serif;
+    font-weight: 500;
+    line-height: 1.44em;
+    font-size: 18px;
+     margin-left: 15px;
+     padding:2px;
+
+}
+.leftDiv{
+
 }

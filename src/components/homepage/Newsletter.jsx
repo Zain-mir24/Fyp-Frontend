@@ -21,14 +21,14 @@ export default function Newsletter() {
     }
   };
   return (
-    <div style={{ backgroundColor: "#98FB98",width:"50%", marginLeft:"25%",marginBottom:"30px",borderRadius:"5px" }}>
-      <div class="container" style={{ padding: "60px 0",width:"50%" }}>
+    <div style={{ backgroundColor: "#f6f6f6",borderRadius:"5px" }}>
+      <div class="container" >
         <div style={{ textAlign: "center" }}>
           <Title style={{ color: "black" }} level={2}>
             Newsletter SignUp
           </Title>
         </div>
-        <div className="row">
+        <div className="row" style={{width:"50%", marginLeft:"25%",marginBottom:"30px", padding: "60px 0",width:"50%",borderRadius:"5px",backgroundColor:"#98FB98" }}>
           <div className="col-lg-10">
             <Input
               placeholder="input your email"

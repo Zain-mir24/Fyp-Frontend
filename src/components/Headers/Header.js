@@ -58,6 +58,11 @@ function Headers() {
                 </li>
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/campaign">
+                    Take Loan
+                  </a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" href="/campaign">
                     About us
                   </a>
                 </li>
