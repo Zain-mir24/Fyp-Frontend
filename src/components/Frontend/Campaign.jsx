@@ -2,7 +2,8 @@ import { React, useEffect, useState } from "react";
 import Header from "../Headers/Header";
 import { Card } from "antd";
 import axios from "axios";
-import CampaignDetails from "./CampaignDetails";
+import Footer from "../Footer/Footer"
+import Campaignrender from "./Campaignrender";
 const { Meta } = Card;
 
 export default function Campaign() {
@@ -36,11 +37,13 @@ export default function Campaign() {
             </a>
           </p>
         </div>
+        {/* campaign 1 would be here */}
+       
         <div className="row">
           {data.map((item) => {
             return (
               <div
-                className="col-lg-4"
+                className="col-lg-12"
                 onClick={() => {
                   window.location.href =
                     "/CampaignDetail?name=" +
@@ -55,7 +58,9 @@ export default function Campaign() {
                     item._id;
                 }}
               >
-                <Card
+                <Campaignrender name={item.name} description={item.description} img={item.fileName} 
+                donation={item.donation} />
+                {/* <Card
                   hoverable
                   style={{ width: "340px", padding: "30px" }}
                   cover={
@@ -73,12 +78,13 @@ export default function Campaign() {
                     title={item.name}
                     description={item.description.substring(0, 80) + " ..."}
                   />
-                </Card>
+                </Card> */}
               </div>
             );
           })}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
