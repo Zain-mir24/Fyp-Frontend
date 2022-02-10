@@ -1,9 +1,14 @@
-import React from 'react'
-
+import React from "react";
+import Footer from "../Footer/Footer";
+import Header from "../Headers/Header"
 function Loan() {
   return (
-    <div>Loan</div>
-  )
+    <div>
+    <Header />
+      Loan
+      <Footer />
+    </div>
+  );
 }
 
-export default Loan
+export default Loan;

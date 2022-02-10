@@ -51,7 +51,7 @@ function AppealedLoans() {
       width: "30%",
     },
     {
-      title: "Credit Card",
+      title: "Bankaccount number",
     },
     {
       title: "description",
@@ -95,7 +95,7 @@ function AppealedLoans() {
       key: "isApproved",
     },
     {
-      title: "approval Status",
+      title: "approve",
       render: (text, record) => <Button>approve loan</Button>,
     },
   ];
