@@ -1,8 +1,8 @@
 import React from "react";
 import "./background.css";
 import { Table, Button } from "antd";
-
-// 
+import { CheckOutlined } from "@ant-design/icons";
+//
 function Background() {
   return (
     <div className="containerfluid  rowDiv   ">
@@ -10,37 +10,56 @@ function Background() {
         <div
           className="col-lg-6 wholeDiv"
           style={{
-            backgroundImage:` url(${"./Images/home.jpeg"})`  ,
+            backgroundImage: ` url(${"./Images/home.jpeg"})`,
             backgroundSize: "cover",
           }}
         ></div>
         <div className="col-lg-6 wholeDiv">
+          <h1 style={{ textAlign: "center" }}>More Services</h1>
           <p className=" textDiv">
-            is a long established fact that a reader will be distracted by the
-            readable content of a page when look ing at its layou t. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content her e, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page editors now use Lorem Ipsum as their default
-            model text, and a search for 'lorem ipsum' will uncover many web
-            sites still in their infancy. Various versions have evolved over the
-            years, sometimes by accident, sometimes on purpose (injected humour
-            and the like).
-            <p>
-
-            1. and a search for 'lorem ipsum' will uncover many web site
-            <br />
-            2.Various versions have evolved over the years, sometimes by
-            accident, sometimes on purpose
-            <br />
-            3. Various versions have evolved over the years, sometimes by
-            accident, sometimes on purpose (injected humour and the like).
+            Check the whole list of charity services we offer and select what is
+            the appropriate one for you.
           </p>
-        </p>
-        <Button style={{marginLeft:"25%",backgroundColor:"#98FB98",width:"50%"}} >
-          Donate  us 
-        </Button>
-        
+          <div className="row">
+            <div className="col-lg-6">
+              <p className="miniText">
+                <CheckOutlined /> Donation
+              </p>
+              <p className="miniText">
+                <CheckOutlined /> Beneficiary
+              </p>
+              <p className="miniText">
+                <CheckOutlined /> Live chat
+              </p>
+              <p className="miniText">
+                <CheckOutlined /> Track of donation record
+              </p>
+            </div>
+            <div className="col-lg-6">
+              <p className="miniText">
+                <CheckOutlined /> Campaigns
+              </p>
+              <p className="miniText">
+                <CheckOutlined /> Volunteer work
+              </p>
+              <p className="miniText">
+                <CheckOutlined /> Sadqah
+              </p>
+              <p className="miniText">
+                <CheckOutlined /> Interest free Loan
+              </p>
+              </div>
+          </div>
+          <Button
+            style={{
+              margin: "10%",
+              backgroundColor: "#fe8a01",
+              width: "70%",
+              height:"20%"
+            }}
+          >
+            Services
+          </Button>
         </div>
       </div>
     </div>

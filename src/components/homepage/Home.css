@@ -1,7 +1,20 @@
-.Rowimage{
-    width:100%
+.Rowimage {
+  width: 100%;
 }
 
-.whyus{
-    text-align: center;
+.whyus {
+  text-align: center;
+}
+/* What we do  */
+.weDomaindiv {
+  background-color: #f6f6f6;
+  text-align: center;
+  height: 400px;
+}
+.weDoinnerdiv {
+  background-color: #ffffff;
+  margin: 3px;
+}
+.cardStyle{
+    box-shadow: 5px 8px 24px 5px rgba(208, 216, 243, 0.6)
 }
