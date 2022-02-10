@@ -1,3 +1,4 @@
+/* Footer Div */
 .footerDiv{
     text-align: center;
         
@@ -6,7 +7,7 @@
 .footerHeading{
     color: #ffffff;
     font-family: "Montserrat", Sans-serif;
-    font-size: 18px;
+    font-size: 30px;
     font-weight: 500;
     line-height: 1.44em;
     margin:20px;
@@ -19,5 +20,5 @@
     line-height: 1.643em
 }
 .about:hover{
-    color:#98FB98
+    color:#62be1e
 }
