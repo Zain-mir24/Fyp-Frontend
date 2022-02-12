@@ -32,18 +32,16 @@ export default function LatestNews() {
     console.log(`selected ${value}`);
     setAssignCategory(value);
     const res = await axios.get(
-      "https://damp-stream-39096.herokuapp.com/admin/LatestNews/" + value
+      "http://localhost:9000/admin/LatestNews/" + value
     );
     console.log(res.data);
     await setData(res.data);
   }
   const getCategory = async () => {
     try {
-      const res = await axios.get(
-        "https://localhost:9000/admin/sendcategory"
-      );
+      const res = await axios.get("http://localhost:9000/admin/sendcategory");
       await setCategoryData(res.data);
-      console.log(res);
+      console.log(res, "HELOW");
     } catch (e) {
       console.log(e);
     }
@@ -64,11 +62,26 @@ export default function LatestNews() {
                 className="carousel-parent"
                 style={{
                   backgroundImage:
-                    "url('https://damp-stream-39096.herokuapp.com/uploads/" +
-                    item.file +
-                    "')",
+                    "url('http://localhost:9000/uploads/" + item.file + "')",
+                  position: "relative",
+                  textAlign: "center",
                 }}
-              ></div>
+              >
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%,-50%)",
+                  }}
+                >
+                  <h1 style={{ color: "white" }}>
+                    {item.name} <br />
+                    {item.description}
+                  </h1>
+                  <button>Need to Check Services ?</button>
+                </div>
+              </div>
             </div>
           );
         })}

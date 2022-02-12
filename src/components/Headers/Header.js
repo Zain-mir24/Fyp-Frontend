@@ -57,8 +57,8 @@ function Headers() {
                   </div>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/Loanabout">
-                    Take Loan
+                  <a class="nav-link" href="/News">
+                    News
                   </a>
                 </li>
                 <li class="nav-item" role="presentation">

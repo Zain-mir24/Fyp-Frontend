@@ -16,7 +16,7 @@ import Adminsignup from "./components/Signadmin/Adminsignup";
 import AddUser from "./components/UserPanel/AddUser";
 import Addemail from "./components/UserPanel/Addemail";
 import Donation from "./components/DonationPage/Donation";
-import Loan from "./components/Loanpage/Loan"
+import News from "./components/Loanpage/News"
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -39,7 +39,7 @@ function App() {
             <Route path="/Campaign" component={Campaign}></Route>
             <Route path="/CampaignDetail" component={CampaignDetail}></Route>
             <Route path="/userPanel" component={Userpanel}></Route>
-            <Route path="/Loanabout" component={Loan}></Route>
+            <Route path="/News" component={News}></Route>
             <Route path="/changePassword" component={Changepassword}></Route>
             <Route path="/forgotPassword" component={Forgotpassword}></Route>
             <Route path="/donationStripe" component={Donation}>
