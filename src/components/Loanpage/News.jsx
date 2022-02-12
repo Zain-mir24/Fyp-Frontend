@@ -23,8 +23,39 @@ function News() {
       </div>
       <div className="container-fluid">
         <div className="row">
-          <div></div>
-          <div></div>
+          <div className="col-lg-6">
+            <img className="styleImages" src={"./Images/disaster.jpg"}></img>
+          </div>
+          <div className="col-lg-6" style={{ textAlign: "left" }}>
+            <h3>
+              På Vanløsehøj i vanløse, har vi stået for en facaderenovering af
+              både gård og front
+              Our Latest news 1
+            </h3>
+            july 21,2021
+          </div>
+          <div className="col-lg-6">
+            <img className="styleImages" src={"./Images/disaster.jpg"}></img>
+          </div>
+          <div className="col-lg-6" style={{ textAlign: "left" }}>
+            <h3>
+              På Vanløsehøj i vanløse, har vi stået for en facaderenovering af
+              både gård og front
+              Our Latest news 1
+            </h3>
+            july 21,2021
+          </div>
+          <div className="col-lg-6">
+            <img className="styleImages" src={"./Images/disaster.jpg"}></img>
+          </div>
+          <div className="col-lg-6" style={{ textAlign: "left" }}>
+            <h3>
+              På Vanløsehøj i vanløse, har vi stået for en facaderenovering af
+              både gård og front
+              Our Latest news 1
+            </h3>
+             july 21,2021
+          </div>
         </div>
       </div>
 
