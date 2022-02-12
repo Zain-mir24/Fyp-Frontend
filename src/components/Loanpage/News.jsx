@@ -39,9 +39,12 @@ function News() {
           </div>
           <div className="col-lg-6" style={{ textAlign: "left" }}>
             <h3>
+              <a style={{color:"black"}}href="/NewsDetails">
+
               På Vanløsehøj i vanløse, har vi stået for en facaderenovering af
               både gård og front
               Our Latest news 1
+              </a>
             </h3>
             july 21,2021
           </div>
