@@ -31,3 +31,9 @@
 .content{
     text-align: left;
 }
+
+/* Designing news detail page */
+ .mainNewsDiv{
+    height:500px;
+    width:100%;
+ }
