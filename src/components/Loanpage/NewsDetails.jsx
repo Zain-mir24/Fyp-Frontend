@@ -32,7 +32,7 @@ function NewsDetails() {
         <h1>
           News Letter and details
           </h1>
-        <img className="perNewsimage" src={"./Images/Charity.png"}></img>
+        <img className="perNewsimage" src={"./Images/PoorChild.jpg"}></img>
         <p className="textDesign">
         here are many variations of passages of Lorem Ipsum available, 
         but the majority have suffered alteration in some form, 

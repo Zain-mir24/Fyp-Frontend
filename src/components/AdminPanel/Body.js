@@ -12,6 +12,7 @@ import Beneficiary from "./Beneficiary";
 import LoanManagement from "./LoanManagement";
 import ViewDonations from "./viewDonations";
 import ChildrenManagment from "./ChildrenManagment";
+import SubAdmin from "./SubAdmin";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 
@@ -59,6 +60,8 @@ function Body({ history, ...props }) {
       return <ChildrenManagment />;
     }else if (content === "Donations") {
       return <ViewDonations />;
+    }else if (content === "SubAdmin") {
+      return <SubAdmin />;
     }
   }
 
@@ -178,6 +181,15 @@ function Body({ history, ...props }) {
               }}
             >
               View Donations
+            </Menu.Item> 
+            <Menu.Item
+              key="14"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("SubAdmin");
+              }}
+            >
+              SubAdmin Maagment
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
                        <Menu.Item>

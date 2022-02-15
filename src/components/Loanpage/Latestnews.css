@@ -45,13 +45,13 @@
  }
  .textDesign{
      width:50%;
-     text-align: center;
+     text-align: left;
      color: #79787f;
      font-family: "Roboto", Sans-serif;
      font-size: 14px;
      font-weight: 400;
      line-height: 1.643em; 
      margin-left: 25%;
-     justify-content: left;
+     
 
  }

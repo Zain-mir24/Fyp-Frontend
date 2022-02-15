@@ -71,10 +71,36 @@ function Headers() {
                     <span class="glyphicon glyphicon-user"></span> Services
                   </a>
                 </li>
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/">
-                    Media
-                  </a>
+                <li class="nav-item dropdown" role="presentation">
+                  <div class="dropdown show" style={{marginTop:"8px"}}>
+                    <a
+                      class="btn dropdown-toggle"
+                      href="#"
+                      role="button"
+                      id="dropdownMenuLink"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      style={{color:"white"}}
+                    >
+                       Media
+                    </a>
+
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuLink"
+                    >
+                      <a class="dropdown-item" href="#">
+                       News
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        Audit report
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        Gallery
+                      </a>
+                    </div>
+                  </div>
                 </li>{" "}
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/">
