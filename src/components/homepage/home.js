@@ -7,6 +7,8 @@ import SocialIcons from "./SocialIcons";
 import Background from "./Background";
 import Footer from "../Footer/Footer";
 import Whychooseus from "./whychooseus";
+import First from "./first";
+import Second from "./Second";
 
 import Wedo from "./Wedo";
 import { BackTop } from "antd";
@@ -19,8 +21,9 @@ export default function SignIn() {
       <Header />
       <SocialIcons />
       <LatestNews />
-      <Whychooseus />
+      <First />
       <Wedo />
+      <Second />
       <Background />
       <Newsletter />
       <BackTop />
