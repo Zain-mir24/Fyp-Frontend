@@ -5,7 +5,9 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { withRouter } from "react-router";
 import { connect, useDispatch } from "react-redux";
 import {  LOGIN_USER } from "../../store/Actions/userAction";
-
+import axios from "axios";
+const dotenv = require("dotenv");
+dotenv.config({ debug: process.env.DEBUG });
 function Adminlogin({ history, ...props }) {
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
@@ -24,6 +26,37 @@ function Adminlogin({ history, ...props }) {
       alert("Incorrect Email or password");
       history.push("/Adminlogin");
     }
+  };
+  const handlesubmit = async (e) => {
+   
+    await axios
+      .request({
+        baseURL: "http://localhost:9000/admin",
+        url: "/login",
+        method: "post",
+        data: {
+          getEmail,
+          getPassword,
+        },
+      })
+      .then((res) => {
+        var username = res.data.admin.name;
+        var userId = res.data.admin._id;
+        if (res.status == 200) {
+          dispatch(
+            LOGIN_USER({
+              getEmail,
+              getPassword,
+              username,
+               userId,
+            })
+          );
+          history.push("/Administrator");
+        }
+      })
+      .catch((e) => {
+        console.log("our error", e);
+      });
   };
   return (
     <div style={{ textAlign: "center" }}>
@@ -88,7 +121,7 @@ function Adminlogin({ history, ...props }) {
               htmlType="submit"
               className="login-form-button"
               onClick={() => {
-                Check();
+                handlesubmit();
               }}
             >
               Log in
