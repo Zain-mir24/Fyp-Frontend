@@ -15,23 +15,25 @@ const dotenv = require("dotenv");
 dotenv.config({ debug: process.env.DEBUG });
 function SubAdmin() {
   const [name, setName] = useState("");
-  const [getEmail, setEmail] = useState("");
-  const [getPassword, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const handlesubmit = async (e) => {
       try {
       const addsubAdmin = await axios.request({
         baseURL: "http://localhost:9000/",
-        url: "Admin/addsubAdmin",
+        url: "admin/SubAdminadd",
         method: "post",
         data: {
           name,
-          getEmail,
-          getPassword,
+          email,
+          password,
           SubAdmin:true
         },
       });
       if (!addsubAdmin) {
         console.log("There was an error");
+      }else{
+          alert(`A new sub admin Created`)
       }
     } catch (e) {
       console.log(e);
