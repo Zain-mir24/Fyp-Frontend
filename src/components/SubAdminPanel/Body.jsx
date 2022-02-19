@@ -64,16 +64,18 @@ function Body({ history, ...props }) {
 
   return (
     <div className="row">
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout  style={{ minHeight: "100vh",backgroundColor:"green" }}>
         <Sider trigger={null}>
           <div className="logo" />
-          <Menu className="mylayout"  defaultSelectedKeys={["1"]} mode="inline">
+          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
-             
+              onClick={(e) => {
+                setContent("home");
+              }}
             >
-              SubAdmin panel
+              Home
             </Menu.Item>
 
             <Menu.Item
