@@ -83,8 +83,7 @@ function ChildrenManagment() {
 
   useEffect(() => {
     getData();
-    console.log(childrenData, "HELL");
-  }, []);
+    }, []);
 
   const columns = [
     {
