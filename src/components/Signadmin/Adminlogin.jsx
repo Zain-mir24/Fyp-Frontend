@@ -40,17 +40,23 @@ function Adminlogin({ history, ...props }) {
         },
       })
       .then((res) => {
+        console.log(res)
         var username = res.data.admin.name;
         var userId = res.data.admin._id;
+        var subAdmin=res.data.admin.subAdmin
         if (res.status == 200) {
           dispatch(
             LOGIN_USER({
+              subAdmin,
               getEmail,
               getPassword,
               username,
                userId,
             })
           );
+          subAdmin==true? 
+          history.push("/SubAdministrator")
+          :
           history.push("/Administrator");
         }
       })

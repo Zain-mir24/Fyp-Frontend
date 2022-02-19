@@ -18,9 +18,9 @@ function SubAdmin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Location, setlocation] = useState("");
-  const [subAdmin,setSubAdmin]=useState("")
+  const [subbAdmin,setSubAdmin]=useState("")
   const [ID, setId] = useState("");
-
+   var subAdmin=true
   
   useEffect(() => {
     viewsubAdmin();
@@ -35,13 +35,14 @@ function SubAdmin() {
           name,
           email,
           password,
+          subAdmin,
           Location,
-          SubAdmin: true,
         },
       });
       if (!addsubAdmin) {
         console.log("There was an error");
       } else {
+        console.log(addsubAdmin)
         alert(`A new sub admin Created`);
       }
     } catch (e) {
@@ -95,7 +96,7 @@ function SubAdmin() {
       console.log(err);
     }
   };
-  const value=subAdmin==0?null:subAdmin.map((item)=>({
+  const value=subbAdmin==0?null:subbAdmin.map((item)=>({
     _id:item._id,  
     name:item.name,
     email:item.email,
@@ -348,7 +349,7 @@ function SubAdmin() {
       </div>
       <div className="col-lg-12">
         <Table
-          title={() => " Delete campaigns"}
+          title={() => " Deleting subAdmins"}
           columns={columns1}
           dataSource={value}
         />
