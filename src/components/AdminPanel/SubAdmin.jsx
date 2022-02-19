@@ -72,7 +72,19 @@ function SubAdmin() {
       console.log(e);
     }
   };
-  const deletesubAdmin = async(e)=>{};
+  const deletesubAdmin = async(id)=>{
+    try {
+      const res = await axios.delete(
+       "http://localhost:9000/admin/deletesubAdmin/" + id
+      );
+      if (!res) {
+        throw new Error("The campaign doesnt exist");
+      }
+      alert(`SubAdmin has been deleted`);
+    } catch (e) {
+      console.log(e);
+    } 
+  };
   const viewsubAdmin = async( )=>{
     try {
       const res = await axios.get("http://localhost:9000/admin/viewsubAdmin");
@@ -114,6 +126,43 @@ function SubAdmin() {
       key: "Location",
     },
 
+   
+  ]; const columns1 = [
+    {
+      title: "id",
+      dataIndex: "_id",
+      key: "_id",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "User Name",
+      dataIndex: "name",
+      key: "name",
+      render: (text) => <a>{text}</a>,
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Location",
+      dataIndex: "Location",
+      key: "Location",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => (
+        <button
+          onClick={() => {
+            deletesubAdmin(record._id);
+          }}
+        >
+          Delete
+        </button>
+      ),
+    },
    
   ];
   return (
@@ -296,6 +345,13 @@ function SubAdmin() {
       </div>
       <div className="col-lg-12">
         <Table columns={columns} dataSource={value}title={() => " Viewing subAdmins"} />
+      </div>
+      <div className="col-lg-12">
+        <Table
+          title={() => " Delete campaigns"}
+          columns={columns1}
+          dataSource={value}
+        />
       </div>
     </div>
   );
