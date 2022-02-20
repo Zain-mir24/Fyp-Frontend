@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { selectUser } from "../../store/reducers/User";
+import { useSelector } from "react-redux";
+
 const axios = require("axios");
 function Foorm() {
   const [camp, setCamp] = useState([]);
@@ -10,7 +13,8 @@ function Foorm() {
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [ID, setId] = useState("");
-
+  const user = useSelector(selectUser);
+  console.log(user.verifToken)
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
@@ -28,7 +32,9 @@ function Foorm() {
 
     try {
       const res = await axios.post(
-        "http://localhost:9000/admin/addCampaign",
+        "http://localhost:9000/admin/addCampaign",{
+          headers: {"Authorization" : `Bearer ${user.verifToken}`} 
+        },
         formData
       );
       if (!res) {
@@ -64,7 +70,9 @@ function Foorm() {
   const deleteCamp = async (id) => {
     try {
       const res = await axios.delete(
-        "http://localhost:9000/admin/Deletecampaign/" + id
+        "http://localhost:9000/admin/Deletecampaign/" + id,{
+          headers: {"Authorization" : `Bearer ${user.verifToken}`} 
+        },
       );
       console.log(res, "Response from the backend");
       if (!res) {
@@ -86,7 +94,9 @@ function Foorm() {
     console.log(formData, "This is the form at the frontend");
     try {
       const res = await axios.patch(
-        "https://damp-stream-39096.herokuapp.com/admin/updateCampaign/" + ID,
+        "https://damp-stream-39096.herokuapp.com/admin/updateCampaign/" + ID,{
+          headers: {"Authorization" : `Bearer ${user.verifToken}`} 
+        },
         formData
       );
       if (!res) {

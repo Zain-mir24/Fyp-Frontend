@@ -13,20 +13,20 @@ function Adminlogin({ history, ...props }) {
   const [getPassword, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const Check = () => {
-    if (getEmail == "zainmir2000j@gmail.com" && getPassword == "zainzain12") {
-      dispatch(
-        LOGIN_USER({
-          getEmail,
-          getPassword,
-        })
-      );
-      history.push("/Administrator");
-    } else {
-      alert("Incorrect Email or password");
-      history.push("/Adminlogin");
-    }
-  };
+  // const Check = () => {
+  //   if (getEmail == "zainmir2000j@gmail.com" && getPassword == "zainzain12") {
+  //     dispatch(
+  //       LOGIN_USER({
+  //         getEmail,
+  //         getPassword,
+  //       })
+  //     );
+  //     history.push("/Administrator");
+  //   } else {
+  //     alert("Incorrect Email or password");
+  //     history.push("/Adminlogin");
+  //   }
+  // };
   const handlesubmit = async (e) => {
    
     await axios
@@ -44,9 +44,12 @@ function Adminlogin({ history, ...props }) {
         var username = res.data.admin.name;
         var userId = res.data.admin._id;
         var subAdmin=res.data.admin.subAdmin
+        var verifToken=res.data.token
+      console.log(verifToken)
         if (res.status == 200) {
           dispatch(
             LOGIN_USER({
+              verifToken,
               subAdmin,
               getEmail,
               getPassword,
