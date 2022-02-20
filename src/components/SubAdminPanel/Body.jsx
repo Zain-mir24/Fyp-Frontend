@@ -14,6 +14,7 @@ import ViewDonations from "../AdminPanel/viewDonations";
 import ChildrenManagment from "../AdminPanel/ChildrenManagment";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
+import { selectUser } from "../../store/reducers/User";
 import "./Body.css"
 import {
   DesktopOutlined,
@@ -33,6 +34,7 @@ const { SubMenu } = Menu;
 function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const logout = async (e) => {
     e.preventDefault();
@@ -71,11 +73,9 @@ function Body({ history, ...props }) {
             <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
-              onClick={(e) => {
-                setContent("home");
-              }}
+           
             >
-              Home
+            SubAdmin Panel
             </Menu.Item>
 
             <Menu.Item

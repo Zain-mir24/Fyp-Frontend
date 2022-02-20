@@ -15,6 +15,8 @@ import ChildrenManagment from "./ChildrenManagment";
 import SubAdmin from "./SubAdmin";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
+import Header1 from ".././SubAdminPanel/Header1"
+import { selectUser } from "../../store/reducers/User";
 
 import {
   DesktopOutlined,
@@ -34,7 +36,7 @@ const { SubMenu } = Menu;
 function Body({ history, ...props }) {
   const [content, setContent] = useState("Dashboard");
   const dispatch = useDispatch();
-
+  const user = useSelector(selectUser);
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
@@ -67,6 +69,7 @@ function Body({ history, ...props }) {
 
   return (
     <div className="row">
+      <Header1 name={user.username}/>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider trigger={null}>
           <div className="logo" />
@@ -78,7 +81,7 @@ function Body({ history, ...props }) {
                 setContent("home");
               }}
             >
-              Home
+              Super Admin panel
             </Menu.Item>
 
             <Menu.Item
