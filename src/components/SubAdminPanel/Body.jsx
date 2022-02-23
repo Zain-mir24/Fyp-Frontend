@@ -180,6 +180,15 @@ function Body({ history, ...props }) {
               View Donations
             </Menu.Item> 
         
+            <Menu.Item
+              key="13"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Donations");
+              }}
+            >
+              Campaign Report
+            </Menu.Item> 
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
                        <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>

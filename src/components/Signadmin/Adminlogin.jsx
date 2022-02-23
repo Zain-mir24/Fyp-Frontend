@@ -12,23 +12,7 @@ function Adminlogin({ history, ...props }) {
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const dispatch = useDispatch();
-
-  // const Check = () => {
-  //   if (getEmail == "zainmir2000j@gmail.com" && getPassword == "zainzain12") {
-  //     dispatch(
-  //       LOGIN_USER({
-  //         getEmail,
-  //         getPassword,
-  //       })
-  //     );
-  //     history.push("/Administrator");
-  //   } else {
-  //     alert("Incorrect Email or password");
-  //     history.push("/Adminlogin");
-  //   }
-  // };
   const handlesubmit = async (e) => {
-   
     await axios
       .request({
         baseURL: "http://localhost:9000/admin",
@@ -64,6 +48,7 @@ function Adminlogin({ history, ...props }) {
         }
       })
       .catch((e) => {
+        alert(`Incorrect credentials`)
         console.log("our error", e);
       });
   };

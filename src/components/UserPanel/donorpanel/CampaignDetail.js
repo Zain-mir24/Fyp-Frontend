@@ -66,7 +66,7 @@ function CampaignDetail(props) {
               <Content>
                 <h1>{name}</h1>
                 <img
-                  src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
+                  src={"http://localhost:9000/uploads/" + props.img}
                 />
 
                 {/* <Image

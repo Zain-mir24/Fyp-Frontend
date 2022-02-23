@@ -91,15 +91,17 @@ function DonorPanel({ history, ...props }) {
         <Layout className="site-layout">
           
           <Content style={{ margin: "0 16px" }}>
-            <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>Donor</Breadcrumb.Item>
-              <Breadcrumb.Item>{User.username}</Breadcrumb.Item>
-            </Breadcrumb>
+         
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              {content == "" ? <div>{User.username} is a user</div> : null}
+              {content == "" ? <div>
+                <h1>
+
+                {User.username} is a donor of Global Reach
+                </h1>
+                </div> : null}
               {content == "campaign" ? <Campaigndonation /> : null}
               {content == "Chat" ? <Chat /> : null}
               {content == "Orphan" ? <Orphan /> : null}

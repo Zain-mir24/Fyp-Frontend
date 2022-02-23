@@ -14,7 +14,7 @@ function Foorm() {
   const [fileName, setFileName] = useState("");
   const [ID, setId] = useState("");
   const user = useSelector(selectUser);
-  console.log(user.verifToken)
+  console.log(user.verifToken);
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
@@ -32,10 +32,11 @@ function Foorm() {
 
     try {
       const res = await axios.post(
-        "http://localhost:9000/admin/addCampaign",{
-          headers: {"Authorization" : `Bearer ${user.verifToken}`} 
-        },
-        formData
+        "http://localhost:9000/admin/addCampaign",
+         formData ,
+        {
+          headers: { Authorization: `Bearer ${user.verifToken}` },
+        }
       );
       if (!res) {
         return console.log("couldnt add");
@@ -70,9 +71,10 @@ function Foorm() {
   const deleteCamp = async (id) => {
     try {
       const res = await axios.delete(
-        "http://localhost:9000/admin/Deletecampaign/" + id,{
-          headers: {"Authorization" : `Bearer ${user.verifToken}`} 
-        },
+        "http://localhost:9000/admin/Deletecampaign/" + id,
+        {
+          headers: { Authorization: `Bearer ${user.verifToken}` },
+        }
       );
       console.log(res, "Response from the backend");
       if (!res) {
@@ -94,8 +96,9 @@ function Foorm() {
     console.log(formData, "This is the form at the frontend");
     try {
       const res = await axios.patch(
-        "https://damp-stream-39096.herokuapp.com/admin/updateCampaign/" + ID,{
-          headers: {"Authorization" : `Bearer ${user.verifToken}`} 
+        "https://damp-stream-39096.herokuapp.com/admin/updateCampaign/" + ID,
+        {
+          headers: { Authorization: `Bearer ${user.verifToken}` },
         },
         formData
       );

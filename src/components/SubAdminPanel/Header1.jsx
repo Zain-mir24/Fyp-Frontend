@@ -7,7 +7,7 @@ function Header1(props) {
       <div className="col-lg-6  leftHeading">Global reach</div>
       <div className="col-lg-6">
         <div className="  rightHeading">
-          {props.name} <img className="rectangle" src={"./myimage.jpg"} />
+          user {props.name} 
         </div>
       </div>
     </div>
