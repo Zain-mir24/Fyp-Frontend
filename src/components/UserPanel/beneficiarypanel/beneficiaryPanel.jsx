@@ -32,32 +32,32 @@ function Beneficiarypanel({ history, ...props }) {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
   };
- 
+
 
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider trigger ={null}>
+        <Sider trigger={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline" >
-            <Menu.Item key="1" icon={<UserOutlined />} onClick={()=>{
+            <Menu.Item key="1" icon={<UserOutlined />} onClick={() => {
               setContent("")
             }}>
               {user.username}
             </Menu.Item>
             <Menu.Item key="2" icon={<DesktopOutlined />}
-            onClick={
-              (e)=>{
-                setContent("home")
-              }
-            }>
-             Home
+              onClick={
+                (e) => {
+                  setContent("home")
+                }
+              }>
+              Home
             </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}
->
-             Loan status
+            >
+              Loan status
             </Menu.Item>
-            
+
             <Menu.Item
               key="9"
               icon={<ExclamationCircleFilled />}
@@ -67,7 +67,7 @@ function Beneficiarypanel({ history, ...props }) {
             >
               Appeal for campaign
             </Menu.Item>
-            <Menu.Item key="10"    icon={<ExclamationCircleFilled />} onClick={()=>{
+            <Menu.Item key="10" icon={<ExclamationCircleFilled />} onClick={() => {
               setContent("loan")
             }}>
               Appeal for loan
@@ -78,8 +78,8 @@ function Beneficiarypanel({ history, ...props }) {
               Approved campaigns
             </Menu.Item> */}
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
-            <Menu.Item>
-               <Button >My profile</Button>
+              <Menu.Item>
+                <Button >My profile</Button>
               </Menu.Item>
               <Menu.Item key="5">
                 <Button
@@ -95,14 +95,14 @@ function Beneficiarypanel({ history, ...props }) {
               </Menu.Item>
             </SubMenu>
           </Menu>
-          
+
         </Sider>
         <Layout className="site-layout" >
-          <Header class=" realHeader" style={{ padding: 0  }} />
-           
-          <Content style={{ margin: "0 16px",color:"green" }}>
+          <Header class=" realHeader" style={{ padding: 0 }} />
+
+          <Content style={{ margin: "0 16px", color: "green" }}>
             <h1>Global Reach </h1>
-            
+
             <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>Beneficiary</Breadcrumb.Item>
               <Breadcrumb.Item>{user.username}</Breadcrumb.Item>
@@ -115,12 +115,12 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "loan" ? <LoanAppeal /> : null}
               {content == "home" ? <HomePanel /> : null}
               {content == "Approve" ? <Approvecampaigns /> : null}
-              
+
             </div>
-           
+
           </Content>
 
-     
+
         </Layout>
       </Layout>
     </div>
@@ -128,7 +128,6 @@ function Beneficiarypanel({ history, ...props }) {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
-
 export default withRouter(connect(mapStateToProps)(Beneficiarypanel));

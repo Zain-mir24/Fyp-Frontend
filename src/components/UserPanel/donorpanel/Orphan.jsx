@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form } from "antd";
 import axios from "axios";
+import AppointmentApp from "./AppointmentApp";
 export default function Orphan() {
-   const [Maindata, setMaindata] = useState();
+  const [Content, setContent] = useState("");
+
+  const [Maindata, setMaindata] = useState();
   const renderChildrenData = async () => {
     await axios
       .request({
@@ -31,11 +34,11 @@ export default function Orphan() {
     {
       title: "Picture",
       dataIndex: "fileName",
-      key:"fileName",
+      key: "fileName",
       render: (text, record) => {
         return (
           <div>
-            <img src={"http://localhost:9000/uploads/" + record} style={{ height: '20%',width:'100%' }} />
+            <img src={"http://localhost:9000/uploads/" + record} style={{ height: '20%', width: '100%' }} />
           </div>
         );
       },
@@ -60,17 +63,20 @@ export default function Orphan() {
     {
       title: "Action",
       key: "action",
-      render: (text, record) => <button>Adopt</button>,
+      render: (text, record) => <button onClick={() => {
+        setContent("vieworphan")
+      }}>Adopt</button>,
     },
   ];
   return (
     <div>
       <h1>Childs up for adoption</h1>
-      <Table
+      {Content == "vieworphan" ? <AppointmentApp /> : <Table
         title={() => "Children up for adoption"}
         dataSource={Maindata}
         columns={columns}
-      />
+      />}
+
     </div>
   );
 }

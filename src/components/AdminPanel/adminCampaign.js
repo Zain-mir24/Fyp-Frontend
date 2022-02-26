@@ -14,13 +14,12 @@ function Foorm() {
   const [fileName, setFileName] = useState("");
   const [ID, setId] = useState("");
   const user = useSelector(selectUser);
-  console.log(user.verifToken);
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
   useEffect(() => {
-    viewCamp();
+       viewCamp();
   }, []);
   const postData = async () => {
     const formData = new FormData();
@@ -52,8 +51,7 @@ function Foorm() {
       const res = await axios.get(
         "https://damp-stream-39096.herokuapp.com/admin/viewCampaigns"
       );
-      console.log(res);
-      setCamp(
+           setCamp(
         res.data.map((i) => ({
           _id: i._id,
           name: i.name,
@@ -62,7 +60,7 @@ function Foorm() {
           file: i.fileName,
         }))
       );
-      console.log(res);
+     
     } catch (e) {
       console.log(e);
     }

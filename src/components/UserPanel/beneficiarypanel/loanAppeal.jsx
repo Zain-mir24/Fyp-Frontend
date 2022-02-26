@@ -23,8 +23,8 @@ function LoanAppeal() {
   const [loanamount, setLoan] = useState(0);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [bankAcc,setbankAcc] =useState(0)
-  
+  const [bankAcc, setbankAcc] = useState(0)
+
   const { Option } = Select;
   const user = useSelector(selectUser);
   const saveFile = (e) => {
@@ -33,7 +33,7 @@ function LoanAppeal() {
   };
 
   const getData = async () => {
-   console.log(loanamount)
+    console.log(loanamount)
     const formData = new FormData();
     formData.append("bid", user.userId);
     formData.append("name", user.username);
@@ -42,7 +42,7 @@ function LoanAppeal() {
     formData.append("loanType", LoanType);
     formData.append("file", file);
     formData.append("fileName", fileName);
-    formData.append("isApproved",false);
+    formData.append("isApproved", false);
 
 
     try {
@@ -135,7 +135,7 @@ function LoanAppeal() {
               onChange={(e) => {
                 setLoan(e.target.value);
               }}
-            
+
             />
           </Col>
         </Form.Item>
@@ -151,7 +151,7 @@ function LoanAppeal() {
               onChange={(e) => {
                 setbankAcc(e.target.value);
               }}
-            
+
             />
           </Col>
         </Form.Item>
@@ -166,7 +166,7 @@ function LoanAppeal() {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(LoanAppeal));

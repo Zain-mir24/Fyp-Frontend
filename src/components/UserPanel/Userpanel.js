@@ -28,7 +28,7 @@ function Userpanel({ history, ...props }) {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.myuser,
 });
 
 export default withRouter(connect(mapStateToProps, { LOGOUT_USER })(Userpanel));

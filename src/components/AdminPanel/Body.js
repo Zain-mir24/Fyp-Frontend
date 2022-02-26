@@ -26,7 +26,7 @@ import {
   UserOutlined,
   ExclamationCircleFilled,
   CheckCircleFilled,
-  IdcardOutlined ,
+  IdcardOutlined,
   MoneyCollectOutlined
 
 } from "@ant-design/icons";
@@ -34,9 +34,11 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 function Body({ history, ...props }) {
+
   const [content, setContent] = useState("Dashboard");
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
+  console.log(user.userId)
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
@@ -56,20 +58,20 @@ function Body({ history, ...props }) {
       return <Beneficiary />;
     } else if (content === "appealLoan") {
       return <AppealedLoan />;
-    }else if (content === "LoanManagment") {
+    } else if (content === "LoanManagment") {
       return <LoanManagement />;
-    }else if (content === "AdoptChildren") {
+    } else if (content === "AdoptChildren") {
       return <ChildrenManagment />;
-    }else if (content === "Donations") {
+    } else if (content === "Donations") {
       return <ViewDonations />;
-    }else if (content === "SubAdmin") {
+    } else if (content === "SubAdmin") {
       return <SubAdmin />;
     }
   }
 
   return (
     <div className="row">
-      <Header1 name={user.username}/>
+      <Header1 name={user.username} />
       <Layout style={{ minHeight: "100vh" }}>
         <Sider trigger={null}>
           <div className="logo" />
@@ -157,7 +159,7 @@ function Body({ history, ...props }) {
             >
               Manage audit
             </Menu.Item>
-             <Menu.Item
+            <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}
               onClick={() => {
@@ -184,7 +186,7 @@ function Body({ history, ...props }) {
               }}
             >
               View Donations
-            </Menu.Item> 
+            </Menu.Item>
             <Menu.Item
               key="14"
               icon={<MoneyCollectOutlined />}
@@ -195,7 +197,7 @@ function Body({ history, ...props }) {
               SubAdmin Maagment
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
-                       <Menu.Item>
+              <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
@@ -226,7 +228,7 @@ const styles = {
   },
 };
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(Body));

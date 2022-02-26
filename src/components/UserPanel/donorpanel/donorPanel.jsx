@@ -13,6 +13,7 @@ import Campaigndonation from "./Campaigndonation";
 import Chat from "./Chat";
 import Orphan from "./Orphan";
 
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 function DonorPanel({ history, ...props }) {
@@ -89,9 +90,9 @@ function DonorPanel({ history, ...props }) {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          
+
           <Content style={{ margin: "0 16px" }}>
-         
+
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
@@ -99,9 +100,9 @@ function DonorPanel({ history, ...props }) {
               {content == "" ? <div>
                 <h1>
 
-                {User.username} is a donor of Global Reach
+                  {User.username} is a donor of Global Reach
                 </h1>
-                </div> : null}
+              </div> : null}
               {content == "campaign" ? <Campaigndonation /> : null}
               {content == "Chat" ? <Chat /> : null}
               {content == "Orphan" ? <Orphan /> : null}
@@ -114,7 +115,7 @@ function DonorPanel({ history, ...props }) {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(DonorPanel));

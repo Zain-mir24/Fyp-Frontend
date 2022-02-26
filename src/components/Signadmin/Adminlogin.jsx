@@ -1,10 +1,10 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "antd/dist/antd.css";
-import { Form, Input, Button,Row,Col } from "antd";
+import { Form, Input, Button, Row, Col } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { withRouter } from "react-router";
 import { connect, useDispatch } from "react-redux";
-import {  LOGIN_USER } from "../../store/Actions/userAction";
+import { LOGIN_USER } from "../../store/Actions/userAction";
 import axios from "axios";
 const dotenv = require("dotenv");
 dotenv.config({ debug: process.env.DEBUG });
@@ -27,9 +27,9 @@ function Adminlogin({ history, ...props }) {
         console.log(res)
         var username = res.data.admin.name;
         var userId = res.data.admin._id;
-        var subAdmin=res.data.admin.subAdmin
-        var verifToken=res.data.token
-      console.log(verifToken)
+        var subAdmin = res.data.admin.subAdmin
+        var verifToken = res.data.token
+        console.log(verifToken)
         if (res.status == 200) {
           dispatch(
             LOGIN_USER({
@@ -38,13 +38,13 @@ function Adminlogin({ history, ...props }) {
               getEmail,
               getPassword,
               username,
-               userId,
+              userId,
             })
           );
-          subAdmin==true? 
-          history.push("/SubAdministrator")
-          :
-          history.push("/Administrator");
+          subAdmin == true ?
+            history.push("/SubAdministrator")
+            :
+            history.push("/Administrator");
         }
       })
       .catch((e) => {
@@ -64,7 +64,7 @@ function Adminlogin({ history, ...props }) {
           initialValues={{
             remember: true,
           }}
-         
+
         >
           <Form.Item
             name="username"
@@ -81,7 +81,7 @@ function Adminlogin({ history, ...props }) {
                 message: "Please input your E-mail!",
               },
             ]}
-            
+
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -99,7 +99,7 @@ function Adminlogin({ history, ...props }) {
                 message: "Please input your Password!",
               },
             ]}
-         
+
           >
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
@@ -107,7 +107,7 @@ function Adminlogin({ history, ...props }) {
               placeholder="Password"
             />
           </Form.Item>
-          
+
 
           <Form.Item>
             <Button
@@ -127,7 +127,7 @@ function Adminlogin({ history, ...props }) {
   );
 }
 const mapStateToProps = (state) => ({
-  users: state.user.myuser,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps, { LOGIN_USER })(Adminlogin));

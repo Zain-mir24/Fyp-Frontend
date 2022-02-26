@@ -7,6 +7,7 @@ import Body from "./Body";
 
 function Adminn({ history, ...props }) {
   const user = useSelector(selectUser);
+
   return (
     <div>
       {user ? (
@@ -18,7 +19,7 @@ function Adminn({ history, ...props }) {
   );
 }
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(Adminn));

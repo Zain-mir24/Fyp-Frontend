@@ -30,8 +30,8 @@ function Adminsignup({ history, ...props }) {
   return (
     <div>
       <p style={{ textAlign: "center" }}>
-        <UserOutlined className="site-form-item-icon" /> Global reach 
-      </p> 
+        <UserOutlined className="site-form-item-icon" /> Global reach
+      </p>
       <p style={{ textAlign: "center" }}>
         <UserOutlined className="site-form-item-icon" />  Admin Signup
       </p>
@@ -44,7 +44,7 @@ function Adminsignup({ history, ...props }) {
       >
         <Form.Item
           name="username"
-          onChange={(e)=>{setname(e.target.value)}}
+          onChange={(e) => { setname(e.target.value) }}
           rules={[
             {
               required: true,
@@ -59,7 +59,7 @@ function Adminsignup({ history, ...props }) {
         </Form.Item>{" "}
         <Form.Item
           name="Email"
-          onChange={(e)=>{setEmail(e.target.value)}}
+          onChange={(e) => { setEmail(e.target.value) }}
 
           rules={[
             {
@@ -75,7 +75,7 @@ function Adminsignup({ history, ...props }) {
         </Form.Item>
         <Form.Item
           name="password"
-          onChange={(e)=>{setPassword(e.target.value)}}
+          onChange={(e) => { setPassword(e.target.value) }}
 
           rules={[
             {
@@ -114,7 +114,7 @@ function Adminsignup({ history, ...props }) {
   );
 }
 const mapStateToProps = (state) => ({
-  users: state.user.users,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps, { ADD_USER })(Adminsignup));
