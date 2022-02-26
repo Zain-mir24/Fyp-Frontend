@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { TimePicker } from 'antd';
+import { TimePicker, DatePicker } from 'antd';
 function AppointmentApp() {
 
     return (
         <div>
-            <p> ApointmentApp </p>
+            <DatePicker />
+            <TimePicker use12Hours format="h:mm:ss A" />
         </div>
     );
 
