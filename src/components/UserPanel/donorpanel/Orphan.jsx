@@ -4,6 +4,8 @@ import axios from "axios";
 import AppointmentApp from "./AppointmentApp";
 export default function Orphan() {
   const [Content, setContent] = useState("");
+  const [name, setName] = useState("")
+  const [childId, setId] = useState("")
 
   const [Maindata, setMaindata] = useState();
   const renderChildrenData = async () => {
@@ -17,6 +19,7 @@ export default function Orphan() {
         console.log(res.data)
         setMaindata(
           res.data.map((i) => ({
+            _id: i._id,
             name: i.name,
             fileName: i.fileName,
             gender: i.gender,
@@ -64,14 +67,16 @@ export default function Orphan() {
       title: "Action",
       key: "action",
       render: (text, record) => <button onClick={() => {
+        setId(text._id)
+        setName(text.name)
         setContent("vieworphan")
       }}>Adopt</button>,
     },
   ];
   return (
     <div>
-      <h1>Childs up for adoption</h1>
-      {Content == "vieworphan" ? <AppointmentApp /> : <Table
+      <h1>Children up for adoption</h1>
+      {Content == "vieworphan" ? <AppointmentApp name={name} id={childId} /> : <Table
         title={() => "Children up for adoption"}
         dataSource={Maindata}
         columns={columns}
