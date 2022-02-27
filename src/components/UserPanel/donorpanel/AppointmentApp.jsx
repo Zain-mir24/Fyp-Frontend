@@ -8,18 +8,43 @@ import { selectUser } from "../../../store/reducers/User";
 
 function AppointmentApp(props) {
     const user = useSelector(selectUser);
+    const [PN, setPN] = useState("")
+    const [DDate, setDate] = useState()
+    const [time, setTime] = useState("")
 
-    console.log(props.id)
+    console.log(time)
+
     const ScheduleMeeting = async () => {
-        await axios.request({
-            baseURL: "http://localhost:9000/User",
-            url: "/login",
-            method: "post",
-            data: {
+        try {
+            await axios.request({
+                baseURL: "http://localhost:9000/User",
+                url: "/appointmentCreate",
+                method: "post",
+                data: {
+                    name: user.username,
+                    email: user.getEmail,
+                    PhoneNumber: PN,
+                    SlotTime: time,
+                    SlotDate: DDate,
+                    childId: props.id
+                },
+            })
+            console.log("Meeting Scheduled")
+        } catch (e) {
+            console.log(e)
+        }
 
-            },
-        })
     }
+    function onChange(date, dateString) {
+        console.log(dateString);
+        setDate(dateString)
+
+    }
+    function ontimeChange(time, timeString) {
+        console.log(timeString);
+        setTime(timeString)
+    }
+
 
     return (
         <div className="row">
@@ -28,18 +53,23 @@ function AppointmentApp(props) {
                     Adoption meeting for {props.name}
                 </h3>
                 <div>
-                    <DatePicker />
-                    <TimePicker use12Hours format="h:mm:ss A" />
+                    <DatePicker onChange={onChange} />
+                    <TimePicker use12Hours format="h:mm:ss A"
+                        onChange={ontimeChange} />
                 </div>
 
                 <label>
                     <h4>Enter your phone number</h4>
-                    <MaskedInput mask="(+92) 111-1111111" />
+                    <MaskedInput mask="(+92) 111-1111111" onChange={(e) => {
+                        setPN(e.target.value)
+                    }} />
                 </label>
 
             </div>
             <div className="col-lg-12">
-                <Button>
+                <Button onClick={() => {
+                    ScheduleMeeting()
+                }}>
                     Schedule a meeting
                 </Button>
             </div>
