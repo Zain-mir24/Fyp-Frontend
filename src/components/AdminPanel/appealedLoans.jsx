@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "antd";
+import { Select } from "antd";
+
+const { Option } = Select;
+const defaultStatus = ["Approve", "Reject", "Pending"];
 
 const axios = require("axios");
 
@@ -7,6 +11,7 @@ require("dotenv").config({ debug: process.env.DEBUG });
 
 function AppealedLoans() {
   const [Loans, SetLoans] = useState([]);
+  const [id, setID] = useState();
   useEffect(() => {
     viewData();
     console.log(Loans);
@@ -21,6 +26,7 @@ function AppealedLoans() {
 
       SetLoans(
         res.data.map((i) => ({
+          status: i.status,
           key: i._id,
           Cname: i.name,
           bname: i.bid.name,
@@ -38,6 +44,20 @@ function AppealedLoans() {
     }
   };
 
+  const handleStatusChange = async (value, id) => {
+    const update = await axios.patch(
+      "http://localhost:9000/admin/updateLoan/" + id,
+      { status: value },
+      (err, res) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(res);
+        }
+      }
+    );
+  };
+
   const columns = [
     {
       title: "beneficiary name",
@@ -50,9 +70,7 @@ function AppealedLoans() {
       key: "amountneeded",
       width: "30%",
     },
-    {
-      title: "Bankaccount number",
-    },
+
     {
       title: "description",
       dataIndex: "description",
@@ -96,7 +114,17 @@ function AppealedLoans() {
     },
     {
       title: "approve",
-      render: (text, record) => <Button>approve loan</Button>,
+      render: (text, record) => (
+        <Select
+          defaultValue={record.status}
+          style={{ width: 120 }}
+          onChange={(e) => handleStatusChange(e, record.key)}
+        >
+          {defaultStatus.map((province) => (
+            <Option key={province}>{province}</Option>
+          ))}
+        </Select>
+      ),
     },
   ];
   return (
