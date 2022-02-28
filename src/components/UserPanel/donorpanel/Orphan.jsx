@@ -16,7 +16,7 @@ export default function Orphan() {
         method: "get",
       })
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data[0].fileName)
         setMaindata(
           res.data.map((i) => ({
             _id: i._id,
@@ -39,12 +39,14 @@ export default function Orphan() {
       dataIndex: "fileName",
       key: "fileName",
       render: (text, record) => {
+        console.log(record)
         return (
-          <div>
-            <img src={"http://localhost:9000/uploads/" + record} style={{ height: '20%', width: '100%' }} />
+          <div style={{ width: "40%" }}>
+            <img src={"http://localhost:9000/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
           </div>
         );
       },
+      width: '30%',
     },
     {
       title: "name",
