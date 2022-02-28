@@ -6,19 +6,19 @@ import { Redirect, withRouter } from "react-router";
 function HomePanel({ history, ...props }) {
     const [content, setContent] = useState("");
     const dispatch = useDispatch();
-  
+
     const user = useSelector(selectUser)
     return (
         <div>
-             <h1>
-             {user.username}
-             </ h1>
+            <h1>
+                {user.username}
+            </ h1>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    users: state.user.user,
-  });
-  
-  export default withRouter(connect(mapStateToProps)(HomePanel));
+    users: state.persistedReducer.user.user,
+});
+
+export default withRouter(connect(mapStateToProps)(HomePanel));

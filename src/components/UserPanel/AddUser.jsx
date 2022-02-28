@@ -43,14 +43,14 @@ function AddUser({ history }) {
       });
   };
   return (
-    <div className="mainVerify" style={{ position:"relative", alignItems: "center", justifyContent: "center" }}>
+    <div className="mainVerify" style={{ position: "relative", alignItems: "center", justifyContent: "center" }}>
       <Row >
-        <Col span={24}        
+        <Col span={24}
         >
           <Card
-           
+
             bordered={false}
-            style={{ width: 300,left:"40%",position:"absolute",textAlign:"center" }}
+            style={{ width: 300, left: "40%", position: "absolute", textAlign: "center" }}
             cover={
               <img
                 alt="example"
@@ -59,24 +59,24 @@ function AddUser({ history }) {
             }
           >
             <Button
-            style={{backgroundColor:"#A2FFC8",marginTop:"50px"}}
+              style={{ backgroundColor: "#A2FFC8", marginTop: "50px" }}
               onClick={() => {
                 senddata();
               }}
             >
               VERIFY THE EMAIL
             </Button>
-           
+
           </Card>
         </Col>
-       
+
       </Row>
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
-  users: state.user.users,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps, { ADD_USER })(AddUser));

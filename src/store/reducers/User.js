@@ -1,4 +1,4 @@
-import { createReducer, createSelector } from "@reduxjs/toolkit";
+import { createReducer } from "@reduxjs/toolkit";
 import { ADD_USER, LOGIN_USER, LOGOUT_USER } from "../Actions/userAction";
 import { apiBegan, apiFail } from "../Actions/Apiaction";
 let lastid = 0;
@@ -21,7 +21,7 @@ export const userReducer = createReducer(initialState, {
   },
 });
 
-export const selectUser = (state) => state.user.user;
+export const selectUser = (state) => state.persistedReducer.user.user;
 
 //Action Creators
 

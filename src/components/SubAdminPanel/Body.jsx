@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from "react";
-import RightSide from "./RightSide";
-import Sidebar from "./Sidebar";
-import AdminCampaign from "./adminCampaign";
+import RightSide from "../AdminPanel/RightSide";
+import Sidebar from "../AdminPanel/Sidebar";
+import AdminCampaign from "../AdminPanel/adminCampaign";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
-import AppealedCampaigns from "./appealedCampaigns";
-import AppealedLoan from "./appealedLoans";
-import Email from "./Email";
-import News from "./LatestNews";
-import Beneficiary from "./Beneficiary";
-import LoanManagement from "./LoanManagement";
-import ViewDonations from "./viewDonations";
-import ChildrenManagment from "./ChildrenManagment";
-import SubAdmin from "./SubAdmin";
+import AppealedCampaigns from "../AdminPanel/appealedCampaigns";
+import AppealedLoan from "../AdminPanel/appealedLoans";
+import Email from "../AdminPanel/Email";
+import News from "../AdminPanel/LatestNews";
+import Beneficiary from "../AdminPanel/Beneficiary";
+import LoanManagement from "../AdminPanel/LoanManagement";
+import ViewDonations from "../AdminPanel/viewDonations";
+import ChildrenManagment from "../AdminPanel/ChildrenManagment";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
-import Header1 from ".././SubAdminPanel/Header1"
 import { selectUser } from "../../store/reducers/User";
-
+import "./Body.css"
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -26,7 +24,7 @@ import {
   UserOutlined,
   ExclamationCircleFilled,
   CheckCircleFilled,
-  IdcardOutlined,
+  IdcardOutlined ,
   MoneyCollectOutlined
 
 } from "@ant-design/icons";
@@ -34,11 +32,10 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 function Body({ history, ...props }) {
-
   const [content, setContent] = useState("Dashboard");
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  console.log(user.userId)
+
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
@@ -58,32 +55,27 @@ function Body({ history, ...props }) {
       return <Beneficiary />;
     } else if (content === "appealLoan") {
       return <AppealedLoan />;
-    } else if (content === "LoanManagment") {
+    }else if (content === "LoanManagment") {
       return <LoanManagement />;
-    } else if (content === "AdoptChildren") {
+    }else if (content === "AdoptChildren") {
       return <ChildrenManagment />;
-    } else if (content === "Donations") {
+    }else if (content === "Donations") {
       return <ViewDonations />;
-    } else if (content === "SubAdmin") {
-      return <SubAdmin />;
     }
   }
 
   return (
     <div className="row">
-      <Header1 name={user.username} />
-      <Layout style={{ minHeight: "100vh" }}>
+      <Layout  style={{ minHeight: "100vh",backgroundColor:"green" }}>
         <Sider trigger={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
-              onClick={(e) => {
-                setContent("home");
-              }}
+           
             >
-              Super Admin panel
+            SubAdmin Panel
             </Menu.Item>
 
             <Menu.Item
@@ -159,7 +151,7 @@ function Body({ history, ...props }) {
             >
               Manage audit
             </Menu.Item>
-            <Menu.Item
+             <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}
               onClick={() => {
@@ -186,18 +178,19 @@ function Body({ history, ...props }) {
               }}
             >
               View Donations
-            </Menu.Item>
+            </Menu.Item> 
+        
             <Menu.Item
-              key="14"
+              key="13"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
-                setContent("SubAdmin");
+                setContent("Donations");
               }}
             >
-              SubAdmin Maagment
-            </Menu.Item>
+              Campaign Report
+            </Menu.Item> 
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
-              <Menu.Item>
+                       <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
@@ -228,7 +221,7 @@ const styles = {
   },
 };
 const mapStateToProps = (state) => ({
-  users: state.persistedReducer.user.user,
+  users: state.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(Body));

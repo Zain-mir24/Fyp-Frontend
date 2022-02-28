@@ -5,6 +5,7 @@ import Signin from "./components/SignUser/Signin";
 import Signup from "./components/SignUser/Signup";
 import home from "./components/homepage/home";
 import Adminn from "./components/AdminPanel/Admin";
+import SubAdmin from "./components/SubAdminPanel/SubAdmin"
 import Campaign from "./components/Frontend/Campaign";
 import CampaignDetail from "./components/Frontend/CampaignDetails";
 import Userpanel from "./components/UserPanel/Userpanel";
@@ -35,6 +36,7 @@ function App() {
             <Route path="/Signin" component={Signin}></Route>
             <Route path="/Signup" component={Signup}></Route>
             <Route path="/Administrator" component={Adminn}></Route>
+            <Route path="/SubAdministrator" component={SubAdmin}></Route>
             <Route path="/Adminlogin" component={Adminlogin}></Route>
             <Route path="/Adminsignup" component={Adminsignup}></Route>
             <Route path="/Campaign" component={Campaign}></Route>

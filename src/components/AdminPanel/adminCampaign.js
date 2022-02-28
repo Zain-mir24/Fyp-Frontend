@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { selectUser } from "../../store/reducers/User";
+import { useSelector } from "react-redux";
+
 const axios = require("axios");
 function Foorm() {
   const [camp, setCamp] = useState([]);
@@ -10,13 +13,13 @@ function Foorm() {
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [ID, setId] = useState("");
-
+  const user = useSelector(selectUser);
   const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
   useEffect(() => {
-    viewCamp();
+       viewCamp();
   }, []);
   const postData = async () => {
     const formData = new FormData();
@@ -29,7 +32,10 @@ function Foorm() {
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addCampaign",
-        formData
+         formData ,
+        {
+          headers: { Authorization: `Bearer ${user.verifToken}` },
+        }
       );
       if (!res) {
         return console.log("couldnt add");
@@ -45,8 +51,7 @@ function Foorm() {
       const res = await axios.get(
         "https://damp-stream-39096.herokuapp.com/admin/viewCampaigns"
       );
-      console.log(res);
-      setCamp(
+           setCamp(
         res.data.map((i) => ({
           _id: i._id,
           name: i.name,
@@ -55,7 +60,7 @@ function Foorm() {
           file: i.fileName,
         }))
       );
-      console.log(res);
+     
     } catch (e) {
       console.log(e);
     }
@@ -64,7 +69,10 @@ function Foorm() {
   const deleteCamp = async (id) => {
     try {
       const res = await axios.delete(
-        "http://localhost:9000/admin/Deletecampaign/" + id
+        "http://localhost:9000/admin/Deletecampaign/" + id,
+        {
+          headers: { Authorization: `Bearer ${user.verifToken}` },
+        }
       );
       console.log(res, "Response from the backend");
       if (!res) {
@@ -87,6 +95,9 @@ function Foorm() {
     try {
       const res = await axios.patch(
         "https://damp-stream-39096.herokuapp.com/admin/updateCampaign/" + ID,
+        {
+          headers: { Authorization: `Bearer ${user.verifToken}` },
+        },
         formData
       );
       if (!res) {

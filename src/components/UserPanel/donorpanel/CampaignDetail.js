@@ -42,7 +42,7 @@ function CampaignDetail(props) {
       name,
       amount,
       campaignId: cid,
-      userId:user.userId
+      userId: user.userId
     };
 
     return axios
@@ -66,7 +66,7 @@ function CampaignDetail(props) {
               <Content>
                 <h1>{name}</h1>
                 <img
-                  src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
+                  src={"http://localhost:9000/uploads/" + props.img}
                 />
 
                 {/* <Image
@@ -118,7 +118,7 @@ function CampaignDetail(props) {
   );
 }
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(CampaignDetail));

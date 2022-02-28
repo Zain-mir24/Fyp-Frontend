@@ -5,7 +5,8 @@ import { Table, Button, Input, Upload, Col, Form, Select, Row } from "antd";
 
 import { combineReducers } from "@reduxjs/toolkit";
 import { UploadOutlined } from "@ant-design/icons";
-
+import { selectUser } from "../../store/reducers/User";
+import { useSelector } from "react-redux";
 import { DatePicker, Space } from "antd";
 import "./Panel.css";
 import axios from "axios";
@@ -17,23 +18,45 @@ function ChildrenManagment() {
   const [childrenData, setChildrenData] = useState([]);
   const [age, setAge] = useState();
   const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("");
   // const [fileName, setFileName] = useState("");
   const [DOB, setDOB] = useState("");
   const [POB, setPOB] = useState("");
   const [gender, setGender] = useState([]);
   const [disability, setDisability] = useState("");
   const [updateID, setUpdateID] = useState("");
-
+  const user = useSelector(selectUser);
+   const saveFile = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
   async function collectData() {
-    const res = await axios.post("http://localhost:9000/admin/addChild", {
-      name: name,
-      age: age,
-      fileName: file,
-      gender: gender,
-      DOB: DOB,
-      POB: POB,
-      disability: disability,
-    });
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("age", age);
+    formData.append("gender", gender);
+    formData.append("DOB", DOB);
+    formData.append("POB", POB);
+    formData.append("disability", disability);
+    formData.append("file", file);
+    formData.append("fileName", fileName);
+    console.log(formData)
+    try {
+      const res = await axios.post(
+        "http://localhost:9000/admin/addchild",
+         formData ,
+        {
+          headers: { Authorization: `Bearer ${user.verifToken}` },
+        }
+      );
+      if (!res) {
+        return console.log("couldnt add");
+      }
+      alert(`Child has been added`);
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   const getData = async () => {
@@ -83,7 +106,6 @@ function ChildrenManagment() {
 
   useEffect(() => {
     getData();
-    console.log(childrenData, "HELL");
   }, []);
 
   const columns = [
@@ -164,14 +186,13 @@ function ChildrenManagment() {
                   },
                 ]}
               >
-                <Input.TextArea
+                <Input
                   required
                   placeholder="Child age"
                   onChange={(e) => {
                     setAge(e.target.value);
                   }}
                   showCount
-                  maxLength={1000}
                 />
               </Form.Item>
 
@@ -218,7 +239,7 @@ function ChildrenManagment() {
                   },
                 ]}
               >
-                <DatePicker
+                <Input
                   onChange={(date, dateString) => {
                     setPOB(date);
                   }}
@@ -248,7 +269,7 @@ function ChildrenManagment() {
 
               <Form.Item
                 rules={[{ required: true, message: "Please uplaod doc" }]}
-                //   onChange={saveFile}
+                onChange={saveFile}
               >
                 <Upload>
                   <Button icon={<UploadOutlined />}>
@@ -357,7 +378,7 @@ function ChildrenManagment() {
                   },
                 ]}
               >
-                <DatePicker
+                <Input
                   onChange={(date, dateString) => {
                     setPOB(date);
                   }}

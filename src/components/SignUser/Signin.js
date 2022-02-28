@@ -166,7 +166,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const mapStateToProps = (state) => ({
-  users: state.user.myuser,
+  users: state.persistedReducer.user.myuser,
 });
 
 export default withRouter(connect(mapStateToProps, { LOGIN_USER })(SignIn));
