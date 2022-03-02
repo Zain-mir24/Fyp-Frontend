@@ -56,11 +56,6 @@ function ViewDonation() {
       dataIndex: "Donation",
       key: "Donation",
     },
-    {
-      title: "DATE",
-      dataIndex: "Date",
-      key: "Date",
-    },
   ];
 
   return (
@@ -79,8 +74,7 @@ function ViewDonation() {
                   dataSource={item.registeredUser.map((item) => ({
                     Name: item.userId.name,
                     Email: item.userId.email,
-                    Donation: item.donation,
-                    Date: item.userId.createdAt,
+                    Donation: item.donation
                   }))}
                 />
               </div>

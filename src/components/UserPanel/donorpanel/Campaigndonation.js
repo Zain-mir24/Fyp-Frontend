@@ -7,18 +7,18 @@ const { Meta } = Card;
 function Campaigndonation() {
   const [data, setData] = useState([]);
   const [content, setContent] = useState("");
-  const [Name,setName]=useState("")
-  const [description,setDesc]=useState("")
-  const [img,setImg]=useState("")
-  const [id,setId]=useState("")
-  const [donation,setDonation]=useState(0)
+  const [Name, setName] = useState("")
+  const [description, setDesc] = useState("")
+  const [img, setImg] = useState("")
+  const [id, setId] = useState("")
+  const [donation, setDonation] = useState(0)
 
   const getData = async () => {
     try {
       const res = await axios.get(
-        "https://damp-stream-39096.herokuapp.com/admin/viewCampaigns"
+        "http://localhost:9000/admin/viewCampaigns"
       );
-      await setData(res.data);
+      await setData(res.data.campaign);
       console.log(res);
     } catch (e) {
       console.log(e);
@@ -48,7 +48,7 @@ function Campaigndonation() {
                       setDesc(item.description)
                       setImg(item.fileName)
                       setId(item._id)
-                      setDonation(item.donation)                  
+                      setDonation(item.donation)
                       setContent("campaign");
                     }}
                     hoverable

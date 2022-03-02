@@ -8,13 +8,14 @@ const { Meta } = Card;
 
 export default function Campaign() {
   const [data, setData] = useState([]);
+
   const getData = async () => {
     try {
       const res = await axios.get(
-        "https://damp-stream-39096.herokuapp.com/admin/viewCampaigns"
+        "http://localhost:9000/admin/viewCampaigns"
       );
-      await setData(res.data);
-      console.log(res);
+      await setData(res.data.campaign);
+      console.log(res.data.campaign);
     } catch (e) {
       console.log(e);
     }
@@ -38,9 +39,10 @@ export default function Campaign() {
           </p>
         </div>
         {/* campaign 1 would be here */}
-       
+
         <div className="row">
-          {data.map((item) => {
+          {data == undefined ? null : data.map((item) => {
+            console.log(item.name)
             return (
               <div
                 className="col-lg-12"
@@ -58,33 +60,33 @@ export default function Campaign() {
                     item._id;
                 }}
               >
-                <Campaignrender name={item.name} description={item.description} img={item.fileName} 
-                donation={item.donation} />
+                <Campaignrender name={item.name} description={item.description} img={item.fileName}
+                  donation={item.donation} />
                 {/* <Card
-                  hoverable
-                  style={{ width: "340px", padding: "30px" }}
-                  cover={
-                    <img
-                      style={{ height: "300px" }}
-                      alt="example"
-                      src={
-                        "https://damp-stream-39096.herokuapp.com/uploads/" +
-                        item.fileName
-                      }
-                    />
-                  }
-                >
-                  <Meta
-                    title={item.name}
-                    description={item.description.substring(0, 80) + " ..."}
-                  />
-                </Card> */}
+        hoverable
+        style={{ width: "340px", padding: "30px" }}
+        cover={
+          <img
+            style={{ height: "300px" }}
+            alt="example"
+            src={
+              "https://damp-stream-39096.herokuapp.com/uploads/" +
+              item.fileName
+            }
+          />
+        }
+      >
+        <Meta
+          title={item.name}
+          description={item.description.substring(0, 80) + " ..."}
+        />
+      </Card> */}
               </div>
             );
           })}
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   );
 }
