@@ -16,6 +16,7 @@ import SubAdmin from "./SubAdmin";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import Header1 from ".././SubAdminPanel/Header1"
+import MeetingScheduled from "./MeetingScheduled";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -54,7 +55,7 @@ function Body({ history, ...props }) {
       return <Email />;
     } else if (content === "News") {
       return <News />;
-    } else if (content === "User") {
+    } else if (content === "User  ") {
       return <Beneficiary />;
     } else if (content === "appealLoan") {
       return <AppealedLoan />;
@@ -66,6 +67,8 @@ function Body({ history, ...props }) {
       return <ViewDonations />;
     } else if (content === "SubAdmin") {
       return <SubAdmin />;
+    } else if (content === "Meeting") {
+      return <MeetingScheduled />;
     }
   }
 
@@ -145,12 +148,12 @@ function Body({ history, ...props }) {
               key="9"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("Approve");
+                setContent("Meeting");
               }}
             >
-              Beneficiary
+              Scheduled Meetings
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="10"
               icon={<CheckCircleFilled />}
               onClick={() => {
@@ -158,7 +161,7 @@ function Body({ history, ...props }) {
               }}
             >
               Manage audit
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}

@@ -8,13 +8,13 @@ function Campaignrender(props) {
       <article>
         <img
           style={{ width: "100%", borderRadius: "5px" }}
-          src={"https://damp-stream-39096.herokuapp.com/uploads/" + props.img}
+          src={"http://localhost:9000/uploads/" + props.img}
         ></img>
         <div className="camp">
           <header className="campHead">
             FLOWERS IN YOUR GARDEN. THE BEST SORTS OF FLOWERS FOR OUTDOORS.
             <div>
-              <span style={{color:"#a1a2a4"}}>By Global reach</span>
+              <span style={{ color: "#a1a2a4" }}>By Global reach</span>
             </div>
           </header>
           <div className="campDesc">
