@@ -28,7 +28,7 @@ function CampaignAppeal() {
     formData.append("amountneeded", donation);
     try {
       const res = await axios.post(
-        process.env.REACT_APP_CAMPAIGN_URL,
+        "http://localhost:9000/beneficiary/addCampaignappeal",
         formData
       );
       console.log(res, "Successfully send");
@@ -127,7 +127,7 @@ function CampaignAppeal() {
 }
 
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(CampaignAppeal));
