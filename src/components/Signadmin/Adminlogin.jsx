@@ -15,7 +15,7 @@ function Adminlogin({ history, ...props }) {
   const handlesubmit = async (e) => {
     await axios
       .request({
-        baseURL: "http://localhost:9000/admin",
+        baseURL: process.env.REACT_APP_BASE + "/admin",
         url: "/login",
         method: "post",
         data: {
@@ -24,12 +24,12 @@ function Adminlogin({ history, ...props }) {
         },
       })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         var username = res.data.admin.name;
         var userId = res.data.admin._id;
-        var subAdmin = res.data.admin.subAdmin
-        var verifToken = res.data.token
-        console.log(verifToken)
+        var subAdmin = res.data.admin.subAdmin;
+        var verifToken = res.data.token;
+        console.log(verifToken);
         if (res.status == 200) {
           dispatch(
             LOGIN_USER({
@@ -41,14 +41,13 @@ function Adminlogin({ history, ...props }) {
               userId,
             })
           );
-          subAdmin == true ?
-            history.push("/SubAdministrator")
-            :
-            history.push("/Administrator");
+          subAdmin == true
+            ? history.push("/SubAdministrator")
+            : history.push("/Administrator");
         }
       })
       .catch((e) => {
-        alert(`Incorrect credentials`)
+        alert(`Incorrect credentials`);
         console.log("our error", e);
       });
   };
@@ -57,14 +56,13 @@ function Adminlogin({ history, ...props }) {
       <h1 style={{ textAlign: "center" }}>
         <UserOutlined className="site-form-item-icon" /> Admin Login
       </h1>
-      <Row type="flex" justify="center" align="middle" >
+      <Row type="flex" justify="center" align="middle">
         <Form
           name="normal_login"
           className="login-form"
           initialValues={{
             remember: true,
           }}
-
         >
           <Form.Item
             name="username"
@@ -81,7 +79,6 @@ function Adminlogin({ history, ...props }) {
                 message: "Please input your E-mail!",
               },
             ]}
-
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -99,7 +96,6 @@ function Adminlogin({ history, ...props }) {
                 message: "Please input your Password!",
               },
             ]}
-
           >
             <Input
               prefix={<LockOutlined className="site-form-item-icon" />}
@@ -107,7 +103,6 @@ function Adminlogin({ history, ...props }) {
               placeholder="Password"
             />
           </Form.Item>
-
 
           <Form.Item>
             <Button
