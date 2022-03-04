@@ -12,10 +12,11 @@ import Beneficiary from "./Beneficiary";
 import LoanManagement from "./LoanManagement";
 import ViewDonations from "./viewDonations";
 import ChildrenManagment from "./ChildrenManagment";
+import MonthlySupport from "./MonthlySupport";
 import SubAdmin from "./SubAdmin";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
-import Header1 from ".././SubAdminPanel/Header1"
+import Header1 from ".././SubAdminPanel/Header1";
 import MeetingScheduled from "./MeetingScheduled";
 import { selectUser } from "../../store/reducers/User";
 
@@ -28,18 +29,16 @@ import {
   ExclamationCircleFilled,
   CheckCircleFilled,
   IdcardOutlined,
-  MoneyCollectOutlined
-
+  MoneyCollectOutlined,
 } from "@ant-design/icons";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 function Body({ history, ...props }) {
-
   const [content, setContent] = useState("Dashboard");
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  console.log(user.userId)
+  console.log(user.userId);
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
@@ -69,6 +68,8 @@ function Body({ history, ...props }) {
       return <SubAdmin />;
     } else if (content === "Meeting") {
       return <MeetingScheduled />;
+    } else if (content === "Monthly Support") {
+      return <MonthlySupport />;
     }
   }
 
@@ -198,6 +199,15 @@ function Body({ history, ...props }) {
               }}
             >
               SubAdmin Maagment
+            </Menu.Item>
+            <Menu.Item
+              key="15"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Monthly Support");
+              }}
+            >
+              Monthly Support
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>

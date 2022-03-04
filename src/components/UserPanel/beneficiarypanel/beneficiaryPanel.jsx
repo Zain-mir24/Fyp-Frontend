@@ -9,7 +9,7 @@ import {
   TeamOutlined,
   UserOutlined,
   ExclamationCircleFilled,
-  CheckCircleFilled
+  CheckCircleFilled,
 } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../store/reducers/User";
@@ -17,9 +17,10 @@ import { CreateContext } from "../../../contexts/Customecontexts";
 import CampaignAppeal from "./campaignAppeal";
 import HomePanel from "./homePanel";
 import { Redirect, withRouter } from "react-router";
-import LoanAppeal from "./loanAppeal"
+import LoanAppeal from "./loanAppeal";
 import Approvecampaigns from "./approvCampaigns";
-import "./beneficiary.css"
+import MonthlySupport from "./MonthlySupport";
+import "./beneficiary.css";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -33,28 +34,31 @@ function Beneficiarypanel({ history, ...props }) {
     await dispatch(LOGOUT_USER());
   };
 
-
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
         <Sider trigger={null}>
           <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline" >
-            <Menu.Item key="1" icon={<UserOutlined />} onClick={() => {
-              setContent("")
-            }}>
+          <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+            <Menu.Item
+              key="1"
+              icon={<UserOutlined />}
+              onClick={() => {
+                setContent("");
+              }}
+            >
               {user.username}
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}
-              onClick={
-                (e) => {
-                  setContent("home")
-                }
-              }>
+            <Menu.Item
+              key="2"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("home");
+              }}
+            >
               Home
             </Menu.Item>
-            <Menu.Item key="3" icon={<DesktopOutlined />}
-            >
+            <Menu.Item key="3" icon={<DesktopOutlined />}>
               Loan status
             </Menu.Item>
 
@@ -67,19 +71,27 @@ function Beneficiarypanel({ history, ...props }) {
             >
               Appeal for campaign
             </Menu.Item>
-            <Menu.Item key="10" icon={<ExclamationCircleFilled />} onClick={() => {
-              setContent("loan")
-            }}>
+            <Menu.Item
+              key="10"
+              icon={<ExclamationCircleFilled />}
+              onClick={() => {
+                setContent("loan");
+              }}
+            >
               Appeal for loan
             </Menu.Item>
-            {/* <Menu.Item key="11"    icon={<CheckCircleFilled/>} onClick={()=>{
-              setContent("Approve")
-            }} >
-              Approved campaigns
-            </Menu.Item> */}
+            <Menu.Item
+              key="11"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Monthly Support");
+              }}
+            >
+              Monthly Support
+            </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
-                <Button >My profile</Button>
+                <Button>My profile</Button>
               </Menu.Item>
               <Menu.Item key="5">
                 <Button
@@ -95,9 +107,8 @@ function Beneficiarypanel({ history, ...props }) {
               </Menu.Item>
             </SubMenu>
           </Menu>
-
         </Sider>
-        <Layout className="site-layout" >
+        <Layout className="site-layout">
           <Header class=" realHeader" style={{ padding: 0 }} />
 
           <Content style={{ margin: "0 16px", color: "green" }}>
@@ -115,12 +126,9 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "loan" ? <LoanAppeal /> : null}
               {content == "home" ? <HomePanel /> : null}
               {content == "Approve" ? <Approvecampaigns /> : null}
-
+              {content == "Monthly Support" ? <MonthlySupport /> : null}
             </div>
-
           </Content>
-
-
         </Layout>
       </Layout>
     </div>
