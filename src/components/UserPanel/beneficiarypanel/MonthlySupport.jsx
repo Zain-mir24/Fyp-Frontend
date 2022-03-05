@@ -61,7 +61,12 @@ export default function MonthlySupport() {
     setdeathcertificate(e.target.files[0]);
     setdeathcertificatename(e.target.files[0].name)
   };
-
+  var Accomodation = {
+    self: self,
+    donated: donated,
+    rental: rental,
+    rent: rent,
+  }
   const getData = async () => {
 
     const formData = new FormData()
@@ -74,12 +79,10 @@ export default function MonthlySupport() {
     formData.append("Totalincome", totalIncome);
     formData.append("Totalexpenses", totalExpenses);
     formData.append("NativeTown", nativeTown);
-    formData.append("Accomodation", {
-      self: self,
-      donated: donated,
-      rental: rental,
-      rent: rent,
-    });
+    formData.append("self", self);
+    formData.append("donated", donated);
+    formData.append("rental", rental);
+    formData.append("rent", rent);
     formData.append("widowfamdetail", [
       {
         name: widowName,
