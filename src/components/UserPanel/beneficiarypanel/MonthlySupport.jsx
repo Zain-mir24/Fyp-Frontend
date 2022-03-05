@@ -63,6 +63,7 @@ export default function MonthlySupport() {
   };
 
   const getData = async () => {
+
     const formData = new FormData()
     formData.append(" bid", bid)
     formData.append("phoneNumber", phone);
@@ -74,11 +75,11 @@ export default function MonthlySupport() {
     formData.append("Totalexpenses", totalExpenses);
     formData.append("NativeTown", nativeTown);
     formData.append("Accomodation", {
-      "self": self,
-      "donated": donated,
-      " rental": rental,
-      " rent": rent,
-    })
+      self: self,
+      donated: donated,
+      rental: rental,
+      rent: rent,
+    });
     formData.append("widowfamdetail", [
       {
         name: widowName,
@@ -87,7 +88,7 @@ export default function MonthlySupport() {
         activities: widowActivities,
         income: widowIncome,
       },
-    ])
+    ]);
     formData.append("widowsibilings", [
       {
         name: widowSiblingName,
