@@ -8,8 +8,8 @@ const { Option } = Select;
 
 export default function MonthlySupport() {
   const [Loans, SetLoans] = useState([]);
-  const [content, setContent] = useState("");
   const [id, setID] = useState();
+  const [content, setContent] = useState("table");
   useEffect(() => {
     viewData();
     console.log(Loans);
@@ -29,6 +29,8 @@ export default function MonthlySupport() {
           category: i.category,
           sourceOfIncome: i.Sourceofincome,
           NativeTown: i.NativeTown,
+          medicineCost: 123,
+          bformname: i.bformname,
         }))
       );
 
@@ -62,14 +64,24 @@ export default function MonthlySupport() {
       title: "More Info",
       render: (text, record) => (
         <div>
-          <button onClick={() => {}}>View Detail</button>
+          <a
+            onClick={() => {
+              setContent("Detail");
+            }}
+          >
+            View Detail
+          </a>
         </div>
       ),
     },
   ];
   return (
     <div>
-      <Table columns={columns} dataSource={Loans} />
+      {content == "table" ? (
+        <Table columns={columns} dataSource={Loans} />
+      ) : (
+        <MonthlySupportDetail data={Loans} />
+      )}
     </div>
   );
 }
