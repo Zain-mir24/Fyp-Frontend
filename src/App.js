@@ -5,7 +5,7 @@ import Signin from "./components/SignUser/Signin";
 import Signup from "./components/SignUser/Signup";
 import home from "./components/homepage/home";
 import Adminn from "./components/AdminPanel/Admin";
-import SubAdmin from "./components/SubAdminPanel/SubAdmin"
+import SubAdmin from "./components/SubAdminPanel/SubAdmin";
 import Campaign from "./components/Frontend/Campaign";
 import CampaignDetail from "./components/Frontend/CampaignDetails";
 import Userpanel from "./components/UserPanel/Userpanel";
@@ -17,13 +17,11 @@ import Adminsignup from "./components/Signadmin/Adminsignup";
 import AddUser from "./components/UserPanel/AddUser";
 import Addemail from "./components/UserPanel/Addemail";
 import Donation from "./components/DonationPage/Donation";
-import News from "./components/Loanpage/News"
-import NewsDetails from "./components/Loanpage/NewsDetails"
+import News from "./components/Loanpage/News";
+import NewsDetails from "./components/Loanpage/NewsDetails";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
-  
-
   return (
     <div className="App">
       <header className="App-header">
@@ -48,8 +46,7 @@ function App() {
             <Route path="/donationStripe" component={Donation}>
               <Donation />
             </Route>
-            <Route path="/NewsDetails" component={NewsDetails}> 
-                </Route> 
+            <Route path="/NewsDetails" component={NewsDetails}></Route>
             <Route
               path="/resetPassword/:_id/:token"
               component={Resetpassword}
@@ -63,7 +60,6 @@ function App() {
               component={Addemail}
             ></Route>
             <Route path="/" component={home}></Route>
-           
           </Switch>
         </BrowserRouter>
       </body>

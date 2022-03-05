@@ -50,27 +50,29 @@ export default function MonthlySupport() {
   const [deathcertificatename, setdeathcertificatename] = useState("");
   const [totalamountdonation, settotalamountdonation] = useState(0);
   useEffect(() => {
-    setBid(user.userId)
-  }, [])
+    setBid(user.userId);
+  }, []);
   const { Option } = Select;
   const saveBform = (e) => {
     setbform(e.target.files[0]);
-    setbformname(e.target.files[0].name)
+    setbformname(e.target.files[0].name);
   };
   const saveDeathCertificate = (e) => {
     setdeathcertificate(e.target.files[0]);
-    setdeathcertificatename(e.target.files[0].name)
+    setdeathcertificatename(e.target.files[0].name);
   };
-  var Accomodation = {
-    self: self,
-    donated: donated,
-    rental: rental,
-    rent: rent,
-  }
+  var widowfamdetail = [
+    {
+      name: widowName,
+      age: widowAge,
+      relation: widowRelation,
+      activities: widowActivities,
+      income: widowIncome,
+    },
+  ];
   const getData = async () => {
-
-    const formData = new FormData()
-    formData.append(" bid", bid)
+    const formData = new FormData();
+    formData.append(" bid", bid);
     formData.append("phoneNumber", phone);
     formData.append("cnic", cnic);
     formData.append("category", category);
@@ -83,32 +85,25 @@ export default function MonthlySupport() {
     formData.append("donated", donated);
     formData.append("rental", rental);
     formData.append("rent", rent);
-    formData.append("widowfamdetail", [
-      {
-        name: widowName,
-        age: widowAge,
-        relation: widowRelation,
-        activities: widowActivities,
-        income: widowIncome,
-      },
-    ]);
-    formData.append("widowsibilings", [
-      {
-        name: widowSiblingName,
-        age: widowSiblingAge,
-        relation: widowSiblingRelation,
-        activities: widowSiblingActivities,
-        income: widowSiblingIncome,
-      },
-    ])
-    formData.append("medicineCost", medicineCost)
-    formData.append("bform", bform)
-    formData.append("bformname", bformname)
-    formData.append("deathcertificate", deathcertificate)
-    formData.append("deathcertificatename", deathcertificatename)
-    formData.append("totalamountdonation", totalamountdonation)
+    formData.append("widowfamdetail", JSON.stringify(widowfamdetail));
+    formData.append("widowsibilings", {
+      name: widowSiblingName,
+      age: widowSiblingAge,
+      relation: widowSiblingRelation,
+      activities: widowSiblingActivities,
+      income: widowSiblingIncome,
+    });
+    formData.append("medicineCost", medicineCost);
+    formData.append("bform", bform);
+    formData.append("bformname", bformname);
+    formData.append("deathcertificate", deathcertificate);
+    formData.append("deathcertificatename", deathcertificatename);
+    formData.append("totalamountdonation", totalamountdonation);
     try {
-      const res = await axios.post("http://localhost:9000/User/MonthlyAppeal", formData);
+      const res = await axios.post(
+        "http://localhost:9000/User/MonthlyAppeal",
+        formData
+      );
       console.log(res, "Successfully send");
       alert(`${user.username} \n 
        Your form has been submitted`);
