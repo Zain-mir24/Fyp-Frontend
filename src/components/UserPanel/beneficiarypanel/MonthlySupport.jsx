@@ -70,6 +70,15 @@ export default function MonthlySupport() {
       income: widowIncome,
     },
   ];
+  var widowSibilings = [
+    {
+      name: widowSiblingName,
+      age: widowSiblingAge,
+      relation: widowSiblingRelation,
+      activities: widowSiblingActivities,
+      income: widowSiblingIncome,
+    },
+  ];
   const getData = async () => {
     const formData = new FormData();
     formData.append(" bid", bid);
@@ -86,13 +95,7 @@ export default function MonthlySupport() {
     formData.append("rental", rental);
     formData.append("rent", rent);
     formData.append("widowfamdetail", JSON.stringify(widowfamdetail));
-    formData.append("widowsibilings", {
-      name: widowSiblingName,
-      age: widowSiblingAge,
-      relation: widowSiblingRelation,
-      activities: widowSiblingActivities,
-      income: widowSiblingIncome,
-    });
+    formData.append("widowsibilings", JSON.stringify(widowSibilings));
     formData.append("medicineCost", medicineCost);
     formData.append("bform", bform);
     formData.append("bformname", bformname);

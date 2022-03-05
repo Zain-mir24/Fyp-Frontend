@@ -8,6 +8,7 @@ const { Option } = Select;
 
 export default function MonthlySupport() {
   const [Loans, SetLoans] = useState([]);
+  const [content, setContent] = useState("");
   const [id, setID] = useState();
   useEffect(() => {
     viewData();
@@ -61,13 +62,7 @@ export default function MonthlySupport() {
       title: "More Info",
       render: (text, record) => (
         <div>
-          <a
-            onClick={() => {
-              return <MonthlySupportDetail />;
-            }}
-          >
-            View Detail
-          </a>
+          <button onClick={() => {}}>View Detail</button>
         </div>
       ),
     },
