@@ -18,14 +18,16 @@ import { selectUser } from "../../../store/reducers/User";
 const axios = require("axios");
 
 export default function MonthlySupport() {
-  const [bid, setBid] = useState("121312313");
-  const [phone, setphone] = useState("");
-  const [cnic, setcnic] = useState("");
+  const user = useSelector(selectUser);
+
+  const [bid, setBid] = useState();
+  const [phone, setphone] = useState(0);
+  const [cnic, setcnic] = useState(0);
   const [category, setcategory] = useState("");
   const [sourceOfIncome, setsourceOfIncome] = useState("");
   const [presentAddress, setpresentAddress] = useState("");
-  const [totalIncome, settotalIncome] = useState("");
-  const [totalExpenses, settotalExpenses] = useState("");
+  const [totalIncome, settotalIncome] = useState(0);
+  const [totalExpenses, settotalExpenses] = useState(0);
   const [nativeTown, setnativeTown] = useState("");
   const [self, setself] = useState("");
   const [donated, setdonated] = useState("");
@@ -37,65 +39,72 @@ export default function MonthlySupport() {
   const [widowActivities, setwidowActivities] = useState("");
   const [widowIncome, setwidowIncome] = useState("");
   const [widowSiblingName, setwidowSiblingName] = useState("");
-  const [widowSiblingAge, setwidowSiblingAge] = useState("");
+  const [widowSiblingAge, setwidowSiblingAge] = useState(0);
   const [widowSiblingRelation, setwidowSiblingRelation] = useState("");
   const [widowSiblingActivities, setwidowSiblingActivities] = useState("");
-  const [widowSiblingIncome, setwidowSiblingIncome] = useState("");
-  const [medicineCost, setmedicineCost] = useState("");
+  const [widowSiblingIncome, setwidowSiblingIncome] = useState(0);
+  const [medicineCost, setmedicineCost] = useState(0);
   const [bform, setbform] = useState("");
+  const [bformname, setbformname] = useState("");
   const [deathcertificate, setdeathcertificate] = useState("");
-  const [totalamountdonation, settotalamountdonation] = useState("");
-
+  const [deathcertificatename, setdeathcertificatename] = useState("");
+  const [totalamountdonation, settotalamountdonation] = useState(0);
+  useEffect(() => {
+    setBid(user.userId)
+  }, [])
   const { Option } = Select;
-  const user = useSelector(selectUser);
   const saveBform = (e) => {
     setbform(e.target.files[0]);
+    setbformname(e.target.files[0].name)
   };
   const saveDeathCertificate = (e) => {
     setdeathcertificate(e.target.files[0]);
+    setdeathcertificatename(e.target.files[0].name)
   };
 
   const getData = async () => {
+    const formData = new FormData()
+    formData.append(" bid", bid)
+    formData.append("phoneNumber", phone);
+    formData.append("cnic", cnic);
+    formData.append("category", category);
+    formData.append("Sourceofincome", sourceOfIncome);
+    formData.append("presentAddress", presentAddress);
+    formData.append("Totalincome", totalIncome);
+    formData.append("Totalexpenses", totalExpenses);
+    formData.append("NativeTown", nativeTown);
+    formData.append("Accomodation", {
+      "self": self,
+      "donated": donated,
+      " rental": rental,
+      " rent": rent,
+    })
+    formData.append("widowfamdetail", [
+      {
+        name: widowName,
+        age: widowAge,
+        relation: widowRelation,
+        activities: widowActivities,
+        income: widowIncome,
+      },
+    ])
+    formData.append("widowsibilings", [
+      {
+        name: widowSiblingName,
+        age: widowSiblingAge,
+        relation: widowSiblingRelation,
+        activities: widowSiblingActivities,
+        income: widowSiblingIncome,
+      },
+    ])
+    formData.append("medicineCost", medicineCost)
+    formData.append("bform", bform)
+    formData.append("bformname", bformname)
+    formData.append("deathcertificate", deathcertificate)
+    formData.append("deathcertificatename", deathcertificatename)
+    formData.append("totalamountdonation", totalamountdonation)
     try {
-      const res = await axios.post(process.env.REACT_APP_LOAN_URL, {
-        bid: bid,
-        phoneNumber: phone,
-        cnic: cnic,
-        category: category,
-        Sourceofincome: sourceOfIncome,
-        presentAddress: presentAddress,
-        Totalincome: totalIncome,
-        Totalexpenses: totalExpenses,
-        NativeTown: nativeTown,
-        Accomodation: {
-          self: self,
-          donated: donated,
-          rental: rental,
-          rent: rent,
-        },
-        widowfamdetail: [
-          {
-            name: widowName,
-            age: widowAge,
-            relation: widowRelation,
-            activities: widowActivities,
-            income: widowIncome,
-          },
-        ],
-        widowsibilings: [
-          {
-            name: widowSiblingName,
-            age: widowSiblingAge,
-            relation: widowSiblingRelation,
-            activities: widowSiblingActivities,
-            income: widowSiblingIncome,
-          },
-        ],
-        medicineCost: medicineCost,
-        bform: bform,
-        deathcertificate: deathcertificate,
-        totalamountdonation: totalamountdonation,
-      });
+      const res = await axios.post("http://localhost:9000/User/MonthlyAppeal", formData);
       console.log(res, "Successfully send");
       alert(`${user.username} \n 
        Your form has been submitted`);

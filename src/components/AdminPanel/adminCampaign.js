@@ -19,7 +19,7 @@ function Foorm() {
     setFileName(e.target.files[0].name);
   };
   useEffect(() => {
-       viewCamp();
+    viewCamp();
   }, []);
   const postData = async () => {
     const formData = new FormData();
@@ -32,7 +32,7 @@ function Foorm() {
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addCampaign",
-         formData ,
+        formData,
         {
           headers: { Authorization: `Bearer ${user.verifToken}` },
         }
@@ -49,9 +49,9 @@ function Foorm() {
   const viewCamp = async () => {
     try {
       const res = await axios.get(
-        "https://damp-stream-39096.herokuapp.com/admin/viewCampaigns"
+        "http://localhost:9000/admin/viewCampaigns"
       );
-           setCamp(
+      setCamp(
         res.data.map((i) => ({
           _id: i._id,
           name: i.name,
@@ -60,7 +60,7 @@ function Foorm() {
           file: i.fileName,
         }))
       );
-     
+
     } catch (e) {
       console.log(e);
     }
@@ -94,7 +94,7 @@ function Foorm() {
     console.log(formData, "This is the form at the frontend");
     try {
       const res = await axios.patch(
-        "https://damp-stream-39096.herokuapp.com/admin/updateCampaign/" + ID,
+        "http://localhost:9000/admin/updateCampaign/" + ID,
         {
           headers: { Authorization: `Bearer ${user.verifToken}` },
         },

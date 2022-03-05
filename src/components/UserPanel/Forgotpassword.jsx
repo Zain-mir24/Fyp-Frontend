@@ -12,7 +12,7 @@ function Forgotpassword({ history }) {
   const sendlink = async (e) => {
     await axios
       .request({
-        baseURL: "https://damp-stream-39096.herokuapp.com",
+        baseURL: "http://localhost:9000",
         url: "/forgotpassword",
         method: "post",
         data: {

@@ -8,7 +8,7 @@ export default function Sidebar() {
   const [getApi, setApi] = useState([]);
   const getData = async () => {
     const response = await axios.get(
-      "https://damp-stream-39096.herokuapp.com/admin/users"
+      "http://localhost:9000/admin/users"
     );
     const data = await response.data;
     setApi(data);

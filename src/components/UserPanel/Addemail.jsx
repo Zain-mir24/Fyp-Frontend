@@ -11,7 +11,7 @@ function Addemail({ history }) {
   const senddata = async (e) => {
     await axios
       .request({
-        baseURL: "https://damp-stream-39096.herokuapp.com/adminPanel",
+        baseURL: "http://localhost:9000/adminPanel",
         url: `/saveEmail/${_id}/${token}`,
         method: "post",
         data: {

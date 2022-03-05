@@ -90,7 +90,7 @@ function AppealedLoans() {
       render: (text, record) => (
         <a
           href={
-            "https://damp-stream-39096.herokuapp.com/uploads/" + record.file
+            "https://localhost:9000/uploads/" + record.file
           }
           download
         >

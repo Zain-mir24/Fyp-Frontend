@@ -27,7 +27,7 @@ export default function CampaignDetails({ history }) {
       if (!result) {
         console.log("error fetching data");
       }
-      
+
       await setCollection(result.data.totalamount);
       await setData(result.data.registeredUser);
       console.log(data);
@@ -95,7 +95,7 @@ export default function CampaignDetails({ history }) {
           <div className="row">
             <div className="col-lg-6">
               <Image
-                src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
+                src={"http://localhost:9000/uploads/" + img}
                 style={{ width: "100%" }}
               />
             </div>
@@ -146,7 +146,7 @@ export default function CampaignDetails({ history }) {
                 style={{ width: "100%", height: "500px", textAlign: "center" }}
               >
                 <Image
-                  src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
+                  src={"http://localhost:9000/uploads/" + img}
                   style={{ width: "100%", height: "500px" }}
                 />
               </div>

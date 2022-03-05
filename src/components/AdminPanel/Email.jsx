@@ -8,7 +8,7 @@ export default function Email() {
 
   async function collectData() {
     axios
-      .get("https://damp-stream-39096.herokuapp.com/adminPanel/displayEmail")
+      .get("http://localhost:9000/adminPanel/displayEmail")
       .then((response) => {
         setData(response.data);
       });
@@ -17,7 +17,7 @@ export default function Email() {
     try {
       console.log(id, "HE::");
       const res = await axios.delete(
-        "https://damp-stream-39096.herokuapp.com/adminPanel/deleteEmail/" + id
+        "http://localhost:9000/adminPanel/deleteEmail/" + id
       );
       alert("Email Deleted");
       console.log(res);

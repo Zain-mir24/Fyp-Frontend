@@ -220,7 +220,7 @@ function AdminCampaign() {
   const getData = async () => {
     try {
       const res = await axios.get(
-        "https://damp-stream-39096.herokuapp.com/admin/latestnews"
+        "http://localhost:9000/admin/latestnews"
       );
       setData(res.data);
       console.log(res.data, "TESTING");
@@ -232,7 +232,7 @@ function AdminCampaign() {
   const deleteData = async (id) => {
     try {
       const res = await axios.delete(
-        "https://damp-stream-39096.herokuapp.com/admin/deleteNews/" + id
+        "http://localhost:9000/admin/deleteNews/" + id
       );
       alert("Campaign Deleted");
 

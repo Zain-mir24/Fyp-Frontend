@@ -15,7 +15,7 @@ function Adminlogin({ history, ...props }) {
   const handlesubmit = async (e) => {
     await axios
       .request({
-        baseURL: "http://localhost:9000" + "/admin",
+        baseURL: "http://localhost:9000/admin",
         url: "/login",
         method: "post",
         data: {
