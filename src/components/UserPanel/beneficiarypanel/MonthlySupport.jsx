@@ -81,9 +81,9 @@ export default function MonthlySupport() {
     }
   ]
   const getData = async () => {
-
+    await setBid(user.userId);
     const formData = new FormData();
-    formData.append(" bid", user.userId);
+    formData.append("bid", bid);
     formData.append("phoneNumber", phone);
     formData.append("cnic", cnic);
     formData.append("category", category);
@@ -531,7 +531,10 @@ export default function MonthlySupport() {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" onClick={getData}>
+          <Button type="primary" htmlType="submit" onClick={() => {
+            setBid(user.userId)
+            getData()
+          }}>
             Submit proposal
           </Button>
         </Form.Item>
