@@ -50,6 +50,7 @@ export default function MonthlySupport() {
   const [deathcertificatename, setdeathcertificatename] = useState("");
   const [totalamountdonation, settotalamountdonation] = useState(0);
   useEffect(() => {
+    console.log(user.userId)
     setBid(user.userId);
   }, []);
   const { Option } = Select;
@@ -80,8 +81,9 @@ export default function MonthlySupport() {
     }
   ]
   const getData = async () => {
+
     const formData = new FormData();
-    formData.append(" bid", bid);
+    formData.append(" bid", user.userId);
     formData.append("phoneNumber", phone);
     formData.append("cnic", cnic);
     formData.append("category", category);
