@@ -70,6 +70,8 @@ function Body({ history, ...props }) {
       return <MeetingScheduled />;
     } else if (content === "Monthly Support") {
       return <MonthlySupport />;
+    } else if (content === "Support performa") {
+      return <MonthlySupport />;
     }
   }
 

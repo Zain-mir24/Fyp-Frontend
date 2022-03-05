@@ -61,12 +61,24 @@ export default function MonthlySupport() {
     setdeathcertificate(e.target.files[0]);
     setdeathcertificatename(e.target.files[0].name)
   };
-  var Accomodation = {
-    self: self,
-    donated: donated,
-    rental: rental,
-    rent: rent,
-  }
+  var widowfamdetail = [
+    {
+      name: widowName,
+      age: widowAge,
+      relation: widowRelation,
+      activities: widowActivities,
+      income: widowIncome,
+    },
+  ]
+  var widowSibilings = [
+    {
+      name: widowSiblingName,
+      age: widowSiblingAge,
+      relation: widowSiblingRelation,
+      activities: widowSiblingActivities,
+      income: widowSiblingIncome,
+    }
+  ]
   const getData = async () => {
 
     const formData = new FormData()
@@ -83,24 +95,8 @@ export default function MonthlySupport() {
     formData.append("donated", donated);
     formData.append("rental", rental);
     formData.append("rent", rent);
-    formData.append("widowfamdetail", [
-      {
-        name: widowName,
-        age: widowAge,
-        relation: widowRelation,
-        activities: widowActivities,
-        income: widowIncome,
-      },
-    ]);
-    formData.append("widowsibilings", [
-      {
-        name: widowSiblingName,
-        age: widowSiblingAge,
-        relation: widowSiblingRelation,
-        activities: widowSiblingActivities,
-        income: widowSiblingIncome,
-      },
-    ])
+    formData.append("widowfamdetail", JSON.stringify(widowfamdetail));
+    formData.append("widowsibilings", JSON.stringify(widowSibilings));
     formData.append("medicineCost", medicineCost)
     formData.append("bform", bform)
     formData.append("bformname", bformname)
