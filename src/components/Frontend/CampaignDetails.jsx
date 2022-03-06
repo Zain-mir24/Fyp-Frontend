@@ -17,7 +17,7 @@ export default function CampaignDetails({ history }) {
   const img = queryParams.get("img");
   const donation = queryParams.get("donation");
   let cid = queryParams.get("campaignid");
-
+  console.log(cid)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getAmount = async () => {
     try {
@@ -30,7 +30,7 @@ export default function CampaignDetails({ history }) {
 
       await setCollection(result.data.totalamount);
       await setData(result.data.registeredUser);
-      console.log(data);
+      console.log(result.data);
     } catch (e) {
       console.log(e);
     }
