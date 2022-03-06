@@ -51,8 +51,9 @@ function Foorm() {
       const res = await axios.get(
         "http://localhost:9000/admin/viewCampaigns"
       );
+      console.log(res.data)
       setCamp(
-        res.data.map((i) => ({
+        res.data.campaign.map((i) => ({
           _id: i._id,
           name: i.name,
           description: i.description,
