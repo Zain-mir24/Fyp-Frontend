@@ -19,6 +19,7 @@ import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import Header1 from ".././SubAdminPanel/Header1";
 import MeetingScheduled from "./MeetingScheduled";
 import AmountDetail from "./AmountDetail";
+import HousingScheme from "./HousingScheme";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -73,6 +74,8 @@ function Body({ history, ...props }) {
       return <MonthlySupport />;
     } else if (content === "Amountdetail") {
       return <AmountDetail />;
+    } else if (content === "Housingscheme") {
+      return <HousingScheme />;
     }
   }
 
@@ -220,6 +223,15 @@ function Body({ history, ...props }) {
               }}
             >
               Support amount detail
+            </Menu.Item>
+            <Menu.Item
+              key="17"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Housingscheme");
+              }}
+            >
+              Housing Scheme
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
