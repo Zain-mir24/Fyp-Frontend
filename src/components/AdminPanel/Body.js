@@ -18,6 +18,7 @@ import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import Header1 from ".././SubAdminPanel/Header1";
 import MeetingScheduled from "./MeetingScheduled";
+import AmountDetail from "./AmountDetail";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -70,8 +71,8 @@ function Body({ history, ...props }) {
       return <MeetingScheduled />;
     } else if (content === "Monthly Support") {
       return <MonthlySupport />;
-    } else if (content === "Support performa") {
-      return <MonthlySupport />;
+    } else if (content === "Amountdetail") {
+      return <AmountDetail />;
     }
   }
 
@@ -210,6 +211,15 @@ function Body({ history, ...props }) {
               }}
             >
               Monthly Support
+            </Menu.Item>
+            <Menu.Item
+              key="16"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Amountdetail");
+              }}
+            >
+              Support amount detail
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
