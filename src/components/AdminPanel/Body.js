@@ -20,6 +20,7 @@ import Header1 from ".././SubAdminPanel/Header1";
 import MeetingScheduled from "./MeetingScheduled";
 import AmountDetail from "./AmountDetail";
 import HousingScheme from "./HousingScheme";
+import EstimationPerfoma from "./EstimationPerfoma";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -76,6 +77,8 @@ function Body({ history, ...props }) {
       return <AmountDetail />;
     } else if (content === "Housingscheme") {
       return <HousingScheme />;
+    } else if (content === "EstimationPerfoma") {
+      return <EstimationPerfoma />;
     }
   }
 
@@ -232,6 +235,15 @@ function Body({ history, ...props }) {
               }}
             >
               Housing Scheme
+            </Menu.Item>
+            <Menu.Item
+              key="18"
+              icon={<EstimationPerfoma />}
+              onClick={() => {
+                setContent("EstimationPerfoma");
+              }}
+            >
+              Estimation Perfoma
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
