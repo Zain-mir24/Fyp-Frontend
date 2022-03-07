@@ -222,7 +222,7 @@ export default function Amountmanagment(props) {
                 <h1>
                     previous record
                 </h1>
-                <Table columns={columns} dataSource={data} />
+                <Table scroll={{ x: 1500 }} columns={columns} dataSource={data} />
             </div>
 
         </div >

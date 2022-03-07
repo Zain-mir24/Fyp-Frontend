@@ -71,7 +71,7 @@ function AppealedCampaigns() {
 
   return (
     <div>
-      <Table columns={columns} dataSource={campaigndata} />
+      <Table scroll={{ x: 1500 }} columns={columns} dataSource={campaigndata} />
     </div>
   );
 }

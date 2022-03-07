@@ -51,7 +51,7 @@ function Beneficiary() {
 
   return (
     <div>
-      <Table columns={columns} dataSource={users} />,
+      <Table scroll={{ x: 1500 }} columns={columns} dataSource={users} />,
     </div>
   );
 }

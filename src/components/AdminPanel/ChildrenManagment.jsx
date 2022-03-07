@@ -26,7 +26,7 @@ function ChildrenManagment() {
   const [disability, setDisability] = useState("");
   const [updateID, setUpdateID] = useState("");
   const user = useSelector(selectUser);
-   const saveFile = (e) => {
+  const saveFile = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
@@ -44,7 +44,7 @@ function ChildrenManagment() {
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addchild",
-         formData ,
+        formData,
         {
           headers: { Authorization: `Bearer ${user.verifToken}` },
         }
@@ -408,7 +408,7 @@ function ChildrenManagment() {
 
               <Form.Item
                 rules={[{ message: "Please uplaod doc" }]}
-                //   onChange={saveFile}
+              //   onChange={saveFile}
               >
                 <Upload>
                   <Button icon={<UploadOutlined />}>
@@ -428,7 +428,7 @@ function ChildrenManagment() {
             </Form>
           </Col>
         </Row>
-        <Table columns={columns} dataSource={value} />
+        <Table scroll={{ x: 1500 }} columns={columns} dataSource={value} />
       </div>
     </div>
   );

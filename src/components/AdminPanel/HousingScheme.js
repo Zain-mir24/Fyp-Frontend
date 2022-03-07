@@ -174,7 +174,8 @@ function HousingScheme() {
                         <h3>
                             Add Housing Scheme for this beneficiary
                         </h3>
-                        <Form>
+                        <Form
+                            name="basic">
                             <Form.Item rules={[
                                 { required: true, message: "enter proposal number" },
                             ]}>
@@ -431,7 +432,7 @@ function HousingScheme() {
                                     }}
                                 />
                             </Form.Item>
-                            <Form.Item>
+                            <Form.Item >
                                 <Button type="primary" htmlType="submit" onClick={sendData} >
                                     Submit
                                 </Button>
@@ -446,7 +447,7 @@ function HousingScheme() {
                 <h1>
                     previous record
                 </h1>
-                <Table columns={columns} dataSource={data} />
+                <Table scroll={{ x: 1500 }} columns={columns} dataSource={data} />
             </div>
 
         </div >
