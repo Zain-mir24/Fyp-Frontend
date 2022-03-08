@@ -59,32 +59,32 @@ export default function EstimationPerfoma() {
   function calculteTotal() {
     setTotal(
       parseFloat(prev) +
-        parseFloat(masoncharges) +
-        parseFloat(plumbercharges) +
-        parseFloat(electriciancharges) +
-        parseFloat(shutteringcharges) +
-        parseFloat(labourcharges) +
-        parseFloat(paintercharges)
+      parseFloat(masoncharges) +
+      parseFloat(plumbercharges) +
+      parseFloat(electriciancharges) +
+      parseFloat(shutteringcharges) +
+      parseFloat(labourcharges) +
+      parseFloat(paintercharges)
     );
   }
 
   const { Option } = Select;
 
   const getData = async () => {
-    const formData = new FormData();
-    formData.append("project", project);
-    formData.append("location", location);
-    formData.append("caretaker", caretaker);
-    formData.append("cellno", cellno);
-    formData.append("Date", date);
-    formData.append("Material", JSON.stringify(material));
-    formData.append("Masoncharges", masoncharges);
-    formData.append("Labourcharges", labourcharges);
-    formData.append("Plumbercharges", plumbercharges);
-    formData.append("Shutteringcharges", shutteringcharges);
-    formData.append("Electriciancharges", electriciancharges);
-    formData.append("Paintercharges", paintercharges);
-    formData.append("Total", total);
+    // const formData = new FormData();
+    // formData.append("project", project);
+    // formData.append("location", location);
+    // formData.append("caretaker", caretaker);
+    // formData.append("cellno", cellno);
+    // formData.append("Date", date);
+    // formData.append("Material", JSON.stringify(material));
+    // formData.append("Masoncharges", masoncharges);
+    // formData.append("Labourcharges", labourcharges);
+    // formData.append("Plumbercharges", plumbercharges);
+    // formData.append("Shutteringcharges", shutteringcharges);
+    // formData.append("Electriciancharges", electriciancharges);
+    // formData.append("Paintercharges", paintercharges);
+    // formData.append("Total", total);
 
     const obj = {
       project: project,
