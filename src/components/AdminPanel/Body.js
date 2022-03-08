@@ -20,6 +20,7 @@ import Header1 from ".././SubAdminPanel/Header1";
 import MeetingScheduled from "./MeetingScheduled";
 import AmountDetail from "./AmountDetail";
 import HousingScheme from "./HousingScheme";
+import EstimationPerfoma from "./EstimationPerfoma";
 import Estimation from "./Estimation";
 import { selectUser } from "../../store/reducers/User";
 
@@ -77,6 +78,8 @@ function Body({ history, ...props }) {
       return <AmountDetail />;
     } else if (content === "Housingscheme") {
       return <HousingScheme />;
+    } else if (content === "EstimationPerfoma") {
+      return <EstimationPerfoma />;
     } else if (content === "Estimation") {
       return <Estimation />;
     }
@@ -241,6 +244,15 @@ function Body({ history, ...props }) {
               icon={<MoneyCollectOutlined />}
               onClick={() => {
                 setContent("Estimation");
+              }}
+            >
+              Estimation performa
+            </Menu.Item>
+            <Menu.Item
+              key="19"
+              icon={<EstimationPerfoma />}
+              onClick={() => {
+                setContent("EstimationPerfoma");
               }}
             >
               Estimation performa
