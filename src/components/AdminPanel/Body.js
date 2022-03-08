@@ -21,6 +21,7 @@ import MeetingScheduled from "./MeetingScheduled";
 import AmountDetail from "./AmountDetail";
 import HousingScheme from "./HousingScheme";
 import EstimationPerfoma from "./EstimationPerfoma";
+import Estimation from "./Estimation";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -79,6 +80,8 @@ function Body({ history, ...props }) {
       return <HousingScheme />;
     } else if (content === "EstimationPerfoma") {
       return <EstimationPerfoma />;
+    } else if (content === "Estimation") {
+      return <Estimation />;
     }
   }
 
@@ -238,12 +241,21 @@ function Body({ history, ...props }) {
             </Menu.Item>
             <Menu.Item
               key="18"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Estimation");
+              }}
+            >
+              Estimation performa
+            </Menu.Item>
+            <Menu.Item
+              key="19"
               icon={<EstimationPerfoma />}
               onClick={() => {
                 setContent("EstimationPerfoma");
               }}
             >
-              Estimation Perfoma
+              Estimation performa
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
