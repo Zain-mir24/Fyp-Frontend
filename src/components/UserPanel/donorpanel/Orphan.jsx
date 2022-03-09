@@ -27,7 +27,7 @@ export default function Orphan() {
             age: i.age,
           }))
         );
-        alert(`your meeting is scheduled`)
+
       });
   };
   useEffect(() => {

@@ -11,13 +11,13 @@ const { Footer, Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
 function CampaignDetail(props) {
-  const user = useSelector(selectUser);
+  // const user = useSelector(selectUser);
 
 
   const [collection, setCollection] = useState();
   const [amount, setAmount] = useState(0);
-
-  const name = props.name;
+  var userId = props.users.userId
+  const campaignname = props.name;
   const description = props.description;
   const img = props.fileName;
   const donation = props.donation;
@@ -39,10 +39,10 @@ function CampaignDetail(props) {
   const sendPayment = (token) => {
     const body = {
       token,
-      name,
-      amount,
+      campaignname: campaignname,
+      totalamount: amount,
       campaignId: cid,
-      userId: user.userId
+      userId: userId
     };
 
     return axios
@@ -64,7 +64,7 @@ function CampaignDetail(props) {
           <div className="col-lg-10">
             <Layout style={{ backgroundColor: "white" }}>
               <Content>
-                <h1>{name}</h1>
+                <h1>{campaignname}</h1>
                 <img
                   src={"http://localhost:9000/uploads/" + props.img}
                 />

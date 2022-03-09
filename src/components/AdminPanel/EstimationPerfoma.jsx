@@ -14,7 +14,7 @@ import {
   Space,
   Rate,
 } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+
 
 const axios = require("axios");
 
@@ -89,7 +89,6 @@ export default function EstimationPerfoma() {
     const obj = {
       project: project,
       location: location,
-      caretaker,
       caretaker,
       cellno: parseFloat(cellno),
       Date: date,

@@ -50,10 +50,12 @@ function SignIn({ history, ...props }) {
               userId,
             })
           );
+
           history.push("/userPanel");
         }
       })
       .catch((e) => {
+        alert(`incorrect credential,Either email or password was incorrect.`)
         console.log("our error", e);
       });
   };

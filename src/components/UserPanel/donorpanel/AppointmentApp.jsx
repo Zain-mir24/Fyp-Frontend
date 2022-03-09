@@ -29,6 +29,7 @@ function AppointmentApp(props) {
                     childId: props.id
                 },
             })
+            alert(`your meeting is scheduled`)
             console.log("Meeting Scheduled")
         } catch (e) {
             console.log(e)
