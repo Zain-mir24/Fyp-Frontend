@@ -27,7 +27,6 @@ export default function Dailyexpense() {
     const [materialQTY, setMaterialQTY] = useState(0);
     const [materialRate, setMaterialRate] = useState(0);
     const [materialCost, setMaterialCost] = useState(0);
-    const [masoncharges, setMasoncharges] = useState(0);
     const [labourname, setlabourname] = useState(0);
     const [labourCellno, setlabourCellno] = useState(0);
     const [natureofwork, setnatureofwork] = useState(0);
@@ -35,7 +34,9 @@ export default function Dailyexpense() {
     const [MaterialTotal, setMaterialTotal] = useState(0);
     const [LabourTotal, setLabourTotal] = useState(0);
     const [material, setMaterial] = useState([]);
+    const [LabourCharges, setLabourCharges] = useState([]);
     const [count, setCount] = useState(0);
+    const [countlabour, setCountlabour] = useState(0)
 
     function AddMaterial() {
         setMaterial((material) => [
@@ -49,51 +50,28 @@ export default function Dailyexpense() {
             },
         ]);
         setCount(count + 1);
-        setLabourTotal(LabourTotal + materialCost);
+        setMaterialTotal(MaterialTotal + materialCost);
+
+    }
+    function AddLabour() {
+        setLabourCharges((material) => [
+            ...material,
+            {
+                labourname: labourname,
+                labourCellno: labourCellno,
+                natureofwork: natureofwork,
+                LabourChargesPaid: LabourChargesPaid
+            },
+        ]);
+        setCountlabour(countlabour + 1);
+        setLabourTotal(parseFloat(LabourTotal) + parseFloat(LabourChargesPaid));
     }
 
-    var prev = LabourTotal;
-    var [check, setCheck] = useState(true);
-    function calculteTotal() {
-        setLabourTotal(
-            parseFloat(prev) +
-            parseFloat(masoncharges) +
-            parseFloat(natureofwork) +
-            // parseFloat(electriciancharges) +
-            parseFloat(LabourChargesPaid) +
-            // parseFloat(labourcharges) +
-            parseFloat(MaterialTotal)
-        );
-        // setLabourTotal(
-        //     parseFloat(prev) +
-        //     parseFloat(masoncharges) +
-        //     parseFloat(natureofwork) +
-        //     // parseFloat(electriciancharges) +
-        //     parseFloat(LabourChargesPaid) +
-        //     // parseFloat(labourcharges) +
-        //     parseFloat(MaterialTotal)
-        // );
-    }
 
 
     const { Option } = Select;
 
     const getData = async () => {
-        // const formData = new FormData();
-        // formData.append("project", project);
-        // formData.append("location", location);
-        // formData.append("caretaker", caretaker);
-        // formData.append("cellno", cellno);
-        // formData.append("Date", date);
-        // formData.append("Material", JSON.stringify(material));
-        // formData.append("Masoncharges", masoncharges);
-        // formData.append("Labourcharges", labourcharges);
-        // formData.append("natureofwork", natureofwork);
-        // formData.append("LabourCharges", LabourCharges);
-        // formData.append("Electriciancharges", electriciancharges);
-        // formData.append("MaterialTotal", MaterialTotal);
-        // formData.append("Total", total);
-
         const obj = {
             project: project,
             location: location,
@@ -101,19 +79,15 @@ export default function Dailyexpense() {
             cellno: parseFloat(cellno),
             Date: date,
             Material: material,
-            Masoncharges: parseFloat(masoncharges),
-            // Labourcharges: parseFloat(labourcharges),
-            natureofwork: parseFloat(natureofwork),
-            LabourChargesPaid: parseFloat(LabourChargesPaid),
-            // Electriciancharges: parseFloat(electriciancharges),
+            LabourCharges: LabourCharges,
             MaterialTotal: parseFloat(MaterialTotal),
-            LabourTotal: LabourTotal,
+            LabourTotal: parseFloat(LabourTotal),
         };
 
         try {
             console.log(obj, "Hello");
             const res = await axios.post(
-                "http://localhost:9000/admin/addEstimation",
+                "http://localhost:9000/admin/addExpense",
                 obj
             );
             console.log(res, "Successfully send");
@@ -181,6 +155,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="Caretaker"
                     label="Caretaker: "
                     rules={[
                         {
@@ -196,6 +171,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="Cellno"
                     label="Cellno: "
                     rules={[
                         {
@@ -211,6 +187,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="Date"
                     label="Date: "
                     rules={[
                         {
@@ -232,6 +209,7 @@ export default function Dailyexpense() {
                 </div>
                 <br />
                 <Form.Item
+                    name="Name"
                     label="Name: "
                     rules={[
                         {
@@ -247,6 +225,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="AU"
                     label="AU: "
                     rules={[
                         {
@@ -262,6 +241,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="QTY"
                     label="QTY: "
                     rules={[
                         {
@@ -277,6 +257,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="Rate"
                     label="Rate: "
                     rules={[
                         {
@@ -292,11 +273,12 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+
                     label="Cost: "
                     rules={[
                         {
                             required: true,
-                            message: "Please enter Caretaker",
+                            message: "Please enter Cost",
                         },
                     ]}
                 >
@@ -304,7 +286,7 @@ export default function Dailyexpense() {
                 </Form.Item>
                 <br />
                 <div style={{ textAlign: "right" }}>
-                    <button onClick={AddMaterial}>Add</button>
+                    <button onClick={AddMaterial}>Add Material</button>
                 </div>
                 <br /> <br />
                 <h4>Labour Charges</h4>
@@ -313,10 +295,11 @@ export default function Dailyexpense() {
 
 
                 <div style={{ textAlign: "right" }}>
-                    <p>{count}Labours  Added</p>
+                    <p>{countlabour}Labours  Added</p>
                 </div>
                 <br />
                 <Form.Item
+                    name="Labourname"
                     label="labourname "
                     rules={[
                         {
@@ -332,6 +315,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="Labour cell no"
                     label="Labour Cell no: "
                     rules={[
                         {
@@ -347,6 +331,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+                    name="Nature of work"
                     label="Nature of work "
                     rules={[
                         {
@@ -362,6 +347,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
+
                     label="  Labour Charges Paid "
                     rules={[
                         {
@@ -372,15 +358,15 @@ export default function Dailyexpense() {
                 >
                     <Input
                         onChange={(e) => {
-                            setLabourChargesPaid(e.target.value);
+                            setLabourChargesPaid(e.target.value)
                         }}
                     />
                 </Form.Item>
-
                 <div style={{ textAlign: "right" }}>
-                    <button onClick={calculteTotal}>Calculate Final Cost</button>
+                    <button onClick={AddLabour}>Add Labour</button>
                     <br /> <br />
                 </div>
+
                 <Form.Item
                     label="Materail Total: "
                     rules={[
