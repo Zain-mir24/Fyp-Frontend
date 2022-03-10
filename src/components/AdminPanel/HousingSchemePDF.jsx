@@ -1,31 +1,205 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Form, Input, Button, Image } from "antd";
+import axios from "axios";
 import Pdf from "react-to-pdf";
+import "./styles.css";
 const ref = React.createRef();
 
 function HousingSchemePDF(props) {
+  const [ProposalNo, setProposalNo] = useState();
+  const [needs, setNeeds] = useState();
+  const [outcomes, setOutcomes] = useState();
+  const [communicationFeedback, setCommunicationFeedback] = useState();
 
-    return (
-        <div>
-            <Pdf targetRef={ref} filename="code-example.pdf">
-                {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-            </Pdf>
-            <div ref={ref}>
-
-
-                <h1>
-                    GlobalReach
-                </h1>
-                {props.name} <br />
-                {props.Guardian}<br />
-                {props.SOI} <br />
-                {props.EC} <br />
-                {props.ETF}<br />
-                {props.cnic}
-
-                HousingSchemePDF
+  const getData = async () => {
+    // const formData = new FormData();
+    // formData.append("ProposalNo", ProposalNo);
+    // formData.append("needs", needs);
+    // formData.append("outcomes", outcomes);
+    // formData.append("communicationFeedback", communicationFeedback);
+    console.log(ProposalNo, "HELLO");
+    try {
+      const res = await axios.patch(
+        "http://localhost:9000/admin/updatehousingscheme/" + props.id,
+        {
+          ProposalNo: ProposalNo,
+          needs: needs,
+          outcomes: outcomes,
+          communicationFeedback: communicationFeedback,
+        }
+      );
+      console.log(res, "Successfully send");
+      alert(`${props.name} \n 
+           Your form has been submitted`);
+    } catch (ex) {
+      alert(`${props.name} \n 
+          Your form was not submitted`);
+      console.log(ex);
+    }
+  };
+  return (
+    <div>
+      <h1>Update Form</h1>
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{
+          remember: true,
+        }}
+      >
+        <Form.Item
+          label="Proposal No: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Proposal No",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setProposalNo(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Needs: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Beneficiary Needs",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setNeeds(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Outcomes: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Project Outcomes",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setOutcomes(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Communication Feedback: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Communication Feedback",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setCommunicationFeedback(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            onClick={() => {
+              //   setBid(user.userId);
+              getData();
+            }}
+          >
+            Submit proposal
+          </Button>
+        </Form.Item>
+      </Form>
+      <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+      </Pdf>
+      <div ref={ref} style={{ backgroundColor: "white", padding: "50px" }}>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-lg-6">
+              <Image src="/Images/GlobalReach.png" />
             </div>
+            <div className="col-lg-6" style={{ position: "relative" }}>
+              <div style={{ position: "absolute", right: "0px" }}>
+                <p style={{ color: "black" }}>
+                  <b>ISLAMABAD OFFICE:</b> <br />
+                  House No 15, Block‐3, 502 Colony <br />
+                  Quarters, <br />
+                  Adyala Road Rawalpindi, Pakistan.
+                  <br />
+                  Tel: +92 349 4271027
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style={{
+              backgroundColor: "#019267",
+              marginTop: "25px",
+              textAlign: "center",
+            }}
+          >
+            <h1 style={{ color: "white" }}>HOUSE CONSTRUCTION SUPPORT</h1>
+          </div>
+          <h2>Beneficiary Details</h2>
+          <div style={{ padding: "20px", backgroundColor: "#C0A080" }}></div>
+
+          <br />
+          <br />
+
+          <div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Name</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.name}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Residential Address</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.address}</li>
+              </ul>
+            </div>
+
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Family Details</span>{" "}
+              <ul className="pdf-list-ul">
+                {props.family.map((item) => {
+                  return (
+                    <li className="pdf-list-li">
+                      Name: {item.name} | Age: {item.age} | Studying:{" yes"}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
         </div>
-    )
+
+        {/* <h1>GlobalReach</h1>
+        {props.name} <br />
+        {props.Guardian}
+        <br />
+        {props.SOI} <br />
+        {props.EC} <br />
+        {props.ETF}
+        <br />
+        {props.cnic}
+        HousingSchemePDF */}
+      </div>
+    </div>
+  );
 }
 
-export default HousingSchemePDF
+export default HousingSchemePDF;

@@ -20,6 +20,7 @@ import { Redirect, withRouter } from "react-router";
 import LoanAppeal from "./loanAppeal";
 import Approvecampaigns from "./approvCampaigns";
 import MonthlySupport from "./MonthlySupport";
+import HouseAppeal from "./HouseAppeal";
 import "./beneficiary.css";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -89,6 +90,15 @@ function Beneficiarypanel({ history, ...props }) {
             >
               Monthly Support
             </Menu.Item>
+            <Menu.Item
+              key="12"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("House Appeal");
+              }}
+            >
+              House Appeal
+            </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
                 <Button>My profile</Button>
@@ -127,6 +137,7 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "home" ? <HomePanel /> : null}
               {content == "Approve" ? <Approvecampaigns /> : null}
               {content == "Monthly Support" ? <MonthlySupport /> : null}
+              {content == "House Appeal" ? <HouseAppeal /> : null}
             </div>
           </Content>
         </Layout>
