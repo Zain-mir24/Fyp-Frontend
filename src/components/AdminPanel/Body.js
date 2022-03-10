@@ -242,7 +242,7 @@ function Body({ history, ...props }) {
             >
               Housing Scheme
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="18"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -250,7 +250,7 @@ function Body({ history, ...props }) {
               }}
             >
               Estimation performa
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="19"
               icon={<MoneyCollectOutlined />}

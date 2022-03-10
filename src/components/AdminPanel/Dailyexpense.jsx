@@ -13,6 +13,8 @@ import {
     DatePicker,
     Space,
     Rate,
+    Table
+
 } from "antd";
 const axios = require("axios");
 
@@ -37,6 +39,9 @@ export default function Dailyexpense() {
     const [LabourCharges, setLabourCharges] = useState([]);
     const [count, setCount] = useState(0);
     const [countlabour, setCountlabour] = useState(0)
+    // UseState to get data from APi
+    const [data, setData] = useState([])
+    const [content, setContent] = useState("Daily")
 
     function AddMaterial() {
         setMaterial((material) => [
@@ -67,7 +72,80 @@ export default function Dailyexpense() {
         setLabourTotal(parseFloat(LabourTotal) + parseFloat(LabourChargesPaid));
     }
 
+    const viewData = async () => {
+        try {
+            const res = await axios.get("http://localhost:9000/admin/viewExpense");
+            await setData(res.data)
+            console.log(res.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    const columns = [
+        {
+            title: "Project",
+            dataIndex: "project",
+            key: "project",
+            render: (text) => <a>{text}</a>,
+        },
 
+        {
+            title: "Location",
+            dataIndex: "location",
+            key: "location",
+        },
+        {
+            title: "Caretaker",
+            dataIndex: "caretaker",
+            key: "caretaker",
+
+        }, {
+            title: "cellno",
+            dataIndex: "cellno",
+            key: "cellno",
+
+        },
+        {
+            title: "Material",
+            dataIndex: "Material",
+            key: "Material",
+            render: (material) => material.map(materials => {
+                return (
+                    <div>
+                        name {materials.name}<br />
+                        Quantitiy {materials.QTY}<br />
+                        Rate {materials.Rate}<br />
+                        Cost {materials.Cost}
+                    </div>
+                )
+            })
+        }, {
+            title: "Labour",
+            dataIndex: "LabourCharges",
+            key: "LabourCharges",
+            render: (Labour) => Labour.map(Labours => {
+                return (
+                    <div>
+                        name {Labours.labourname}<br />
+                        Cell no {Labours.labourCellno}<br />
+                        Nature of work {Labours.natureofwork}<br />
+                        Charges{Labours.LabourChargesPaid}
+                    </div>
+                )
+            })
+        },
+        {
+            title: "Materialtotal",
+            dataIndex: "MaterialTotal",
+            key: "MaterialTotal",
+
+        }, {
+            title: "LabourTotal",
+            dataIndex: "LabourTotal",
+            key: "labourTotal",
+
+        },
+    ];
 
     const { Option } = Select;
 
@@ -98,7 +176,9 @@ export default function Dailyexpense() {
             console.log(ex);
         }
     };
-
+    useEffect(() => {
+        viewData()
+    }, [])
     function costChangeQTY(e) {
         setMaterialQTY(parseFloat(e.target.value));
         setMaterialCost(materialRate * e.target.value);
@@ -347,7 +427,7 @@ export default function Dailyexpense() {
                     />
                 </Form.Item>
                 <Form.Item
-
+                    name="Labour Charges paid"
                     label="  Labour Charges Paid "
                     rules={[
                         {
@@ -404,6 +484,8 @@ export default function Dailyexpense() {
                     </Button>
                 </Form.Item>
             </Form>
+            <Table scroll={{ x: 1500 }} columns={columns} dataSource={data} />
+
         </div>
     )
 }

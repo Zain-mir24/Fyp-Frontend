@@ -19,6 +19,7 @@ import Addemail from "./components/UserPanel/Addemail";
 import Donation from "./components/DonationPage/Donation";
 import News from "./components/Loanpage/News";
 import NewsDetails from "./components/Loanpage/NewsDetails";
+import HousingSchemePDF from "./components/AdminPanel/HousingSchemePDF";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -59,6 +60,7 @@ function App() {
               path="/emailVerification/:_id/:token/:Email"
               component={Addemail}
             ></Route>
+
             <Route path="/" component={home}></Route>
           </Switch>
         </BrowserRouter>
