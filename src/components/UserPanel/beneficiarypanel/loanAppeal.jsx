@@ -119,7 +119,7 @@ function LoanAppeal() {
             },
           ]}
         >
-          <Upload>
+          <Upload accept=".zip">
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
         </Form.Item>

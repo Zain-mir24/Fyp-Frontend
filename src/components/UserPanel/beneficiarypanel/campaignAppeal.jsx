@@ -112,7 +112,7 @@ function CampaignAppeal() {
             },
           ]}
         >
-          <Upload>
+          <Upload accept=".zip">
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
         </Form.Item>

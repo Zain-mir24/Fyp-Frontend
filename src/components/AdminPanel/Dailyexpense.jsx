@@ -126,10 +126,10 @@ export default function Dailyexpense() {
             render: (Labour) => Labour.map(Labours => {
                 return (
                     <div>
-                        name {Labours.labourname}<br />
-                        Cell no {Labours.labourCellno}<br />
-                        Nature of work {Labours.natureofwork}<br />
-                        Charges{Labours.LabourChargesPaid}
+                        name   <b>{Labours.labourname}</b><br />
+                        Cell no   <b>{Labours.labourCellno}</b><br />
+                        Nature of work    <b>{Labours.natureofwork}</b><br />
+                        Charges   <b>{Labours.LabourChargesPaid}</b>
                     </div>
                 )
             })

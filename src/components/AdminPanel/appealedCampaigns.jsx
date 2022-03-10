@@ -13,7 +13,7 @@ function AppealedCampaigns() {
   const viewData = async () => {
     try {
       const res = await axios({
-        url: process.env.REACT_APP_CAMPAPPEAL,
+        url: "http://localhost:9000/admin/viewcampaignAppeals",
         method: "GET",
         responseType: "stream",
       });
