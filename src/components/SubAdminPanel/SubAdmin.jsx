@@ -22,7 +22,7 @@ function SubAdmin({ history, ...props }) {
   );
 }
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(SubAdmin));

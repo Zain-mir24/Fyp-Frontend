@@ -31,6 +31,8 @@ function Adminlogin({ history, ...props }) {
         var verifToken = res.data.token;
         console.log(verifToken);
         if (res.status == 200) {
+          alert(`Incorrect credentials`);
+
           dispatch(
             LOGIN_USER({
               verifToken,
@@ -45,6 +47,7 @@ function Adminlogin({ history, ...props }) {
             ? history.push("/SubAdministrator")
             : history.push("/Administrator");
         }
+
       })
       .catch((e) => {
         alert(`Incorrect credentials`);

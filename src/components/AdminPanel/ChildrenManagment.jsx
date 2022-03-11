@@ -72,7 +72,7 @@ function ChildrenManagment() {
 
   async function updateData() {
     const res = await axios.patch(
-      "http://localhost:9000/admin//updatechild/" + updateID,
+      "http://localhost:9000/admin/updatechild/" + updateID,
       {
         name: name,
         age: age,

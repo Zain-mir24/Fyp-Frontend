@@ -24,7 +24,7 @@ import {
   UserOutlined,
   ExclamationCircleFilled,
   CheckCircleFilled,
-  IdcardOutlined ,
+  IdcardOutlined,
   MoneyCollectOutlined
 
 } from "@ant-design/icons";
@@ -55,27 +55,27 @@ function Body({ history, ...props }) {
       return <Beneficiary />;
     } else if (content === "appealLoan") {
       return <AppealedLoan />;
-    }else if (content === "LoanManagment") {
+    } else if (content === "LoanManagment") {
       return <LoanManagement />;
-    }else if (content === "AdoptChildren") {
+    } else if (content === "AdoptChildren") {
       return <ChildrenManagment />;
-    }else if (content === "Donations") {
+    } else if (content === "Donations") {
       return <ViewDonations />;
     }
   }
 
   return (
     <div className="row">
-      <Layout  style={{ minHeight: "100vh",backgroundColor:"green" }}>
+      <Layout style={{ minHeight: "100vh", backgroundColor: "green" }}>
         <Sider trigger={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
-           
+
             >
-            SubAdmin Panel
+              SubAdmin Panel
             </Menu.Item>
 
             <Menu.Item
@@ -151,7 +151,7 @@ function Body({ history, ...props }) {
             >
               Manage audit
             </Menu.Item>
-             <Menu.Item
+            <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}
               onClick={() => {
@@ -178,8 +178,8 @@ function Body({ history, ...props }) {
               }}
             >
               View Donations
-            </Menu.Item> 
-        
+            </Menu.Item>
+
             <Menu.Item
               key="13"
               icon={<MoneyCollectOutlined />}
@@ -188,9 +188,9 @@ function Body({ history, ...props }) {
               }}
             >
               Campaign Report
-            </Menu.Item> 
+            </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
-                       <Menu.Item>
+              <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
@@ -221,7 +221,7 @@ const styles = {
   },
 };
 const mapStateToProps = (state) => ({
-  users: state.user.user,
+  users: state.persistedReducer.user.user,
 });
 
 export default withRouter(connect(mapStateToProps)(Body));

@@ -133,6 +133,7 @@ export default function MonthlySupport() {
         }}
       >
         <Form.Item
+          name="Phone"
           label="Phone: "
           rules={[
             {
@@ -148,6 +149,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="CNIC"
           label="CNIC: "
           rules={[
             {
@@ -163,6 +165,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="category"
           label="Category: "
           rules={[
             {
@@ -172,12 +175,14 @@ export default function MonthlySupport() {
           ]}
         >
           <Input
+            placeholder="For example Widow"
             onChange={(e) => {
               setcategory(e.target.value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Source of income"
           label="Source Of Income "
           rules={[
             {
@@ -193,6 +198,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="present Address"
           label="Present Address: "
           rules={[
             {
@@ -208,6 +214,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="Total income"
           label="Total Income: "
           rules={[
             {
@@ -223,6 +230,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="Expenses"
           label="Total Expenses "
           rules={[
             {
@@ -238,6 +246,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="Native town"
           label="Native Town "
           rules={[
             {
@@ -256,6 +265,7 @@ export default function MonthlySupport() {
         <h4>ACCOMMODATION</h4>
         <br />
         <Form.Item
+          name="Self"
           label="SELF:"
           rules={[
             {
@@ -265,12 +275,15 @@ export default function MonthlySupport() {
           ]}
         >
           <Input
+            placeholder="Enter info if yes other wise type no"
+
             onChange={(e) => {
               setself(e.target.value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Donation amount needed"
           label="Donated: "
           rules={[
             {
@@ -280,12 +293,15 @@ export default function MonthlySupport() {
           ]}
         >
           <Input
+            placeholder="Enter info if yes other wise type no"
             onChange={(e) => {
               setdonated(e.target.value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Enter rental"
+
           label="rental: "
           rules={[
             {
@@ -295,12 +311,16 @@ export default function MonthlySupport() {
           ]}
         >
           <Input
+            placeholder="Enter info if yes other wise type no"
+
             onChange={(e) => {
               setrental(e.target.value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Enter rent"
+
           label="rent: "
           rules={[
             {
@@ -310,22 +330,19 @@ export default function MonthlySupport() {
           ]}
         >
           <Input
+            placeholder="Enter info if yes other wise type no"
+
             onChange={(e) => {
               setrent(e.target.value);
             }}
           />
         </Form.Item>
         <br />
-        <h4>Widow Details</h4>
+        <h4>Widow Details (optional)</h4>
         <br />
         <Form.Item
           label="Name: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Name",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -335,12 +352,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Age: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your CNIC",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -350,12 +362,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Relation: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Relation status",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -365,12 +372,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Activities: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Activities",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -380,12 +382,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Income: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Income",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -394,16 +391,10 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <br />
-        <h4>Widow Siblings Detail</h4>
+        <h4>Widow Siblings Detail (optional)</h4>
         <br />
         <Form.Item
           label="Name: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Name",
-            },
-          ]}
         >
           <Input
             onChange={(e) => {
@@ -413,12 +404,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Age: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Age",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -428,12 +414,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Relation: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Relation",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -443,12 +424,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Activities: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Activities",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -458,12 +434,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           label="Income: "
-          rules={[
-            {
-              required: true,
-              message: "Please enter your Income",
-            },
-          ]}
+
         >
           <Input
             onChange={(e) => {
@@ -472,6 +443,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="Medicine cost"
           label="Medicine Cost: "
           rules={[
             {
@@ -487,6 +459,7 @@ export default function MonthlySupport() {
           />
         </Form.Item>
         <Form.Item
+          name="Bform"
           label="Attach Bform"
           onChange={saveBform}
           rules={[
@@ -501,20 +474,16 @@ export default function MonthlySupport() {
           </Upload>
         </Form.Item>
         <Form.Item
-          label="Attach Death Certificate"
+          label="Attach Death Certificate of husband if widow (optional)"
           onChange={saveDeathCertificate}
-          rules={[
-            {
-              required: true,
-              message: "Please share picture or video for the campaign",
-            },
-          ]}
+
         >
           <Upload>
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
         </Form.Item>
         <Form.Item
+          name="Enter total donation"
           label="Total Donation Amount: "
           rules={[
             {
