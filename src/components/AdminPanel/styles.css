@@ -1,0 +1,17 @@
+.Pdf-blueheadings {
+  color: #4d77ff;
+  font-weight: 900;
+  font-size: 24px;
+  display: inline;
+}
+.pdf-list-ul {
+  display: inline;
+}
+.pdf-list-li {
+  color: black;
+  font-size: 24px;
+  margin-left: 50px;
+}
+.ul li::before {
+  color: #4d77ff;
+}
