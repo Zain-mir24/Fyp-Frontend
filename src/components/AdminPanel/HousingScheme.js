@@ -151,10 +151,11 @@ function HousingScheme() {
               setSourceofincome(record.Sourceofincome);
               setEstimatedCost(record.EstimatedCost);
               setEstimatedTimeFrame(record.EstimatedTimeFrame);
-              setContent("View");
               setId(record._id);
               setaddress(record.address);
               setFamily(record.family);
+              setContent("View");
+
             }}
           >
             GeneratePDf

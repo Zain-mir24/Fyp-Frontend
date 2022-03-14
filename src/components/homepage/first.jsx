@@ -147,7 +147,7 @@ const First = () => {
   });
   return (
     <Container>
-      <Title>WHY CHOOSE JARDINIER</Title>
+      <Title>WHY CHOOSE GLOBAL REACH</Title>
       <Wrapper>
         <BoxContainer>
           <Box1

@@ -7,7 +7,7 @@ const { Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
 export default function CampaignDetails({ history }) {
-  const [collection, setCollection] = useState();
+  const [collection, setCollection] = useState(0);
   const [data, setData] = useState([]);
 
   const queryParams = new URLSearchParams(window.location.search);
@@ -36,12 +36,12 @@ export default function CampaignDetails({ history }) {
     }
   };
 
-  const [amount, setAmount] = useState(0);
+  const [totalamount, setAmount] = useState(0);
   const sendPayment = (token) => {
     const body = {
       token,
       name,
-      amount,
+      totalamount,
       campaignId: cid,
       userId: null,
     };
@@ -112,7 +112,7 @@ export default function CampaignDetails({ history }) {
                 stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
                 token={sendPayment}
                 name="Donate to campaign"
-                amount={amount * 100}
+                amount={totalamount * 100}
               >
                 <br />
                 <br />
@@ -123,7 +123,7 @@ export default function CampaignDetails({ history }) {
                     color: "white",
                   }}
                 >
-                  You are donating {amount}
+                  You are donating {totalamount}
                 </Button>
               </StripeCheckout>
             </div>
