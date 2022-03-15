@@ -20,7 +20,7 @@ export default function LatestNews() {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const res = await axios.get(process.env.REACT_APP_VIEW_LATEST_NEWS);
+      const res = await axios.get("http://localhost:9000/admin/LatestNews/");
       await setData(res.data);
       console.log(data, "TESTING");
     } catch (err) {

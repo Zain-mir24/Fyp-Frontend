@@ -10,6 +10,7 @@ export default function MonthlySupport() {
   const [Loans, SetLoans] = useState([]);
   const [id, setID] = useState();
   const [content, setContent] = useState("table");
+  const [data, setData] = useState([]);
   useEffect(() => {
     viewData();
     console.log(Loans);
@@ -23,16 +24,22 @@ export default function MonthlySupport() {
       });
 
       SetLoans(
-        res.data.map((i) => ({
-          name: i.bid.name,
-          phone: i.phoneNumber,
-          cnic: i.cnic,
-          category: i.category,
-          sourceOfIncome: i.Sourceofincome,
-          NativeTown: i.NativeTown,
-          medicineCost: 123,
-          bformname: i.bformname,
-        }))
+        // res.data.map((i) => ({
+        //   name: i.bid.name,
+        //   phone: i.phoneNumber,
+        //   cnic: i.cnic,
+        //   category: i.category,
+        //   sourceOfIncome: i.Sourceofincome,
+        //   NativeTown: i.NativeTown,
+        //   medicineCost: 123,
+        //   bformname: i.bformname,
+        //   address: i.presentAddress,
+        //   income: i.Totalincome,
+        //   expenses: i.Totalexpenses,
+
+        // }
+        // ))
+        res.data
       );
 
       console.log(res.data, "Loan");
@@ -43,11 +50,17 @@ export default function MonthlySupport() {
   const columns = [
     {
       title: "beneficiary name",
-      dataIndex: "name",
-      key: "name",
-    }, {
+      render: (text, record) => {
+        return (
+          <div>
+            <p>{record.bid.name}</p>
+          </div>
+        );
+      },
+    },
+    {
       title: "Phone Number",
-      dataIndex: "phone",
+      dataIndex: "phoneNumber",
       key: "phone",
     },
     {
@@ -71,7 +84,9 @@ export default function MonthlySupport() {
         <div>
           <a
             onClick={() => {
+              console.log(record, "YEAH");
               setContent("Detail");
+              setData(record);
             }}
           >
             View Detail
@@ -85,7 +100,7 @@ export default function MonthlySupport() {
       {content == "table" ? (
         <Table columns={columns} dataSource={Loans} />
       ) : (
-        <MonthlySupportDetail data={Loans} />
+        <MonthlySupportDetail data={data} />
       )}
     </div>
   );
