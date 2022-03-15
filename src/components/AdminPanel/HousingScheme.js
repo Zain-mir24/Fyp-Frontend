@@ -14,28 +14,8 @@ import { useEffect } from "react";
 import HousingSchemePDF from "./HousingSchemePDF";
 const axios = require("axios");
 function HousingScheme() {
-  const [id, setId] = useState();
-  const [ProposalNo, setProposalNo] = useState();
-  const [Deservername, setDeservername] = useState("");
-  const [Guardian, setGuardian] = useState("");
-  const [Status, setStatus] = useState("");
-  const [cnic, setcnic] = useState(0);
-  const [cell, setcell] = useState(0);
-  const [Dependents, setDependents] = useState("");
-  const [Sourceofincome, setSourceofincome] = useState("");
-  const [Monthlyincome, setMonthlyincome] = useState(0);
-  const [address, setaddress] = useState("");
-  const [accomodationself, setaccomodationself] = useState("");
-  const [accomodationdonated, setaccomodationdonated] = useState("");
-  const [accomodationrental, setaccomodationrental] = useState("");
-  const [accomodationrent, setaccomodationrent] = useState("");
-  const [ownerofland, setownerofland] = useState("");
-  const [PlotDimensions, setPlotDimensions] = useState("");
-  const [EstimatedCost, setEstimatedCost] = useState(0);
-  const [EstimatedTimeFrame, setEstimatedTimeFrame] = useState("");
-  const [contructionDetail, setcontructionDetail] = useState("");
-  const [family, setFamily] = useState([]);
-  const [plan, setplan] = useState("");
+  const [record, setRecord] = useState();
+
   // useState for view route
   const [data, setData] = useState();
   const [content, setContent] = useState("Scheme");
@@ -53,12 +33,6 @@ function HousingScheme() {
     }
   };
   const columns = [
-    {
-      title: "ProposalNo",
-      dataIndex: "ProposalNo",
-      key: "ProposalNo",
-    },
-
     {
       title: "Deservername",
       dataIndex: "Deservername",
@@ -146,16 +120,8 @@ function HousingScheme() {
         <div>
           <Button
             onClick={() => {
-              setDeservername(record.Deservername);
-              setGuardian(record.Guardian);
-              setSourceofincome(record.Sourceofincome);
-              setEstimatedCost(record.EstimatedCost);
-              setEstimatedTimeFrame(record.EstimatedTimeFrame);
-              setId(record._id);
-              setaddress(record.address);
-              setFamily(record.family);
               setContent("View");
-
+              setRecord(record);
             }}
           >
             GeneratePDf
@@ -181,17 +147,7 @@ function HousingScheme() {
           </div>
         </>
       ) : (
-        <HousingSchemePDF
-          name={Deservername}
-          guardian={Guardian}
-          SOI={Sourceofincome}
-          EC={EstimatedCost}
-          ETF={EstimatedTimeFrame}
-          cnic={cnic}
-          id={id}
-          address={address}
-          family={family}
-        />
+        <HousingSchemePDF data={record} />
       )}
     </div>
   );

@@ -11,6 +11,8 @@ function HousingSchemePDF(props) {
   const [outcomes, setOutcomes] = useState();
   const [communicationFeedback, setCommunicationFeedback] = useState();
 
+  var splitStringList = (string) => {};
+
   const getData = async () => {
     // const formData = new FormData();
     // formData.append("ProposalNo", ProposalNo);
@@ -20,7 +22,7 @@ function HousingSchemePDF(props) {
     console.log(ProposalNo, "HELLO");
     try {
       const res = await axios.patch(
-        "http://localhost:9000/admin/updatehousingscheme/" + props.id,
+        "http://localhost:9000/admin/updatehousingscheme/" + props.data._id,
         {
           ProposalNo: ProposalNo,
           needs: needs,
@@ -62,6 +64,9 @@ function HousingSchemePDF(props) {
             }}
           />
         </Form.Item>
+        <span>Seperate String with | symbol to show in list</span>
+        <br />
+        <br />
         <Form.Item
           label="Needs: "
           rules={[
@@ -150,9 +155,17 @@ function HousingSchemePDF(props) {
               textAlign: "center",
             }}
           >
-            <h1 style={{ color: "white" }}>HOUSE CONSTRUCTION SUPPORT</h1>
+            <h1 style={{ color: "white", padding: "10px" }}>
+              HOUSE CONSTRUCTION SUPPORT
+            </h1>
           </div>
-          <h2>Beneficiary Details</h2>
+          <div style={{ display: "flex", position: "relative" }}>
+            <h3>Beneficiary Details</h3>
+
+            <h3 style={{ position: "absolute", right: "20px" }}>
+              Proposal No: {props.data.ProposalNo}
+            </h3>
+          </div>
           <div style={{ padding: "20px", backgroundColor: "#C0A080" }}></div>
 
           <br />
@@ -162,20 +175,68 @@ function HousingSchemePDF(props) {
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Name</span>{" "}
               <ul className="pdf-list-ul">
-                <li className="pdf-list-li">{props.name}</li>
+                <li className="pdf-list-li">{props.data.Deservername}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">CNIC</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.cnic}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Cell</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.cell}</li>
               </ul>
             </div>
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Residential Address</span>{" "}
               <ul className="pdf-list-ul">
-                <li className="pdf-list-li">{props.address}</li>
+                <li className="pdf-list-li">{props.data.address}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Guardian Name</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.Guardian}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Martial Status</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.Status}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Source Of Income</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.Sourceofincome}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Monthly Income</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.Monthlyincome}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Required Cost</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.EstimatedCost}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Plot Dimensions</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.PlotDimensions}</li>
               </ul>
             </div>
 
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Family Details</span>{" "}
               <ul className="pdf-list-ul">
-                {props.family.map((item) => {
+                {props.data.family.map((item) => {
                   return (
                     <li className="pdf-list-li">
                       Name: {item.name} | Age: {item.age} | Studying:{" yes"}
@@ -184,6 +245,58 @@ function HousingSchemePDF(props) {
                 })}
               </ul>
             </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Construction Details</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.contructionDetail}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Estimated Frame</span>{" "}
+              <ul className="pdf-list-ul">
+                <li className="pdf-list-li">{props.data.EstimatedTimeFrame}</li>
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Needs</span>{" "}
+              <ul className="pdf-list-ul">
+                {props.data.needs.split("|").map((item) => {
+                  return (
+                    <div>
+                      <li className="pdf-list-li">{item}</li>
+                    </div>
+                  );
+                })}
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Outcomes</span>{" "}
+              <ul className="pdf-list-ul">
+                {props.data.outcomes.split("|").map((item) => {
+                  return (
+                    <div>
+                      <li className="pdf-list-li">{item}</li>
+                    </div>
+                  );
+                })}
+              </ul>
+            </div>
+            <div style={{ display: "flex" }}>
+              <span className="Pdf-blueheadings">Communication Feedback</span>{" "}
+              <ul className="pdf-list-ul">
+                {props.data.communicationFeedback.split("|").map((item) => {
+                  return (
+                    <div>
+                      <li className="pdf-list-li">{item}</li>
+                    </div>
+                  );
+                })}
+              </ul>
+            </div>
+            <Image
+              src={"http://localhost:9000/uploads/" + props.data.images}
+              download
+            />
           </div>
         </div>
 
