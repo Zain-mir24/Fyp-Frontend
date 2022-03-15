@@ -12,6 +12,14 @@ import Beneficiary from "../AdminPanel/Beneficiary";
 import LoanManagement from "../AdminPanel/LoanManagement";
 import ViewDonations from "../AdminPanel/viewDonations";
 import ChildrenManagment from "../AdminPanel/ChildrenManagment";
+import Dailyexpense from "../AdminPanel/Dailyexpense";
+import EstimationPerfoma from "../AdminPanel/EstimationPerfoma";
+import Estimation from "../AdminPanel/Estimation";
+import MeetingScheduled from "../AdminPanel/MeetingScheduled";
+import AmountDetail from "../AdminPanel/AmountDetail";
+import LoanRecovery from "../AdminPanel/LoanRecovery";
+import MonthlySupport from "../AdminPanel/MonthlySupport";
+import HousingScheme from "../AdminPanel/HousingScheme";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { selectUser } from "../../store/reducers/User";
@@ -51,7 +59,7 @@ function Body({ history, ...props }) {
       return <Email />;
     } else if (content === "News") {
       return <News />;
-    } else if (content === "User") {
+    } else if (content === "User  ") {
       return <Beneficiary />;
     } else if (content === "appealLoan") {
       return <AppealedLoan />;
@@ -61,6 +69,22 @@ function Body({ history, ...props }) {
       return <ChildrenManagment />;
     } else if (content === "Donations") {
       return <ViewDonations />;
+    } else if (content === "Meeting") {
+      return <MeetingScheduled />;
+    } else if (content === "Monthly Support") {
+      return <MonthlySupport />;
+    } else if (content === "Amountdetail") {
+      return <AmountDetail />;
+    } else if (content === "Housingscheme") {
+      return <HousingScheme />;
+    } else if (content === "EstimationPerfoma") {
+      return <EstimationPerfoma />;
+    } else if (content === "Estimation") {
+      return <Estimation />;
+    } else if (content === "Daily") {
+      return <Dailyexpense />
+    } else if (content === "LoanRecovery") {
+      return <LoanRecovery />
     }
   }
 
@@ -137,12 +161,12 @@ function Body({ history, ...props }) {
               key="9"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("Approve");
+                setContent("Meeting");
               }}
             >
-              Beneficiary
+              Scheduled Meetings
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="10"
               icon={<CheckCircleFilled />}
               onClick={() => {
@@ -150,7 +174,7 @@ function Body({ history, ...props }) {
               }}
             >
               Manage audit
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}
@@ -181,13 +205,59 @@ function Body({ history, ...props }) {
             </Menu.Item>
 
             <Menu.Item
-              key="13"
+              key="15"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
-                setContent("Donations");
+                setContent("Monthly Support");
               }}
             >
-              Campaign Report
+              Monthly Support
+            </Menu.Item>
+            <Menu.Item
+              key="16"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Amountdetail");
+              }}
+            >
+              Support amount detail
+            </Menu.Item>
+            <Menu.Item
+              key="17"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Housingscheme");
+              }}
+            >
+              Housing Scheme
+            </Menu.Item>
+
+            <Menu.Item
+              key="19"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("EstimationPerfoma");
+              }}
+            >
+              Estimation
+            </Menu.Item>
+            <Menu.Item
+              key="20"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Daily");
+              }}
+            >
+              Daily expense Sheet
+            </Menu.Item>
+            <Menu.Item
+              key="21"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("LoanRecovery");
+              }}
+            >
+              Loan Recovery
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
