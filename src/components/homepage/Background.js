@@ -6,16 +6,16 @@ import { CheckOutlined } from "@ant-design/icons";
 function Background() {
   return (
     <div className="containerfluid  rowDiv   ">
-      <div className="row" style={{ margin: "10px" }}>
+      <div className="row" style={{ margin: "0px 0px 10px" }}>
         <div
           className="col-lg-6 wholeDiv"
           style={{
-            backgroundImage: ` url(${"./Images/home.jpeg"})`,
+            backgroundImage: ` url(${"./Images/join-our-struggle-2.jpg"})`,
             backgroundSize: "cover",
           }}
         ></div>
-        <div className="col-lg-6 wholeDiv">
-          <h1 style={{ textAlign: "center" }}>More Services</h1>
+        <div className="col-lg-6 wholeDiv" style={{ padding: "20px" }}>
+          <h1 style={{ padding: "10px" }}>More Services</h1>
           <p className=" textDiv">
             Check the whole list of charity services we offer and select what is
             the appropriate one for you.
@@ -48,14 +48,14 @@ function Background() {
               <p className="miniText">
                 <CheckOutlined /> Interest free Loan
               </p>
-              </div>
+            </div>
           </div>
           <Button
             style={{
               margin: "10%",
               backgroundColor: "#fe8a01",
               width: "70%",
-              height:"10%"
+              height: "10%",
             }}
           >
             Services
