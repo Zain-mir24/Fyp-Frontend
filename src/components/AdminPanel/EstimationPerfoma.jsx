@@ -15,6 +15,7 @@ import {
   Rate,
   Table
 } from "antd";
+import MaskedInput from 'antd-mask-input'
 
 
 const axios = require("axios");
@@ -166,21 +167,6 @@ export default function EstimationPerfoma() {
         )
       })
     },
-    // }, {
-    //   title: "Labour",
-    //   dataIndex: "LabourCharges",
-    //   key: "LabourCharges",
-    //   render: (Labour) => Labour.map(Labours => {
-    //     return (
-    //       <div>
-    //         name   <b>{Labours.labourname}</b><br />
-    //         Cell no   <b>{Labours.labourCellno}</b><br />
-    //         Nature of work    <b>{Labours.natureofwork}</b><br />
-    //         Charges   <b>{Labours.LabourChargesPaid}</b>
-    //       </div>
-    //     )
-    //   })
-    // },
     {
       title: "Electriciancharges",
       dataIndex: "Electriciancharges",
@@ -287,7 +273,7 @@ export default function EstimationPerfoma() {
             },
           ]}
         >
-          <Input
+          < MaskedInput mask="(+92) 111-1111111"
             onChange={(e) => {
               setCellno(e.target.value);
             }}
