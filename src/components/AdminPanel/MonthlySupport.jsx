@@ -50,12 +50,17 @@ export default function MonthlySupport() {
   const columns = [
     {
       title: "beneficiary name",
-      dataIndex: "name",
-      key: "name",
+      render: (text, record) => {
+        return (
+          <div>
+            <p>{record.bid.name}</p>
+          </div>
+        );
+      },
     },
     {
       title: "Phone Number",
-      dataIndex: "phone",
+      dataIndex: "phoneNumber",
       key: "phone",
     },
     {
