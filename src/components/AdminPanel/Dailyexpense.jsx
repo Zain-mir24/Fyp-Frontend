@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import MaskedInput from 'antd-mask-input'
+
 
 import {
     Form,
@@ -262,7 +262,7 @@ export default function Dailyexpense() {
                         },
                     ]}
                 >
-                    <MaskedInput mask="(+92) 111-1111111"
+                    <Input
                         onChange={(e) => {
                             setCellno(e.target.value);
                         }}
