@@ -12,7 +12,7 @@ function Forgotpassword({ history }) {
   const sendlink = async (e) => {
     await axios
       .request({
-        baseURL: "http://localhost:9000",
+        baseURL: "http://localhost:9000/User",
         url: "/forgotpassword",
         method: "post",
         data: {
@@ -20,6 +20,7 @@ function Forgotpassword({ history }) {
         },
       })
       .then((res) => {
+        alert('Correct credentials')
         history.push("/Signin");
       })
       .catch((e) => {

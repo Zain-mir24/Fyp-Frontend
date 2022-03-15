@@ -5,6 +5,7 @@ import { Table, Button, Input, Upload, Col, Form, Select, Row, DatePicker } from
 const ref = React.createRef();
 
 function Estimation() {
+
     return (
         <div style={{
             fontFamily: "sans-serif",
@@ -289,7 +290,9 @@ function Estimation() {
                         </Form>
                     </Col>
 
+
                 </Row>
+
             </div>
 
         </div >

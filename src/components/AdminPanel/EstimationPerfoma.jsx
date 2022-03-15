@@ -13,7 +13,9 @@ import {
   DatePicker,
   Space,
   Rate,
+  Table
 } from "antd";
+import MaskedInput from 'antd-mask-input'
 
 
 const axios = require("axios");
@@ -38,6 +40,7 @@ export default function EstimationPerfoma() {
   const [total, setTotal] = useState(0);
   const [material, setMaterial] = useState([]);
   const [count, setCount] = useState(0);
+  const [data, setData] = useState();
 
   function AddMaterial() {
     setMaterial((material) => [
@@ -102,7 +105,21 @@ export default function EstimationPerfoma() {
       console.log(ex);
     }
   };
+  const viewData = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:9000/admin/viewEstimation"
+      );
+      setData(res.data);
 
+      console.log(res.data, "view for Expense");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    viewData()
+  }, [])
   function costChangeQTY(e) {
     setMaterialQTY(parseFloat(e.target.value));
     setMaterialCost(materialRate * e.target.value);
@@ -111,6 +128,82 @@ export default function EstimationPerfoma() {
     setMaterialRate(parseFloat(e.target.value));
     setMaterialCost(e.target.value * materialQTY);
   }
+  const columns = [
+    {
+      title: "Project",
+      dataIndex: "Project",
+      key: "Project",
+      render: (text) => <a>{text}</a>,
+    },
+
+    {
+      title: "Location",
+      dataIndex: "Location",
+      key: "Location",
+    },
+    {
+      title: "Caretaker",
+      dataIndex: "Caretaker",
+      key: "Caretaker",
+
+    }, {
+      title: "cellno",
+      dataIndex: "Cellno",
+      key: "Cellno",
+
+    },
+    {
+      title: "Material",
+      dataIndex: "Material",
+      key: "Material",
+      render: (material) => material.map(materials => {
+        return (
+          <div>
+            name {materials.name}<br />
+            Quantitiy {materials.QTY}<br />
+            Rate {materials.Rate}<br />
+            Cost {materials.Cost}
+          </div>
+        )
+      })
+    },
+    {
+      title: "Electriciancharges",
+      dataIndex: "Electriciancharges",
+      key: "Electriciancharges",
+
+    }, {
+      title: "Labourcharges",
+      dataIndex: "Labourcharges",
+      key: "Labourcharges",
+
+    }, {
+      title: "Masoncharges",
+      dataIndex: "Masoncharges",
+      key: "Masoncharges",
+
+    }, {
+      title: "Paintercharges",
+      dataIndex: "Paintercharges",
+      key: "Paintercharges",
+
+    }, {
+      title: "Plumbercharges",
+      dataIndex: "Plumbercharges",
+      key: "Plumbercharges",
+
+    }, {
+      title: "Shutteringcharges",
+      dataIndex: "Shutteringcharges",
+      key: "Shutteringcharges",
+
+    }, {
+      title: "Total",
+      dataIndex: "Total",
+      key: "Total",
+
+    },
+  ]
 
   return (
     <div>
@@ -180,7 +273,7 @@ export default function EstimationPerfoma() {
             },
           ]}
         >
-          <Input
+          < MaskedInput mask="(+92) 111-1111111"
             onChange={(e) => {
               setCellno(e.target.value);
             }}
@@ -402,6 +495,8 @@ export default function EstimationPerfoma() {
           </Button>
         </Form.Item>
       </Form>
+      <Table scroll={{ x: 1500 }} columns={columns} dataSource={data} />
+
     </div>
   );
 }

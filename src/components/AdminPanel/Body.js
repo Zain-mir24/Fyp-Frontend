@@ -23,6 +23,7 @@ import HousingScheme from "./HousingScheme";
 import EstimationPerfoma from "./EstimationPerfoma";
 import Estimation from "./Estimation";
 import Dailyexpense from "./Dailyexpense";
+import LoanRecovery from "./LoanRecovery";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -85,6 +86,8 @@ function Body({ history, ...props }) {
       return <Estimation />;
     } else if (content === "Daily") {
       return <Dailyexpense />
+    } else if (content === "LoanRecovery") {
+      return <LoanRecovery />
     }
   }
 
@@ -242,15 +245,7 @@ function Body({ history, ...props }) {
             >
               Housing Scheme
             </Menu.Item>
-            {/* <Menu.Item
-              key="18"
-              icon={<MoneyCollectOutlined />}
-              onClick={() => {
-                setContent("Estimation");
-              }}
-            >
-              Estimation performa
-            </Menu.Item> */}
+
             <Menu.Item
               key="19"
               icon={<MoneyCollectOutlined />}
@@ -268,6 +263,15 @@ function Body({ history, ...props }) {
               }}
             >
               Daily expense Sheet
+            </Menu.Item>
+            <Menu.Item
+              key="21"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("LoanRecovery");
+              }}
+            >
+              Loan Recovery
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>

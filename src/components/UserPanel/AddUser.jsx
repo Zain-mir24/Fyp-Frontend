@@ -15,7 +15,7 @@ function AddUser({ history }) {
   const senddata = async (e) => {
     await axios
       .request({
-        baseURL: process.env.REACT_APP_BASE_URL,
+        baseURL: "http://localhost:9000/User",
         url: `/signup/${_id}/${token}`,
         method: "post",
         data: {
