@@ -264,7 +264,7 @@ function Body({ history, ...props }) {
             >
               Daily expense Sheet
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="21"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -272,7 +272,7 @@ function Body({ history, ...props }) {
               }}
             >
               Loan Recovery
-            </Menu.Item>
+            </Menu.Item> */}
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
