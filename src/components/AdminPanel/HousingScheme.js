@@ -27,7 +27,7 @@ function HousingScheme() {
       );
       setData(res.data);
 
-      console.log(res.data, "view for amount detail");
+      console.log(res.data, "view for housing scheme");
     } catch (err) {
       console.log(err);
     }

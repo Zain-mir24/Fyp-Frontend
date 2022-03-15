@@ -11,7 +11,7 @@ function HousingSchemePDF(props) {
   const [outcomes, setOutcomes] = useState();
   const [communicationFeedback, setCommunicationFeedback] = useState();
 
-  var splitStringList = (string) => {};
+  var splitStringList = (string) => { };
 
   const getData = async () => {
     // const formData = new FormData();
@@ -260,37 +260,46 @@ function HousingSchemePDF(props) {
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Needs</span>{" "}
               <ul className="pdf-list-ul">
-                {props.data.needs.split("|").map((item) => {
-                  return (
-                    <div>
-                      <li className="pdf-list-li">{item}</li>
-                    </div>
-                  );
-                })}
+                {props.data.needs === undefined ? (<div>
+                  None yet
+                </div>)
+                  : props.data.needs.split("|").map((item) => {
+                    return (
+                      <div>
+                        <li className="pdf-list-li">{item}</li>
+                      </div>
+                    );
+                  })}
               </ul>
             </div>
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Outcomes</span>{" "}
               <ul className="pdf-list-ul">
-                {props.data.outcomes.split("|").map((item) => {
-                  return (
-                    <div>
-                      <li className="pdf-list-li">{item}</li>
-                    </div>
-                  );
-                })}
+                {props.data.outcomes === undefined ? (<div>
+                  None yet
+                </div>)
+                  : props.data.outcomes.split("|").map((item) => {
+                    return (
+                      <div>
+                        <li className="pdf-list-li">{item}</li>
+                      </div>
+                    );
+                  })}
               </ul>
             </div>
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Communication Feedback</span>{" "}
               <ul className="pdf-list-ul">
-                {props.data.communicationFeedback.split("|").map((item) => {
-                  return (
-                    <div>
-                      <li className="pdf-list-li">{item}</li>
-                    </div>
-                  );
-                })}
+                {props.data.communicationFeedback === undefined ? (<div>
+                  None yet
+                </div>)
+                  : props.data.communicationFeedback.split("|").map((item) => {
+                    return (
+                      <div>
+                        <li className="pdf-list-li">{item}</li>
+                      </div>
+                    );
+                  })}
               </ul>
             </div>
             <Image

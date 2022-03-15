@@ -222,8 +222,8 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <br />
-        <div style={{ textAlign: "right" }}>
-          <p>{count} Family Member Added</p>
+        <div style={{ textAlign: "left" }}>
+          <h1>{count} Family Member Added</h1>
         </div>
         <br />
         <Form.Item
