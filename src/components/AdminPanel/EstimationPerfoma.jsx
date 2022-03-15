@@ -39,6 +39,7 @@ export default function EstimationPerfoma() {
   const [total, setTotal] = useState(0);
   const [material, setMaterial] = useState([]);
   const [count, setCount] = useState(0);
+  const [data, setData] = useState();
 
   function AddMaterial() {
     setMaterial((material) => [
@@ -103,7 +104,21 @@ export default function EstimationPerfoma() {
       console.log(ex);
     }
   };
+  const viewData = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:9000/admin/viewEstimation"
+      );
+      setData(res.data);
 
+      console.log(res.data, "view for Expense");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    viewData()
+  }, [])
   function costChangeQTY(e) {
     setMaterialQTY(parseFloat(e.target.value));
     setMaterialCost(materialRate * e.target.value);
@@ -115,25 +130,25 @@ export default function EstimationPerfoma() {
   const columns = [
     {
       title: "Project",
-      dataIndex: "project",
-      key: "project",
+      dataIndex: "Project",
+      key: "Project",
       render: (text) => <a>{text}</a>,
     },
 
     {
       title: "Location",
-      dataIndex: "location",
-      key: "location",
+      dataIndex: "Location",
+      key: "Location",
     },
     {
       title: "Caretaker",
-      dataIndex: "caretaker",
-      key: "caretaker",
+      dataIndex: "Caretaker",
+      key: "Caretaker",
 
     }, {
       title: "cellno",
-      dataIndex: "cellno",
-      key: "cellno",
+      dataIndex: "Cellno",
+      key: "Cellno",
 
     },
     {
@@ -167,14 +182,39 @@ export default function EstimationPerfoma() {
     //   })
     // },
     {
-      title: "Materialtotal",
-      dataIndex: "MaterialTotal",
-      key: "MaterialTotal",
+      title: "Electriciancharges",
+      dataIndex: "Electriciancharges",
+      key: "Electriciancharges",
 
     }, {
-      title: "LabourTotal",
-      dataIndex: "LabourTotal",
-      key: "labourTotal",
+      title: "Labourcharges",
+      dataIndex: "Labourcharges",
+      key: "Labourcharges",
+
+    }, {
+      title: "Masoncharges",
+      dataIndex: "Masoncharges",
+      key: "Masoncharges",
+
+    }, {
+      title: "Paintercharges",
+      dataIndex: "Paintercharges",
+      key: "Paintercharges",
+
+    }, {
+      title: "Plumbercharges",
+      dataIndex: "Plumbercharges",
+      key: "Plumbercharges",
+
+    }, {
+      title: "Shutteringcharges",
+      dataIndex: "Shutteringcharges",
+      key: "Shutteringcharges",
+
+    }, {
+      title: "Total",
+      dataIndex: "Total",
+      key: "Total",
 
     },
   ]
@@ -469,7 +509,7 @@ export default function EstimationPerfoma() {
           </Button>
         </Form.Item>
       </Form>
-      <Table scroll={{ x: 1500 }} columns={columns} />
+      <Table scroll={{ x: 1500 }} columns={columns} dataSource={data} />
 
     </div>
   );
