@@ -61,9 +61,10 @@ function AppointmentApp(props) {
 
                 <label>
                     <h4>Enter your phone number</h4>
-                    <MaskedInput mask="(+92) 111-1111111" onChange={(e) => {
-                        setPN(e.target.value)
-                    }} />
+                    <MaskedInput mask="(+92) 111-1111111"
+                        onChange={(e) => {
+                            setPN(e.target.value)
+                        }} />
                 </label>
 
             </div>
