@@ -13,6 +13,7 @@ import {
   DatePicker,
   Space,
   Rate,
+  Table
 } from "antd";
 
 
@@ -111,6 +112,72 @@ export default function EstimationPerfoma() {
     setMaterialRate(parseFloat(e.target.value));
     setMaterialCost(e.target.value * materialQTY);
   }
+  const columns = [
+    {
+      title: "Project",
+      dataIndex: "project",
+      key: "project",
+      render: (text) => <a>{text}</a>,
+    },
+
+    {
+      title: "Location",
+      dataIndex: "location",
+      key: "location",
+    },
+    {
+      title: "Caretaker",
+      dataIndex: "caretaker",
+      key: "caretaker",
+
+    }, {
+      title: "cellno",
+      dataIndex: "cellno",
+      key: "cellno",
+
+    },
+    {
+      title: "Material",
+      dataIndex: "Material",
+      key: "Material",
+      render: (material) => material.map(materials => {
+        return (
+          <div>
+            name {materials.name}<br />
+            Quantitiy {materials.QTY}<br />
+            Rate {materials.Rate}<br />
+            Cost {materials.Cost}
+          </div>
+        )
+      })
+    },
+    // }, {
+    //   title: "Labour",
+    //   dataIndex: "LabourCharges",
+    //   key: "LabourCharges",
+    //   render: (Labour) => Labour.map(Labours => {
+    //     return (
+    //       <div>
+    //         name   <b>{Labours.labourname}</b><br />
+    //         Cell no   <b>{Labours.labourCellno}</b><br />
+    //         Nature of work    <b>{Labours.natureofwork}</b><br />
+    //         Charges   <b>{Labours.LabourChargesPaid}</b>
+    //       </div>
+    //     )
+    //   })
+    // },
+    {
+      title: "Materialtotal",
+      dataIndex: "MaterialTotal",
+      key: "MaterialTotal",
+
+    }, {
+      title: "LabourTotal",
+      dataIndex: "LabourTotal",
+      key: "labourTotal",
+
+    },
+  ]
 
   return (
     <div>
@@ -402,6 +469,8 @@ export default function EstimationPerfoma() {
           </Button>
         </Form.Item>
       </Form>
+      <Table scroll={{ x: 1500 }} columns={columns} />
+
     </div>
   );
 }

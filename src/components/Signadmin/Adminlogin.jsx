@@ -31,7 +31,7 @@ function Adminlogin({ history, ...props }) {
         var verifToken = res.data.token;
         console.log(verifToken);
         if (res.status == 200) {
-          alert(`Incorrect credentials`);
+          alert(`Correct credentials,Redirecting you to admin panel`);
 
           dispatch(
             LOGIN_USER({
