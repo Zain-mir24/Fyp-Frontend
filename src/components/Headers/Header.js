@@ -25,7 +25,7 @@ function Headers() {
                     Homepage
                   </a>
                 </li>
-                <li class="nav-item dropdown" role="presentation">
+                {/* <li class="nav-item dropdown" role="presentation">
                   <div class="dropdown show" style={{marginTop:"8px"}}>
                     <a
                       class="btn dropdown-toggle"
@@ -55,24 +55,24 @@ function Headers() {
                       </a>
                     </div>
                   </div>
-                </li>
+                </li> */}
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/News">
                     News
                   </a>
                 </li>
-                <li class="nav-item" role="presentation">
+                {/* <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/campaign">
                     About us
                   </a>
-                </li>
+                </li> */}
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/Campaign">
                     <span class="glyphicon glyphicon-user"></span> Services
                   </a>
                 </li>
-                <li class="nav-item dropdown" role="presentation">
-                  <div class="dropdown show" style={{marginTop:"8px"}}>
+                {/* <li class="nav-item dropdown" role="presentation">
+                  <div class="dropdown show" style={{ marginTop: "8px" }}>
                     <a
                       class="btn dropdown-toggle"
                       href="#"
@@ -81,9 +81,9 @@ function Headers() {
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
-                      style={{color:"white"}}
+                      style={{ color: "white" }}
                     >
-                       Media
+                      Media
                     </a>
 
                     <div
@@ -91,7 +91,7 @@ function Headers() {
                       aria-labelledby="dropdownMenuLink"
                     >
                       <a class="dropdown-item" href="#">
-                       News
+                        News
                       </a>
                       <a class="dropdown-item" href="#">
                         Audit report
@@ -101,12 +101,12 @@ function Headers() {
                       </a>
                     </div>
                   </div>
-                </li>{" "}
-                <li class="nav-item" role="presentation">
+                </li>{" "} */}
+                {/* <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/">
                     Contact us
                   </a>
-                </li>
+                </li> */}
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/Signin">
                     <span class="glyphicon glyphicon-log-in"></span> My Account

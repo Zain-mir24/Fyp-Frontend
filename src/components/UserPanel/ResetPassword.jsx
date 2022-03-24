@@ -11,7 +11,7 @@ function ResetPassword() {
   const senddata = async (e) => {
     await axios
       .request({
-        baseURL: "https://damp-stream-39096.herokuapp.com/User",
+        baseURL: "http://localhost:9000/User",
         url: `/resetpassword/${_id}/${token}`,
         method: "post",
         data: {

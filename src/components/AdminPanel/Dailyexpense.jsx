@@ -377,7 +377,7 @@ export default function Dailyexpense() {
 
 
                 <div style={{ textAlign: "right" }}>
-                    <p>{countlabour}Labours  Added</p>
+                    <p>{countlabour} Labours  Added</p>
                 </div>
                 <br />
                 <Form.Item
