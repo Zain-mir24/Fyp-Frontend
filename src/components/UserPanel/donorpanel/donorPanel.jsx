@@ -12,7 +12,7 @@ import { Redirect, withRouter } from "react-router";
 import Campaigndonation from "./Campaigndonation";
 import Chat from "./Chat";
 import Orphan from "./Orphan";
-
+import ShowDonation from "./ShowDonation";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -72,6 +72,15 @@ function DonorPanel({ history, ...props }) {
             >
               Adopt / fund Children
             </Menu.Item>
+            <Menu.Item
+              key="6"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("Show Donations");
+              }}
+            >
+              Show Donations
+            </Menu.Item>
 
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item key="5">
@@ -90,22 +99,22 @@ function DonorPanel({ history, ...props }) {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-
           <Content style={{ margin: "0 16px" }}>
-
             <div
               className="site-layout-background"
               style={{ padding: 24, minHeight: 360 }}
             >
-              {content == "" ? <div>
-                <h1>
-
-                  {User.username} is a donor of Global Reach
-                </h1>
-              </div> : null}
+              {content == "" ? (
+                <div>
+                  <h1>{User.username} is a donor of Global Reach</h1>
+                </div>
+              ) : null}
               {content == "campaign" ? <Campaigndonation /> : null}
               {content == "Chat" ? <Chat /> : null}
               {content == "Orphan" ? <Orphan /> : null}
+              {content == "Show Donations" ? (
+                <ShowDonation donorId="61f51546fb26ff2e7007547d" />
+              ) : null}
             </div>
           </Content>
         </Layout>

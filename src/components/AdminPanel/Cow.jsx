@@ -27,7 +27,7 @@ export default function Cow() {
   const [cnic, setCnic] = useState();
   const [cell, setCell] = useState();
   const [status, setStatus] = useState();
-  const [family, setFamily] = useState();
+  const [family, setFamily] = useState([]);
   const [accountNo, setAccountNo] = useState();
   const [sourceOfIncome, setSourceOfIncome] = useState();
   const [cowPrice, setCowPrice] = useState();
@@ -35,7 +35,7 @@ export default function Cow() {
   const [finalPrice, setFinalPrice] = useState();
   const [approxMilk, setApproxMilk] = useState();
   const [salePricePerLitre, setSalePricePerLitre] = useState();
-  const [expectedIcome, setExpectedIncome] = useState();
+  const [expectedIncome, setExpectedIncome] = useState();
   const [foodExpenseOfCow, setFoodExpenseOfCow] = useState();
   const [savingPerDay, setSavingPerDay] = useState();
   const [savingPerMonth, setSavingPerMonth] = useState();
@@ -43,7 +43,7 @@ export default function Cow() {
   const [name, setName] = useState();
   const [age, setAge] = useState();
   const [alive, setAlive] = useState();
-  const [count, setCount] = useState([]);
+  const [count, setCount] = useState(0);
   const [study, setStudy] = useState();
 
   const viewData = async () => {
@@ -80,15 +80,17 @@ export default function Cow() {
       finalPrice,
       approxMilk,
       salePricePerLitre,
-      expectedIcome,
+      expectedIncome,
       foodExpenseOfCow,
       savingPerDay,
       savingPerMonth,
+      donatedAmount,
     };
 
     try {
+      console.log(obj);
       const res = await axios.post(
-        "http://localhost:9000/admin/masjidDonation",
+        "http://localhost:9000/admin/addCowDetail",
         obj
       );
       console.log(res, "Successfully send");
@@ -138,6 +140,21 @@ export default function Cow() {
           remember: true,
         }}
       >
+        <Form.Item
+          label="Donor Donated Amount: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Donor Donated Amount",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setDonatedAmount(e.target.value);
+            }}
+          />
+        </Form.Item>
         <Form.Item
           label="Deserver Name: "
           rules={[
@@ -198,7 +215,241 @@ export default function Cow() {
             }}
           />
         </Form.Item>
-
+        <h4>Family Member</h4>
+        <div style={{ textAlign: "right" }}>
+          <p>{count} Family Member Added</p>
+        </div>
+        <br />
+        <Form.Item
+          label="Name: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Family Name",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Age: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Age",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Study: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Study",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setStudy(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Alive: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Alive",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setAlive(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <br />
+        <div style={{ textAlign: "right" }}>
+          <button onClick={AddFamily}>Add</button>
+        </div>
+        <br /> <br />
+        <Form.Item
+          label="AccountNo: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter AccountNo",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setAccountNo(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Source Of Income: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Source Of Income",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setSourceOfIncome(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Cow Price: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Cow Price",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setCowPrice(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Cow Owner: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Cow Owner",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setCowOwner(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Final Price: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Final Price",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setFinalPrice(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Expected Income: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Expected Income",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setExpectedIncome(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Approx Milk: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Approx Milk",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setApproxMilk(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="SalePricePerLitre: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Sale Price per Litre",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setSalePricePerLitre(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Food Expense Of Cow: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Food Expense Of Cow",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setFoodExpenseOfCow(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Saving Per Day: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Saving Per Day",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setSavingPerDay(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Saving Per Month: "
+          rules={[
+            {
+              required: true,
+              message: "Please enter Saving Per Month",
+            },
+          ]}
+        >
+          <Input
+            onChange={(e) => {
+              setSavingPerMonth(e.target.value);
+            }}
+          />
+        </Form.Item>
         <Form.Item>
           <Button
             type="primary"
