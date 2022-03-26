@@ -26,6 +26,7 @@ import Dailyexpense from "./Dailyexpense";
 import LoanRecovery from "./LoanRecovery";
 import Masjid from "./Masjid";
 import Cow from "./Cow";
+import Rickshaw from "./Rickshaw";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -94,6 +95,8 @@ function Body({ history, ...props }) {
       return <Masjid />;
     } else if (content === "Cow") {
       return <Cow />;
+    } else if (content === "Rickshaw") {
+      return <Rickshaw />;
     }
   }
 
@@ -287,6 +290,15 @@ function Body({ history, ...props }) {
               }}
             >
               Masjid
+            </Menu.Item>
+            <Menu.Item
+              key="26"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Rickshaw");
+              }}
+            >
+              Rickshaw
             </Menu.Item>
 
             {/* <Menu.Item

@@ -13,7 +13,7 @@ import Campaigndonation from "./Campaigndonation";
 import Chat from "./Chat";
 import Orphan from "./Orphan";
 import ShowDonation from "./ShowDonation";
-
+import ShowRickshaw from "./ShowRickshaw";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 function DonorPanel({ history, ...props }) {
@@ -22,6 +22,7 @@ function DonorPanel({ history, ...props }) {
   const dispatch = useDispatch();
 
   const User = useSelector(selectUser);
+  console.log(User.userId)
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
@@ -81,6 +82,15 @@ function DonorPanel({ history, ...props }) {
             >
               Show Donations
             </Menu.Item>
+            <Menu.Item
+              key="7"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("Show Rickshaw");
+              }}
+            >
+              Show Rickshaw
+            </Menu.Item>
 
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item key="5">
@@ -113,7 +123,10 @@ function DonorPanel({ history, ...props }) {
               {content == "Chat" ? <Chat /> : null}
               {content == "Orphan" ? <Orphan /> : null}
               {content == "Show Donations" ? (
-                <ShowDonation donorId="61f51546fb26ff2e7007547d" />
+                <ShowDonation donorId={User.userId} />
+              ) : null}
+              {content == "Show Rickshaw" ? (
+                <ShowRickshaw donorId={User.userId} />
               ) : null}
             </div>
           </Content>

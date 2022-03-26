@@ -19,10 +19,12 @@ import axios from "axios";
 
 export default function ShowDonation(props) {
   const [donor, setDonor] = useState();
+  console.log(props.donorId, "this is donor id")
+  let id = props.donorId
   const viewData = async () => {
     try {
       const resp = await axios.get(
-        "http://localhost:9000/admin/viewDonorCowDetail/61f51546fb26ff2e7007547d"
+        "http://localhost:9000/admin/viewDonorCowDetail/" + id
       );
       setDonor(resp.data);
 
@@ -89,6 +91,10 @@ export default function ShowDonation(props) {
   ];
   return (
     <div>
+      <h1>
+        Cow donation History
+      </h1>
+
       <Table columns={columns} dataSource={donor} />
     </div>
   );
