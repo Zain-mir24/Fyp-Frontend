@@ -121,7 +121,6 @@ export default function Amountmanagment(props) {
   }, []);
   return (
     <div className="row">
-      <h1>Zakat Management</h1>
       <div className="col-lg-12">
         <Row>
           <Col span={12}>

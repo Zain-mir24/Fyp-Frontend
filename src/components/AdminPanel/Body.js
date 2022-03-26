@@ -25,6 +25,7 @@ import Estimation from "./Estimation";
 import Dailyexpense from "./Dailyexpense";
 import LoanRecovery from "./LoanRecovery";
 import Masjid from "./Masjid";
+import Cow from "./Cow";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -91,6 +92,8 @@ function Body({ history, ...props }) {
       return <LoanRecovery />;
     } else if (content === "Masjid") {
       return <Masjid />;
+    } else if (content === "Cow") {
+      return <Cow />;
     }
   }
 
@@ -266,6 +269,15 @@ function Body({ history, ...props }) {
               }}
             >
               Daily expense Sheet
+            </Menu.Item>
+            <Menu.Item
+              key="24"
+              icon={<MoneyCollectOutlined />}
+              onClick={() => {
+                setContent("Cow");
+              }}
+            >
+              Cow
             </Menu.Item>
             <Menu.Item
               key="25"

@@ -10,7 +10,7 @@ function Background() {
         <div
           className="col-lg-6 wholeDiv"
           style={{
-            backgroundImage: ` url(${"./Images/join-our-struggle-2.jpg"})`,
+            backgroundImage: `url(${"./Images/join-our-struggle-2.jpg"})`,
             backgroundSize: "cover",
           }}
         ></div>

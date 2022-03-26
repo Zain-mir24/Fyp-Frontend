@@ -55,8 +55,10 @@ export default function AmountDetail() {
     },
   ];
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>ZAKAT MANAGEMENT</h1>
+    <div>
+      <div style={{ textAlign: "center" }}>
+        <h1>ZAKAT MANAGEMENT</h1>
+      </div>
 
       {content == "Detail" ? (
         <Amountmanagment bid={bid} />
