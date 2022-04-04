@@ -27,6 +27,7 @@ import LoanRecovery from "./LoanRecovery";
 import Masjid from "./Masjid";
 import Cow from "./Cow";
 import Rickshaw from "./Rickshaw";
+import Audit from "./AuditManagement/Audit";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -97,6 +98,8 @@ function Body({ history, ...props }) {
       return <Cow />;
     } else if (content === "Rickshaw") {
       return <Rickshaw />;
+    } else if (content === "Audit") {
+      return <Audit />;
     }
   }
 
@@ -181,15 +184,15 @@ function Body({ history, ...props }) {
             >
               Scheduled Meetings
             </Menu.Item>
-            {/* <Menu.Item
+            <Menu.Item
               key="10"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("approve");
+                setContent("Audit");
               }}
             >
               Manage audit
-            </Menu.Item> */}
+            </Menu.Item>
             <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}
@@ -300,6 +303,7 @@ function Body({ history, ...props }) {
             >
               Rickshaw
             </Menu.Item>
+
 
             {/* <Menu.Item
               key="21"
