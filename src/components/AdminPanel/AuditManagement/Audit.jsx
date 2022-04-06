@@ -123,11 +123,6 @@ function Audit() {
                 </div >
             )
         },
-        {
-            title: "Report",
-            dataIndex: "fileName",
-            key: "fileName"
-        },
     ]
 
     const CampaignsColumn = [
@@ -197,7 +192,11 @@ function Audit() {
             title: "Campaign Name",
             dataIndex: "campaignname",
             key: "campaignname"
-        },
+        }, {
+            title: "Report",
+            dataIndex: "fileName",
+            key: "fileName",
+        }
     ]
     return (
         <div>

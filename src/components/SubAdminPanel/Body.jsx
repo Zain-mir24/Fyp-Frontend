@@ -23,6 +23,7 @@ import HousingScheme from "../AdminPanel/HousingScheme";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import { LOGIN_USER, LOGOUT_USER } from "../../store/Actions/userAction";
 import { selectUser } from "../../store/reducers/User";
+import Audit from "./Audit";
 import "./Body.css"
 import {
   DesktopOutlined,
@@ -85,6 +86,8 @@ function Body({ history, ...props }) {
       return <Dailyexpense />
     } else if (content === "LoanRecovery") {
       return <LoanRecovery />
+    } else if (content === "Audit") {
+      return <Audit />
     }
   }
 
@@ -166,15 +169,15 @@ function Body({ history, ...props }) {
             >
               Scheduled Meetings
             </Menu.Item>
-            {/* <Menu.Item
+            <Menu.Item
               key="10"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("approve");
+                setContent("Audit");
               }}
             >
               Manage audit
-            </Menu.Item> */}
+            </Menu.Item>
             <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}
