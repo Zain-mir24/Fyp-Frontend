@@ -1,51 +1,75 @@
 import { React, useState, useEffect } from "react";
-import { Form, Input, Button, Checkbox, Select, Table, DatePicker } from "antd";
+import { Form, Input, Button, Checkbox, Select, Table, Upload, DatePicker } from "antd";
 import axios from "axios";
 import { Tab } from "@material-ui/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/reducers/User";
+import { UploadOutlined } from "@ant-design/icons";
+
 import { Redirect, withRouter } from "react-router";
 function Audit() {
     const [auditTeam, setAuditTeams] = useState([])
+    const [file, setFile] = useState();
+    const [fileName, setFileName] = useState("");
     const user = useSelector(selectUser);
     console.log(user.userId)
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+        setFileName(e.target.files[0].name);
+    };
     const viewTeams = async () => {
         try {
             const res = await axios.get("http://localhost:9000/Admin/viewAudits")
+            let obj;
+            let array = []
             console.log(res.data.view, "viewing Teams")
+            for (let i = 0; i < res.data.view.length; i++) {
+                for (let j = 0; j < res.data.view[i].subAdmins.length; j++) {
+                    if (user.userId === res.data.view[i].subAdmins[j]?.Sid?._id || user.userId === res.data.view[i].subAdmins[j]?.Sid2?._id || user.userId === res.data.view[i].subAdmins[j]?.Sid3?._id) {
+                        console.log(res.data.view[i]._id, "we are here")
 
-            setAuditTeams(res.data.view.map((i) => {
-                let obj;
-                if (user.userId === i.subAdmins[0]?.Sid?._id) {
-                    obj = {
-                        ...i, Member1: i.subAdmins[0]?.Sid?.name, Member2: i.subAdmins[0]?.Sid2?.name, Member3: i.subAdmins[0]?.Sid3?.name,
-                        email1: i.subAdmins[0]?.Sid?.email, email2: i.subAdmins[0]?.Sid2?.email, email3: i.subAdmins[0]?.Sid3?.email, campaignname: i.Cid.name
+                        obj = {
+                            _id: res.data.view[i]._id, auditTeamname: res.data.view[i].auditTeamname, Member1: res.data.view[i]?.subAdmins[j]?.Sid?.name, Member2: res.data.view[i].subAdmins[j]?.Sid2?.name, Member3: res.data.view[i].subAdmins[j]?.Sid3?.name,
+                            email1: res.data.view[i].subAdmins[j]?.Sid?.email, email2: res.data.view[i].subAdmins[j]?.Sid2?.email, email3: res.data.view[i].subAdmins[j]?.Sid3?.email, campaignname: res.data.view[i].Cid.name
+                        }
+                        array.push(obj)
+
                     }
 
 
                 }
-                else if (user.userId === i.subAdmins[0]?.Sid2?._id) {
-                    obj = {
-                        ...i, Member1: i.subAdmins[0]?.Sid?.name, Member2: i.subAdmins[0]?.Sid2?.name, Member3: i.subAdmins[0]?.Sid3?.name,
-                        email1: i.subAdmins[0]?.Sid?.email, email2: i.subAdmins[0]?.Sid2?.email, email3: i.subAdmins[0]?.Sid3?.email, campaignname: i.Cid.name
-                    }
+            }
 
 
-                } else if (user.userId === i.subAdmins[0]?.Sid3?._id) {
-                    obj = {
-                        ...i, Member1: i.subAdmins[0]?.Sid?.name, Member2: i.subAdmins[0]?.Sid2?.name, Member3: i.subAdmins[0]?.Sid3?.name,
-                        email1: i.subAdmins[0]?.Sid?.email, email2: i.subAdmins[0]?.Sid2?.email, email3: i.subAdmins[0]?.Sid3?.email, campaignname: i.Cid.name
-                    }
+            setAuditTeams(array)
 
 
-                }
-                return obj
-            }))
-            // setSubAdmin(res.data)
+
         } catch (e) {
             console.log(e)
         }
     }
+    const uploadReport = async (_id) => {
+        const formData = new FormData();
+        formData.append("_id", _id);
+        formData.append("file", file);
+        formData.append("fileName", fileName);
+        try {
+            const res = axios.post("http://localhost:9000/Admin/UploadReport",
+                formData
+
+            )
+            if (!res) {
+                console.log("Couldnt add")
+            }
+            alert(`doc uploaded`)
+            console.log(res)
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     useEffect(() => {
         viewTeams()
     }, [])
@@ -87,6 +111,37 @@ function Audit() {
             title: "Report",
             dataIndex: "fileName",
             key: "fileName",
+        },
+        {
+            title: "Upload Report",
+            render: (key, record) => (
+                <Form.Item
+                    rules={[{ required: true, message: "Please uplaod doc" }]}
+                    onChange={saveFile}
+                >
+                    <Upload>
+                        <Button icon={<UploadOutlined />}>
+                            Upload Audit
+                        </Button>
+                    </Upload>
+                </Form.Item>
+            )
+        }, {
+            title: "Confirm Report",
+            render: (key, record) => (
+                <Form.Item
+                    rules={[{ required: true, message: "Please uplaod doc" }]}
+
+                >
+
+                    <Button onClick={() => {
+                        uploadReport(record._id)
+                    }} icon={<UploadOutlined />}>
+                        Confirm Audit
+                    </Button>
+
+                </Form.Item>
+            )
         }
     ]
     return (
@@ -95,7 +150,7 @@ function Audit() {
             <h1>
                 Assigned Teams
             </h1>
-            <Table columns={TeamColumn} dataSource={auditTeam} />
+            <Table columns={TeamColumn} dataSource={auditTeam} scroll={{ x: 1500 }} />
 
         </div>
     )
@@ -106,3 +161,34 @@ const mapStateToProps = (state) => ({
 });
 
 export default withRouter(connect(mapStateToProps)(Audit));
+
+
+//  if i need this someday
+ // setAuditTeams(res.data.view.map((i) => {
+            //     let obj;
+            //     if (user.userId === i.subAdmins[0]?.Sid?._id) {
+            //         obj = {
+            //             ...i, Member1: i.subAdmins[0]?.Sid?.name, Member2: i.subAdmins[0]?.Sid2?.name, Member3: i.subAdmins[0]?.Sid3?.name,
+            //             email1: i.subAdmins[0]?.Sid?.email, email2: i.subAdmins[0]?.Sid2?.email, email3: i.subAdmins[0]?.Sid3?.email, campaignname: i.Cid.name
+            //         }
+
+
+            //     }
+            //     else if (user.userId === i.subAdmins[0]?.Sid2?._id) {
+            //         obj = {
+            //             ...i, Member1: i.subAdmins[0]?.Sid?.name, Member2: i.subAdmins[0]?.Sid2?.name, Member3: i.subAdmins[0]?.Sid3?.name,
+            //             email1: i.subAdmins[0]?.Sid?.email, email2: i.subAdmins[0]?.Sid2?.email, email3: i.subAdmins[0]?.Sid3?.email, campaignname: i.Cid.name
+            //         }
+
+
+            //     } else if (user.userId === i.subAdmins[0]?.Sid3?._id) {
+            //         obj = {
+            //             ...i, Member1: i.subAdmins[0]?.Sid?.name, Member2: i.subAdmins[0]?.Sid2?.name, Member3: i.subAdmins[0]?.Sid3?.name,
+            //             email1: i.subAdmins[0]?.Sid?.email, email2: i.subAdmins[0]?.Sid2?.email, email3: i.subAdmins[0]?.Sid3?.email, campaignname: i.Cid.name
+            //         }
+
+
+            //     }
+            //     return obj
+            // }))
+            // setSubAdmin(res.data)

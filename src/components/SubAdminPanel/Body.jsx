@@ -298,3 +298,20 @@ const mapStateToProps = (state) => ({
 });
 
 export default withRouter(connect(mapStateToProps)(Body));
+// for (let i = 0; i < res.data.view.length; i++) {
+            //     for (let j = 0; j < res.data.view[i].subAdmins.length; j++) {
+            //         if (user.userId === res.data.view[i].subAdmins[j]?.Sid?._id || user.userId === res.data.view[i].subAdmins[j]?.Sid2?._id || user.userId === res.data.view[i].subAdmins[j]?.Sid3?._id) {
+            //             console.log(res.data.view[i]._id, "we are here")
+
+            //             obj = {
+            //                 _id: res.data.view[i]._id, auditTeamname: res.data.view[i].auditTeamname, Member1: res.data.view[i]?.subAdmins[j]?.Sid?.name, Member2: res.data.view[i].subAdmins[j]?.Sid2?.name, Member3: res.data.view[i].subAdmins[j]?.Sid3?.name,
+            //                 email1: res.data.view[i].subAdmins[j]?.Sid?.email, email2: res.data.view[i].subAdmins[j]?.Sid2?.email, email3: res.data.view[i].subAdmins[j]?.Sid3?.email, campaignname: res.data.view[i].Cid.name
+            //             }
+
+            //         }
+
+
+            //     }
+            // }
+            // console.log(obj)
+            // setAuditTeams(obj)

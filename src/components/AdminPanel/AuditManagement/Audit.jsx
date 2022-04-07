@@ -196,7 +196,18 @@ function Audit() {
             title: "Report",
             dataIndex: "fileName",
             key: "fileName",
-        }
+            render: (text, record) => (
+                record.fileName ?
+                    <a
+                        href={
+                            "http://localhost:9000/uploads/" + record.fileName
+                        }
+                        download
+                    >
+                        <Button>Download {record.fileName}</Button>
+                    </a> : null
+            ),
+        },
     ]
     return (
         <div>
@@ -232,7 +243,7 @@ function Audit() {
             <h1>
                 Assigned Teams
             </h1>
-            <Table columns={TeamColumn} dataSource={auditTeam} />
+            <Table columns={TeamColumn} dataSource={auditTeam} scroll={{ x: 1500 }} />
         </div>
     )
 }
