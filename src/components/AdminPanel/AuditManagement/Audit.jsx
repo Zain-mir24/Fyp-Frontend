@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { Form, Input, Button, Checkbox, Select, Table, DatePicker } from "antd";
 import axios from "axios";
 import { Tab } from "@material-ui/icons";
+import "./Audit.css"
 function Audit() {
     // Creating subAdmin UseStates
     const [subAdmin, setSubAdmin] = useState([])
@@ -193,7 +194,7 @@ function Audit() {
             dataIndex: "campaignname",
             key: "campaignname"
         }, {
-            title: "Report",
+            title: "Audit Report",
             dataIndex: "fileName",
             key: "fileName",
             render: (text, record) => (
