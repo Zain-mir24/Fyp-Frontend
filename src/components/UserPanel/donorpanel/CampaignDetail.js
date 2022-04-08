@@ -13,7 +13,7 @@ dotenv.config();
 function CampaignDetail(props) {
   // const user = useSelector(selectUser);
 
-
+  const [Audit, setAudit] = useState()
   const [collection, setCollection] = useState();
   const [amount, setAmount] = useState(0);
   var userId = props.users.userId
@@ -54,8 +54,21 @@ function CampaignDetail(props) {
         console.log("error", e);
       });
   };
+  const getCID = async () => {
+    try {
+      const res = await axios.get(`http://localhost:9000/User/viewAudit/${cid}`)
+      // console.log(res.data.fileName)
+      setAudit(res.data.fileName)
+    }
+    catch (e) {
+      console.log(e)
+    }
+
+
+  }
   useEffect(() => {
     getAmount();
+    getCID()
   });
   return (
     <div>
@@ -112,6 +125,18 @@ function CampaignDetail(props) {
               </Sider>
             </Layout>
           </div>
+        </div>
+        <div>
+          <h1>
+            Audit will be here
+          </h1>
+          {Audit ?
+            <a
+              href={
+                "http://localhost:9000/uploads/" + Audit
+              }><Button>
+                Download {Audit} Report
+              </Button></a> : null}
         </div>
       </div>
     </div>
