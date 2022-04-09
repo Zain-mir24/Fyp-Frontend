@@ -12,6 +12,9 @@ function Audit() {
     const [Sid3, setSid3] = useState(null)
     const [dis, setDis] = useState(false)
     const [dis1, setDis1] = useState(false)
+    // const [dis2, setDis2] = useState(false)
+    let dis2 = false;
+    let camp1 = false
     // Creating Campaigns UseStates
     const [campaigns, setCampaigns] = useState([])
     const [Cid, setCid] = useState("")
@@ -79,7 +82,7 @@ function Audit() {
         getSubAdmin()
         getCampaigns()
         viewTeams()
-    }, [])
+    }, [count])
     const subAdminColumn = [
         {
             title: "Name",
@@ -111,7 +114,7 @@ function Audit() {
 
                             } else if (count == 2) {
                                 setSid3(record._id)
-
+                                setCount(count + 1)
                                 setDis(true)
 
                             } else if (count > 2) {
@@ -120,6 +123,42 @@ function Audit() {
                         }}
                     >
                         Select this Admin
+                    </Button>
+                </div >
+            )
+        }, {
+            title: "remove subAdmin",
+            render: (text, record) => (
+                <div>
+                    <Button
+                        disabled={dis2}
+                        onClick={() => {
+                            console.log(record._id)
+
+
+                            if (record._id == Sid) {
+                                setSid(null)
+                                setCount(count - 1);
+                                console.log(count)
+                                setDis(false)
+
+                            } else if (record._id == Sid2) {
+                                setSid2(null)
+                                setCount(count - 1);
+                                setDis(false)
+
+                                console.log(count)
+
+                            } else if (record._id == Sid3) {
+                                setSid3("")
+                                setCount(count - 1);
+                                setDis(false)
+
+
+                            }
+                        }}
+                    >
+                        Remove this Admin from team
                     </Button>
                 </div >
             )
@@ -149,6 +188,31 @@ function Audit() {
                                 setCid(record._id)
                                 setcampCount(campCount + 1);
                                 setDis1(true)
+
+                            }
+                        }}
+                    >
+                        Select this campaign
+                    </Button>
+                </div >
+            )
+        },
+        {
+            title: "UnSelect Campaign",
+            render: (text, record) => (
+                <div>
+                    <Button
+
+                        onClick={() => {
+                            console.log(record._id)
+                            console.log(count)
+
+                            if (record._id == Cid) {
+                                setCid("")
+                                setcampCount(campCount - 1);
+                                setDis1(false)
+
+
 
                             }
                         }}
@@ -227,11 +291,11 @@ function Audit() {
                 />
             </h1>
             <h1>
-                SubAdmins Max 3
+                Number of SubAdmins selected {count}
             </h1>
             <Table dataSource={subAdmin} columns={subAdminColumn} />
             <h1>
-                Campaigns
+                Campaigns select {campCount}
             </h1>
             <Table dataSource={campaigns} columns={CampaignsColumn} />
             <Button
