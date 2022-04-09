@@ -25,42 +25,43 @@ function Headers() {
                     Homepage
                   </a>
                 </li>
-                {/* <li class="nav-item dropdown" role="presentation">
-                  <div class="dropdown show" style={{marginTop:"8px"}}>
+                <li class="nav-item dropdown" role="presentation">
+                  <div class="dropdown show" style={{ marginTop: "8px" }}>
                     <a
                       class="btn dropdown-toggle"
-                      href="#"
+                      href="/News"
                       role="button"
                       id="dropdownMenuLink"
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
-                      style={{color:"white"}}
+                      style={{ color: "white" }}
                     >
-                     donate us
+                      News
                     </a>
 
                     <div
                       class="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
-                      <a class="dropdown-item" href="#">
-                       Donate us
+                      <a class="dropdown-item" href="/News"
+                      >
+                        Our  News
                       </a>
                       <a class="dropdown-item" href="#">
-                        Campaign donations
+                        Audit
                       </a>
                       <a class="dropdown-item" href="#">
                         Zakat
                       </a>
                     </div>
                   </div>
-                </li> */}
-                <li class="nav-item" role="presentation">
+                </li>
+                {/* <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/News">
                     News
                   </a>
-                </li>
+                </li> */}
                 {/* <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/campaign">
                     About us

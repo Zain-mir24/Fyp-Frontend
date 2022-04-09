@@ -19,6 +19,7 @@ import Addemail from "./components/UserPanel/Addemail";
 import Donation from "./components/DonationPage/Donation";
 import News from "./components/Loanpage/News";
 import NewsDetails from "./components/Loanpage/NewsDetails";
+import Audit from "./components/Audit/Audit";
 import HousingSchemePDF from "./components/AdminPanel/HousingSchemePDF";
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
@@ -42,6 +43,7 @@ function App() {
             <Route path="/CampaignDetail" component={CampaignDetail}></Route>
             <Route path="/userPanel" component={Userpanel}></Route>
             <Route path="/News" component={News}></Route>
+            <Route path="/Audit" component={Audit}></Route>
             <Route path="/changePassword" component={Changepassword}></Route>
             <Route path="/forgotPassword" component={Forgotpassword}></Route>
             <Route path="/donationStripe" component={Donation}>

@@ -11,7 +11,7 @@ export default function CampaignDetails({ history }) {
   const [data, setData] = useState([]);
 
   const queryParams = new URLSearchParams(window.location.search);
-
+  const [file, setFile] = useState()
   const name = queryParams.get("name");
   const description = queryParams.get("description");
   const img = queryParams.get("img");
@@ -35,6 +35,18 @@ export default function CampaignDetails({ history }) {
       console.log(e);
     }
   };
+  const viewTeams = async () => {
+    try {
+      const res = await axios.get("http://localhost:9000/Admin/viewAudits")
+      console.log(res.data.view, "viewing Teams")
+      res.data.view.filter((i) => {
+        return i.Cid._id === cid ? setFile(i.fileName) : null
+      })
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   const [totalamount, setAmount] = useState(0);
   const sendPayment = (token) => {
@@ -58,7 +70,7 @@ export default function CampaignDetails({ history }) {
 
   useEffect(() => {
     getAmount();
-
+    viewTeams()
     // percentageFormula()
   }, []);
   return (
@@ -126,6 +138,38 @@ export default function CampaignDetails({ history }) {
                   You are donating {totalamount}
                 </Button>
               </StripeCheckout>
+              {
+                file ?
+                  <div>
+                    <h2>
+                      Audit for this Campaign
+                    </h2>
+                    <a
+                      href={
+                        "http://localhost:9000/uploads/" + file
+                      }
+                      download>
+                      <Button
+                        // onClick={()=>{
+                        //   href={"http://localhost:9000/uploads/" + file}
+                        // }}
+                        style={{
+                          width: "100%",
+                          backgroundColor: "#1B9834",
+                          color: "white",
+                        }}
+                      >
+                        Download pdf {file}
+                      </Button>
+                    </a>
+                  </div>
+                  : <h2>
+                    No audit yet
+                  </h2>
+              }
+
+
+
             </div>
           </div>
         </section>
