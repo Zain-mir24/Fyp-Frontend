@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 
-import { selectUser } from "../../../store/reducers/User";
+// import { checkDonation } from "../../../store/reducers/User";
+import { DONATION } from "../../../store/Actions/userAction";
+
 import { Redirect, withRouter } from "react-router";
 import { Layout, Image, Card, Progress, Button, Input } from "antd";
 // import 'animate.css/animate.min.css';
-
+// import { Notify } from "../../homepage/home";
 import axios from "axios";
+// import { Notify } from "../homepage/home";
 import StripeCheckout from "react-stripe-checkout";
 import { Store } from 'react-notifications-component';
-
+import Home from "../../homepage/home"
 const { Footer, Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
+
 function CampaignDetail(props) {
   // const user = useSelector(selectUser);
+  // const dispatch = useDispatch();
 
+
+  const [value, setValue] = useState()
   const [Audit, setAudit] = useState()
   const [collection, setCollection] = useState();
   const [amount, setAmount] = useState(0);
   var userId = props.users.userId
+  var userName = props.users.username
+  console.log(userName)
   const campaignname = props.name;
   const description = props.description;
   const img = props.fileName;
@@ -50,11 +59,11 @@ function CampaignDetail(props) {
 
     return axios
       .post("http://localhost:9000/stripe/pay", body)
-      .then((res) => {
+      .then(async (res) => {
         console.log(res);
         Store.addNotification({
-          title: "Donation is added!",
-          message: "teodosii@react-notifications-component",
+          title: `Donation is made by ${userName}`,
+          message: `Donation is recieved for${campaignname}`,
           type: "success",
           insert: "top",
           container: "top-right",
@@ -65,6 +74,11 @@ function CampaignDetail(props) {
             onScreen: true
           }
         });
+        await axios.post("http://localhost:9000/User/sendnotification", {
+          message: `Donation is made by ${userName} for ${campaignname}`
+        })
+        console.log("Successfull")
+
       })
       .catch((e) => {
         console.log("error", e);
@@ -79,8 +93,6 @@ function CampaignDetail(props) {
     catch (e) {
       console.log(e)
     }
-
-
   }
   useEffect(() => {
     getAmount();

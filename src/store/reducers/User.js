@@ -1,10 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { ADD_USER, LOGIN_USER, LOGOUT_USER } from "../Actions/userAction";
+import { ADD_USER, DONATION, LOGIN_USER, LOGOUT_USER } from "../Actions/userAction";
 import { apiBegan, apiFail } from "../Actions/Apiaction";
 let lastid = 0;
 const initialState = {
   users: [],
-  user: null,
+  user: null
+  // donation: false
 };
 export const userReducer = createReducer(initialState, {
   [ADD_USER.type]: (state, action) => {
@@ -19,9 +20,13 @@ export const userReducer = createReducer(initialState, {
   [LOGOUT_USER.type]: (state, action) => {
     state.user = null;
   },
+  // [DONATION.type]: (state, action) => {
+  //   state.donation = true
+  // }
 });
 
 export const selectUser = (state) => state.persistedReducer.user.user;
+// export const checkDonation = (state) => state.persistedReducer.donation;
 
 //Action Creators
 

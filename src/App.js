@@ -21,6 +21,7 @@ import News from "./components/Loanpage/News";
 import NewsDetails from "./components/Loanpage/NewsDetails";
 import Audit from "./components/Audit/Audit";
 import HousingSchemePDF from "./components/AdminPanel/HousingSchemePDF";
+import { NotificationContext } from "./contexts/Customecontexts"
 // import NAVbar from "./components/design/Navbar";
 // getting data from the backend api
 function App() {
@@ -64,6 +65,7 @@ function App() {
             ></Route>
 
             <Route path="/" component={home}></Route>
+
           </Switch>
         </BrowserRouter>
       </body>
