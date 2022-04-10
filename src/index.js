@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
+import { ReactNotifications } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
@@ -10,6 +11,7 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <React.StrictMode>
+        <ReactNotifications />
         <App />
       </React.StrictMode>
     </PersistGate>

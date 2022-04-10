@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import Whychooseus from "./whychooseus";
 import First from "./first";
 import Second from "./Second";
-
+import { Store } from 'react-notifications-component';
 import Wedo from "./Wedo";
 import { BackTop } from "antd";
 

@@ -3,10 +3,13 @@ import { connect, useDispatch, useSelector } from "react-redux";
 
 import { selectUser } from "../../../store/reducers/User";
 import { Redirect, withRouter } from "react-router";
-
 import { Layout, Image, Card, Progress, Button, Input } from "antd";
+// import 'animate.css/animate.min.css';
+
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
+import { Store } from 'react-notifications-component';
+
 const { Footer, Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
@@ -49,6 +52,19 @@ function CampaignDetail(props) {
       .post("http://localhost:9000/stripe/pay", body)
       .then((res) => {
         console.log(res);
+        Store.addNotification({
+          title: "Donation is added!",
+          message: "teodosii@react-notifications-component",
+          type: "success",
+          insert: "top",
+          container: "top-right",
+          animationIn: ["animate__animated", "animate__fadeIn"],
+          animationOut: ["animate__animated", "animate__fadeOut"],
+          dismiss: {
+            duration: 5000,
+            onScreen: true
+          }
+        });
       })
       .catch((e) => {
         console.log("error", e);
