@@ -16,21 +16,22 @@ const { Option } = Select;
 export default function LatestNews() {
   // useEffect(() => {
   // }, [])
+  const [notif, setNotification] = useState()
   const viewData = async () => {
     try {
       const res = await axios.get("http://localhost:9000/User/viewnotification")
       console.log(res.data.message)
-      // await setNotification(res.data.message)
+      setNotification(res.data.message)
       Store.addNotification({
         title: `Latest updates from our organization`,
         message: `${res.data.message}`,
         type: "success",
-        insert: "top",
-        container: "top-left",
+        insert: "bottom",
+        container: "bottom-left",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
-          duration: 2000,
+          duration: 5000,
           onScreen: true
         }
       });
