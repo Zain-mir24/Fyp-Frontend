@@ -21,6 +21,7 @@ import LoanAppeal from "./loanAppeal";
 import Approvecampaigns from "./approvCampaigns";
 import MonthlySupport from "./MonthlySupport";
 import HouseAppeal from "./HouseAppeal";
+import ActiveCampaign from "./ActiveCampaign";
 import "./beneficiary.css";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -72,6 +73,16 @@ function Beneficiarypanel({ history, ...props }) {
             >
               Appeal for campaign
             </Menu.Item>
+            <Menu.Item
+              key="22"
+              icon={<ExclamationCircleFilled />}
+              onClick={(e) => {
+                setContent("ActiveCampaign");
+              }}
+            >
+              Active Campaign
+            </Menu.Item>
+
             <Menu.Item
               key="10"
               icon={<ExclamationCircleFilled />}
@@ -138,6 +149,7 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "Approve" ? <Approvecampaigns /> : null}
               {content == "Monthly Support" ? <MonthlySupport /> : null}
               {content == "House Appeal" ? <HouseAppeal /> : null}
+              {content == "ActiveCampaign" ? <ActiveCampaign /> : null}
             </div>
           </Content>
         </Layout>

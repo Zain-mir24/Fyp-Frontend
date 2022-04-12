@@ -20,6 +20,7 @@ import Donation from "./components/DonationPage/Donation";
 import News from "./components/Loanpage/News";
 import NewsDetails from "./components/Loanpage/NewsDetails";
 import Audit from "./components/Audit/Audit";
+import Video from "./components/Frontend/Video";
 import HousingSchemePDF from "./components/AdminPanel/HousingSchemePDF";
 import { NotificationContext } from "./contexts/Customecontexts"
 // import NAVbar from "./components/design/Navbar";
@@ -51,6 +52,7 @@ function App() {
               <Donation />
             </Route>
             <Route path="/NewsDetails" component={NewsDetails}></Route>
+            <Route path="/Video" component={Video}></Route>
             <Route
               path="/resetPassword/:_id/:token"
               component={Resetpassword}

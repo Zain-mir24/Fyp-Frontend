@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button, Input, Upload, Col, Form } from "antd";
+import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { selectUser } from "../../store/reducers/User";
 import { useSelector } from "react-redux";
 import { Store } from 'react-notifications-component';
-
+const { Option } = Select;
 const axios = require("axios");
 function Foorm() {
   const [camp, setCamp] = useState([]);
@@ -14,6 +14,8 @@ function Foorm() {
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const [ID, setId] = useState("");
+  const [beneficiary, setbeneficiary] = useState([]);
+  const [beneficiaryId, setbeneficiaryId] = useState("");
   const user = useSelector(selectUser);
   var userName = user.username
 
@@ -26,6 +28,7 @@ function Foorm() {
   }, []);
   const postData = async () => {
     const formData = new FormData();
+    formData.append("Uid", beneficiaryId);
     formData.append("name", name);
     formData.append("description", description);
     formData.append("donation", donation);
@@ -35,10 +38,10 @@ function Foorm() {
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addCampaign",
-        formData,
-        {
-          headers: { Authorization: `Bearer ${user.verifToken}` },
-        }
+        formData
+        // {
+        //   headers: { Authorization: `Bearer ${user.verifToken}` },
+        // }
       );
       if (!res) {
         return console.log("couldnt add");
@@ -66,10 +69,8 @@ function Foorm() {
   };
   const viewCamp = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/viewCampaigns"
-      );
-      console.log(res.data)
+      const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
+      console.log(res.data);
       setCamp(
         res.data.campaign.map((i) => ({
           _id: i._id,
@@ -79,11 +80,25 @@ function Foorm() {
           file: i.fileName,
         }))
       );
+    } catch (e) {
+      console.log(e);
+    }
 
+    try {
+      const res = await axios.get(
+        "http://localhost:9000/admin/readBeneficiary"
+      );
+      console.log(res.data);
+      await setbeneficiary(res.data);
     } catch (e) {
       console.log(e);
     }
   };
+
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+    setbeneficiaryId(value);
+  }
 
   const deleteCamp = async (id) => {
     try {
@@ -196,6 +211,21 @@ function Foorm() {
       <div className="col-lg-6">
         <Form>
           <p>Add campaign</p>
+          <Form.Item label="Select Beneficiary">
+            <Select
+              defaultValue="Select Beneficiary"
+              style={{
+                width: 180,
+                borderRadius: "0px",
+                backgroundColor: "transparent",
+              }}
+              onChange={handleChange}
+            >
+              {beneficiary.map((item) => {
+                return <Option value={item._id}>{item.name}</Option>;
+              })}
+            </Select>
+          </Form.Item>
           <Form.Item
             rules={[{ required: true, message: "Please Enter campaign name" }]}
           >

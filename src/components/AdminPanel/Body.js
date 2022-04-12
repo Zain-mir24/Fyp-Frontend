@@ -28,6 +28,7 @@ import Masjid from "./Masjid";
 import Cow from "./Cow";
 import Rickshaw from "./Rickshaw";
 import Audit from "./AuditManagement/Audit";
+import Youtube from "./Youtube";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -70,6 +71,8 @@ function Body({ history, ...props }) {
       return <AppealedLoan />;
     } else if (content === "LoanManagment") {
       return <LoanManagement />;
+    } else if (content === "Youtube") {
+      return <Youtube />;
     } else if (content === "AdoptChildren") {
       return <ChildrenManagment />;
     } else if (content === "Donations") {
@@ -146,6 +149,15 @@ function Body({ history, ...props }) {
               }}
             >
               Manage Latest News
+            </Menu.Item>
+            <Menu.Item
+              key="22"
+              icon={<CheckCircleFilled />}
+              onClick={() => {
+                setContent("Youtube");
+              }}
+            >
+              Add Video
             </Menu.Item>
 
             <Menu.Item
