@@ -29,6 +29,7 @@ import Cow from "./Cow";
 import Rickshaw from "./Rickshaw";
 import Audit from "./AuditManagement/Audit";
 import Youtube from "./Youtube";
+import Analytics from "./Application Analytics/Analytics";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -103,6 +104,8 @@ function Body({ history, ...props }) {
       return <Rickshaw />;
     } else if (content === "Audit") {
       return <Audit />;
+    } else if (content === "Analytics") {
+      return <Analytics />
     }
   }
 
@@ -209,10 +212,10 @@ function Body({ history, ...props }) {
               key="11"
               icon={<CheckCircleFilled />}
               onClick={() => {
-                setContent("LoanManagment");
+                setContent("Analytics");
               }}
             >
-              Loan Managment
+              Application Analytics
             </Menu.Item>
             <Menu.Item
               key="12"
@@ -320,11 +323,11 @@ function Body({ history, ...props }) {
             {/* <Menu.Item
               key="21"
               icon={<MoneyCollectOutlined />}
-              onClick={() => {
-                setContent("LoanRecovery");
+                onClick={() => {
+                setContent("LoanManagment");
               }}
             >
-              Loan Recovery
+              Loan Managment
             </Menu.Item> */}
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
