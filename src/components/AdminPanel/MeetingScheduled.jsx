@@ -9,7 +9,7 @@ function MeetingScheduled() {
             const res = await axios.get("http://localhost:9000/User/appointments")
             console.log(res.data)
             setData(res.data.map((d) => {
-                let obj = { ...d, childName: d.name }
+                let obj = { ...d, childName: d.childId.name }
                 return obj
             }))
 

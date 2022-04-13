@@ -30,6 +30,7 @@ import Rickshaw from "./Rickshaw";
 import Audit from "./AuditManagement/Audit";
 import Youtube from "./Youtube";
 import Analytics from "./Application Analytics/Analytics";
+import AddAnalytics from "./Application Analytics/Add Analytic/AddAnalytics";
 import { selectUser } from "../../store/reducers/User";
 
 import {
@@ -82,8 +83,10 @@ function Body({ history, ...props }) {
       return <SubAdmin />;
     } else if (content === "Meeting") {
       return <MeetingScheduled />;
-    } else if (content === "Monthly Support") {
-      return <MonthlySupport />;
+    }
+    // Replacing monthly support with add Analytics
+    else if (content === "AddAnalytics") {
+      return <AddAnalytics />;
     } else if (content === "Amountdetail") {
       return <AmountDetail />;
     } else if (content === "Housingscheme") {
@@ -245,14 +248,15 @@ function Body({ history, ...props }) {
             >
               SubAdmin Maagment
             </Menu.Item>
+            {/* Replace monthly support with Add Analytics */}
             <Menu.Item
               key="15"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
-                setContent("Monthly Support");
+                setContent("AddAnalytics");
               }}
             >
-              Monthly Support
+              Add Analytics
             </Menu.Item>
             <Menu.Item
               key="16"

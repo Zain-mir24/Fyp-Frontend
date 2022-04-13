@@ -7,7 +7,7 @@ function Monthlyanalysis() {
     const [monthly, setMonthly] = useState()
     const getMonthlyData = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/admin/Citydonation");
+            const res = await axios.get("http://localhost:9000/admin/Monthlydonation");
 
             setMonthly(res.data)
 

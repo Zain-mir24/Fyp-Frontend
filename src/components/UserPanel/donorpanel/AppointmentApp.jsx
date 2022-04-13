@@ -7,6 +7,7 @@ import axios from 'axios'
 import { selectUser } from "../../../store/reducers/User";
 
 function AppointmentApp(props) {
+    console.log(props.id, "Child ID")
     const user = useSelector(selectUser);
     const [PN, setPN] = useState("")
     const [DDate, setDate] = useState()
