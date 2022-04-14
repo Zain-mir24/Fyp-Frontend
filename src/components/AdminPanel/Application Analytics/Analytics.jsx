@@ -6,7 +6,7 @@ import axios from 'axios'
 import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 import Monthlyanalysis from './MontlyAnalysis/Monthlyanalysis';
 import CityAnalysis from './CityAnalytics/CityAnalysis';
-
+import { UserAnalytics } from './UserAnalytics/UserAnalytics';
 function Analytics() {
     const chartRef = useRef();
     const onClick = (event) => {
@@ -79,7 +79,7 @@ function Analytics() {
             </div>
             <Monthlyanalysis />
             <CityAnalysis />
-
+            <UserAnalytics />
         </div>
     )
 }
