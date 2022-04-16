@@ -7,6 +7,7 @@ import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 import Monthlyanalysis from './MontlyAnalysis/Monthlyanalysis';
 import CityAnalysis from './CityAnalytics/CityAnalysis';
 import { UserAnalytics } from './UserAnalytics/UserAnalytics';
+import Prediction from "./Prediction/PredictionMontlhy"
 function Analytics() {
     const chartRef = useRef();
     const onClick = (event) => {
@@ -16,6 +17,8 @@ function Analytics() {
     // const [data, setData] = useState([])
     let Labels = [];
     let data = [];
+
+
     const getMonthlyData = async () => {
         try {
             const res = await axios.get("http://localhost:9000/admin/Monthlydonation");
@@ -33,6 +36,7 @@ function Analytics() {
             console.log(e, "error")
         }
     }
+
     // manhoos
     const state = {
         labels: Labels,
@@ -47,8 +51,10 @@ function Analytics() {
             }
         ]
     }
+
     useEffect(() => {
         getMonthlyData()
+
         console.log(data)
         // console.log(labels)
         // Show data
@@ -77,7 +83,9 @@ function Analytics() {
                     }}
                 />
             </div>
+
             <Monthlyanalysis />
+            <Prediction />
             <CityAnalysis />
             <UserAnalytics />
         </div>
