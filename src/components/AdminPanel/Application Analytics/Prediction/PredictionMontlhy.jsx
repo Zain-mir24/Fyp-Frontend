@@ -58,29 +58,29 @@ function PredictionMontlhy() {
     }, [])
 
     return (
-        <div>PredictionMontlhy
-            <div>
-                <h1>
-                    Prediction
-                </h1>
-                <Bar
-                    onClick={onClick}
-                    ref={chartRef}
-                    data={state2}
-                    options={{
-                        title: {
-                            display: true,
-                            text: 'Average Employee Salary per Month',
-                            fontSize: 20
-                        },
-                        legend: {
-                            display: true,
-                            position: 'right'
-                        }
-                    }}
-                />
-            </div>
+
+        <div>
+            <h1>
+                Prediction
+            </h1>
+            <Bar
+                onClick={onClick}
+                ref={chartRef}
+                data={state2}
+                options={{
+                    title: {
+                        display: true,
+                        text: 'Average Employee Salary per Month',
+                        fontSize: 20
+                    },
+                    legend: {
+                        display: true,
+                        position: 'right'
+                    }
+                }}
+            />
         </div>
+
     )
 }
 
