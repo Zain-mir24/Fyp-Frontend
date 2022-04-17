@@ -85,6 +85,9 @@ function Body({ history, ...props }) {
       return <MeetingScheduled />;
     }
     // Replacing monthly support with add Analytics
+    else if (content == " MonthlySupport") {
+      return <MonthlySupport />
+    }
     else if (content === "AddAnalytics") {
       return <AddAnalytics />;
     } else if (content === "Amountdetail") {
@@ -262,10 +265,10 @@ function Body({ history, ...props }) {
               key="16"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
-                setContent("Amountdetail");
+                setContent(" MonthlySupport");
               }}
             >
-              Zakat
+              MonthlySupport
             </Menu.Item>
             <Menu.Item
               key="17"

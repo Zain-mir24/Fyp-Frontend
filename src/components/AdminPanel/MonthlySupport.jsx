@@ -98,7 +98,10 @@ export default function MonthlySupport() {
   return (
     <div>
       {content == "table" ? (
-        <Table columns={columns} dataSource={Loans} />
+        <div>
+          <h1> Monthly support Appeal from beneficiary</h1>
+          <Table columns={columns} dataSource={Loans} />
+        </div>
       ) : (
         <MonthlySupportDetail data={data} />
       )}

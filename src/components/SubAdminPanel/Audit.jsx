@@ -4,7 +4,7 @@ import axios from "axios";
 import { Tab } from "@material-ui/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/reducers/User";
-import { UploadOutlined } from "@ant-design/icons";
+import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
 
 import { Redirect, withRouter } from "react-router";
 function Audit() {
@@ -26,11 +26,11 @@ function Audit() {
             for (let i = 0; i < res.data.view.length; i++) {
                 for (let j = 0; j < res.data.view[i].subAdmins.length; j++) {
                     if (user.userId === res.data.view[i].subAdmins[j]?.Sid?._id || user.userId === res.data.view[i].subAdmins[j]?.Sid2?._id || user.userId === res.data.view[i].subAdmins[j]?.Sid3?._id) {
-                        console.log(res.data.view[i]._id, "we are here")
+                        console.log(res.data.view[i].fileName, "we are here")
 
                         obj = {
                             _id: res.data.view[i]._id, auditTeamname: res.data.view[i].auditTeamname, Member1: res.data.view[i]?.subAdmins[j]?.Sid?.name, Member2: res.data.view[i].subAdmins[j]?.Sid2?.name, Member3: res.data.view[i].subAdmins[j]?.Sid3?.name,
-                            email1: res.data.view[i].subAdmins[j]?.Sid?.email, email2: res.data.view[i].subAdmins[j]?.Sid2?.email, email3: res.data.view[i].subAdmins[j]?.Sid3?.email, campaignname: res.data.view[i].Cid.name
+                            email1: res.data.view[i].subAdmins[j]?.Sid?.email, email2: res.data.view[i].subAdmins[j]?.Sid2?.email, email3: res.data.view[i].subAdmins[j]?.Sid3?.email, campaignname: res.data.view[i].Cid.name, fileName: res.data.view[i]?.fileName
                         }
                         array.push(obj)
 
@@ -109,8 +109,18 @@ function Audit() {
             key: "campaignname"
         }, {
             title: "Report",
-            dataIndex: "fileName",
-            key: "fileName",
+            render: (key, record) => (
+                <a href={
+                    "http://localhost:9000/uploads/" + record.fileName
+                }
+                    download>
+                    <Button icon={<DownloadOutlined />}>
+                        Download {record.fileName}
+                    </Button>
+                </a>
+
+
+            )
         },
         {
             title: "Upload Report",
@@ -121,7 +131,7 @@ function Audit() {
                 >
                     <Upload>
                         <Button icon={<UploadOutlined />}>
-                            Upload Audit
+                            upload
                         </Button>
                     </Upload>
                 </Form.Item>
