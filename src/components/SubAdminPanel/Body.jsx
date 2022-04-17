@@ -216,7 +216,7 @@ function Body({ history, ...props }) {
             >
               Monthly Support
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="16"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -224,7 +224,7 @@ function Body({ history, ...props }) {
               }}
             >
               Support amount detail
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="17"
               icon={<MoneyCollectOutlined />}
@@ -235,7 +235,7 @@ function Body({ history, ...props }) {
               Housing Scheme
             </Menu.Item>
 
-            <Menu.Item
+            {/* <Menu.Item
               key="19"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -261,7 +261,7 @@ function Body({ history, ...props }) {
               }}
             >
               Loan Recovery
-            </Menu.Item>
+            </Menu.Item> */}
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
