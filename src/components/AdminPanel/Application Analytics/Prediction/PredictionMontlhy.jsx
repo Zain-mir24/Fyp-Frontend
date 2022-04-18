@@ -15,11 +15,8 @@ function PredictionMontlhy() {
     const getPredictionData = async () => {
         var average = 0
         var sum = 0;
-        var Difference = 0
         try {
             const res = await axios.get("http://localhost:9000/admin/Predictionanalysis");
-            console.log(res.data, "Prediction")
-
             for (let i = 0; i < res.data.length; i++) {
                 sum = 0;
                 for (let j = 0; j < res.data[i].Donation.length; j++) {
@@ -29,16 +26,6 @@ function PredictionMontlhy() {
                 average = sum / res.data[i].Donation.length;
                 PredictionData.push(average)
             }
-            console.log(PredictionData, ["predictionData"])
-
-            // for (let i = 0; i < 9; i++) {
-            //     Difference = PredictionData[i] - PredictionData[i + 1]
-            //     PredictionData.push(Difference + average)
-            //     console.log(Difference + average, "is the Prediction")
-            // }
-
-            console.log(PredictionData, "Final prediction")
-
 
         } catch (e) {
             console.log(e, "error")
