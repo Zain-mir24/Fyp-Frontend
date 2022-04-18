@@ -14,22 +14,28 @@ function PredictionMontlhy() {
 
     const getPredictionData = async () => {
         var average = 0
+        var sum = 0;
         var Difference = 0
         try {
-            const res = await axios.get("http://localhost:9000/admin/Monthlydonation");
+            const res = await axios.get("http://localhost:9000/admin/Predictionanalysis");
             console.log(res.data, "Prediction")
+
             for (let i = 0; i < res.data.length; i++) {
-
-                PredictionData.push(res.data[i].Donation)
-                average = average + res.data[i].Donation
+                sum = 0;
+                for (let j = 0; j < res.data[i].Donation.length; j++) {
+                    sum = sum + res.data[i].Donation[j]
+                }
+                console.log(sum, "yaha tak arha hai")
+                average = sum / res.data[i].Donation.length;
+                PredictionData.push(average)
             }
+            console.log(PredictionData, ["predictionData"])
 
-            average = average / res.data.length;
-            for (let i = 0; i < 9; i++) {
-                Difference = PredictionData[i] - PredictionData[i + 1]
-                PredictionData.push(Difference + average)
-                console.log(Difference + average, "is the Prediction")
-            }
+            // for (let i = 0; i < 9; i++) {
+            //     Difference = PredictionData[i] - PredictionData[i + 1]
+            //     PredictionData.push(Difference + average)
+            //     console.log(Difference + average, "is the Prediction")
+            // }
 
             console.log(PredictionData, "Final prediction")
 
@@ -39,7 +45,7 @@ function PredictionMontlhy() {
         }
     }
     const state2 = {
-        labels: ["jan", "feb", "march", "April", "may", "june", "july", "August", "September", "october", "November", "December"],
+        labels: ["january(2022)", "feburary(2022)", "march(2022)", "April(2022)", "may(2021)", "june(2022)", "july(2022)", "August(2022)", "September(2022)", "october(2022)", "November(2022)", "December(2022)"],
         datasets: [
             {
                 label: 'Prediction(rs)',
