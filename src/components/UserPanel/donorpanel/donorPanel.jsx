@@ -22,7 +22,7 @@ function DonorPanel({ history, ...props }) {
   const dispatch = useDispatch();
 
   const User = useSelector(selectUser);
-  console.log(User.userId)
+  console.log(User.userId);
   const logout = async (e) => {
     e.preventDefault();
     await dispatch(LOGOUT_USER());
@@ -120,7 +120,7 @@ function DonorPanel({ history, ...props }) {
                 </div>
               ) : null}
               {content == "campaign" ? <Campaigndonation /> : null}
-              {content == "Chat" ? <Chat /> : null}
+              {content == "Chat" ? <Chat donorId={User.userId} /> : null}
               {content == "Orphan" ? <Orphan /> : null}
               {content == "Show Donations" ? (
                 <ShowDonation donorId={User.userId} />

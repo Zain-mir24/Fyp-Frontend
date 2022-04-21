@@ -56,8 +56,19 @@ export default function Cow() {
       console.log(e);
     }
   };
+  const viewAI = async () => {
+    try {
+      const resp = await axios.get("http://localhost:5000");
+      console.log(resp);
+
+      console.log(resp.data, "HELLOsss");
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
     viewData();
+    viewAI();
   }, []);
 
   function handleChange(value) {

@@ -91,7 +91,9 @@ function Body({ history, ...props }) {
     else if (content === "AddAnalytics") {
       return <AddAnalytics />;
     } else if (content === "Amountdetail") {
-      return <AmountDetail />;
+      return <AmountDetail title="Zakat Management" />;
+    } else if (content === "LoanManagement") {
+      return <AmountDetail title="Loan Management" />;
     } else if (content === "Housingscheme") {
       return <HousingScheme />;
     } else if (content === "EstimationPerfoma") {
@@ -111,7 +113,7 @@ function Body({ history, ...props }) {
     } else if (content === "Audit") {
       return <Audit />;
     } else if (content === "Analytics") {
-      return <Analytics />
+      return <Analytics />;
     }
   }
 
@@ -325,7 +327,6 @@ function Body({ history, ...props }) {
             >
               Rickshaw
             </Menu.Item>
-
 
             {/* <Menu.Item
               key="21"

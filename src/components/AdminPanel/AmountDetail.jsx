@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Button } from "antd";
 import Amountmanagment from "./Amountmanagment";
-export default function AmountDetail() {
+export default function AmountDetail(props) {
   const [users, setUsers] = useState();
   const [bid, setBid] = useState("");
   const [content, setContent] = useState("");
@@ -57,7 +57,7 @@ export default function AmountDetail() {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <h1>ZAKAT MANAGEMENT</h1>
+        <h1>{props.title}</h1>
       </div>
 
       {content == "Detail" ? (

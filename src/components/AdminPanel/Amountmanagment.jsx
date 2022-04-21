@@ -24,7 +24,7 @@ export default function Amountmanagment(props) {
   const [balance, setBalance] = useState("");
   const [Sod, setSOD] = useState("");
   // useState for view route
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   function onChange(date, dateString) {
     console.log(dateString);
     setDate(dateString);
@@ -37,7 +37,7 @@ export default function Amountmanagment(props) {
   const sendData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9000/admin/addAmountDetail",
+        "http://localhost:9000/admin/addAmountDetail/" + bid,
         {
           bid: bid,
           Date: date,
@@ -63,7 +63,7 @@ export default function Amountmanagment(props) {
   const viewData = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:9000/admin/viewamountDetail"
+        "http://localhost:9000/admin/viewamountDetail/" + bid
       );
       setData(res.data);
 
@@ -230,7 +230,21 @@ export default function Amountmanagment(props) {
       </div>
       <div className="col-lg-12">
         <h1>previous record</h1>
-        <Table scroll={{ x: 1500 }} columns={columns} dataSource={data} />
+        <Table
+          scroll={{ x: 1500 }}
+          columns={columns}
+          dataSource={data.LoanDetail}
+        // dataSource={data.map((item) => ({
+        //   Date: item.LoanDetail.Date,
+        //   AmountReceivedpound: item.LoanDetail.AmountReceivedpound,
+        //   Rate: item.LoanDetail.Rate,
+        //   AmountRecievedpkr: item.LoanDetail.AmountRecievedpkr,
+        //   amountsentDate: item.LoanDetail.amountsendDate,
+        //   giventobeneficiary: item.LoanDetail.giventobeneficiary,
+        //   Balance: item.LoanDetail.Balance,
+        //   sourcedelivery: item.LoanDetail.sourcedelivery,
+        // }))}
+        />
       </div>
     </div>
   );
