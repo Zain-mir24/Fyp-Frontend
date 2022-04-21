@@ -1,0 +1,26 @@
+.carousel-parent {
+  position: relative;
+  height: 600px;
+  background-size: cover;
+  /* width: 100%; */
+}
+
+#carousel {
+  position: relative;
+  margin-top: -20px;
+}
+
+#filter-box {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+/* .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: transparent !important;
+  color: white;
+  border-radius: 0px;
+}
+.ant-select-arrow {
+  color: white !important;
+} */

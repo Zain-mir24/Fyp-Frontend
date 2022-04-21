@@ -1,0 +1,29 @@
+.rowDiv{
+    
+  
+}
+.wholeDiv{
+    height: 500px;
+    
+  
+} 
+.textDiv{
+    color: #79787f;
+    font-family: "Roboto", Sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.643em; 
+    margin: 10px;
+}
+.miniText{
+    font-family:"Montserrat", Sans-serif;
+    font-weight: 500;
+    line-height: 1.44em;
+    font-size: 18px;
+     margin-left: 15px;
+     padding:2px;
+
+}
+.leftDiv{
+
+}
