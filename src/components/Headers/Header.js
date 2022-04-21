@@ -4,7 +4,7 @@ import "./Header.css";
 function Headers() {
   return (
     <div>
-      <div className="top-bar container-fluid header-blue">
+      {/* <div className="top-bar container-fluid header-blue">
         <a
           style={{
             color: "#fff",
@@ -15,7 +15,7 @@ function Headers() {
         >
           AMBULANCE <br /> HELPLINE
         </a>
-      </div>
+      </div> */}
       <div>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-search">
           <div class="container-fluid">
@@ -47,7 +47,7 @@ function Headers() {
                       data-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false"
-                      style={{ color: "white" }}
+                      style={{ color: "black" }}
                     >
                       News
                     </a>
@@ -80,7 +80,12 @@ function Headers() {
                   </a>
                 </li> */}
 
-
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" href="/Campaign">
+                    {/* <span class="glyphicon glyphicon-user"></span> */}
+                    About
+                  </a>
+                </li>
 
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" href="/Campaign">

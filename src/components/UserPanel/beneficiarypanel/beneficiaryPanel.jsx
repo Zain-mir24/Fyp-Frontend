@@ -22,10 +22,7 @@ import Approvecampaigns from "./approvCampaigns";
 import MonthlySupport from "./MonthlySupport";
 import HouseAppeal from "./HouseAppeal";
 import ActiveCampaign from "./ActiveCampaign";
-<<<<<<< HEAD
-=======
 import Amountmanagement from "./Amountmanagement";
->>>>>>> 0885b2830201c27e34f94da0228de165bc9a0154
 import "./beneficiary.css";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -114,8 +111,6 @@ function Beneficiarypanel({ history, ...props }) {
             >
               House Appeal
             </Menu.Item>
-<<<<<<< HEAD
-=======
             <Menu.Item
               key="13"
               icon={<CheckCircleFilled />}
@@ -125,7 +120,6 @@ function Beneficiarypanel({ history, ...props }) {
             >
               Loan Management
             </Menu.Item>
->>>>>>> 0885b2830201c27e34f94da0228de165bc9a0154
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
                 <Button>My profile</Button>
@@ -143,8 +137,8 @@ function Beneficiarypanel({ history, ...props }) {
                 <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
-          </Menu>
-        </Sider>
+          </Menu >
+        </Sider >
         <Layout className="site-layout">
           <Header class=" realHeader" style={{ padding: 0 }} />
 
@@ -166,17 +160,14 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "Monthly Support" ? <MonthlySupport /> : null}
               {content == "House Appeal" ? <HouseAppeal /> : null}
               {content == "ActiveCampaign" ? <ActiveCampaign /> : null}
-<<<<<<< HEAD
-=======
               {content == "LoanManagement" ? (
                 <Amountmanagement bid={user.userId} />
               ) : null}
->>>>>>> 0885b2830201c27e34f94da0228de165bc9a0154
-            </div>
-          </Content>
-        </Layout>
-      </Layout>
-    </div>
+            </div >
+          </Content >
+        </Layout >
+      </Layout >
+    </div >
   );
 }
 
