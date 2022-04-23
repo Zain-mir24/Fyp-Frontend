@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
+import { Table, Button, Input, Upload, Col, Form, Select, InputNumber } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { selectUser } from "../../store/reducers/User";
 import { useSelector } from "react-redux";
@@ -204,6 +204,10 @@ function Foorm() {
       ),
     },
   ];
+  function formatNumber(value) {
+    setDonation(Intl.NumberFormat().format(value))
+    // return new Intl.NumberFormat().format(value);
+  }
 
   return (
     <div className="row">
@@ -269,11 +273,15 @@ function Foorm() {
                 },
               ]}
             >
-              <Input
+              <InputNumber
+                style={{ width: "80%" }}
+                defaultValue={1000}
+                min={1000}
+                formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                parser={value => value.replace(/\$\s?|(,*)/g, '')}
                 required
-                placeholder="Only Digits"
-                onChange={(e) => {
-                  setDonation(e.target.value);
+                onChange={(value) => {
+                  setDonation(value);
                 }}
               />
             </Form.Item>
@@ -372,11 +380,15 @@ function Foorm() {
                 },
               ]}
             >
-              <Input
+              <InputNumber
+                style={{ width: "60%" }}
+                defaultValue={1000}
+                min={1000}
+                formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                parser={value => value.replace(/\$\s?|(,*)/g, '')}
                 required
-                placeholder="Only Digits"
-                onChange={(e) => {
-                  setDonation(e.target.value);
+                onChange={(value) => {
+                  setDonation(value);
                 }}
               />
             </Form.Item>

@@ -58,7 +58,7 @@ function Adminlogin({ history, ...props }) {
   };
   return (
     <div className="main row">
-      <div class="col-lg-12" style={{ padding: "100px", marginRight: "20px" }}>
+      <div class="col-lg-12" style={{ marginRight: "20px", }}>
 
 
         <h1 style={{ textAlign: "center", color: "#FFFFFF" }}>
