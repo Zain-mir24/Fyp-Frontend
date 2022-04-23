@@ -6,6 +6,8 @@ import { withRouter } from "react-router";
 import { connect, useDispatch } from "react-redux";
 import { LOGIN_USER } from "../../store/Actions/userAction";
 import axios from "axios";
+import Loginbackend from "../../Images/Loginbackend.png"
+import "./Signin.css"
 const dotenv = require("dotenv");
 dotenv.config({ debug: process.env.DEBUG });
 function Adminlogin({ history, ...props }) {
@@ -55,75 +57,83 @@ function Adminlogin({ history, ...props }) {
       });
   };
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1 style={{ textAlign: "center" }}>
-        <UserOutlined className="site-form-item-icon" /> Admin Login
-      </h1>
-      <Row type="flex" justify="center" align="middle">
-        <Form
-          name="normal_login"
-          className="login-form"
-          initialValues={{
-            remember: true,
-          }}
-        >
-          <Form.Item
-            name={['user', 'email']}
-            label="Email"
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            rules={[
-              {
-                type: "email",
-                message: "The input is not valid E-mail!",
-              },
-              {
-                required: true,
-                message: "Please input your E-mail!",
-              },
-            ]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Email"
-            />
-          </Form.Item>
-          <Form.Item
-            label="Password"
+    <div className="main row">
+      <div class="col-lg-12" style={{ padding: "100px", marginRight: "20px" }}>
 
-            name="password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-            rules={[
-              {
-                required: true,
-                message: "Please input your Password!",
-              },
-            ]}
-          >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
-          </Form.Item>
 
-          <Form.Item>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-              onClick={() => {
-                handlesubmit();
+        <h1 style={{ textAlign: "center", color: "#FFFFFF" }}>
+          <UserOutlined className="site-form-item-icon" /> Global Reach Admin Login
+        </h1>
+        <h4 style={{ color: "white", marginBottom: "20px" }}>
+          Sign in and Manage through dashboards
+        </h4>
+        <Row type="flex" justify="center" align="middle">
+          <Form
+            name="normal_login"
+            className="login-form"
+            initialValues={{
+              remember: true,
+            }}
+          >
+            <Form.Item
+              name={['user', 'email']}
+
+              onChange={(e) => {
+                setEmail(e.target.value);
               }}
+              rules={[
+                {
+                  type: "email",
+                  message: "The input is not valid E-mail!",
+                },
+                {
+                  required: true,
+                  message: "Please input your E-mail!",
+                },
+              ]}
             >
-              Log in
-            </Button>
-          </Form.Item>
-        </Form>
-      </Row>
+              <Input
+                prefix={<UserOutlined className="site-form-item-icon" />}
+                placeholder="Email"
+              />
+            </Form.Item>
+            <Form.Item
+
+
+              name="password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your Password!",
+                },
+              ]}
+            >
+              <Input
+                prefix={<LockOutlined className="site-form-item-icon" />}
+                type="password"
+                placeholder="Password"
+              />
+            </Form.Item>
+
+            <Form.Item>
+              <Button
+
+                type="primary"
+                htmlType="submit"
+                className="login-form-button bbutton"
+                onClick={() => {
+                  handlesubmit();
+                }}
+              >
+                Log in
+              </Button>
+            </Form.Item>
+          </Form>
+        </Row>
+      </div>
     </div>
   );
 }
