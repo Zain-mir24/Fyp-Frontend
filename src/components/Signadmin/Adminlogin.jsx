@@ -68,7 +68,8 @@ function Adminlogin({ history, ...props }) {
           }}
         >
           <Form.Item
-            name="username"
+            name={['user', 'email']}
+            label="Email"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -89,6 +90,8 @@ function Adminlogin({ history, ...props }) {
             />
           </Form.Item>
           <Form.Item
+            label="Password"
+
             name="password"
             onChange={(e) => {
               setPassword(e.target.value);
