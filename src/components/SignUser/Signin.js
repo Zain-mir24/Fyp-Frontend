@@ -19,8 +19,9 @@ import { connect, useDispatch } from "react-redux";
 import { LOGIN_USER } from "../../store/Actions/userAction";
 import { withRouter } from "react-router";
 import { LoggingUser } from "../../store/reducers/User";
-import Loginbackend from "../../Images/Loginbackend.jpg"
+import "./Signin.css"
 import axios from "axios";
+import GlobalReach from "../../Images/pheonix.png"
 const dotenv = require("dotenv");
 dotenv.config({ debug: process.env.DEBUG });
 // signin for already registered user
@@ -30,7 +31,7 @@ function SignIn({ history, ...props }) {
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const handlesubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     await axios
       .request({
         baseURL: "http://localhost:9000/User",
@@ -72,7 +73,10 @@ function SignIn({ history, ...props }) {
 
         {/* <CssBaseline /> */}
         {/* <Grid item xs={12} sm={4} md={7} className={classes.image} /> */}
-        <div className="col-lg-8" style={{ alignItems: "flex-start", height: "300px" }}>
+        <div className="col-lg-6" style={{ alignItems: "flex-start", height: "300px" }}>
+          <div className="left">
+
+          </div>
           <h1 style={{ color: "white", marginLeft: "30%", marginTop: "30%" }}>
             Global Reach
           </h1>
@@ -82,7 +86,7 @@ function SignIn({ history, ...props }) {
           </h4>
 
         </div>
-        <div className="col-lg-4" style={{ alignItems: "flex-end", height: "600px" }}>
+        <div className="col-lg-6" style={{ alignItems: "flex-end", height: "600px" }}>
 
           <Row type="flex" justify="center" align="middle" style={{ backgroundColor: "white", borderRadius: "5px", marginTop: "30%", marginRight: "100px", height: "300px", width: "90%" }}>
             <Typography component="h1" variant="h5" style={{ textAlign: "center", marginBottom: "20px", backgroundColor: "white", fontSize: 30, fontWeight: "60px" }}>
