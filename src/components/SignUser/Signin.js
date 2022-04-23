@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
+
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
+import { Form, Input, Button, Row, Col } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
+
+
 
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
@@ -15,6 +19,7 @@ import { connect, useDispatch } from "react-redux";
 import { LOGIN_USER } from "../../store/Actions/userAction";
 import { withRouter } from "react-router";
 import { LoggingUser } from "../../store/reducers/User";
+import Loginbackend from "../../Images/Loginbackend.jpg"
 import axios from "axios";
 const dotenv = require("dotenv");
 dotenv.config({ debug: process.env.DEBUG });
@@ -60,10 +65,114 @@ function SignIn({ history, ...props }) {
       });
   };
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={12} sm={4} md={7} className={classes.image} />
-      <Grid component={Paper} elevation={6} square>
+    <div className="containerFluid" style={{ backgroundColor: "#008000" }} >
+
+
+      <div className="row" >
+
+        {/* <CssBaseline /> */}
+        {/* <Grid item xs={12} sm={4} md={7} className={classes.image} /> */}
+        <div className="col-lg-8" style={{ alignItems: "flex-start", height: "300px" }}>
+          <h1 style={{ color: "white", marginLeft: "30%", marginTop: "30%" }}>
+            Global Reach
+          </h1>
+          <h4 style={{ color: "white", marginLeft: "30%" }}>
+            Welcome to Global Reach,<br></br>
+            kindly enter your credentials to login
+          </h4>
+
+        </div>
+        <div className="col-lg-4" style={{ alignItems: "flex-end", height: "600px" }}>
+
+          <Row type="flex" justify="center" align="middle" style={{ backgroundColor: "white", borderRadius: "5px", marginTop: "30%", marginRight: "100px", height: "300px", width: "90%" }}>
+            <Typography component="h1" variant="h5" style={{ textAlign: "center", marginBottom: "20px", backgroundColor: "white", fontSize: 30, fontWeight: "60px" }}>
+              Global Reach Sign in
+            </Typography>
+            <Form
+              name="normal_login"
+              className="login-form"
+              initialValues={{
+                remember: true,
+              }}
+            >
+              <Form.Item
+                name={['user', 'email']}
+
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                rules={[
+                  {
+                    type: "email",
+                    message: "The input is not valid E-mail!",
+                  },
+                  {
+                    required: true,
+                    message: "Please input your E-mail!",
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="Email"
+                />
+              </Form.Item>
+              <Form.Item
+
+
+                name="password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your Password!",
+                  },
+                ]}
+              >
+                <Input
+                  prefix={<LockOutlined className="site-form-item-icon" />}
+                  type="password"
+                  placeholder="Password"
+                />
+              </Form.Item>
+
+              <Form.Item
+                style={{ justifyContent: "center" }}
+              >
+                <Button
+                  style={{ width: "50%", marginLeft: "50px", backgroundColor: "#20DF7F" }}
+                  type="primary"
+                  htmlType="submit"
+                  className="login-form-button"
+                  onClick={() => {
+                    handlesubmit();
+                  }}
+                >
+                  Log in
+                </Button>
+              </Form.Item>
+              <div style={{ flexDirection: "row" }}>
+
+                <Link href="/forgotPassword" variant="body2" style={{ alignSelf: "flex-end", marginRight: "20px" }}>
+                  Forgot password?
+                </Link>
+
+
+                <Link href="/Signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+
+              </div>
+            </Form>
+
+          </Row>
+
+        </div>
+
+
+        {/* <Grid component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -85,6 +194,7 @@ function SignIn({ history, ...props }) {
               required={true}
               onChange={(e) => setEmail(e.target.value)}
               style={{ padding: "4px" }}
+              id="outlined-email-input"
             />
             <TextField
               variant="outlined"
@@ -101,12 +211,12 @@ function SignIn({ history, ...props }) {
               required={true}
               onChange={(e) => setPassword(e.target.value)}
               style={{ padding: "4px" }}
-            />
-            {/* <FormControlLabel
+            /> */}
+        {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             /> */}
-            <Button
+        {/* <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -115,22 +225,13 @@ function SignIn({ history, ...props }) {
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="/forgotPassword" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/Signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
+          
           </form>
         </div>
-      </Grid>
-    </Grid>
+      </Grid> */}
+
+      </div>
+    </div>
   );
 }
 

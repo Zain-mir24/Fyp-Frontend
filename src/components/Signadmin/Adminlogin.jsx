@@ -6,7 +6,7 @@ import { withRouter } from "react-router";
 import { connect, useDispatch } from "react-redux";
 import { LOGIN_USER } from "../../store/Actions/userAction";
 import axios from "axios";
-import Loginbackend from "../../Images/Loginbackend.png"
+
 import "./Signin.css"
 const dotenv = require("dotenv");
 dotenv.config({ debug: process.env.DEBUG });
