@@ -86,9 +86,8 @@ function Body({ history, ...props }) {
     }
     // Replacing monthly support with add Analytics
     else if (content == " MonthlySupport") {
-      return <MonthlySupport />
-    }
-    else if (content === "AddAnalytics") {
+      return <MonthlySupport />;
+    } else if (content === "AddAnalytics") {
       return <AddAnalytics />;
     } else if (content === "Amountdetail") {
       return <AmountDetail title="Zakat Management" />;
@@ -328,15 +327,15 @@ function Body({ history, ...props }) {
               Rickshaw
             </Menu.Item>
 
-            {/* <Menu.Item
+            <Menu.Item
               key="21"
               icon={<MoneyCollectOutlined />}
-                onClick={() => {
-                setContent("LoanManagment");
+              onClick={() => {
+                setContent("LoanManagement");
               }}
             >
               Loan Managment
-            </Menu.Item> */}
+            </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
