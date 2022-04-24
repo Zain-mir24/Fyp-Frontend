@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Button } from "antd"
 import styled from "styled-components";
 import { FaFileArchive } from "react-icons/fa";
 import { laptop, tablet } from "./responsive";
+import "./Second.css"
 const Container = styled.div`
   width: 100vw;
   height: 400px;
-  background-image: url("https://ld-wp73.template-help.com/wordpress/prod_11363/v2/wp-content/uploads/2019/08/home-7.jpg");
+
   background-position: top left;
   background-size: cover;
   position: relative;
@@ -76,38 +78,97 @@ const Second = () => {
     },
   });
   return (
-    <Container>
-      <Wrapper>
-        <UpperText>
-          ARE YOU TIRED OF SPENDING HOURS MOWING YOUR LAWN EVERY WEEKEND?
-        </UpperText>
-        <LowerText>
-          TAKE BACK YOUR FREE TIME BY HAVING US TAKE CARE OF YOUR GARDEN
-        </LowerText>
-        <Btn
-          onMouseEnter={() =>
-            setArchiveObject({
-              style: {
-                fontSize: "10px",
-                color: "black",
-              },
-            })
-          }
-          onMouseLeave={() =>
-            setArchiveObject({
-              style: {
-                fontSize: "10px",
-                color: "white",
-              },
-            })
-          }
-        >
-          <FaFileArchive style={archiveObject.style} />
-          MAKE AN APPOINTMENT
-        </Btn>
-      </Wrapper>
-    </Container>
+    <div style={{ height: "500px" }}>
+      <h1 style={{ textAlign: "center" }}>
+        <span style={{ fontSize: "50px" }}> Latest </span>News
+      </h1>
+      <div className="row mainCard">
+        <div className="col-lg-4">
+          <div className="cardImage">
+          </div>
+          <h1 className="downText">
+            Refugee Camps setup
+            in Czek Republic
+
+          </h1>
+        </div>
+        <div className="col-lg-4">
+          <div className="cardImage">
+          </div>
+          <h1 className="downText">
+            Refugee Camps setup
+            in Czek Republic
+
+          </h1>
+        </div>
+        <div className="col-lg-4">
+          <div className="cardImage">
+          </div>
+          <h1 className="downText">
+            Refugee Camps setup
+            in Czek Republic
+          </h1>
+        </div>
+
+      </div>
+      <div style={{ paddingTop: "20px", width: "100%", textAlign: "center" }}>
+        <Button style={{ color: "green", borderColor: "green", }}>
+          News
+        </Button>
+      </div>
+
+    </div>
   );
 };
 
 export default Second;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// background-image: url("https://ld-wp73.template-help.com/wordpress/prod_11363/v2/wp-content/uploads/2019/08/home-7.jpg");
+
+// <Wrapper>
+// <UpperText>
+//   ARE YOU TIRED OF SPENDING HOURS MOWING YOUR LAWN EVERY WEEKEND?
+// </UpperText>
+// <LowerText>
+//   TAKE BACK YOUR FREE TIME BY HAVING US TAKE CARE OF YOUR GARDEN
+// </LowerText>
+// <Btn
+//   onMouseEnter={() =>
+//     setArchiveObject({
+//       style: {
+//         fontSize: "10px",
+//         color: "black",
+//       },
+//     })
+//   }
+//   onMouseLeave={() =>
+//     setArchiveObject({
+//       style: {
+//         fontSize: "10px",
+//         color: "white",
+//       },
+//     })
+//   }
+// >
+//   <FaFileArchive style={archiveObject.style} />
+//   MAKE AN APPOINTMENT
+// </Btn>
+// </Wrapper>

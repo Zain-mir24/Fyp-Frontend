@@ -32,7 +32,7 @@ function SignIn() {
       <First />
       <Wedo />
       <Second />
-      <Background />
+      {/* <Background /> */}
       <Newsletter />
       <BackTop />
       <Footer />

@@ -1,0 +1,16 @@
+.cardImage{
+    background-image: url("../../Images/uncle.png");
+    height: 300px;
+    
+    /* border: 1px solid black; */
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}
+.downText{
+    background-color: #F5F5F5;
+  font-weight: 400;
+}
+.mainCard{
+    justify-content: space-between;
+}

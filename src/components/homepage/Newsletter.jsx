@@ -23,7 +23,7 @@ export default function Newsletter() {
   return (
     <div
       style={{
-        backgroundColor: "#98FB98",
+        backgroundColor: "#F5F5F5",
         borderRadius: "5px",
         marginTop: "-10px",
         padding: "20px",

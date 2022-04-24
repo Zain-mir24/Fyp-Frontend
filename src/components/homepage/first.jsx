@@ -147,7 +147,9 @@ const First = () => {
   });
   return (
     <Container>
-      <Title>Why Global Reach</Title>
+      <h1 style={{ textAlign: "center" }}>
+        <span style={{ fontSize: "50px" }}> Why </span>choose global reach
+      </h1>
       <div className="row">
         <div className="col-lg-4 offerDiv">
           <div className="icon" >

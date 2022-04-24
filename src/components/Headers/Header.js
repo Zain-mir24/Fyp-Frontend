@@ -4,13 +4,10 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography, IconButton } from "@mui/material";
+import globalicon from "../../Images/globalicon.png"
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
-  },
-  title: {
-    flexGrow: 1,
-    color: 'black',
   },
   appBarTransparent: {
     backgroundColor: 'rgba(255, 255, 255, 0.12)'
@@ -44,10 +41,14 @@ function Headers() {
   return (
     <div className={classes.root}>
       <AppBar position="fixed" style={{ backgroundColor: 'rgba(255, 255, 255, 0.12)' }}>
+
+
         <Toolbar>
-          <Typography className={classes.title}>
-            Yaha Logo aega
-          </Typography>
+          <div className="title" style={{ flexGrow: "1", backgroundImage: `url(${globalicon})`, backgroundSize: "cover", height: "90px", width: "80px", backgroundPosition: "center" }}>
+
+          </div>
+          <div style={{ width: "800px" }}>
+          </div>
           <a>
             Home
           </a>
