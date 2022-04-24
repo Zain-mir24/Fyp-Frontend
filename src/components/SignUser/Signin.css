@@ -1,3 +1,8 @@
-.left{
-    background-image: url("../../Images/pheonix.png");
+.left2{
+    background-image: url("../../Images/Signinback.png");
+}
+.ant-input {
+    background-color: "rgba(255, 255, 255, 0.48)";
+    color: "rgba(255, 255, 255, 0.48)";
+    
 }

@@ -73,8 +73,8 @@ function SignIn({ history, ...props }) {
 
         {/* <CssBaseline /> */}
         {/* <Grid item xs={12} sm={4} md={7} className={classes.image} /> */}
-        <div className="col-lg-6" style={{ alignItems: "flex-start", height: "300px" }}>
-          <div className="left">
+        {/* <div className="col-lg-6" style={{ alignItems: "flex-start", height: "300px" }}>
+          <div className="left2 ">
 
           </div>
           <h1 style={{ color: "white", marginLeft: "30%", marginTop: "30%" }}>
@@ -85,14 +85,23 @@ function SignIn({ history, ...props }) {
             kindly enter your credentials to login
           </h4>
 
-        </div>
-        <div className="col-lg-6" style={{ alignItems: "flex-end", height: "600px" }}>
+        </div> */}
+        <div className="col-lg-12 left2" style={{
+          height: "600px", position: "fixed",
+          top: 0,
+          left: 0,
+          height: "100%",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center"
+        }}>
 
-          <Row type="flex" justify="center" align="middle" style={{ backgroundColor: "white", borderRadius: "5px", marginTop: "30%", marginRight: "100px", height: "300px", width: "90%" }}>
-            <Typography component="h1" variant="h5" style={{ textAlign: "center", marginBottom: "20px", backgroundColor: "white", fontSize: 30, fontWeight: "60px" }}>
-              Global Reach Sign in
-            </Typography>
+          <div style={{ backgroundColor: "rgba(255, 255, 255, 0.48)", borderRadius: "5px", marginTop: "10%", marginLeft: "auto", marginRight: "auto", height: "300px", width: "30%" }}>
+            <h1 style={{ backgroundColor: "rgba(255, 255, 255, 0.48)", textAlign: "center", marginBottom: "20px", fontSize: 30, fontWeight: "60px" }}>
+              User Login
+            </h1>
             <Form
+
               name="normal_login"
               className="login-form"
               initialValues={{
@@ -100,6 +109,9 @@ function SignIn({ history, ...props }) {
               }}
             >
               <Form.Item
+                // style={{
+                //   backgroundColor: "rgba(255, 255, 255, 0.48)"
+                // }}
                 name={['user', 'email']}
 
                 onChange={(e) => {
@@ -117,7 +129,13 @@ function SignIn({ history, ...props }) {
                 ]}
               >
                 <Input
-                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  style={{
+                    // backgroundColor: "rgba(255, 255, 255, 0.48)",
+                    height: "50px",
+                    width: "60%",
+                    marginLeft: "80px",
+                  }}
+                  prefix={< UserOutlined className="site-form-item-icon" />}
                   placeholder="Email"
                 />
               </Form.Item>
@@ -136,6 +154,12 @@ function SignIn({ history, ...props }) {
                 ]}
               >
                 <Input
+                  style={{
+                    // backgroundColor: "rgba(255, 255, 255, 0.48)",
+                    height: "50px",
+                    width: "60%",
+                    marginLeft: "80px",
+                  }}
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
                   placeholder="Password"
@@ -146,7 +170,7 @@ function SignIn({ history, ...props }) {
                 style={{ justifyContent: "center" }}
               >
                 <Button
-                  style={{ width: "50%", marginLeft: "50px", backgroundColor: "#20DF7F" }}
+                  style={{ width: "50%", marginLeft: "100px", backgroundColor: "#279040" }}
                   type="primary"
                   htmlType="submit"
                   className="login-form-button"
@@ -157,7 +181,7 @@ function SignIn({ history, ...props }) {
                   Log in
                 </Button>
               </Form.Item>
-              <div style={{ flexDirection: "row" }}>
+              <div style={{ flexDirection: "row", marginLeft: "50px" }}>
 
                 <Link href="/forgotPassword" variant="body2" style={{ alignSelf: "flex-end", marginRight: "20px" }}>
                   Forgot password?
@@ -171,7 +195,7 @@ function SignIn({ history, ...props }) {
               </div>
             </Form>
 
-          </Row>
+          </div>
 
         </div>
 
@@ -235,7 +259,7 @@ function SignIn({ history, ...props }) {
       </Grid> */}
 
       </div>
-    </div>
+    </div >
   );
 }
 
