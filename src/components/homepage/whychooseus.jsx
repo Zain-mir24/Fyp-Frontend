@@ -11,7 +11,7 @@ export default function Whychooseus() {
       style={{ marginTop: "70px", marginBottom: "70px" }}
     >
       <div className="row" style={{ textAlign: "center" }}>
-        <h2>WHY CHOOSE GLOBAL REACH</h2>
+        <h1>WHY GLOBAL REACH</h1>
         <div className="col-lg-4 col-4 choose-block">
           <div>
             <i class="fa fa-handshake "></i>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FaHandshake, FaLink, FaBus } from "react-icons/fa";
 import { tablet } from "./responsive";
-
+import "./first.css"
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -147,8 +147,70 @@ const First = () => {
   });
   return (
     <Container>
-      <Title>WHY CHOOSE GLOBAL REACH</Title>
-      <Wrapper>
+      <Title>Why Global Reach</Title>
+      <div className="row">
+        <div className="col-lg-4 offerDiv">
+          <div className="icon" >
+          </div>
+          <h1>
+            We offer
+          </h1>
+          <p style={{ width: "100%", textAlign: "center" }}>
+            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue <br></br>amet blandit id tem
+
+          </p>
+        </div>
+        <div className="col-lg-4 offerDiv">
+          <div className="icon">
+          </div>
+          <h1>
+            We offer
+          </h1>
+          <p style={{ width: "100%", textAlign: "center" }}>
+            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue <br></br>amet blandit id tem
+
+          </p>
+        </div>
+        <div className="col-lg-4 offerDiv">
+          <div className="icon">
+          </div>
+          <h1>
+            We offer
+          </h1>
+          <p style={{ width: "100%", textAlign: "center" }}>
+            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue <br></br>amet blandit id tem
+          </p>
+        </div>
+      </div>
+    </Container>
+  );
+};
+
+export default First;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <Wrapper>
         <BoxContainer>
           <Box1
             first={first}
@@ -269,9 +331,4 @@ const First = () => {
           </Text>
           <Info>{textDetails[num].info}</Info>
         </TextContainer>
-      </LowerContainer>
-    </Container>
-  );
-};
-
-export default First;
+      </LowerContainer> */}

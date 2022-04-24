@@ -1,0 +1,11 @@
+.icon{
+    background-image: url("../../Images/globalicon.png");
+    height: 100px;
+    width: 120px;
+    margin-left: 9em;
+
+}
+.offerDiv{
+    text-align: center;
+    justify-content: center;
+   }
