@@ -6,7 +6,6 @@ import { Carousel } from "antd";
 import { Select } from "antd";
 import { Card } from "antd";
 import { Store } from 'react-notifications-component';
-
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -77,13 +76,47 @@ export default function LatestNews() {
   useEffect(() => {
     getData();
     viewData()
-
     getCategory();
   }, []);
 
   return (
-    <div id="carousel">
-      <Carousel>
+    <div className="row" id="carousel">
+      <div className="col-lg-6 left" >
+        <div className="align">
+          <h1 style={{ verticalAlign: "center", color: "white", textAlign: "left" }}>
+            <span
+              style={{ fontSize: 50, paddingRight: "4px" }}>Support</span>
+            Your <br></br> Community
+          </h1>
+
+          <p style={{ color: "white", textAlign: "left" }}>
+            We are making  endless efforts to help people
+            around the world overcome hardships they face,
+            which could and will not be possible without
+            your help !
+          </p>
+          <a href="/Campaign">
+            <div style={{ borderColor: "green", border: "1px solid #279040", width: "300px", height: "60px" }}>
+              <h1 style={{ color: "#279040", paddingTop: "0.3em" }}>
+                Our Campaign
+              </h1>
+            </div>
+          </a>
+        </div>
+
+
+      </div>
+      <div className="col-lg-6 right" >
+
+      </div>
+    </div>
+  );
+}
+
+
+
+
+{/* <Carousel>
         {data.map((item) => {
           return (
             <div>
@@ -113,8 +146,8 @@ export default function LatestNews() {
               </div>
             </div>
           );
-        })}
-        {/* <div>
+        })} */}
+{/* <div>
           <div
             className="carousel-parent"
             style={{
@@ -130,7 +163,7 @@ export default function LatestNews() {
             }}
           ></div>
         </div> */}
-      </Carousel>
+{/* </Carousel>
       <div id="filter-box">
         {" "}
         <Select
@@ -150,7 +183,4 @@ export default function LatestNews() {
             );
           })}
         </Select>
-      </div>
-    </div>
-  );
-}
+      </div> */}
