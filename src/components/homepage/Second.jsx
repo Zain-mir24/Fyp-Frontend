@@ -112,9 +112,12 @@ const Second = () => {
 
       </div>
       <div style={{ paddingTop: "20px", width: "100%", textAlign: "center" }}>
-        <Button style={{ color: "green", borderColor: "green", }}>
-          News
-        </Button>
+        <a href="/News">
+          <Button style={{ color: "green", borderColor: "green", }}>
+            News
+          </Button>
+        </a>
+
       </div>
 
     </div>

@@ -31,8 +31,9 @@ function SignIn() {
       <LatestNews />
       <First />
       <Wedo />
+      <Background />
+
       <Second />
-      {/* <Background /> */}
       <Newsletter />
       <BackTop />
       <Footer />
