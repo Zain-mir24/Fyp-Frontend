@@ -66,7 +66,7 @@ function News() {
               <Card
                 style={{ width: "40%", height: "100%", padding: "10px", float: "left" }}
                 cover={
-                  <img src={"http://localhost:9000/uploads/" + file} />
+                  <img style={{ height: "250px" }} src={"http://localhost:9000/uploads/" + file} />
                 }
               >
 
@@ -114,7 +114,7 @@ function News() {
           </div>
         </div>
         <h1 style={{ textAlign: "center" }}>
-          <span style={{ fontSize: "50px" }}> Latest </span>News
+          <span style={{ fontSize: "50px" }}> Our</span>News
         </h1>
         <div className="row mainCard">
 
