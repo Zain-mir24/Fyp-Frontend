@@ -51,28 +51,28 @@ export default function LatestNews() {
     })
   }, [])
   const [notif, setNotification] = useState()
-  const viewData = async () => {
-    try {
-      const res = await axios.get("http://localhost:9000/User/viewnotification")
-      console.log(res.data.message)
-      setNotification(res.data.message)
-      // Store.addNotification({
-      //   title: `Latest updates from our organization`,
-      //   message: `${res.data.message}`,
-      //   type: "success",
-      //   insert: "bottom",
-      //   container: "bottom-left",
-      //   animationIn: ["animate__animated", "animate__fadeIn"],
-      //   animationOut: ["animate__animated", "animate__fadeOut"],
-      //   dismiss: {
-      //     duration: 5000,
-      //     onScreen: true
-      //   }
-      // });
-    } catch (e) {
-      console.log(e, "error")
-    }
-  }
+  // const viewData = async () => {
+  // try {
+  //   const res = await axios.get("http://localhost:9000/User/viewnotification")
+  //   console.log(res.data.message)
+  //   setNotification(res.data.message)
+  // Store.addNotification({
+  //   title: `Latest updates from our organization`,
+  //   message: `${res.data.message}`,
+  //   type: "success",
+  //   insert: "bottom",
+  //   container: "bottom-left",
+  //   animationIn: ["animate__animated", "animate__fadeIn"],
+  //   animationOut: ["animate__animated", "animate__fadeOut"],
+  //   dismiss: {
+  //     duration: 5000,
+  //     onScreen: true
+  //   }
+  // });
+  //   } catch (e) {
+  //     console.log(e, "error")
+  //   }
+  // }
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
@@ -110,7 +110,7 @@ export default function LatestNews() {
 
   useEffect(() => {
     getData();
-    viewData()
+    // viewData()
     getCategory();
   }, []);
 

@@ -164,6 +164,7 @@ const First = () => {
         </div>
         <div className="col-lg-4 offerDiv">
           <div className="icon">
+
           </div>
           <h1>
             We offer

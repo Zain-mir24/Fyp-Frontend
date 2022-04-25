@@ -18,13 +18,13 @@
 .right{
   text-align: center;
   background-image: url("../../Images/brother.png");
-  height:690px;
+  height:600px;
   width:100em;
 }
 .left{
   text-align: center;
   background-image: url("../../Images/worldmap.png");
-  height:690px;
+  height:600px;
   width:90em;
   text-align: center;
   background-color: black;

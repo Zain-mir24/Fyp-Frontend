@@ -4,7 +4,7 @@ import { Card, Col, Row } from 'antd';
 function Wedo() {
   return (
     <div className="container-fluid weDomaindiv">
-      <h1 style={{ marginTop: "20px" }}>What we do</h1>
+      <h1 style={{ marginTop: "50px" }}><span style={{ fontSize: "50px" }}> What </span> we do</h1>
       <Row gutter={16}>
         <Col span={8}>
           <Card title="Donation" className="cardStyle" headStyle={{ backgroundColor: "#279040" }} bordered={false}>
