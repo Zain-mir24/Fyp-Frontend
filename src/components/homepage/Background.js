@@ -3,7 +3,7 @@ import "./background.css";
 import { Table, Button } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 //
-import brother from "../../Images/brother.png"
+import brother from "../../Images/abouut.png"
 import world from "../../Images/worldmap.png"
 function Background() {
   return (

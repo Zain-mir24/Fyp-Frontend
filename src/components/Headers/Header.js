@@ -49,7 +49,7 @@ function Headers() {
           </div>
           <div style={{ width: "800px" }}>
           </div>
-          <a>
+          <a href="/" style={{ color: "white" }}>
             Home
           </a>
           <div class="dropdown show" style={{ marginBottom: "2px" }}>
