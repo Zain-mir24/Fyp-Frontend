@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "../Footer/Footer";
 import Header from "../Headers/Header";
 import "./Latestnews.css";
+import { Card } from "antd";
+
 import world from "../../Images/newWorld.jpeg"
 import abouut from "../../Images/abouut.png"
 import { Button } from "antd"
+import axios from "axios";
+const { Meta } = Card;
 
 function News() {
+  const [data, setData] = useState([]);
+  const [name, setName] = useState("")
+  const [description, setDescription] = useState("")
+  const [file, setFile] = useState("")
+  const getData = async () => {
+    try {
+      const res = await axios.get("http://localhost:9000/admin/LatestNews");
+      await setData(res.data);
+      console.log(data, "TESTING");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <div>
       <Header />
@@ -35,13 +55,24 @@ function News() {
 
       <div className="container-fluid">
         <div className="row">
-          <h1 style={{ paddingLeft: "1em", fontWeight: "bold" }}>
+          {name == "" ? <h1 style={{ paddingLeft: "1em", fontWeight: "bold" }}>
             Never the same again
           </h1>
+            : <h1 style={{ paddingLeft: "1em", fontWeight: "bold" }}>
+              {name}
+            </h1>}
           <div className="col-lg-8" style={{ flex: 1 }}>
-            <img src={world} style={{ width: "40%", height: "70%", padding: "10px", float: "left" }} />
+            {file == "" ? <img src={world} style={{ width: "40%", height: "70%", padding: "10px", float: "left" }} /> :
+              <Card
+                style={{ width: "40%", height: "100%", padding: "10px", float: "left" }}
+                cover={
+                  <img src={"http://localhost:9000/uploads/" + file} />
+                }
+              >
 
-            <p>
+              </Card>
+            }
+            {description == "" ? <p>
               Lorem ipsum dolor sit amet, consectetur
               adipiscing elit. Vitae mattis tellus aliqu
               am ac ut viverra viverra pharetra sed.
@@ -64,14 +95,20 @@ function News() {
               am ac ut viverra viverra pharetra sed.
               Lorem ipsum dolor sit amet,
               consectetur adipiscing elit. Vitae mattis
-            </p>
+            </p> :
+              <p>
+                {description}
+              </p>
+            }
 
 
           </div>
           <div className="col-lg-4" >
             <div style={{ backgroundImage: `url(${abouut})`, width: "100%", height: "100%", backgroundSize: "cover" }}>
               {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
-
+              <h1 className="Minidetail" style={{ color: "white" }}>
+                This world needs your help, Come join us because we care.
+              </h1>
             </div>
 
           </div>
@@ -80,33 +117,41 @@ function News() {
           <span style={{ fontSize: "50px" }}> Latest </span>News
         </h1>
         <div className="row mainCard">
-          <div className="col-lg-4">
-            <div className="cardImage">
-            </div>
-            <h1 className="downText">
-              Refugee Camps setup
-              in Czek Republic
 
-            </h1>
-          </div>
-          <div className="col-lg-4">
-            <div className="cardImage">
-            </div>
-            <h1 className="downText">
-              Refugee Camps setup
-              in Czek Republic
+          {
+            data.map((item) => {
+              return (
+                <div className="col-lg-4">
+                  <Card
+                    onClick={() => {
+                      setName(item.name)
+                      setDescription(item.description)
+                      setFile(item.file)
+                    }}
+                    style={{
+                      backgroundColor: "#F5F5F5",
 
-            </h1>
-          </div>
-          <div className="col-lg-4">
-            <div className="cardImage">
-            </div>
-            <h1 className="downText">
-              Refugee Camps setup
-              in Czek Republic
-            </h1>
-          </div>
+                    }}
+                    cover={
+                      <img
+                        style={{ height: "250px" }}
+                        src={"http://localhost:9000/uploads/" + item.file} />
+                    }
+                  >
 
+                    <h1 className="downText">
+                      {item.name}
+
+                    </h1>
+                  </Card>
+                </div>
+
+              )
+            })
+
+
+
+          }
         </div>
         <div style={{ paddingTop: "20px", width: "100%", textAlign: "center" }}>
           <a href="/News">

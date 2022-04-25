@@ -30,7 +30,7 @@ function SignIn() {
       <SocialIcons />
       <LatestNews />
       <First />
-      <Wedo />
+      {/* <Wedo /> */}
       <Background />
 
       <Second />
