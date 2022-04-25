@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 
 import "./LatestNews.css";
 import axios from "axios";
@@ -6,6 +6,8 @@ import { Carousel } from "antd";
 import { Select } from "antd";
 import { Card } from "antd";
 import { Store } from 'react-notifications-component';
+import { io } from "socket.io-client";
+
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -13,20 +15,17 @@ dotenv.config();
 const { Option } = Select;
 
 export default function LatestNews() {
-  // useEffect(() => {
-  // }, [])
-  const [notif, setNotification] = useState()
-  const viewData = async () => {
-    try {
-      const res = await axios.get("http://localhost:9000/User/viewnotification")
-      console.log(res.data.message)
-      setNotification(res.data.message)
+  const socket = useRef();
+
+  useEffect(() => {
+    socket.current = io("ws://localhost:4000");
+    socket.current.on("getnotification", (data) => {
       Store.addNotification({
-        title: `Latest updates from our organization`,
-        message: `${res.data.message}`,
+        title: `Campaign is made Global Reach`,
+        message: `The name of campaign is ${data.name}`,
         type: "success",
-        insert: "bottom",
-        container: "bottom-left",
+        insert: "top",
+        container: "top-right",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
@@ -34,6 +33,42 @@ export default function LatestNews() {
           onScreen: true
         }
       });
+    })
+    socket.current.on("getDonation", (data) => {
+      Store.addNotification({
+        title: `Donation is made by ${data.userName}`,
+        message: `Donation is recieved for${data.campaignname}`,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+    })
+  }, [])
+  const [notif, setNotification] = useState()
+  const viewData = async () => {
+    try {
+      const res = await axios.get("http://localhost:9000/User/viewnotification")
+      console.log(res.data.message)
+      setNotification(res.data.message)
+      // Store.addNotification({
+      //   title: `Latest updates from our organization`,
+      //   message: `${res.data.message}`,
+      //   type: "success",
+      //   insert: "bottom",
+      //   container: "bottom-left",
+      //   animationIn: ["animate__animated", "animate__fadeIn"],
+      //   animationOut: ["animate__animated", "animate__fadeOut"],
+      //   dismiss: {
+      //     duration: 5000,
+      //     onScreen: true
+      //   }
+      // });
     } catch (e) {
       console.log(e, "error")
     }

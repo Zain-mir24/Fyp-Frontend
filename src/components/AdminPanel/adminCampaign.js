@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Table, Button, Input, Upload, Col, Form, Select, InputNumber } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { selectUser } from "../../store/reducers/User";
 import { useSelector } from "react-redux";
 import { Store } from 'react-notifications-component';
+import { io } from "socket.io-client";
+
 const { Option } = Select;
 const axios = require("axios");
 function Foorm() {
@@ -16,6 +18,8 @@ function Foorm() {
   const [ID, setId] = useState("");
   const [beneficiary, setbeneficiary] = useState([]);
   const [beneficiaryId, setbeneficiaryId] = useState("");
+  const socket = useRef();
+
   const user = useSelector(selectUser);
   var userName = user.username
 
@@ -24,6 +28,22 @@ function Foorm() {
     setFileName(e.target.files[0].name);
   };
   useEffect(() => {
+    socket.current = io("ws://localhost:4000");
+    socket.current.on("getnotification", (data) => {
+      Store.addNotification({
+        title: `Campaign is made Global Reach`,
+        message: `The name of campaign is ${data.name}`,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+    })
     viewCamp();
   }, []);
   const postData = async () => {
@@ -46,22 +66,15 @@ function Foorm() {
       if (!res) {
         return console.log("couldnt add");
       }
-      await axios.post("http://localhost:9000/User/sendnotification", {
-        message: `Global reach has started  campaign named ${name}`
+      // await axios.post("http://localhost:9000/User/sendnotification", {
+      //   message: `Global reach has started  campaign named ${name}`
+      // })
+
+
+      socket.current.emit("sendnotification", {
+        name
       })
-      Store.addNotification({
-        title: `Campaign is made Global Reach`,
-        message: `The name of campaign is ${name}`,
-        type: "success",
-        insert: "top",
-        container: "top-right",
-        animationIn: ["animate__animated", "animate__fadeIn"],
-        animationOut: ["animate__animated", "animate__fadeOut"],
-        dismiss: {
-          duration: 5000,
-          onScreen: true
-        }
-      });
+
       console.log(res);
     } catch (ex) {
       console.log(ex);

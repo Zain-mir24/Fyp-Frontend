@@ -3,6 +3,8 @@ import Footer from "../Footer/Footer";
 import Header from "../Headers/Header";
 import "./Latestnews.css";
 import world from "../../Images/newWorld.jpeg"
+import abouut from "../../Images/abouut.png"
+import { Button } from "antd"
 
 function News() {
   return (
@@ -33,7 +35,7 @@ function News() {
 
       <div className="container-fluid">
         <div className="row">
-          <h1 style={{ paddingLeft: "1em", fontWeight: "30px" }}>
+          <h1 style={{ paddingLeft: "1em", fontWeight: "bold" }}>
             Never the same again
           </h1>
           <div className="col-lg-8" style={{ flex: 1 }}>
@@ -66,17 +68,54 @@ function News() {
 
 
           </div>
-          <div className="col-lg-4">
-            <div>
-              <img src={world} style={{ width: "40%", height: "70%" }} />
-              <p style={{ width: "40%", height: "70%", background: "#C4C4C4" }}>
-                Never the same again
-              </p>
+          <div className="col-lg-4" >
+            <div style={{ backgroundImage: `url(${abouut})`, width: "100%", height: "100%", backgroundSize: "cover" }}>
+              {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
+
             </div>
 
           </div>
         </div>
+        <h1 style={{ textAlign: "center" }}>
+          <span style={{ fontSize: "50px" }}> Latest </span>News
+        </h1>
+        <div className="row mainCard">
+          <div className="col-lg-4">
+            <div className="cardImage">
+            </div>
+            <h1 className="downText">
+              Refugee Camps setup
+              in Czek Republic
 
+            </h1>
+          </div>
+          <div className="col-lg-4">
+            <div className="cardImage">
+            </div>
+            <h1 className="downText">
+              Refugee Camps setup
+              in Czek Republic
+
+            </h1>
+          </div>
+          <div className="col-lg-4">
+            <div className="cardImage">
+            </div>
+            <h1 className="downText">
+              Refugee Camps setup
+              in Czek Republic
+            </h1>
+          </div>
+
+        </div>
+        <div style={{ paddingTop: "20px", width: "100%", textAlign: "center" }}>
+          <a href="/News">
+            <Button style={{ color: "green", borderColor: "green", }}>
+              News
+            </Button>
+          </a>
+
+        </div>
       </div>
       <Footer />
 

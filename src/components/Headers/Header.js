@@ -40,7 +40,7 @@ function Headers() {
   // }, [])
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" style={{ backgroundColor: 'rgba(255, 255, 255, 0.12)' }}>
+      <AppBar position="fixed" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
 
 
         <Toolbar>
