@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 
 import "./LatestNews.css";
 import axios from "axios";
@@ -6,6 +6,7 @@ import { Carousel } from "antd";
 import { Select } from "antd";
 import { Card } from "antd";
 import { Store } from 'react-notifications-component';
+import { io } from "socket.io-client";
 
 const dotenv = require("dotenv");
 
@@ -14,20 +15,17 @@ dotenv.config();
 const { Option } = Select;
 
 export default function LatestNews() {
-  // useEffect(() => {
-  // }, [])
-  const [notif, setNotification] = useState()
-  const viewData = async () => {
-    try {
-      const res = await axios.get("http://localhost:9000/User/viewnotification")
-      console.log(res.data.message)
-      setNotification(res.data.message)
+  const socket = useRef();
+
+  useEffect(() => {
+    socket.current = io("ws://localhost:4000");
+    socket.current.on("getnotification", (data) => {
       Store.addNotification({
-        title: `Latest updates from our organization`,
-        message: `${res.data.message}`,
+        title: `Campaign is made Global Reach`,
+        message: `The name of campaign is ${data.name}`,
         type: "success",
-        insert: "bottom",
-        container: "bottom-left",
+        insert: "top",
+        container: "top-right",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
@@ -35,10 +33,46 @@ export default function LatestNews() {
           onScreen: true
         }
       });
-    } catch (e) {
-      console.log(e, "error")
-    }
-  }
+    })
+    socket.current.on("getDonation", (data) => {
+      Store.addNotification({
+        title: `Donation is made by ${data.userName}`,
+        message: `Donation is recieved for${data.campaignname}`,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+    })
+  }, [])
+  const [notif, setNotification] = useState()
+  // const viewData = async () => {
+  // try {
+  //   const res = await axios.get("http://localhost:9000/User/viewnotification")
+  //   console.log(res.data.message)
+  //   setNotification(res.data.message)
+  // Store.addNotification({
+  //   title: `Latest updates from our organization`,
+  //   message: `${res.data.message}`,
+  //   type: "success",
+  //   insert: "bottom",
+  //   container: "bottom-left",
+  //   animationIn: ["animate__animated", "animate__fadeIn"],
+  //   animationOut: ["animate__animated", "animate__fadeOut"],
+  //   dismiss: {
+  //     duration: 5000,
+  //     onScreen: true
+  //   }
+  // });
+  //   } catch (e) {
+  //     console.log(e, "error")
+  //   }
+  // }
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
@@ -76,14 +110,48 @@ export default function LatestNews() {
 
   useEffect(() => {
     getData();
-    viewData()
-
+    // viewData()
     getCategory();
   }, []);
 
   return (
-    <div id="carousel">
-      <Carousel>
+    <div className="row" id="carousel">
+      <div className="col-lg-6 left" >
+        <div className="align">
+          <h1 style={{ verticalAlign: "center", color: "white", textAlign: "left" }}>
+            <span
+              style={{ fontSize: 50, paddingRight: "4px" }}>Support</span>
+            Your <br></br> Community
+          </h1>
+
+          <p style={{ color: "white", textAlign: "left" }}>
+            We are making  endless efforts to help people
+            around the world overcome hardships they face,
+            which could and will not be possible without
+            your help !
+          </p>
+          <a href="/Campaign">
+            <div style={{ borderColor: "green", border: "1px solid #279040", width: "300px", height: "60px" }}>
+              <h1 style={{ color: "#279040", paddingTop: "0.3em" }}>
+                Our Campaign
+              </h1>
+            </div>
+          </a>
+        </div>
+
+
+      </div>
+      <div className="col-lg-6 right" >
+
+      </div>
+    </div>
+  );
+}
+
+
+
+
+{/* <Carousel>
         {data.map((item) => {
           return (
             <div>
@@ -113,8 +181,8 @@ export default function LatestNews() {
               </div>
             </div>
           );
-        })}
-        {/* <div>
+        })} */}
+{/* <div>
           <div
             className="carousel-parent"
             style={{
@@ -130,7 +198,7 @@ export default function LatestNews() {
             }}
           ></div>
         </div> */}
-      </Carousel>
+{/* </Carousel>
       <div id="filter-box">
         {" "}
         <Select
@@ -150,7 +218,4 @@ export default function LatestNews() {
             );
           })}
         </Select>
-      </div>
-    </div>
-  );
-}
+      </div> */}

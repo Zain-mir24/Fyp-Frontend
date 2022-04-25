@@ -137,8 +137,8 @@ function Beneficiarypanel({ history, ...props }) {
                 <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
             </SubMenu>
-          </Menu>
-        </Sider>
+          </Menu >
+        </Sider >
         <Layout className="site-layout">
           <Header class=" realHeader" style={{ padding: 0 }} />
 
@@ -163,11 +163,11 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "LoanManagement" ? (
                 <Amountmanagement bid={user.userId} />
               ) : null}
-            </div>
-          </Content>
-        </Layout>
-      </Layout>
-    </div>
+            </div >
+          </Content >
+        </Layout >
+      </Layout >
+    </div >
   );
 }
 

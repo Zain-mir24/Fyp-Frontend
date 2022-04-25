@@ -11,7 +11,7 @@ dotenv.config();
 function AddUser({ history }) {
   const { _id, token, name, email, password, userType } = useParams();
   const dispatch = useDispatch();
-  console.log(name);
+  console.log(name, "this is the name");
   const senddata = async (e) => {
     await axios
       .request({
@@ -43,14 +43,14 @@ function AddUser({ history }) {
       });
   };
   return (
-    <div className="mainVerify" style={{ position: "relative", alignItems: "center", justifyContent: "center" }}>
+    <div className="mainVerify" style={{ position: "relative", alignItems: "center", justifyContent: "center", height: "600px" }}>
       <Row >
         <Col span={24}
         >
           <Card
 
             bordered={false}
-            style={{ width: 300, left: "40%", position: "absolute", textAlign: "center" }}
+            style={{ width: "300px", left: "40%", position: "absolute", textAlign: "center" }}
             cover={
               <img
                 alt="example"
@@ -71,6 +71,7 @@ function AddUser({ history }) {
         </Col>
 
       </Row>
+
     </div>
   );
 }

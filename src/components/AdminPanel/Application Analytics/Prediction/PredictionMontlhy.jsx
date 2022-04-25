@@ -35,7 +35,7 @@ function PredictionMontlhy() {
         labels: ["january(2022)", "feburary(2022)", "march(2022)", "April(2022)", "may(2021)", "june(2022)", "july(2022)", "August(2022)", "September(2022)", "october(2022)", "November(2022)", "December(2022)"],
         datasets: [
             {
-                label: 'Prediction(rs)',
+                label: 'Estimated Revenue(rs)',
                 backgroundColor: 'rgba(75,192,192,1)',
                 borderColor: 'rgba(0,0,0,1)',
                 borderWidth: 1,
@@ -54,7 +54,7 @@ function PredictionMontlhy() {
 
         <div>
             <h1>
-                Prediction
+                Estimated revenue
             </h1>
             <Bar
                 onClick={onClick}

@@ -30,9 +30,10 @@ function SignIn() {
       <SocialIcons />
       <LatestNews />
       <First />
-      <Wedo />
-      <Second />
+      {/* <Wedo /> */}
       <Background />
+
+      <Second />
       <Newsletter />
       <BackTop />
       <Footer />

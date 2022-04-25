@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 
 // import { checkDonation } from "../../../store/reducers/User";
@@ -13,6 +13,8 @@ import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 import { Store } from 'react-notifications-component';
 import Home from "../../homepage/home"
+import { io } from "socket.io-client";
+
 const { Footer, Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
@@ -20,8 +22,27 @@ dotenv.config();
 function CampaignDetail(props) {
   // const user = useSelector(selectUser);
   // const dispatch = useDispatch();
+  const socket = useRef();
 
+  useEffect(() => {
+    socket.current = io("ws://localhost:4000");
+    socket.current.on("getDonation", (data) => {
+      Store.addNotification({
+        title: `Donation is made by ${data.userName}`,
+        message: `Donation is recieved for${data.campaignname}`,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true
+        }
+      });
+    })
 
+  }, [])
   const [value, setValue] = useState()
   const [Audit, setAudit] = useState()
   const [collection, setCollection] = useState();
@@ -60,24 +81,17 @@ function CampaignDetail(props) {
     return axios
       .post("http://localhost:9000/stripe/pay", body)
       .then(async (res) => {
-        console.log(res);
-        Store.addNotification({
-          title: `Donation is made by ${userName}`,
-          message: `Donation is recieved for${campaignname}`,
-          type: "success",
-          insert: "top",
-          container: "top-right",
-          animationIn: ["animate__animated", "animate__fadeIn"],
-          animationOut: ["animate__animated", "animate__fadeOut"],
-          dismiss: {
-            duration: 5000,
-            onScreen: true
-          }
-        });
-        await axios.post("http://localhost:9000/User/sendnotification", {
-          message: `Donation is made by ${userName} for ${campaignname}`
+        console.log(res, "Response from sending data");
+        socket.current.emit("sendDonation", {
+          userName,
+          campaignname
         })
         console.log("Successfull")
+
+
+        // await axios.post("http://localhost:9000/User/sendnotification", {
+        //   message: `Donation is made by ${userName} for ${campaignname}`
+        // })
 
       })
       .catch((e) => {
@@ -88,7 +102,12 @@ function CampaignDetail(props) {
     try {
       const res = await axios.get(`http://localhost:9000/User/viewAudit/${cid}`)
       // console.log(res.data.fileName)
-      setAudit(res.data.fileName)
+      if (!res) {
+        console.log("no audit yet")
+      } else {
+        setAudit(res.data.fileName)
+
+      }
     }
     catch (e) {
       console.log(e)

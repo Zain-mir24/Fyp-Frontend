@@ -3,6 +3,8 @@ import "./background.css";
 import { Table, Button } from "antd";
 import { CheckOutlined } from "@ant-design/icons";
 //
+import brother from "../../Images/abouut.png"
+import world from "../../Images/worldmap.png"
 function Background() {
   return (
     <div className="containerfluid  rowDiv   ">
@@ -10,11 +12,18 @@ function Background() {
         <div
           className="col-lg-6 wholeDiv"
           style={{
-            backgroundImage: `url(${"./Images/join-our-struggle-2.jpg"})`,
+            backgroundImage: `url(${brother})`,
             backgroundSize: "cover",
+            position: "relative"
           }}
-        ></div>
-        <div className="col-lg-6 wholeDiv" style={{ padding: "20px" }}>
+        >
+          <h1 className="align" style={{ color: "white" }}>
+            <span style={{ fontSize: "50px" }}>
+              About</span> Us
+          </h1>
+
+        </div>
+        <div className="col-lg-6 wholeDiv" style={{ padding: "20px", backgroundImage: `url(${world})` }}>
           <h1 style={{ padding: "10px" }}>More Services</h1>
           <p className=" textDiv">
             Check the whole list of charity services we offer and select what is
@@ -53,7 +62,7 @@ function Background() {
           <Button
             style={{
               margin: "10%",
-              backgroundColor: "#fe8a01",
+              backgroundColor: "#279040",
               width: "70%",
               height: "10%",
             }}

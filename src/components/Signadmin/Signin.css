@@ -1,0 +1,11 @@
+
+.main{
+    text-align: center;
+    background-image: url("../../Images/Loginbackend.jpg");
+    height:690px;
+    width:100em;
+}
+.bbutton{
+background-color: #20DF7F;
+width: 130px;
+}

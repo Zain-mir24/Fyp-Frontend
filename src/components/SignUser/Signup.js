@@ -53,7 +53,7 @@ export default function SignUp({ history, ...props }) {
       });
   };
   return (
-    <div className="mainSignup">
+    <div className="mainSignup containerFluid">
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Grid container component="main" sx={{ height: "100vh" }}>

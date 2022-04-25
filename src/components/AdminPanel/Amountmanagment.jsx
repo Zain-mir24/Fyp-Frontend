@@ -234,16 +234,16 @@ export default function Amountmanagment(props) {
           scroll={{ x: 1500 }}
           columns={columns}
           dataSource={data.LoanDetail}
-          // dataSource={data.map((item) => ({
-          //   Date: item.LoanDetail.Date,
-          //   AmountReceivedpound: item.LoanDetail.AmountReceivedpound,
-          //   Rate: item.LoanDetail.Rate,
-          //   AmountRecievedpkr: item.LoanDetail.AmountRecievedpkr,
-          //   amountsentDate: item.LoanDetail.amountsendDate,
-          //   giventobeneficiary: item.LoanDetail.giventobeneficiary,
-          //   Balance: item.LoanDetail.Balance,
-          //   sourcedelivery: item.LoanDetail.sourcedelivery,
-          // }))}
+        // dataSource={data.map((item) => ({
+        //   Date: item.LoanDetail.Date,
+        //   AmountReceivedpound: item.LoanDetail.AmountReceivedpound,
+        //   Rate: item.LoanDetail.Rate,
+        //   AmountRecievedpkr: item.LoanDetail.AmountRecievedpkr,
+        //   amountsentDate: item.LoanDetail.amountsendDate,
+        //   giventobeneficiary: item.LoanDetail.giventobeneficiary,
+        //   Balance: item.LoanDetail.Balance,
+        //   sourcedelivery: item.LoanDetail.sourcedelivery,
+        // }))}
         />
       </div>
     </div>

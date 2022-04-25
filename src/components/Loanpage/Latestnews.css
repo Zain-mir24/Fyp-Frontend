@@ -14,6 +14,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
     
 }
 .title{
@@ -28,14 +29,25 @@
     width:80%
     
 }
-.mainImage{
+.mydiv{
     
+    height:690px;
     width:100%;
     position: relative;
-    height: 600px;
+    background-size: contain;
 
     
 }
+.alignNews{
+    text-align: center;
+    padding-left: 5em;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left:20%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 .centered {
     position: absolute;
     top: 50%;
@@ -44,6 +56,16 @@
   }
 .content{
     text-align: left;
+}
+.Minidetail{
+    text-align: left;
+    padding-left: 2em;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left:10%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 /* Designing news detail page */
