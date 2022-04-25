@@ -26,6 +26,7 @@ import Dailyexpense from "./Dailyexpense";
 import LoanRecovery from "./LoanRecovery";
 import Masjid from "./Masjid";
 import Cow from "./Cow";
+import Chat from "./Chat";
 import Rickshaw from "./Rickshaw";
 import Audit from "./AuditManagement/Audit";
 import Youtube from "./Youtube";
@@ -83,6 +84,8 @@ function Body({ history, ...props }) {
       return <SubAdmin />;
     } else if (content === "Meeting") {
       return <MeetingScheduled />;
+    } else if (content === "Chat") {
+      return <Chat donorId={user.userId} />;
     }
     // Replacing monthly support with add Analytics
     else if (content == " MonthlySupport") {
@@ -233,7 +236,15 @@ function Body({ history, ...props }) {
             >
               Adopting Children
             </Menu.Item>
-
+            <Menu.Item
+              key="25"
+              icon={<TeamOutlined />}
+              onClick={() => {
+                setContent("Chat");
+              }}
+            >
+              Chat
+            </Menu.Item>
             <Menu.Item
               key="13"
               icon={<MoneyCollectOutlined />}
