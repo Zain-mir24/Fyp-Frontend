@@ -26,6 +26,7 @@ import Dailyexpense from "./Dailyexpense";
 import LoanRecovery from "./LoanRecovery";
 import Masjid from "./Masjid";
 import Cow from "./Cow";
+import Chat from "./Chat";
 import Rickshaw from "./Rickshaw";
 import Audit from "./AuditManagement/Audit";
 import Youtube from "./Youtube";
@@ -83,12 +84,13 @@ function Body({ history, ...props }) {
       return <SubAdmin />;
     } else if (content === "Meeting") {
       return <MeetingScheduled />;
+    } else if (content === "Chat") {
+      return <Chat donorId={user.userId} />;
     }
     // Replacing monthly support with add Analytics
     else if (content == " MonthlySupport") {
-      return <MonthlySupport />
-    }
-    else if (content === "AddAnalytics") {
+      return <MonthlySupport />;
+    } else if (content === "AddAnalytics") {
       return <AddAnalytics />;
     } else if (content === "Amountdetail") {
       return <AmountDetail title="Zakat Management" />;
@@ -234,7 +236,15 @@ function Body({ history, ...props }) {
             >
               Adopting Children
             </Menu.Item>
-
+            <Menu.Item
+              key="25"
+              icon={<TeamOutlined />}
+              onClick={() => {
+                setContent("Chat");
+              }}
+            >
+              Chat
+            </Menu.Item>
             <Menu.Item
               key="13"
               icon={<MoneyCollectOutlined />}
@@ -328,15 +338,15 @@ function Body({ history, ...props }) {
               Rickshaw
             </Menu.Item>
 
-            {/* <Menu.Item
+            <Menu.Item
               key="21"
               icon={<MoneyCollectOutlined />}
-                onClick={() => {
-                setContent("LoanManagment");
+              onClick={() => {
+                setContent("LoanManagement");
               }}
             >
               Loan Managment
-            </Menu.Item> */}
+            </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>

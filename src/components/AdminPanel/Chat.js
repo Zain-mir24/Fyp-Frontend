@@ -24,6 +24,7 @@ function Chat(props) {
       });
     });
   }, []);
+
   useEffect(() => {
     arrivalMessage &&
       currentChat?.member.includes(arrivalMessage.sender) &&
@@ -33,7 +34,7 @@ function Chat(props) {
   useEffect(() => {
     socket.current.emit("addUser", props.donorId);
     socket.current.on("getUsers", (user) => {
-      console.log(user, "TESTING");
+      console.log(user);
     });
   }, []);
 
@@ -44,9 +45,11 @@ function Chat(props) {
       text: newMessage,
       conversationId: currentChat._id,
     };
+
     const receiverId = currentChat.member.find(
       (member) => member != props.donorId
     );
+
     socket.current.emit("sendMessage", {
       senderId: props.donorId,
       receiverId: receiverId,
@@ -65,9 +68,7 @@ function Chat(props) {
 
   const getConversation = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/conversation/" + props.donorId
-      );
+      const res = await axios.get("http://localhost:9000/conversation/");
       setConversation(res.data);
       console.log(res.data);
     } catch (e) {

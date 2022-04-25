@@ -1,0 +1,22 @@
+.message{
+    display: flex;
+    flex-direction: column;
+}
+.messageTop{
+    display: flex;
+}
+.messageText{
+    padding: 20px 0;
+    background-color: blue;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 300px;
+}
+.message.own{
+    align-items: flex-end;
+}
+.message.own .messageText{
+    background-color: brown;
+    align-items: flex-end;
+}
