@@ -15,6 +15,8 @@ import { UploadOutlined } from "@ant-design/icons";
 import { connect, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
+import 'dotenv/config'
+
 const axios = require("axios");
 
 function LoanAppeal() {
@@ -23,7 +25,7 @@ function LoanAppeal() {
   const [loanamount, setLoan] = useState(0);
   const [file, setFile] = useState("");
   const [fileName, setFileName] = useState("");
-  const [bankAcc, setbankAcc] = useState(0)
+  // const [bankAcc, setbankAcc] = useState(0)
 
   const { Option } = Select;
   const user = useSelector(selectUser);
@@ -46,7 +48,7 @@ function LoanAppeal() {
 
 
     try {
-      const res = await axios.post(process.env.REACT_APP_LOAN_URL, formData);
+      const res = await axios.post("http://localhost:9000/beneficiary/addloanappeal", formData);
       console.log(res, "Successfully send");
       alert(`${user.username} \n 
        Your form has been submitted`);
@@ -139,7 +141,7 @@ function LoanAppeal() {
             />
           </Col>
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name="credit card number"
           label="credit card number"
           rules={[
@@ -154,7 +156,7 @@ function LoanAppeal() {
 
             />
           </Col>
-        </Form.Item>
+        </Form.Item> */}
         <Form.Item>
           <Button type="primary" htmlType="submit" onClick={getData}>
             Submit proposal

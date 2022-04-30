@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Table, Button, Input, Upload, Col, Form, Select, InputNumber } from "antd";
+import { Table, Button, Input, Upload, Col, Form, Select, InputNumber, message } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { selectUser } from "../../store/reducers/User";
 import { useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import { io } from "socket.io-client";
 const { Option } = Select;
 const axios = require("axios");
 function Foorm() {
+  const types = ["application/png"];
   const [camp, setCamp] = useState([]);
   const [name, setName] = useState("");
   const [description, setdesc] = useState("");
@@ -24,6 +25,7 @@ function Foorm() {
   var userName = user.username
 
   const saveFile = (e) => {
+
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
@@ -304,8 +306,10 @@ function Foorm() {
               rules={[{ required: true, message: "Please uplaod doc" }]}
               onChange={saveFile}
             >
-              <Upload>
-                <Button icon={<UploadOutlined />}>Upload media files</Button>
+              <Upload
+                accept="image/png,image/jpeg,image/jpg"
+              >
+                <Button icon={<UploadOutlined />}>Upload image only</Button>
               </Upload>
             </Form.Item>
           </Col>
@@ -408,10 +412,17 @@ function Foorm() {
           </Col>
           <Col span={15}>
             <Form.Item
-              rules={[{ required: true, message: "Please uplaod doc" }]}
+              name="Campaign media"
+              label=" Upload image"
               onChange={saveFile}
+              rules={[
+                {
+                  required: true,
+                  message: "Please share picture or video for the campaign",
+                },
+              ]}
             >
-              <Upload>
+              <Upload accept="image/png">
                 <Button icon={<UploadOutlined />}>Upload media files</Button>
               </Upload>
             </Form.Item>
