@@ -1,7 +1,7 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
-import { Table, Button, Input, Upload, Col, Form, Select, Row } from "antd";
+import { Table, Button, Input, Upload, Col, Form, Select, Row, InputNumber } from "antd";
 
 import { combineReducers } from "@reduxjs/toolkit";
 import { UploadOutlined } from "@ant-design/icons";
@@ -186,13 +186,20 @@ function ChildrenManagment() {
                   },
                 ]}
               >
-                <Input
+                <InputNumber
+                  style={{ width: "80%" }}
+
+                  defaultValue={1}
+                  min={1}
+                  max={17}
+                  formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  parser={value => value.replace(/\$\s?|(,*)/g, '')}
                   required
                   placeholder="Child age"
-                  onChange={(e) => {
-                    setAge(e.target.value);
+                  onChange={(value) => {
+                    setAge(value);
                   }}
-                  showCount
+
                 />
               </Form.Item>
 

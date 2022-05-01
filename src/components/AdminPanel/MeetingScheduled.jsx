@@ -9,7 +9,7 @@ function MeetingScheduled() {
             const res = await axios.get("http://localhost:9000/User/appointments")
             console.log(res.data)
             setData(res.data.map((d) => {
-                let obj = { ...d, childName: d.childId.name }
+                let obj = { ...d, childName: d.childId.name, fileName: d.childId.fileName }
                 return obj
             }))
 
@@ -38,6 +38,19 @@ function MeetingScheduled() {
             title: "Date",
             dataIndex: "SlotDate",
             key: "SlotDate"
+        }, {
+            title: "Picture",
+            dataIndex: "fileName",
+            key: "fileName",
+            render: (text, record) => {
+                console.log(record)
+                return (
+                    <div style={{ width: "40%" }}>
+                        <img src={"http://localhost:9000/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
+                    </div>
+                );
+            },
+            width: '20%',
         },
         {
             title: "Child to Adopt",

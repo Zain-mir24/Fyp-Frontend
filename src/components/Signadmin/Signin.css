@@ -6,6 +6,11 @@
     width:100em;
 }
 .bbutton{
-background-color: #20DF7F;
-width: 130px;
-}
+    background-color: #20DF7F;
+    width: 130px;
+    }
+.bbutton2{
+        background-color: #224957;
+        width: 130px;
+        color:white
+        }

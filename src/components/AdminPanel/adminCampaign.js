@@ -9,7 +9,7 @@ import { io } from "socket.io-client";
 const { Option } = Select;
 const axios = require("axios");
 function Foorm() {
-  const types = ["application/png"];
+
   const [camp, setCamp] = useState([]);
   const [name, setName] = useState("");
   const [description, setdesc] = useState("");
