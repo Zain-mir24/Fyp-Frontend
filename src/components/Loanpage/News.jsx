@@ -30,7 +30,7 @@ function News() {
   return (
     <div>
       <Header />
-      <div style={{ backgroundImage: `url(${world})` }} className="mydiv containerFluid">
+      <div style={{ backgroundImage: `url(${world})`, marginTop: "-30px" }} className="mydiv containerFluid">
         <div className="alignNews">
           <h1 className="title">
             <span style={{ fontSize: "90px" }}>

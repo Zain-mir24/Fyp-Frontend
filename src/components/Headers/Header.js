@@ -5,9 +5,11 @@ import Toolbar from '@mui/material/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography, IconButton } from "@mui/material";
 import globalicon from "../../Images/globalicon.png"
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    height: "60px",
   },
   appBarTransparent: {
     backgroundColor: 'rgba(255, 255, 255, 0.12)'
@@ -35,63 +37,32 @@ function Headers() {
   //   }
   //   document.addEventListener('scroll', handleScroll)
   //   return () => {
-  //     document.removeEventListener('scroll', handleScroll)
+  //     document.removeEventListener('scroll', handleScroll) backgroundColor: 'rgba(0, 0, 0, 0.7)'
   //   }
   // }, [])
   return (
-    <div className={classes.root}>
-      <AppBar position="fixed" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+    <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+      <nav class="navbar navbar-expand navbar-custom" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+        <div class="container-fluid" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}  >
 
 
-        <Toolbar>
-          <div className="title" style={{ flexGrow: "1", backgroundImage: `url(${globalicon})`, backgroundSize: "cover", height: "90px", width: "80px", backgroundPosition: "center" }}>
+          <img style={{ width: "10%", height: "80%", float: "left" }} src={globalicon} />
 
+          {/* <span class="text-uppercase font-weight-bold">Company</span> */}
+
+
+          <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+          <div id="navbarSupportedContent" class=" mr-sm-2">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active"><a href="/" style={{ color: "white" }} class="nav-link">Home <span class="sr-only">(current)</span></a></li>
+              <li class="nav-item"><a href="/News" style={{ color: "white" }} class="nav-link">News</a></li>
+              <li class="nav-item"><a href="/Campaign" style={{ color: "white" }} class="nav-link">Services</a></li>
+              <li class="nav-item"><a href="/Signin" style={{ color: "white" }} class="nav-link">My account</a></li>
+            </ul>
           </div>
-          <div style={{ width: "800px" }}>
-          </div>
-          <a href="/" style={{ color: "white" }}>
-            Home
-          </a>
-          <div class="dropdown show" style={{ marginBottom: "2px" }}>
-            <a
-              class="btn dropdown-toggle"
-              href="/News"
-              role="button"
-              id="dropdownMenuLink"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              style={{ color: "white" }}
-            >
-              News
-            </a>
-
-            <div
-              class="dropdown-menu"
-              aria-labelledby="dropdownMenuLink"
-            >
-              <a class="dropdown-item" href="/News"
-              >
-                Our  News
-              </a>
-              <a class="dropdown-item" href="#">
-                Audit
-              </a>
-              <a class="dropdown-item" href="#">
-                Zakat
-              </a>
-            </div>
-          </div>
-          <a class="nav-link" href="/Campaign" style={{ color: "white" }}>
-            <span class="glyphicon glyphicon-user"></span> Services
-          </a>
-          <a href="/Signin" style={{ color: "white" }}>
-            MyAccount
-          </a>
-        </Toolbar>
-      </AppBar>
-
-
+        </div>
+      </nav>
     </div>
   );
 
