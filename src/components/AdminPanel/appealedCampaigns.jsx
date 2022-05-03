@@ -22,7 +22,8 @@ function AppealedCampaigns() {
         res.data.appeal.map((i) => ({
           key: i._id,
           Cname: i.name,
-          bid: i.bid,
+          bid: i.bid.name,
+          email: i.bid.email,
           amountneeded: i.amountneeded,
           description: i.description,
           file: i.file,
@@ -43,11 +44,15 @@ function AppealedCampaigns() {
       key: "name",
     },
     {
-      title: "beneficiaryid",
+      title: "Beneficiary name",
       dataIndex: "bid",
       key: "bid",
     },
     {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    }, {
       title: "amountneeded(PKR)",
       dataIndex: "amountneeded",
       key: "amountneeded",

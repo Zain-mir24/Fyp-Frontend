@@ -5,14 +5,14 @@ import Toolbar from '@mui/material/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Typography, IconButton } from "@mui/material";
 import globalicon from "../../Images/globalicon.png"
-
+import { Navbar, Nav, NavItem, NavDropdown, Dropdown } from 'react-bootstrap';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     height: "60px",
   },
   appBarTransparent: {
-    backgroundColor: 'rgba(255, 255, 255, 0.12)'
+    backgroundColor: 'rgba(0, 0, 0, 0.7)'
   },
   appBarSolid: {
     backgroundColor: 'rgba(67,129,168)'
@@ -22,52 +22,66 @@ const useStyles = makeStyles((theme) => ({
 
 function Headers() {
 
-  const classes = useStyles()
-  // const [navBackground, setNavBackground] = useState('appBarTransparent')
-  // const navRef = useRef()
-  // navRef.current = navBackground
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const show = window.scrollY > 500
-  //     if (show) {
-  //       setNavBackground('appBarSolid')
-  //     } else {
-  //       setNavBackground('appBarTransparent')
-  //     }
-  //   }
-  //   document.addEventListener('scroll', handleScroll)
-  //   return () => {
-  //     document.removeEventListener('scroll', handleScroll) backgroundColor: 'rgba(0, 0, 0, 0.7)'
-  //   }
-  // }, [])
   return (
-    <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
-      <nav class="navbar navbar-expand navbar-custom" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
-        <div class="container-fluid" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}  >
+    <nav class="navbar navbar-expand-lg" style={{ height: "80px", backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+      <div class="container-fluid">
+        <div style={{ float: "left" }}>
 
+          <img class="navbar-brand" src={globalicon} style={{ height: "20%" }} />
 
-          <img style={{ width: "10%", height: "80%", float: "left" }} src={globalicon} />
-
-          {/* <span class="text-uppercase font-weight-bold">Company</span> */}
-
-
-          <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
-
-          <div id="navbarSupportedContent" class=" mr-sm-2">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active"><a href="/" style={{ color: "white" }} class="nav-link">Home <span class="sr-only">(current)</span></a></li>
-              <li class="nav-item"><a href="/News" style={{ color: "white" }} class="nav-link">News</a></li>
-              <li class="nav-item"><a href="/Campaign" style={{ color: "white" }} class="nav-link">Services</a></li>
-              <li class="nav-item"><a href="/Signin" style={{ color: "white" }} class="nav-link">My account</a></li>
-            </ul>
-          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
         </div>
-      </nav>
-    </div>
+        <div class="collapse navbar-collapse justify-content-end ms-auto" style={{ float: "right" }} id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   );
 
 
 }
+
+// <nav class="navbar navbar-expand-sm navbar-light bg-success">
+//   <div class="container-fluid ">
+//     <a class="navbar-brand " href="#">Navbar</a>
+//     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+//       <span class="navbar-toggler-icon"></span>
+//     </button>
+//     <div class="collapse navbar-collapse " id="navbarSupportedContent">
+//       <ul class="navbar-nav ms-auto">
+//         <li class="nav-item">
+//           <a class="nav-link active" aria-current="page" href="#">Home</a>
+//         </li>
+//         <li class="nav-item">
+//           <a class="nav-link" href="#">Course</a>
+//         </li>
+//       </ul>
+//     </div>
+//   </div>
+// </nav>
+
 
 export default Headers;
 

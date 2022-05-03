@@ -136,7 +136,7 @@ function Body({ history, ...props }) {
               Super Admin panel
             </Menu.Item>
 
-            <Menu.Item
+            {/* <Menu.Item
               key="3"
               icon={<UserOutlined />}
               onClick={(e) => {
@@ -144,7 +144,7 @@ function Body({ history, ...props }) {
               }}
             >
               Users
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="4"
               icon={<CheckCircleFilled />}
