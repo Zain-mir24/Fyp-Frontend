@@ -1,8 +1,8 @@
 /* header css above */
 
-.header-blue {
+/* .header-blue { */
   /* background: linear-gradient(135deg, #007a00, #34b465); */
-  background-color: #007a00;
+  /* background-color: #007a00;
 
   font-family: "Source Sans Pro", sans-serif;
 }
@@ -222,10 +222,7 @@
   right: -60%;
   transform: rotate(-19deg);
   opacity: 0.2;
-}
-/* .title{
-  flexGrow: 1;
-  color: 'black';
-  backgroundImage: url("../../Images/globalicon.png");
-
 } */
+.navbar-custom{
+  backgroundColor:rgba(0, 0, 0, 0.7) 
+}

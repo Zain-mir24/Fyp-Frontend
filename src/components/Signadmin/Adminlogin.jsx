@@ -119,6 +119,14 @@ function Adminlogin({ history, ...props }) {
             </Form.Item>
 
             <Form.Item>
+              <a href="/">
+                <Button
+                  className="login-form-button bbutton2"
+                >
+                  Back to home
+                </Button>
+              </a>
+
               <Button
 
                 type="primary"

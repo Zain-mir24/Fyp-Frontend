@@ -33,7 +33,7 @@ function AppealedLoans() {
           amountneeded: i.Loanamount,
           description: i.loandescription,
           loanType: i.loanType,
-          file: i.file,
+          fileName: i.fileName,
           isApproved: i.isApproved.toString(),
         }))
       );
@@ -87,31 +87,28 @@ function AppealedLoans() {
       title: "Download File",
       dataIndex: "file",
       key: "file",
-      render: (text, record) => (
-        <a
-          href={
-            "https://localhost:9000/uploads/" + record.file
-          }
-          download
-        >
-          <Button
-            style={{
-              width: "100%",
-              wordWrap: "break-word",
-              whiteSpace: "normal",
-              height: "100%",
-            }}
-          >
-            {record.file}
-          </Button>
-        </a>
-      ),
+      columnWidth: 32,
+      render: (text, record) => {
+        console.log(record.fileName, "render")
+        return (
+          record.fileName ?
+            <a
+              href={
+                "http://localhost:9000/uploads/" + record.fileName
+              }
+              download
+            >
+              <Button  >Download </Button>
+            </a> : null
+        )
+      },
     },
-    {
-      title: "approval Status",
-      dataIndex: "isApproved",
-      key: "isApproved",
-    },
+    // {
+    //   title: "approval Status",
+    //   dataIndex: "isApproved",
+    //   key: "isApproved",
+
+    // },
     {
       title: "approve",
       render: (text, record) => (
@@ -129,7 +126,7 @@ function AppealedLoans() {
   ];
   return (
     <div>
-      <Table columns={columns} dataSource={Loans} />
+      <Table columns={columns} dataSource={Loans} scroll={{ y: 1100, x: 1900 }} />
     </div>
   );
 }

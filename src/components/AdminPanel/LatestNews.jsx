@@ -161,7 +161,9 @@ function Neews() {
               rules={[{ required: true, message: "Please uplaod doc" }]}
               onChange={saveFile}
             >
-              <Upload>
+              <Upload
+                accept="image/png,image/jpeg,image/jpg"
+              >
                 <Button icon={<UploadOutlined />}>Upload media files</Button>
               </Upload>
             </Form.Item>

@@ -32,7 +32,7 @@ const Second = () => {
     getData()
   }, [])
   return (
-    <div style={{ height: "500px" }}>
+    <div style={{ height: "auto" }}>
       <h1 style={{ textAlign: "center" }}>
         <span style={{ fontSize: "50px" }}> Latest </span>News
       </h1>

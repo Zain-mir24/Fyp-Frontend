@@ -36,7 +36,7 @@ function ViewDonation() {
 
   useEffect(() => {
     getData();
-    console.log(data, "HELL");
+    // console.log(data, "HELL");
   }, []);
 
   const columns = [
@@ -71,10 +71,10 @@ function ViewDonation() {
                 <h3>Donations for {item.campaignname}</h3>
                 <Table
                   columns={columns}
-                  dataSource={item.registeredUser.map((item) => ({
-                    Name: item.userId.name,
-                    Email: item.userId.email,
-                    Donation: item.donation
+                  dataSource={item?.registeredUser.map((item) => ({
+                    Name: item.userId?.name,
+                    Email: item.userId?.email,
+                    Donation: item?.donation
                   }))}
                 />
               </div>

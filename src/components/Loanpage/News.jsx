@@ -8,6 +8,7 @@ import world from "../../Images/newWorld.jpeg"
 import abouut from "../../Images/abouut.png"
 import { Button } from "antd"
 import axios from "axios";
+import { Carousel } from 'react-responsive-carousel';
 const { Meta } = Card;
 
 function News() {
@@ -30,7 +31,7 @@ function News() {
   return (
     <div>
       <Header />
-      <div style={{ backgroundImage: `url(${world})` }} className="mydiv containerFluid">
+      <div style={{ backgroundImage: `url(${world})`, marginTop: "-30px" }} className="mydiv containerFluid">
         <div className="alignNews">
           <h1 className="title">
             <span style={{ fontSize: "90px" }}>
@@ -121,7 +122,7 @@ function News() {
           {
             data.map((item) => {
               return (
-                <div className="col-lg-4">
+                <div className="col-lg-4" style={{ padding: "4px" }}>
                   <Card
                     onClick={() => {
                       setName(item.name)
