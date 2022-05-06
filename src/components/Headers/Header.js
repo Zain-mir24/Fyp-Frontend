@@ -23,35 +23,35 @@ const useStyles = makeStyles((theme) => ({
 function Headers() {
 
   return (
-    <nav class="navbar navbar-expand-lg" style={{ height: "80px", backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
-      <div class="container-fluid">
+    <nav className="navbar navbar-expand-lg" style={{ height: "80px", backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
+      <div className="container-fluid">
         <div style={{ float: "left" }}>
 
-          <img class="navbar-brand" src={globalicon} style={{ height: "20%" }} />
+          <img className="navbar-brand" src={globalicon} style={{ height: "20%" }} />
 
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
         </div>
-        <div class="collapse navbar-collapse justify-content-end ms-auto" style={{ float: "right" }} id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <div className="collapse navbar-collapse justify-content-end ms-auto" style={{ float: "right" }} id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <a className="nav-link active" aria-current="page" href="#">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+            <li className="nav-item">
+              <a className="nav-link" href="#">Link</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown
               </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a className="dropdown-item" href="#">Action</a></li>
+                <li><a className="dropdown-item" href="#">Another action</a></li>
                 <li>
-                  <hr class="dropdown-divider" />
+                  <hr className="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><a className="dropdown-item" href="#">Something else here</a></li>
               </ul>
             </li>
           </ul>

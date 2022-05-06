@@ -22,7 +22,7 @@ export default function MonthlySupport() {
         method: "GET",
         responseType: "stream",
       });
-
+      console.log(res, "response of monthly")
       SetLoans(
         // res.data.map((i) => ({
         //   name: i.bid.name,

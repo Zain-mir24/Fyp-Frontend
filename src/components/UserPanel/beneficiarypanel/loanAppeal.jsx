@@ -133,11 +133,16 @@ function LoanAppeal() {
           ]}
         >
           <Col span={5}>
-            <Input
-              onChange={(e) => {
-                setLoan(e.target.value);
+            <InputNumber
+              style={{ width: "80%" }}
+              defaultValue={1000}
+              min={1000}
+              formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              parser={value => value.replace(/\$\s?|(,*)/g, '')}
+              required
+              onChange={(value) => {
+                setLoan(value);
               }}
-
             />
           </Col>
         </Form.Item>
