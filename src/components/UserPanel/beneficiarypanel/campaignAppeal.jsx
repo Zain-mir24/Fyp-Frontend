@@ -116,7 +116,7 @@ function CampaignAppeal() {
           rules={[
             {
               required: true,
-              message: "Please share picture or video for the campaign",
+              message: "Please upload zip folder containing all your documents",
             },
           ]}
         >

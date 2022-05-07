@@ -7,7 +7,7 @@ import brother from "../../Images/abouut.png"
 import world from "../../Images/worldmap.png"
 function Background() {
   return (
-    <div className="containerfluid  rowDiv   ">
+    <div className="containerfluid  rowDiv">
       <div className="row" style={{ margin: "0px 0px 10px" }}>
         <div
           className="col-lg-6 wholeDiv"
@@ -23,14 +23,14 @@ function Background() {
           </h1>
 
         </div>
-        <div className="col-lg-6 wholeDiv" style={{ padding: "20px", backgroundImage: `url(${world})` }}>
+        <div className="col-lg-6 wholeDiv"  >
           <h1 style={{ padding: "10px" }}>More Services</h1>
           <p className=" textDiv">
             Check the whole list of charity services we offer and select what is
             the appropriate one for you.
           </p>
           <div className="row">
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-xs-6 col-sm-6">
               <p className="miniText">
                 <CheckOutlined /> Donation
               </p>
@@ -44,7 +44,7 @@ function Background() {
                 <CheckOutlined /> Track of donation record
               </p>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 col-xs-6 col-sm-6">
               <p className="miniText">
                 <CheckOutlined /> Campaigns
               </p>
@@ -58,17 +58,15 @@ function Background() {
                 <CheckOutlined /> Interest free Loan
               </p>
             </div>
+            <div className="col-lg-12 col-xs-12 col-sm-12">
+
+              <Button
+                className="buttonBack"
+              >  Services
+              </Button>
+            </div>
           </div>
-          <Button
-            style={{
-              margin: "10%",
-              backgroundColor: "#279040",
-              width: "70%",
-              height: "10%",
-            }}
-          >
-            Services
-          </Button>
+
         </div>
       </div>
     </div>

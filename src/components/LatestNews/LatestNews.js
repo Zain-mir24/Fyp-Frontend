@@ -51,28 +51,7 @@ export default function LatestNews() {
     })
   }, [])
   const [notif, setNotification] = useState()
-  // const viewData = async () => {
-  // try {
-  //   const res = await axios.get("http://localhost:9000/User/viewnotification")
-  //   console.log(res.data.message)
-  //   setNotification(res.data.message)
-  // Store.addNotification({
-  //   title: `Latest updates from our organization`,
-  //   message: `${res.data.message}`,
-  //   type: "success",
-  //   insert: "bottom",
-  //   container: "bottom-left",
-  //   animationIn: ["animate__animated", "animate__fadeIn"],
-  //   animationOut: ["animate__animated", "animate__fadeOut"],
-  //   dismiss: {
-  //     duration: 5000,
-  //     onScreen: true
-  //   }
-  // });
-  //   } catch (e) {
-  //     console.log(e, "error")
-  //   }
-  // }
+
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
@@ -116,7 +95,7 @@ export default function LatestNews() {
 
   return (
     <div className="row" id="carousel">
-      <div className="col-lg-6 left" >
+      <div className="col-lg-6 col-sm-6 col-xs-6 left" >
         <div className="align">
           <h1 style={{ verticalAlign: "center", color: "white", textAlign: "left" }}>
             <span
@@ -124,7 +103,7 @@ export default function LatestNews() {
             Your <br></br> Community
           </h1>
 
-          <p style={{ color: "white", textAlign: "left" }}>
+          <p className="textofMain">
             We are making  endless efforts to help people
             around the world overcome hardships they face,
             which could and will not be possible without
@@ -141,7 +120,7 @@ export default function LatestNews() {
 
 
       </div>
-      <div className="col-lg-6 right" >
+      <div className="col-lg-6  col-sm-6 col-xs-6 right" >
 
       </div>
     </div>

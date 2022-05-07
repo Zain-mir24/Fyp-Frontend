@@ -3,119 +3,12 @@ import styled from "styled-components";
 import { FaHandshake, FaLink, FaBus } from "react-icons/fa";
 import { tablet } from "./responsive";
 import "./first.css"
+import global from "../../Images/globalicon.png"
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
 `;
-const Title = styled.div`
-  font-family: "Montserrat", sans-serif;
-  font-size: 32px;
-  color: #1e1d24;
-  line-height: 1.344em;
-  text-align: center;
-  margin-top: 40px;
-`;
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  /* flex-direction: column; */
-`;
-const BoxContainer = styled.div`
-  display: flex;
-`;
-const Box1 = styled.div`
-  /* width: 172px; */
-  /* height: 132px; */
-  border: 0.1px solid lightgray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  ${tablet({ padding: "10px" })}
-  padding: 30px 50px;
-  cursor: pointer;
-  background-color: ${(props) => (props.first ? "#62be1e" : "white")};
-`;
-const Box2 = styled.div`
-  /* width: 172px; */
-  /* height: 132px; */
-  border: 0.1px solid lightgray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  padding: 30px 50px;
-  ${tablet({ padding: "10px" })}
-  cursor: pointer;
-  background-color: ${(props) => (props.second ? "#62be1e" : "white")};
-`;
-const Box3 = styled.div`
-  /* width: 172px; */
-  /* height: 132px; */
-  border: 0.1px solid lightgray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  padding: 30px 50px;
-  ${tablet({ padding: "10px" })}
-  cursor: pointer;
-  background-color: ${(props) => (props.third ? "#62be1e" : "white")};
-`;
-const BoxTitle = styled.div`
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  color: #1e1d24;
-  padding-top: 10px;
-`;
-const TextContainer = styled.div`
-  width: 100%;
-  width: 75%;
-  margin-top: 10px;
-  margin-bottom: 65px;
-`;
-const Text = styled.div`
-  color: #79787f;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-
-  margin-top: 10px;
-`;
-const Info = styled.div`
-  color: #79787f;
-  font-size: 14px;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-
-  margin-top: 10px;
-`;
-const LowerContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-const LogoContainer = styled.div`
-  ${tablet({ display: "none" })}
-`;
-const textDetails = [
-  {
-    text: "A huge number of services and works done by high-class experts using the latest technologies. We are here to meet your every demand so you could have no worries about your home!",
-    info: "Call us and our manager will answer any of your question and help you to resolve any issue!",
-  },
-  {
-    text: "Quality of work and speed of fulfilment. We always stand for doing our job fast and at the highest level as understand people value their time and money.",
-    info: "No worries about delays or unfinished work – it’s our warranty policy!",
-  },
-  {
-    text: "Help with any domestic problem. You can choose the service from our list, or if you need any other maintenance help, we will gladly do even non-standard work!",
-    info: "We are here to meet your every demand!",
-  },
-];
 
 const First = () => {
   const [first, setFirst] = useState(true);
@@ -151,9 +44,9 @@ const First = () => {
         <span style={{ fontSize: "50px" }}> Why </span>choose global reach
       </h1>
       <div className="row">
-        <div className="col-lg-4 offerDiv">
-          <div className="icon" >
-          </div>
+        <div className="col-lg-4 col-sm-4 col-xs-4 offerDiv">
+          <img src={global}>
+          </img>
           <h1>
             We offer
           </h1>
@@ -162,10 +55,9 @@ const First = () => {
 
           </p>
         </div>
-        <div className="col-lg-4 offerDiv">
-          <div className="icon">
-
-          </div>
+        <div className="col-lg-4 col-sm-4 col-xs-4 offerDiv">
+          <img src={global}>
+          </img>
           <h1>
             We offer
           </h1>
@@ -174,9 +66,9 @@ const First = () => {
 
           </p>
         </div>
-        <div className="col-lg-4 offerDiv">
-          <div className="icon">
-          </div>
+        <div className="col-lg-4 col-sm-4 col-xs-4 offerDiv">
+          <img src={global}>
+          </img>
           <h1>
             We offer
           </h1>
