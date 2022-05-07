@@ -45,12 +45,30 @@ export default function HouseAppeal() {
   const [familyAlive, setFamilyAlive] = useState(true);
   const [images, setImages] = useState();
   const [fileName, setFileName] = useState();
+  const [image2, setImage2] = useState();
+  const [fileName2, setFileName2] = useState();
+  const [image3, setImage3] = useState();
+  const [fileName3, setFileName3] = useState();
+  const [image4, setImage4] = useState();
+  const [fileName4, setFileName4] = useState();
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState();
 
   const saveFile = (e) => {
     setImages(e.target.files[0]);
     setFileName(e.target.files[0].name);
+  };
+  const saveFile2 = (e) => {
+    setImage2(e.target.files[0]);
+    setFileName2(e.target.files[0].name);
+  };
+  const saveFile3 = (e) => {
+    setImage3(e.target.files[0]);
+    setFileName3(e.target.files[0].name);
+  };
+  const saveFile4 = (e) => {
+    setImage4(e.target.files[0]);
+    setFileName4(e.target.files[0].name);
   };
 
   const getData = async () => {
@@ -77,6 +95,12 @@ export default function HouseAppeal() {
     formData.append("contructionDetail", contructionDetail);
     formData.append("images", images);
     formData.append("fileName", fileName);
+    formData.append("image2", image2);
+    formData.append("fileName2", fileName2);
+    formData.append("image3", image3);
+    formData.append("fileName3", fileName3);
+    formData.append("image4", image4);
+    formData.append("fileName4", fileName4);
     formData.append("family", JSON.stringify(family));
     try {
       const res = await axios.post(
@@ -451,7 +475,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
-          label="Attach Images"
+          label="house image 1"
           onChange={saveFile}
           rules={[
             {
@@ -460,10 +484,65 @@ export default function HouseAppeal() {
             },
           ]}
         >
-          <Upload>
-            <Button icon={<UploadOutlined />}>Upload media files</Button>
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
           </Upload>
         </Form.Item>
+        <Form.Item
+          label="house image 2"
+          onChange={saveFile2}
+          rules={[
+            {
+              required: true,
+              message: "Please share picture or video for the campaign",
+            },
+          ]}
+        >
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
+          </Upload>
+        </Form.Item>
+        <Form.Item
+          label="house image 3"
+          onChange={saveFile3}
+          rules={[
+            {
+              required: true,
+              message: "Please share picture or video for the campaign",
+            },
+          ]}
+        >
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
+          </Upload>
+        </Form.Item>
+        <Form.Item
+          label="house image 4"
+          onChange={saveFile4}
+          rules={[
+            {
+              required: true,
+              message: "Please share picture or video for the campaign",
+            },
+          ]}
+        >
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
+          </Upload>
+        </Form.Item>
+
         <Form.Item>
           <Button
             type="primary"

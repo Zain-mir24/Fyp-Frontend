@@ -303,22 +303,25 @@ function HousingSchemePDF(props) {
               </ul>
             </div>
             <Image
-              src={"http://localhost:9000/uploads/" + props.data.images}
+              src={"http://localhost:9000/uploads/" + props.data.fileName}
+              download
+            />
+            <Image
+              src={"http://localhost:9000/uploads/" + props.data.fileName2}
+              download
+            />
+            <Image
+              src={"http://localhost:9000/uploads/" + props.data.fileName3}
+              download
+            />
+            <Image
+              src={"http://localhost:9000/uploads/" + props.data.fileName4}
               download
             />
           </div>
         </div>
 
-        {/* <h1>GlobalReach</h1>
-        {props.name} <br />
-        {props.Guardian}
-        <br />
-        {props.SOI} <br />
-        {props.EC} <br />
-        {props.ETF}
-        <br />
-        {props.cnic}
-        HousingSchemePDF */}
+
       </div>
     </div>
   );

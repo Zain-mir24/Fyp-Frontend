@@ -485,7 +485,7 @@ export default function MonthlySupport() {
         </Form.Item>
         <Form.Item
           name="Bform"
-          label="Attach Bform"
+          label="Attach Bform(pdf only)"
           onChange={saveBform}
           rules={[
             {
@@ -494,16 +494,16 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <Upload>
+          <Upload accept=".pdf">
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
         </Form.Item>
         <Form.Item
-          label="Attach Death Certificate of husband if widow (optional)"
+          label="Attach Death Certificate of husband if widow (optional)(pdfonly)"
           onChange={saveDeathCertificate}
 
         >
-          <Upload>
+          <Upload accept=".pdf">
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
         </Form.Item>

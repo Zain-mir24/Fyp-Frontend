@@ -112,7 +112,7 @@ function LoanAppeal() {
         </Form.Item>
         <Form.Item
           name="Loan Documents"
-          label=" Give Documents of your loan here"
+          label=" Give Documents of your loan here(only zip folder)"
           onChange={saveFile}
           rules={[
             {
