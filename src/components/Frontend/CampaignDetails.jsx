@@ -90,17 +90,30 @@ export default function CampaignDetails({ history }) {
               / {name}
             </p>
           </div>
-          <div className="col-lg-6" style={{ textAlign: "right" }}>
-            <button
-              style={{
-                background: "transparent",
-                border: "2px solid green",
-                padding: "5px 10px",
-              }}
-            >
-              Amount To Be Collected: {donation - collection} PKR
-            </button>
-          </div>
+          {donation <= collection ?
+            <div className="col-lg-6" style={{ textAlign: "right" }}>
+              <button
+                style={{
+                  background: "transparent",
+                  border: "2px solid green",
+                  padding: "5px 10px",
+                }}
+              >
+                Amount Fully collected for this campaign
+              </button>
+            </div>
+            : <div className="col-lg-6" style={{ textAlign: "right" }}>
+              <button
+                style={{
+                  background: "transparent",
+                  border: "2px solid green",
+                  padding: "5px 10px",
+                }}
+              >
+                Amount To Be Collected: {donation - collection} PKR
+              </button>
+            </div>}
+
         </div>
 
         <section style={{ margin: "40px 0" }}>
@@ -114,30 +127,35 @@ export default function CampaignDetails({ history }) {
             <div className="col-lg-6">
               <h2>{name}</h2>
               <p>{description}</p>
-              <Input
+              {donation < collection ? null : <Input style={{ border: "1px solid black", width: "40%" }}
                 placeholder="enter donation amount (pkr)"
                 onChange={(e) => {
                   setAmount(e.target.value);
                 }}
-              />
-              <StripeCheckout
-                stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
-                token={sendPayment}
-                name="Donate to campaign"
-                amount={totalamount * 100}
-              >
-                <br />
-                <br />
-                <Button
-                  style={{
-                    width: "100%",
-                    backgroundColor: "#1B9834",
-                    color: "white",
-                  }}
-                >
-                  You are donating {totalamount}
-                </Button>
-              </StripeCheckout>
+              />}
+
+              {
+                totalamount < 1000 ?
+                  null : <StripeCheckout
+                    stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
+                    token={sendPayment}
+                    name="Donate to campaign"
+                    amount={totalamount * 100}
+                  >
+                    <br />
+                    <br />
+                    <Button
+                      style={{
+                        width: "100%",
+                        backgroundColor: "#1B9834",
+                        color: "white",
+                      }}
+                    >
+                      You are donating {totalamount}
+                    </Button>
+                  </StripeCheckout>
+              }
+
               {
                 file ?
                   <div>
