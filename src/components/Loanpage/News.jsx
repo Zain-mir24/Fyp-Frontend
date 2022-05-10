@@ -4,18 +4,18 @@ import Header from "../Headers/Header";
 import "./Latestnews.css";
 import { Card } from "antd";
 
-import world from "../../Images/newWorld.jpeg"
-import abouut from "../../Images/abouut.png"
-import { Button } from "antd"
+import world from "../../Images/newWorld.jpeg";
+import abouut from "../../Images/abouut.png";
+import { Button } from "antd";
 import axios from "axios";
-import { Carousel } from 'react-responsive-carousel';
+// import { Carousel } from 'react-responsive-carousel';
 const { Meta } = Card;
 
 function News() {
   const [data, setData] = useState([]);
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [file, setFile] = useState("")
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [file, setFile] = useState("");
   const getData = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/LatestNews");
@@ -26,161 +26,178 @@ function News() {
     }
   };
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
   return (
     <div>
-      <Header />
-      <div style={{ backgroundImage: `url(${world})`, marginTop: "-30px" }} className="mydiv containerFluid">
+      <Header active="news" />
+      <div
+        style={{ backgroundImage: `url(${world})`, marginTop: "-30px" }}
+        className="mydiv containerFluid"
+      >
         <div className="alignNews">
           <h1 className="title">
-            <span style={{ fontSize: "90px" }}>
-              Know
-            </span> Whats Happening </h1>
+            <span style={{ fontSize: "90px" }}>Know</span> Whats Happening{" "}
+          </h1>
           <p style={{ color: "#929292" }}>
-            We are making  endless efforts to help people <br></br>
+            We are making endless efforts to help people <br></br>
             around the world overcome hardships they face,<br></br>
             which could and will not be possible without <br></br>
             your help !
           </p>
           <a href="/Campaign">
-            <div style={{ borderColor: "green", border: "1px solid #279040", width: "300px", height: "60px", marginLeft: "13em" }}>
+            <div
+              style={{
+                borderColor: "green",
+                border: "1px solid #279040",
+                width: "300px",
+                height: "60px",
+                marginLeft: "13em",
+              }}
+            >
               <h1 style={{ color: "#279040", paddingTop: "0.3em" }}>
                 Our Campaign
               </h1>
-
             </div>
           </a>
         </div>
-      </div >
+      </div>
 
-      <div className="container-fluid">
-        <div className="row">
-          {name == "" ? <h1 style={{ paddingLeft: "1em", fontWeight: "bold" }}>
-            Never the same again
-          </h1>
-            : <h1 style={{ paddingLeft: "1em", fontWeight: "bold" }}>
-              {name}
-            </h1>}
-          <div className="col-lg-8" style={{ flex: 1 }}>
-            {file == "" ? <img src={world} style={{ width: "40%", height: "70%", padding: "10px", float: "left" }} /> :
-              <Card
-                style={{ width: "40%", height: "100%", padding: "10px", float: "left" }}
-                cover={
-                  <img style={{ height: "250px" }} src={"http://localhost:9000/uploads/" + file} />
-                }
+      <div id="latest" className="container-fluid" style={{ padding: "50px" }}>
+        <div className="row" style={{ padding: "40px 0 70px" }}>
+          <div style={{ paddingBottom: "30px" }}>
+            {name == "" ? (
+              <h1
+                style={{
+                  paddingLeft: "1em",
+                  fontWeight: "bold",
+                  textTransform: "capitalize",
+                }}
               >
-
-              </Card>
-            }
-            {description == "" ? <p>
-              Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Vitae mattis tellus aliqu
-              am ac ut viverra viverra pharetra sed.
-              Lorem ipsum dolor sit amet, consecte
-              tur adipiscing elit. Vitae mattis tellus aliqu
-              am ac ut viverra viverra pharetra sed.
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Vitae mattis Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Vitae mattis tellus aliqu
-              am ac ut viverra viverra pharetra sed.
-              Lorem ipsum dolor sit amet, consecte
-              tur adipiscing elit. Vitae mattis tellus aliqu
-              am ac ut viverra viverra pharetra sed.
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Vitae mattis Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Vitae mattis tellus aliqu
-              am ac ut viverra viverra pharetra sed.
-              Lorem ipsum dolor sit amet, consecte
-              tur adipiscing elit. Vitae mattis tellus aliqu
-              am ac ut viverra viverra pharetra sed.
-              Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Vitae mattis
-            </p> :
-              <p>
-                {description}
-              </p>
-            }
-
-
+                Never the same again
+              </h1>
+            ) : (
+              <h1
+                style={{
+                  paddingLeft: "1em",
+                  fontWeight: "bold",
+                  textTransform: "capitalize",
+                }}
+              >
+                {name}
+              </h1>
+            )}
           </div>
-          <div className="col-lg-4" >
-            <div style={{ backgroundImage: `url(${abouut})`, width: "100%", height: "100%", backgroundSize: "cover" }}>
+          <div className="col-lg-8 col-md-8 col-sm-12" style={{ flex: 1 }}>
+            {file == "" ? (
+              <img
+                src={world}
+                style={{
+                  width: "40%",
+                  height: "70%",
+                  padding: "10px",
+                  float: "left",
+                }}
+              />
+            ) : (
+              <Card
+                style={{
+                  // width: "40%",
+                  // height: "auto",
+                  padding: "10px",
+                  float: "left",
+                }}
+                cover={
+                  <img
+                    style={{ width: "350px", height: "300px" }}
+                    src={"http://localhost:9000/uploads/" + file}
+                  />
+                }
+              ></Card>
+            )}
+            {description == "" ? (
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae
+                mattis tellus aliqu am ac ut viverra viverra pharetra sed. Lorem
+                ipsum dolor sit amet, consecte tur adipiscing elit. Vitae mattis
+                tellus aliqu am ac ut viverra viverra pharetra sed. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit. Vitae mattis Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit. Vitae mattis
+                tellus aliqu am ac ut viverra viverra pharetra sed. Lorem ipsum
+                dolor sit amet, consecte tur adipiscing elit. Vitae mattis
+                tellus aliqu am ac ut viverra viverra pharetra sed. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit. Vitae mattis Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit. Vitae mattis
+                tellus aliqu am ac ut viverra viverra pharetra sed. Lorem ipsum
+                dolor sit amet, consecte tur adipiscing elit. Vitae mattis
+                tellus aliqu am ac ut viverra viverra pharetra sed. Lorem ipsum
+                dolor sit amet, consectetur adipiscing elit. Vitae mattis
+              </p>
+            ) : (
+              <p style={{ fontSize: "20px" }}>{description}</p>
+            )}
+          </div>
+          <div className="col-lg-4 col-md-4 col-sm-12">
+            <div
+              style={{
+                backgroundImage: `url(${abouut})`,
+                width: "100%",
+                height: "100%",
+                backgroundSize: "cover",
+              }}
+            >
               {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
               <h1 className="Minidetail" style={{ color: "white" }}>
                 This world needs your help, Come join us because we care.
               </h1>
             </div>
-
           </div>
         </div>
         <h1 style={{ textAlign: "center" }}>
           <span style={{ fontSize: "50px" }}> Our</span>News
         </h1>
         <div className="row mainCard">
-
-          {
-            data.map((item) => {
-              return (
-                <div className="col-lg-4" style={{ padding: "4px" }}>
+          {data.map((item) => {
+            return (
+              <div className="col-lg-4" style={{ padding: "4px" }}>
+                <a href="#latest">
                   <Card
                     onClick={() => {
-                      setName(item.name)
-                      setDescription(item.description)
-                      setFile(item.file)
+                      setName(item.name);
+                      setDescription(item.description);
+                      setFile(item.file);
                     }}
                     style={{
                       backgroundColor: "#F5F5F5",
-
                     }}
                     cover={
                       <img
                         style={{ height: "250px" }}
-                        src={"http://localhost:9000/uploads/" + item.file} />
+                        src={"http://localhost:9000/uploads/" + item.file}
+                      />
                     }
                   >
-
-                    <h1 className="downText">
-                      {item.name}
-
-                    </h1>
+                    <h1 className="downText">{item.name}</h1>
                   </Card>
-                </div>
-
-              )
-            })
-
-
-
-          }
+                </a>
+              </div>
+            );
+          })}
         </div>
         <div style={{ paddingTop: "20px", width: "100%", textAlign: "center" }}>
           <a href="/News">
-            <Button style={{ color: "green", borderColor: "green", }}>
+            <Button style={{ color: "green", borderColor: "green" }}>
               News
             </Button>
           </a>
-
         </div>
       </div>
       <Footer />
-
     </div>
-
-
   );
 }
 
 export default News;
-
-
-
-
-
-
-
-
-
 
 // <div className="row">
 //           <div className="col-lg-6">

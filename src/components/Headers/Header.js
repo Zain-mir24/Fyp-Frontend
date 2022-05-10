@@ -1,141 +1,199 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Header.css";
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import { makeStyles } from '@material-ui/core/styles';
-import { Button, Typography, IconButton } from "@mui/material";
-import globalicon from "../../Images/globalicon.png"
-import { Navbar, Nav, NavItem, NavDropdown, Dropdown } from 'react-bootstrap';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    height: "60px",
-  },
-  appBarTransparent: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)'
-  },
-  appBarSolid: {
-    backgroundColor: 'rgba(67,129,168)'
-  }
-}))
 
+import { makeStyles } from "@material-ui/core/styles";
+import globalicon from "../../Images/globalicon.png";
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//     height: "60px",
+//   },
+//   appBarTransparent: {
+//     backgroundColor: "rgba(0, 0, 0, 0.7)",
+//   },
+//   appBarSolid: {
+//     backgroundColor: "rgba(67,129,168)",
+//   },
+// }));
 
 function Headers() {
-
   return (
-    <nav class="navbar navbar-expand-lg" style={{ height: "80px", backgroundColor: "rgba(0, 0, 0, 0.7)" }}>
-      <div class="container-fluid">
-        <div style={{ float: "left" }}>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark transparent-head fixed-top"
+      style={{
+        margin: "0 0 150px",
+      }}
+    >
+      <a class="navbar-brand" href="">
+        <img
+          className="navbar-brand"
+          src={globalicon}
+          // style={{ position: "absolute", top: "0" }}
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/">
+              Home
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/news">
+              News
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Campaign">
+              Campaign
+            </a>
+          </li>
 
-          <img class="navbar-brand" src={globalicon} style={{ height: "20%" }} />
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse justify-content-end ms-auto" style={{ float: "right" }} id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+          <li class="nav-item">
+            <a class="nav-link" href="/Video">
+              Social Media
+            </a>
+          </li>
+        </ul>
       </div>
+      <div style={{ paddingLeft: "150px" }}></div>
     </nav>
+    // <nav
+    //   className="navbar navbar-expand-lg"
+    //   style={{ height: "80px", backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+    // >
+    //   <div className="container-fluid">
+    //     <div>
+    //       <img
+    //         className="navbar-brand"
+    //         src={globalicon}
+    //         style={{ height: "20%" }}
+    //       />
+
+    //       <button
+    //         className="navbar-toggler"
+    //         type="button"
+    //         data-bs-toggle="collapse"
+    //         data-bs-target="#navbarSupportedContent"
+    //         aria-controls="navbarSupportedContent"
+    //         aria-expanded="false"
+    //         aria-label="Toggle navigation"
+    //       >
+    //         <span className="navbar-toggler-icon"></span>
+    //       </button>
+    //     </div>
+    //     <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    //       <ul className="navbar-nav me-auto">
+    //         <li className="nav-item">
+    //           <a className="nav-link active" aria-current="page" href="#">
+    //             Home
+    //           </a>
+    //         </li>
+    //         <li className="nav-item">
+    //           <a className="nav-link" href="#">
+    //             Link
+    //           </a>
+    //         </li>
+    //         <li className="nav-item dropdown">
+    //           <a
+    //             className="nav-link dropdown-toggle"
+    //             href="#"
+    //             id="navbarDropdown"
+    //             role="button"
+    //             data-bs-toggle="dropdown"
+    //             aria-expanded="false"
+    //           >
+    //             Dropdown
+    //           </a>
+    //           <ul
+    //             className="dropdown-menu dropdown-menu-end"
+    //             aria-labelledby="navbarDropdown"
+    //           >
+    //             <li>
+    //               <a className="dropdown-item" href="#">
+    //                 Action
+    //               </a>
+    //             </li>
+    //             <li>
+    //               <a className="dropdown-item" href="#">
+    //                 Another action
+    //               </a>
+    //             </li>
+    //             <li>
+    //               <hr className="dropdown-divider" />
+    //             </li>
+    //             <li>
+    //               <a className="dropdown-item" href="#">
+    //                 Something else here
+    //               </a>
+    //             </li>
+    //           </ul>
+    //         </li>
+    //       </ul>
+    //     </div>
+    //   </div>
+    // </nav>
   );
-
-
 }
 
-// <nav class="navbar navbar-expand-sm navbar-light bg-success">
-//   <div class="container-fluid ">
-//     <a class="navbar-brand " href="#">Navbar</a>
-//     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-//       <span class="navbar-toggler-icon"></span>
+// <nav className="navbar navbar-expand-sm navbar-light bg-success">
+//   <div className="container-fluid ">
+//     <a className="navbar-brand " href="#">Navbar</a>
+//     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+//       <span className="navbar-toggler-icon"></span>
 //     </button>
-//     <div class="collapse navbar-collapse " id="navbarSupportedContent">
-//       <ul class="navbar-nav ms-auto">
-//         <li class="nav-item">
-//           <a class="nav-link active" aria-current="page" href="#">Home</a>
+//     <div className="collapse navbar-collapse " id="navbarSupportedContent">
+//       <ul className="navbar-nav ms-auto">
+//         <li className="nav-item">
+//           <a className="nav-link active" aria-current="page" href="#">Home</a>
 //         </li>
-//         <li class="nav-item">
-//           <a class="nav-link" href="#">Course</a>
+//         <li className="nav-item">
+//           <a className="nav-link" href="#">Course</a>
 //         </li>
 //       </ul>
 //     </div>
 //   </div>
 // </nav>
 
-
 export default Headers;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* 
+/* 
       <div>
-        <nav class="navbar  navbar-expand-md " style={{ borderWidth: 1, borderColor: "black" }}>
-          <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+        <nav className="navbar  navbar-expand-md " style={{ borderWidth: 1, borderColor: "black" }}>
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/">
               GLOBAL REACH
             </a>
             <button
               data-toggle="collapse"
-              class="navbar-toggler"
+              className="navbar-toggler"
               data-target="#navcol-1"
             >
-              <span class="sr-only">Toggle navigation</span>
-              <span class="navbar-toggler-icon"></span>
+              <span className="sr-only">Toggle navigation</span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/">
+            <div className="collapse navbar-collapse" id="navcol-1">
+              <ul className="nav navbar-nav navbar-right">
+                <li className="nav-item" role="presentation">
+                  <a className="nav-link" href="/">
                     Homepage
                   </a>
                 </li>
-                <li class="nav-item dropdown" role="presentation">
-                  <div class="dropdown show" style={{ marginTop: "8px" }}>
+                <li className="nav-item dropdown" role="presentation">
+                  <div className="dropdown show" style={{ marginTop: "8px" }}>
                     <a
-                      class="btn dropdown-toggle"
+                      className="btn dropdown-toggle"
                       href="/News"
                       role="button"
                       id="dropdownMenuLink"
@@ -148,56 +206,59 @@ export default Headers;
                     </a>
 
                     <div
-                      class="dropdown-menu"
+                      className="dropdown-menu"
                       aria-labelledby="dropdownMenuLink"
                     >
-                      <a class="dropdown-item" href="/News"
+                      <a className="dropdown-item" href="/News"
                       >
                         Our  News
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Audit
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Zakat
                       </a>
                     </div>
                   </div>
-                </li> */}
-{/* <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/News">
+                </li> */
+
+/* <li className="nav-item" role="presentation">
+                  <a className="nav-link" href="/News">
                     News
                   </a>
-                </li> */}
-{/* <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/campaign">
+                </li> */
+
+/* <li className="nav-item" role="presentation">
+                  <a className="nav-link" href="/campaign">
                     About us
                   </a>
-                </li> */}
+                </li> */
 
-{/* <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/Campaign"> */}
-{/* <span class="glyphicon glyphicon-user"></span> */ }
-{/* About
+/* <li className="nav-item" role="presentation">
+                  <a className="nav-link" href="/Campaign"> */
+
+/* <span className="glyphicon glyphicon-user"></span> */
+
+/* About
                   </a>
                 </li>
 
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/Campaign">
-                    <span class="glyphicon glyphicon-user"></span> Services
+                <li className="nav-item" role="presentation">
+                  <a className="nav-link" href="/Campaign">
+                    <span className="glyphicon glyphicon-user"></span> Services
                   </a>
                 </li>
 
-                <li class="nav-item" role="presentation">
-                  <a class="nav-link" href="/Signin">
-                    <span class="glyphicon glyphicon-log-in"></span> My Account
+                <li className="nav-item" role="presentation">
+                  <a className="nav-link" href="/Signin">
+                    <span className="glyphicon glyphicon-log-in"></span> My Account
                   </a>
                 </li>
-              </ul> */}
-{/* </div>
+              </ul> */
+
+/* </div>
           </div>
-        </nav> */}
+        </nav> */
 
-
-
-{/* </div> */ }
+/* </div> */

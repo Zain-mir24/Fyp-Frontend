@@ -1,5 +1,25 @@
 /* header css above */
+.transparent-head{
+  background-color: rgba(0,0,0,0.95) !important;
+}
 
+.transparent-head .nav-link{
+  font-size: 21px;
+}
+
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+}
+
+.navbar-nav a:hover{
+  color: green !important;
+}
+
+.navbar-nav>.active>a {
+  color: green !important;
+  font-size: 27px;
+}
 /* .header-blue { */
   /* background: linear-gradient(135deg, #007a00, #34b465); */
   /* background-color: #007a00;
