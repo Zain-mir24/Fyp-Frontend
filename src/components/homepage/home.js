@@ -15,18 +15,15 @@ import { DONATION } from "../../store/Actions/userAction";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { withRouter } from "react-router";
 // import { checkDonation } from "../../store/reducers/User";
-import axios from "axios"
+import axios from "axios";
 import { val } from "../UserPanel/donorpanel/CampaignDetail";
-
-
 
 function SignIn() {
   // const [notif, setNotification] = useState("")
 
-
   return (
     <div>
-      <Header />
+      <Header active="home" />
       <SocialIcons />
       <LatestNews />
       <First />
@@ -39,9 +36,9 @@ function SignIn() {
       <Footer />
     </div>
   );
-} const mapStateToProps = (state) => ({
+}
+const mapStateToProps = (state) => ({
   users: state.persistedReducer.user.myuser,
 });
-
 
 export default withRouter(connect(mapStateToProps)(SignIn));
