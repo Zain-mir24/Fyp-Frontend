@@ -32,8 +32,12 @@ function News() {
     <div>
       <Header active="news" />
       <div
-        style={{ backgroundImage: `url(${world})`, marginTop: "-30px" }}
-        className="mydiv containerFluid"
+        style={{
+          backgroundImage: `url(${world})`,
+
+          backgroundSize: "cover",
+        }}
+        className="mydiv"
       >
         <div className="alignNews">
           <h1 className="title">

@@ -112,7 +112,7 @@ function LoanAppeal() {
         </Form.Item>
         <Form.Item
           name="Loan Documents"
-          label=" Give Documents of your loan here"
+          label=" Give Documents of your loan here(only zip folder)"
           onChange={saveFile}
           rules={[
             {
@@ -133,11 +133,16 @@ function LoanAppeal() {
           ]}
         >
           <Col span={5}>
-            <Input
-              onChange={(e) => {
-                setLoan(e.target.value);
+            <InputNumber
+              style={{ width: "80%" }}
+              defaultValue={1000}
+              min={1000}
+              formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              parser={value => value.replace(/\$\s?|(,*)/g, '')}
+              required
+              onChange={(value) => {
+                setLoan(value);
               }}
-
             />
           </Col>
         </Form.Item>

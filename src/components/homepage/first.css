@@ -9,3 +9,21 @@
     text-align: center;
     justify-content: center;
    }
+   @media (max-width:999px) and(min-width:400px) {
+    .icon{
+        background-image: url("../../Images/globalicon.png");
+        height: 100px;
+        width: 100%;
+      background-position: center;
+    }
+   }
+
+   @media (max-width:390px)  {
+    .icon{
+        background-image: url("../../Images/globalicon.png");
+        height: 100px;
+        width: 100%;
+      background-position:left;
+      padding-right: 4em;
+    }
+   }

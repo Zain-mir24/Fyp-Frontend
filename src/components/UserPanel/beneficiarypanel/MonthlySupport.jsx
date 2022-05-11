@@ -15,14 +15,15 @@ import { UploadOutlined } from "@ant-design/icons";
 import { connect, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
-
+import PhoneInput from 'react-phone-number-input'
+import 'react-phone-number-input/style.css'
 const axios = require("axios");
 
 export default function MonthlySupport() {
   const user = useSelector(selectUser);
 
   const [bid, setBid] = useState();
-  const [phone, setphone] = useState(0);
+  const [phone, setphone] = useState("");
   const [cnic, setcnic] = useState(0);
   const [category, setcategory] = useState("");
   const [sourceOfIncome, setsourceOfIncome] = useState("");
@@ -82,6 +83,7 @@ export default function MonthlySupport() {
     }
   ]
   const getData = async () => {
+    console.log(phone, "phonenumber")
     await setBid(user.userId);
     const formData = new FormData();
     formData.append("bid", bid);
@@ -143,10 +145,8 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              setphone(e.target.value);
-            }}
+          <PhoneInput
+            onChange={setphone}
           />
         </Form.Item>
         <Form.Item
@@ -192,9 +192,15 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              setsourceOfIncome(e.target.value);
+          <InputNumber
+            style={{ width: "40%" }}
+            defaultValue={1000}
+            min={1000}
+            formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+            required
+            onChange={(value) => {
+              setsourceOfIncome(value);
             }}
           />
         </Form.Item>
@@ -224,9 +230,15 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              settotalIncome(e.target.value);
+          <InputNumber
+            style={{ width: "40%" }}
+            defaultValue={1000}
+            min={1000}
+            formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+            required
+            onChange={(value) => {
+              settotalIncome(value);
             }}
           />
         </Form.Item>
@@ -240,9 +252,15 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            style={{ width: "40%" }}
+            defaultValue={1000}
+            min={1000}
+            formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+            required
             onChange={(e) => {
-              settotalExpenses(e.target.value);
+              settotalExpenses(e);
             }}
           />
         </Form.Item>
@@ -453,15 +471,21 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            style={{ width: "40%" }}
+            defaultValue={1000}
+            min={1000}
+            formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+            required
             onChange={(e) => {
-              setmedicineCost(e.target.value);
+              setmedicineCost(e);
             }}
           />
         </Form.Item>
         <Form.Item
           name="Bform"
-          label="Attach Bform"
+          label="Attach Bform(pdf only)"
           onChange={saveBform}
           rules={[
             {
@@ -470,16 +494,16 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <Upload>
+          <Upload accept=".pdf">
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
         </Form.Item>
         <Form.Item
-          label="Attach Death Certificate of husband if widow (optional)"
+          label="Attach Death Certificate of husband if widow (optional)(pdfonly)"
           onChange={saveDeathCertificate}
 
         >
-          <Upload>
+          <Upload accept=".pdf">
             <Button icon={<UploadOutlined />}>Upload media files</Button>
           </Upload>
         </Form.Item>

@@ -32,7 +32,7 @@ const Second = () => {
     getData()
   }, [])
   return (
-    <div style={{ height: "auto" }}>
+    <div style={{ height: "auto", marginTop: "40px" }}>
       <h1 style={{ textAlign: "center" }}>
         <span style={{ fontSize: "50px" }}> Latest </span>News
       </h1>
@@ -42,23 +42,25 @@ const Second = () => {
           data.map((item) => {
             return (
               <div className="col-lg-4">
-                <Card
-                  style={{
-                    backgroundColor: "#F5F5F5",
+                <a href="/News">
+                  <Card
+                    style={{
+                      backgroundColor: "#F5F5F5",
 
-                  }}
-                  cover={
-                    <img
-                      style={{ height: "250px" }}
-                      src={"http://localhost:9000/uploads/" + item.file} />
-                  }
-                >
+                    }}
+                    cover={
+                      <img
+                        style={{ height: "250px" }}
+                        src={"http://localhost:9000/uploads/" + item.file} />
+                    }
+                  >
 
-                  <h1 className="downText">
-                    {item.name}
+                    <h1 className="downText">
+                      {item.name}
 
-                  </h1>
-                </Card>
+                    </h1>
+                  </Card>
+                </a>
               </div>
 
             )

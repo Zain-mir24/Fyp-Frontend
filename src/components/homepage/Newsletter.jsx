@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Input, Space, Typography, Button, Form } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import world from "../../Images/worldmap.png"
-
+import "./Newsletter.css"
 import axios from "axios";
 const { Title } = Typography;
 
@@ -24,13 +24,7 @@ export default function Newsletter() {
   };
   return (
     <div
-      style={{
-        backgroundImage: `url(${world})`,
-        backgroundColor: "#F5F5F5",
-        borderRadius: "5px",
-        marginTop: "-10px",
-        padding: "20px",
-      }}
+      className="mainNews"
     >
       <div class="container">
         <div style={{ textAlign: "center" }}>
@@ -39,17 +33,8 @@ export default function Newsletter() {
           </Title>
         </div>
         <div
-          className="row"
-          style={{
-            width: "50%",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginBottom: "30px",
-            padding: "40px 0",
-            width: "40%",
-            borderRadius: "5px",
-            backgroundColor: "#929292",
-          }}
+          className="row inTouch"
+
         >
           <h1 style={{ textAlign: "center", color: "white", fontSize: "40px" }}>
             Get in touch

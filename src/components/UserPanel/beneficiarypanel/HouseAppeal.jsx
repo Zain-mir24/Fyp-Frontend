@@ -16,6 +16,8 @@ import { UploadOutlined } from "@ant-design/icons";
 import { connect, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
+import PhoneInput from 'react-phone-number-input'
+
 const axios = require("axios");
 
 export default function HouseAppeal() {
@@ -45,12 +47,30 @@ export default function HouseAppeal() {
   const [familyAlive, setFamilyAlive] = useState(true);
   const [images, setImages] = useState();
   const [fileName, setFileName] = useState();
+  const [image2, setImage2] = useState();
+  const [fileName2, setFileName2] = useState();
+  const [image3, setImage3] = useState();
+  const [fileName3, setFileName3] = useState();
+  const [image4, setImage4] = useState();
+  const [fileName4, setFileName4] = useState();
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState();
 
   const saveFile = (e) => {
     setImages(e.target.files[0]);
     setFileName(e.target.files[0].name);
+  };
+  const saveFile2 = (e) => {
+    setImage2(e.target.files[0]);
+    setFileName2(e.target.files[0].name);
+  };
+  const saveFile3 = (e) => {
+    setImage3(e.target.files[0]);
+    setFileName3(e.target.files[0].name);
+  };
+  const saveFile4 = (e) => {
+    setImage4(e.target.files[0]);
+    setFileName4(e.target.files[0].name);
   };
 
   const getData = async () => {
@@ -77,6 +97,12 @@ export default function HouseAppeal() {
     formData.append("contructionDetail", contructionDetail);
     formData.append("images", images);
     formData.append("fileName", fileName);
+    formData.append("image2", image2);
+    formData.append("fileName2", fileName2);
+    formData.append("image3", image3);
+    formData.append("fileName3", fileName3);
+    formData.append("image4", image4);
+    formData.append("fileName4", fileName4);
     formData.append("family", JSON.stringify(family));
     try {
       const res = await axios.post(
@@ -117,6 +143,7 @@ export default function HouseAppeal() {
         }}
       >
         <Form.Item
+          name="Name: "
           label="Name: "
           rules={[
             {
@@ -132,6 +159,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Guardian:"
           label="Guardian: "
           rules={[
             {
@@ -147,6 +175,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Status: "
           label="Status: "
           rules={[
             {
@@ -162,6 +191,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="CNIC: "
           label="CNIC: "
           rules={[
             {
@@ -177,6 +207,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Cell: "
           label="Cell: "
           rules={[
             {
@@ -185,13 +216,13 @@ export default function HouseAppeal() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              setCell(e.target.value);
-            }}
+          <PhoneInput
+            style={{ width: "30%" }}
+            onChange={setCell}
           />
         </Form.Item>
         <Form.Item
+          name="Dependents: "
           label="Dependents: "
           rules={[
             {
@@ -207,6 +238,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Source OF Income"
           label="Source Of Income: "
           rules={[
             {
@@ -223,10 +255,14 @@ export default function HouseAppeal() {
         </Form.Item>
         <br />
         <div style={{ textAlign: "left" }}>
-          <h1>{count} Family Member Added</h1>
+          <h1>{count} Family Member   <span style={{ fontSize: "20px" }}>
+            ( optional)
+          </span></h1>
+
         </div>
         <br />
         <Form.Item
+
           label="Name: "
           rules={[
             {
@@ -242,7 +278,8 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
-          label="Age: "
+
+          label="Age( in years): "
           rules={[
             {
               required: true,
@@ -301,6 +338,7 @@ export default function HouseAppeal() {
         </div>
         <br />
         <Form.Item
+          name="Montlhy Income: "
           label="Monthly Income: "
           rules={[
             {
@@ -309,13 +347,19 @@ export default function HouseAppeal() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              setMonthlyincome(e.target.value);
+          <InputNumber
+            style={{ width: "40%" }}
+            defaultValue={1000}
+            formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+            required
+            onChange={(value) => {
+              setMonthlyincome(value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Address: "
           label="Address: "
           rules={[
             {
@@ -331,6 +375,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Accommodation Self: "
           label="Accommodation Self: "
           rules={[
             {
@@ -346,6 +391,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Accomodation Donated: "
           label="Accomodation Donated: "
           rules={[
             {
@@ -361,6 +407,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Accomodation Rent: "
           label="Accomodation Rent: "
           rules={[
             {
@@ -376,6 +423,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Owner Of Land"
           label="Owner Of Land: "
           rules={[
             {
@@ -391,6 +439,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Plot Dimensions"
           label="Plot Dimensions: "
           rules={[
             {
@@ -406,6 +455,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
+          name="Estimated Cost"
           label="Estimated Cost: "
           rules={[
             {
@@ -414,13 +464,19 @@ export default function HouseAppeal() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              setEstimatedCost(e.target.value);
+          <InputNumber
+            style={{ width: "40%" }}
+            defaultValue={1000}
+            formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+            parser={value => value.replace(/\$\s?|(,*)/g, '')}
+            required
+            onChange={(value) => {
+              setEstimatedCost(value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Estimated Time Frame:"
           label="Estimated Time Frame: "
           rules={[
             {
@@ -430,12 +486,14 @@ export default function HouseAppeal() {
           ]}
         >
           <Input
+            style={{ width: "30%" }}
             onChange={(e) => {
               setEstimatedTimeFrame(e.target.value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Construction Detail"
           label="Construction Detail: "
           rules={[
             {
@@ -451,7 +509,7 @@ export default function HouseAppeal() {
           />
         </Form.Item>
         <Form.Item
-          label="Attach Images"
+          label="house image 1"
           onChange={saveFile}
           rules={[
             {
@@ -460,10 +518,65 @@ export default function HouseAppeal() {
             },
           ]}
         >
-          <Upload>
-            <Button icon={<UploadOutlined />}>Upload media files</Button>
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
           </Upload>
         </Form.Item>
+        <Form.Item
+          label="house image 2"
+          onChange={saveFile2}
+          rules={[
+            {
+              required: true,
+              message: "Please share picture or video for the campaign",
+            },
+          ]}
+        >
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
+          </Upload>
+        </Form.Item>
+        <Form.Item
+          label="house image 3"
+          onChange={saveFile3}
+          rules={[
+            {
+              required: true,
+              message: "Please share picture or video for the campaign",
+            },
+          ]}
+        >
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
+          </Upload>
+        </Form.Item>
+        <Form.Item
+          label="house image 4"
+          onChange={saveFile4}
+          rules={[
+            {
+              required: true,
+              message: "Please share picture or video for the campaign",
+            },
+          ]}
+        >
+          <Upload
+            maxCount={1}
+            accept="image/*"
+          >
+            <Button icon={<UploadOutlined />}>Upload image</Button>
+          </Upload>
+        </Form.Item>
+
         <Form.Item>
           <Button
             type="primary"

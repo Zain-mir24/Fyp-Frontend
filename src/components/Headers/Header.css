@@ -14,6 +14,7 @@
 
 .navbar-nav a:hover{
   color: green !important;
+  font-size: 27px;
 }
 
 .navbar-nav>.active>a {

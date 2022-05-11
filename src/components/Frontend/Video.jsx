@@ -25,8 +25,8 @@ export default function Video() {
   return (
     <div>
       <Header />
-      <div style={{ textAlign: "center" }}>
-        <h1>Social Video</h1>
+      <div style={{ textAlign: "center", margin: "170px 0 0" }}>
+        <h1 style={{ paddingBottom: "50px" }}>Instagram Gallery</h1>
       </div>
       <div className="container">
         <div className="row">
@@ -57,3 +57,60 @@ export default function Video() {
     </div>
   );
 }
+
+
+
+
+
+import FCMTokenModal from “../models/FCMTokens”;
+import cerdentials from “./serviceAccount”;
+import * as admin from “firebase-admin”;
+const serviceAccount = cerdentials as admin.ServiceAccount;
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+class SendNotification {
+  notification_options = {
+    priority: “high”,
+    timeToLive: 60 * 60 * 24,
+  };
+  constructor() {}
+  fireNotification = async (CustomerID: any, Title: any, Message: any) => {
+    console.log(“Token is working”);
+    console.log(CustomerID);
+    let token: any = [];
+    await FCMTokenModal.find({ CustomerID: CustomerID, Status: true })
+      .then(async (data: any) => {
+        let data1 = [];
+        for (let i = 0; i < data.length; i++) {
+          await data1.push(data[i].Token);
+        }
+        console.log(data1);
+        token = await data1;
+      })
+      .catch((err) => console.log(err));
+    let safi = await {
+      safi: “Party”,
+    };
+    const payload = await {
+      notification: {
+        title: Title,
+        body: Message + “|” + Date.now(),
+      },
+      tokens: token,
+      // NOTE: The ‘data’ object is inside payload, not inside notification
+    };
+    const options = await this.notification_options;
+    await console.log(token);
+    await admin
+      .messaging()
+      .sendMulticast(payload)
+      .then(async (response) => {
+        console.log(“Notification sent successfully”);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+}
+export default SendNotification;

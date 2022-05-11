@@ -52,7 +52,7 @@ function Beneficiarypanel({ history, ...props }) {
             >
               {user.username}
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
               onClick={(e) => {
@@ -60,21 +60,21 @@ function Beneficiarypanel({ history, ...props }) {
               }}
             >
               Home
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item key="3" icon={<DesktopOutlined />}>
               Loan status
             </Menu.Item>
 
             <Menu.Item
               key="9"
-              icon={<ExclamationCircleFilled />}
+              // icon={<ExclamationCircleFilled />}
               onClick={(e) => {
                 setContent("campaign");
               }}
             >
               Appeal for campaign
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="22"
               icon={<ExclamationCircleFilled />}
               onClick={(e) => {
@@ -82,11 +82,11 @@ function Beneficiarypanel({ history, ...props }) {
               }}
             >
               Active Campaign
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item
               key="10"
-              icon={<ExclamationCircleFilled />}
+              // icon={<ExclamationCircleFilled />}
               onClick={() => {
                 setContent("loan");
               }}
@@ -95,7 +95,7 @@ function Beneficiarypanel({ history, ...props }) {
             </Menu.Item>
             <Menu.Item
               key="11"
-              icon={<CheckCircleFilled />}
+              // icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("Monthly Support");
               }}
@@ -104,7 +104,7 @@ function Beneficiarypanel({ history, ...props }) {
             </Menu.Item>
             <Menu.Item
               key="12"
-              icon={<CheckCircleFilled />}
+              // icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("House Appeal");
               }}
@@ -113,12 +113,12 @@ function Beneficiarypanel({ history, ...props }) {
             </Menu.Item>
             <Menu.Item
               key="13"
-              icon={<CheckCircleFilled />}
+              // icon={<CheckCircleFilled />}
               onClick={() => {
                 setContent("LoanManagement");
               }}
             >
-              Loan Management
+              Loan record
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
               <Menu.Item>

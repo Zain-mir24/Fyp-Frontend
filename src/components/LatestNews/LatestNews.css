@@ -38,12 +38,26 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
-/* .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  background-color: transparent !important;
-  color: white;
-  border-radius: 0px;
+.textofMain{
+  color:white;
+  text-align: left;
 }
-.ant-select-arrow {
-  color: white !important;
-} */
+
+/* Responsive for screen below laptop */
+@media (max-width:766px) and (min-width: 300px) {
+  .align{
+    padding-left: 2em;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .textofMain{
+    color:white;
+    text-align: left;
+    width:40%;
+  }
+  
+}
+

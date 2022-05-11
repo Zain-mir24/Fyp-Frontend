@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Checkbox, Upload, message, Col } from "antd";
+import { Form, Input, InputNumber, Button, Checkbox, Upload, message, Col } from "antd";
 import { UserOutlined, LockOutlined, UploadOutlined } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
@@ -90,15 +90,23 @@ function CampaignAppeal() {
         <Form.Item
           name="Donation amount"
           label="Donation amount"
-          onChange={(e) => {
-            setDonation(e.target.value);
-          }}
+
           rules={[
             { required: true, message: "Please enter donation amount needed" },
           ]}
         >
           <Col span={5}>
-            <Input />
+            <InputNumber
+              style={{ width: "80%" }}
+              defaultValue={1000}
+              min={1000}
+              formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              parser={value => value.replace(/\$\s?|(,*)/g, '')}
+              required
+              onChange={(value) => {
+                setDonation(value);
+              }}
+            />
           </Col>
         </Form.Item>
         <Form.Item
@@ -108,7 +116,7 @@ function CampaignAppeal() {
           rules={[
             {
               required: true,
-              message: "Please share picture or video for the campaign",
+              message: "Please upload zip folder containing all your documents",
             },
           ]}
         >

@@ -1,11 +1,8 @@
-.rowDiv{
-    
-  
-}
+
 .wholeDiv{
-    height: 500px;
-    
-  
+ height: 600px; 
+  background-image: url("../../Images/worldmap.png");
+padding: 30px;
 } 
 .textDiv{
     color: #79787f;
@@ -20,10 +17,28 @@
     font-weight: 500;
     line-height: 1.44em;
     font-size: 18px;
-     margin-left: 15px;
-     padding:2px;
-
+    margin-left: 15px;
+    padding:2px;
 }
-.leftDiv{
-
+.buttonBack{
+    margin:10%;
+    background-color: #279040;
+    width: 70%;
+    height:10%;
+}
+@media (max-width:700px) and (min-width:300px){
+    .buttonBack{
+        margin:30%;
+        background-color: #279040;
+        width: 40%;
+        height:10%;
+    }
+    .rowDiv{    
+       height:900px;
+       margin-bottom: 500px;
+    }
+    .wholeDiv{
+        height: 800px;   
+      background-image: url("../../Images/worldmap.png");
+    } 
 }
