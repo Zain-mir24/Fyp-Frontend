@@ -2,6 +2,7 @@
     height: calc(100vh - 70px);
     display: flex;
     margin: -30px -40px;
+    height: 700px;
 }
 
 .chatMenu{
@@ -16,14 +17,31 @@
     flex: 3;
 }
 
-.chatMenuWrapper,.chatBoxWrapper,.chatOnlineWrapper{
+.chatMenuWr,.chatBoxWrap{
     padding: 20px;
-    background-color: aqua;
+    background-color: rgb(245,243,243);
     height: 100%;
 }
-
+.chatOnlinebox{
+    background-color: rgb(245,243,243) !important;
+    
+}
 .messageInput{
     margin-top: 50px;
-    width: 100%;
+    width: 80%;
     align-items: bottom;
+}
+.chatSubmitButton{
+    width: 70px;
+    height: 40px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: teal;
+    color:white
+}
+.chatBoxTop{
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 10px;
 }

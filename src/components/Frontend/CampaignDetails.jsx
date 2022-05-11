@@ -135,7 +135,7 @@ export default function CampaignDetails({ history }) {
               />}
 
               {
-                totalamount < 1000 ?
+                totalamount < 1000 || totalamount > 999999 ?
                   null : <StripeCheckout
                     stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
                     token={sendPayment}

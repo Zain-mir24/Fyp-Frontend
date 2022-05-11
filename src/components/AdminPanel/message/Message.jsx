@@ -6,7 +6,7 @@ export default function Message({ own, message }) {
   return (
     <div className={own ? "message own" : "message"}>
       <div className="messageTop">
-        <p className="messageText">{message.text}</p>
+        <p className="messageText2">{message.text}</p>
       </div>
       <div className="messageBottom">{format(message.createdAt)}</div>
     </div>
