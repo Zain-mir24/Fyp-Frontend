@@ -136,7 +136,7 @@ function Chat(props) {
           {conversation.map((item) => {
             return (
               <div onClick={() => setCurrentChat(item)}>
-                <Conversation />
+                <Conversation userId={item.member[0]} />
               </div>
             );
           })}
@@ -196,7 +196,9 @@ function Chat(props) {
               }}
               value={newMessage}
             />
-            <button className="chatSubmitButton" onClick={handleSubmit}>Send</button>
+            <button className="chatSubmitButton" onClick={handleSubmit}>
+              Send
+            </button>
           </div>
         </div>
       </div>
