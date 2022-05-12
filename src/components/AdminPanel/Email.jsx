@@ -64,7 +64,7 @@ export default function Email() {
     console.log("Success:", values);
     await axios
       .request({
-        baseURL: "https://damp-stream-39096.herokuapp.com/adminPanel",
+        baseURL: "http://localhost:9000/adminPanel",
         url: "/sendAllEmail",
         method: "post",
         data: {
