@@ -5,7 +5,7 @@
 .messageTop{
     display: flex;
 }
-.messageText{
+.messageText2{
     padding: 20px 0;
     background-color: blue;
     color: white;
@@ -16,7 +16,7 @@
 .message.own{
     align-items: flex-end;
 }
-.message.own .messageText{
-    background-color: brown;
+.message.own .messageText2{
+    background-color: grey;
     align-items: flex-end;
 }

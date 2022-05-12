@@ -72,7 +72,7 @@ function Chat(props) {
     try {
       const res = await axios.get("http://localhost:9000/conversation/");
       setConversation(res.data);
-      console.log(res.data);
+      console.log(res.data, "conversation");
     } catch (e) {
       console.log(e);
     }
@@ -132,7 +132,7 @@ function Chat(props) {
   return (
     <div className="messenger">
       <div className="chatMenu">
-        <div className="chatMenuWrapper">
+        <div className="chatMenuWr">
           {conversation.map((item) => {
             return (
               <div onClick={() => setCurrentChat(item)}>
@@ -162,7 +162,7 @@ function Chat(props) {
         </div>
       </div>
       <div className="chatBox">
-        <div className="chatBoxWrapper">
+        <div className="chatBoxWrap">
           {currentChat ? (
             <>
               <div className="chatBoxTop">
@@ -196,13 +196,13 @@ function Chat(props) {
               }}
               value={newMessage}
             />
-            <button onClick={handleSubmit}>Send</button>
+            <button className="chatSubmitButton" onClick={handleSubmit}>Send</button>
           </div>
         </div>
       </div>
-      <div className="chatOnline">
-        <div className="chatOnlineWrapper">Online</div>
-      </div>
+      {/* <div className="chatOnline">
+        <div className="chatOnlinebox">Online</div>
+      </div> */}
     </div>
   );
 }
