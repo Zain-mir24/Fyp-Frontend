@@ -16,7 +16,9 @@ import globalicon from "../../Images/globalicon.png";
 //   },
 // }));
 
-function Headers() {
+function Headers(props) {
+  console.log(props.active);
+  let activeClass = props.active;
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark transparent-head fixed-top"
@@ -44,25 +46,30 @@ function Headers() {
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
-          <li className="nav-item ">
+          <li className={activeClass === "home" ? "nav-item active" : ""}>
             <a className="nav-link" href="/">
               Home
             </a>
           </li>
-          <li className="nav-item active">
+          <li className={activeClass === "news" ? "nav-item active" : ""}>
             <a className="nav-link" href="/news">
               News
             </a>
           </li>
-          <li className="nav-item">
+          <li className={activeClass === "campaign" ? "nav-item active" : ""}>
             <a className="nav-link" href="/Campaign">
               Campaign
             </a>
           </li>
 
-          <li className="nav-item">
+          <li className={activeClass === "social" ? "nav-item active" : ""}>
             <a className="nav-link" href="/Video">
               Social Media
+            </a>
+          </li>
+          <li className={activeClass === "Signin" ? "nav-item active" : ""}>
+            <a className="nav-link" href="/Signin">
+              Signin
             </a>
           </li>
         </ul>

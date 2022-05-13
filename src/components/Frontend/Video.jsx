@@ -24,7 +24,7 @@ export default function Video() {
   useEffect(getLinkData, []);
   return (
     <div>
-      <Header />
+      <Header active="social" />
       <div style={{ textAlign: "center", margin: "170px 0 0" }}>
         <h1 style={{ paddingBottom: "50px" }}>Instagram Gallery</h1>
       </div>
@@ -57,6 +57,3 @@ export default function Video() {
     </div>
   );
 }
-
-
-

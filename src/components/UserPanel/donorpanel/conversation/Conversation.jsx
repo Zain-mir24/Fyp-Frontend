@@ -4,7 +4,7 @@ import "./conversation.css";
 export default function Conversation() {
   return (
     <div className="conversation">
-      <span className="conversationName">John Doe</span>
+      <span className="conversationName">Global Reach Admin</span>
     </div>
   );
 }

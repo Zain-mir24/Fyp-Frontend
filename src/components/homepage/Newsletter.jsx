@@ -15,7 +15,7 @@ export default function Newsletter() {
       await axios.post("http://localhost:9000/adminPanel/saveEmail", {
         Email: email,
       });
-      alert("Check your email to verify");
+      alert("your email has been added to our newsletter");
       console.log(email);
     } catch (e) {
       alert("email not subscibed! Sorry for inconvenience. Try again later ");
@@ -36,7 +36,7 @@ export default function Newsletter() {
           className="row inTouch"
 
         >
-          <h1 style={{ textAlign: "center", color: "white", fontSize: "40px" }}>
+          <h1 style={{ textAlign: "center", color: "white", fontSize: "40px", marginLeft: "auto", marginRight: "auto" }}>
             Get in touch
           </h1>
           <h3 style={{ textAlign: "center", color: "white" }}>

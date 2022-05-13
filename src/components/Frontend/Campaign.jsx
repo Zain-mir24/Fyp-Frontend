@@ -2,8 +2,8 @@ import { React, useEffect, useState } from "react";
 import Header from "../Headers/Header";
 import { Card } from "antd";
 import axios from "axios";
-import Footer from "../Footer/Footer"
-import hands from "../../Images/hands.png"
+import Footer from "../Footer/Footer";
+import hands from "../../Images/hands.png";
 
 import Campaignrender from "./Campaignrender";
 const { Meta } = Card;
@@ -13,9 +13,7 @@ export default function Campaign() {
 
   const getData = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/viewCampaigns"
-      );
+      const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
       await setData(res.data.campaign);
       console.log(res.data.campaign);
     } catch (e) {
@@ -27,15 +25,23 @@ export default function Campaign() {
 
   return (
     <div>
-      <Header />
-      <div style={{ backgroundImage: `url(${hands})`, height: "500px", width: "100%", position: "relative", backgroundSize: "contain" }} className=" containerFluid">
+      <Header active="campaign" />
+      <div
+        style={{
+          backgroundImage: `url(${hands})`,
+          height: "500px",
+          width: "100%",
+          position: "relative",
+          backgroundSize: "contain",
+        }}
+        className=" containerFluid"
+      >
         <div className="alignNews">
           <h1 className="title">
-            <span style={{ fontSize: "90px" }}>
-              Your
-            </span> Help Will Mean Alot</h1>
+            <span style={{ fontSize: "90px" }}>Your</span> Help Will Mean Alot
+          </h1>
           <p style={{ color: "#929292" }}>
-            We are making  endless efforts to help people <br></br>
+            We are making endless efforts to help people <br></br>
             around the world overcome hardships they face,<br></br>
             which could and will not be possible without <br></br>
             your help !
@@ -49,7 +55,7 @@ export default function Campaign() {
             </div>
           </a> */}
         </div>
-      </div >
+      </div>
 
       <div className="container">
         <h1 style={{ fontSize: "60px", textAlign: "center" }}>Campaigns</h1>
@@ -67,28 +73,34 @@ export default function Campaign() {
         {/* campaign 1 would be here */}
 
         <div className="row">
-          {data == undefined ? null : data.map((item) => {
-            console.log(item.name)
-            return (
-              <div
-                className="col-lg-12"
-                onClick={() => {
-                  window.location.href =
-                    "/CampaignDetail?name=" +
-                    item.name +
-                    "&description=" +
-                    item.description +
-                    "&img=" +
-                    item.fileName +
-                    "&donation=" +
-                    item.donation +
-                    "&campaignid=" +
-                    item._id;
-                }}
-              >
-                <Campaignrender name={item.name} description={item.description} img={item.fileName}
-                  donation={item.donation} />
-                {/* <Card
+          {data == undefined
+            ? null
+            : data.map((item) => {
+                console.log(item.name);
+                return (
+                  <div
+                    className="col-lg-12"
+                    onClick={() => {
+                      window.location.href =
+                        "/CampaignDetail?name=" +
+                        item.name +
+                        "&description=" +
+                        item.description +
+                        "&img=" +
+                        item.fileName +
+                        "&donation=" +
+                        item.donation +
+                        "&campaignid=" +
+                        item._id;
+                    }}
+                  >
+                    <Campaignrender
+                      name={item.name}
+                      description={item.description}
+                      img={item.fileName}
+                      donation={item.donation}
+                    />
+                    {/* <Card
         hoverable
         style={{ width: "340px", padding: "30px" }}
         cover={
@@ -107,12 +119,12 @@ export default function Campaign() {
           description={item.description.substring(0, 80) + " ..."}
         />
       </Card> */}
-              </div>
-            );
-          })}
+                  </div>
+                );
+              })}
         </div>
       </div>
       <Footer />
-    </div >
+    </div>
   );
 }
