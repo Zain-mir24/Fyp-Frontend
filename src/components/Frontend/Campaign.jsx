@@ -8,6 +8,7 @@ import StripeCheckout from "react-stripe-checkout";
 import abouut from "../../Images/abouut.png";
 
 import Campaignrender from "./Campaignrender";
+import { borderRadius } from "@mui/material/node_modules/@mui/system";
 const { Meta } = Card;
 
 export default function Campaign() {
@@ -300,14 +301,88 @@ export default function Campaign() {
           </div>
 
         </div>
-        <div>
-          <h1>
-            Static carousel will be here
-          </h1>
+        <h1 style={{ textAlign: "center", fontSize: "60px" }}>
+          Our achievments
+        </h1>
+        <div className="row">
+
+          <div
+            className="col-lg-4 col-sm-4 col-md-4"
+
+          >
+            <div
+              style={{
+                backgroundImage: `url(${abouut})`,
+                width: "90%",
+                backgroundSize: "cover",
+                height: "300px",
+                borderRadius: "10px"
+
+
+              }}>
+              <h1 style={{ color: "white", textAlign: "center", fontWeight: "20", fontSize: "30px", paddingTop: "80px" }}>
+                We have build for houses for our community
+              </h1>
+            </div>
+            {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
+
+            <h1 style={{ color: "green", textAlign: "center", fontSize: "60px" }}>
+              7000+
+            </h1>
+          </div>
+          <div
+            className="col-lg-4 col-sm-4 col-md-4"
+
+          >
+            <div
+              style={{
+                backgroundImage: `url(${abouut})`,
+                width: "90%",
+                backgroundSize: "cover",
+                height: "300px",
+                borderRadius: "10px"
+
+
+              }}>
+              <h1 style={{ color: "white", textAlign: "center", fontWeight: "20", fontSize: "30px", paddingTop: "80px" }}>
+                We have given interest free loan
+
+              </h1>
+            </div>
+            {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
+
+            <h1 style={{ color: "green", textAlign: "center", fontSize: "60px" }}>
+              7000+
+            </h1>
+          </div>
+          <div
+            className="col-lg-4 col-sm-4 col-md-4"
+
+          >
+            <div
+              style={{
+                backgroundImage: `url(${abouut})`,
+                width: "90%",
+                backgroundSize: "cover",
+                height: "300px",
+                borderRadius: "10px"
+
+              }}>
+              <h1 style={{ color: "white", textAlign: "center", fontWeight: "20", fontSize: "30px", marginLeft: "auto", marginRight: "auto", paddingTop: "80px" }}>
+                We have deievered food rashons to families
+              </h1>
+            </div>
+            {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
+
+            <h1 style={{ color: "green", textAlign: "center", fontSize: "60px" }}>
+              7000+
+            </h1>
+          </div>
+
         </div>
       </div>
       <Footer />
-    </div>
+    </div >
   );
 }
 
