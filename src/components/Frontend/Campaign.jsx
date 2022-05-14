@@ -4,6 +4,9 @@ import { Layout, Image, Card, Progress, Button, Input } from "antd";
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import hands from "../../Images/hands.png";
+import campaignSection1 from "../../Images/campaignSection1.jpg"
+import campaignSection2 from "../../Images/campaignSection2.jpg"
+import campaignSection3 from "../../Images/campaignSection3.jpg"
 import StripeCheckout from "react-stripe-checkout";
 import abouut from "../../Images/abouut.png";
 
@@ -172,7 +175,7 @@ export default function Campaign() {
                   }}
                 >
                   {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
-                  <h1 style={{ color: "white", textAlign: "center" }}>
+                  <h1 style={{ color: "white", textAlign: "center", fontSize: "24px", fontWeight: "20", paddingTop: "60px" }}>
                     This world needs your help, Come join us because we care.
                     psum dolor sit amet, consecte tur adipiscing elit. Vitae mattis
                     tellus aliqu am ac ut viverra viverra pharetra sed. Lorem ipsum
@@ -312,15 +315,16 @@ export default function Campaign() {
           >
             <div
               style={{
-                backgroundImage: `url(${abouut})`,
+                backgroundImage: `url(${campaignSection1})`,
                 width: "90%",
                 backgroundSize: "cover",
                 height: "300px",
-                borderRadius: "10px"
-
+                borderRadius: "10px",
+                backgroundColor: `rgba(0,0,0,0.1)`
+                // background: `linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)),url(${campaignSection1})`
 
               }}>
-              <h1 style={{ color: "white", textAlign: "center", fontWeight: "20", fontSize: "30px", paddingTop: "80px" }}>
+              <h1 style={{ color: "white", textAlign: "center", fontWeight: "40", fontSize: "30px", paddingTop: "80px" }}>
                 We have build for houses for our community
               </h1>
             </div>
@@ -336,7 +340,7 @@ export default function Campaign() {
           >
             <div
               style={{
-                backgroundImage: `url(${abouut})`,
+                backgroundImage: `url(${campaignSection2})`,
                 width: "90%",
                 backgroundSize: "cover",
                 height: "300px",
@@ -361,7 +365,7 @@ export default function Campaign() {
           >
             <div
               style={{
-                backgroundImage: `url(${abouut})`,
+                backgroundImage: `url(${campaignSection3})`,
                 width: "90%",
                 backgroundSize: "cover",
                 height: "300px",
