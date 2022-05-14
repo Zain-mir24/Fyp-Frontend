@@ -201,57 +201,7 @@ export default function CampaignDetails({ history }) {
             />
           </div>
         </section>
-        {/* <Layout>
-          <Layout style={{ backgroundColor: "white" }}>
-            <Content>
-              <div
-                style={{ width: "100%", height: "500px", textAlign: "center" }}
-              >
-                <Image
-                  src={"http://localhost:9000/uploads/" + img}
-                  style={{ width: "100%", height: "500px" }}
-                />
-              </div>
 
-              <h3>Description</h3>
-              <p>{description}</p>
-              <br />
-              <br />
-            </Content>
-            <Sider style={{ backgroundColor: "white" }}>
-              {" "}
-              <Card
-                title={"Donation Amount: " + donation + " PKR"}
-                style={{ width: 300 }}
-              >
-                <p>Amount Collected: {collection}</p>
-                Percentage:{" "}
-                <Progress
-                  style={{ marginLeft: "20px" }}
-                  type="circle"
-                  percent={(collection / donation) * 100}
-                />
-              </Card>
-              <br />
-              <Input
-                placeholder="enter donation amount (pkr)"
-                onChange={(e) => {
-                  setAmount(e.target.value);
-                }}
-              />
-              <StripeCheckout
-                stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
-                token={sendPayment}
-                name="Donate to campaign"
-                amount={amount * 100}
-              >
-                <Button type="primary" style={{ width: "100%" }}>
-                  You are donating {amount}
-                </Button>
-              </StripeCheckout>
-            </Sider>
-          </Layout>
-        </Layout> */}
       </div>
     </div>
   );

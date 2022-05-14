@@ -68,31 +68,32 @@ function News() {
       </div>
 
       <div id="latest" className="container-fluid" style={{ padding: "50px" }}>
+        <div style={{ paddingBottom: "30px" }}>
+          {name == "" ? (
+            <h1
+              style={{
+                paddingLeft: "1em",
+                fontWeight: "bold",
+                textTransform: "capitalize",
+              }}
+            >
+              Never the same again
+            </h1>
+          ) : (
+            <h1
+              style={{
+                paddingLeft: "1em",
+                fontWeight: "bold",
+                textTransform: "capitalize",
+              }}
+            >
+              {name}
+            </h1>
+          )}
+        </div>
         <div className="row" style={{ padding: "40px 0 70px" }}>
-          <div style={{ paddingBottom: "30px" }}>
-            {name == "" ? (
-              <h1
-                style={{
-                  paddingLeft: "1em",
-                  fontWeight: "bold",
-                  textTransform: "capitalize",
-                }}
-              >
-                Never the same again
-              </h1>
-            ) : (
-              <h1
-                style={{
-                  paddingLeft: "1em",
-                  fontWeight: "bold",
-                  textTransform: "capitalize",
-                }}
-              >
-                {name}
-              </h1>
-            )}
-          </div>
-          <div className="col-lg-8 col-md-8 col-sm-12" style={{ flex: 1 }}>
+
+          <div className="col-lg-8 col-md-8 col-xs-12" style={{ flex: 1 }}>
             {file == "" ? (
               <img
                 src={world}
@@ -141,7 +142,7 @@ function News() {
               <p style={{ fontSize: "20px" }}>{description}</p>
             )}
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12">
+          <div className="col-lg-4 col-md-4 col-xs-12">
             <div
               style={{
                 backgroundImage: `url(${abouut})`,

@@ -51,7 +51,7 @@ function Chat(props) {
     const receiverId = currentChat.member.find(
       (member) => member != props.donorId
     );
-
+    console.log(receiverId, "yaha we are sending reciever id")
     socket.current.emit("sendMessage", {
       senderId: props.donorId,
       receiverId: receiverId,
