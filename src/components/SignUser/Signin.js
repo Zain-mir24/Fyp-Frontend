@@ -165,22 +165,43 @@ function SignIn({ history, ...props }) {
                   placeholder="Password"
                 />
               </Form.Item>
-
-              <Form.Item
-                style={{ justifyContent: "center" }}
-              >
-                <Button
-                  style={{ width: "50%", marginLeft: "100px", backgroundColor: "#279040" }}
-                  type="primary"
-                  htmlType="submit"
-                  className="login-form-button"
-                  onClick={() => {
-                    handlesubmit();
-                  }}
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <Form.Item
+                  style={{ justifyContent: "center" }}
                 >
-                  Log in
-                </Button>
-              </Form.Item>
+                  <a href="/">
+
+                    <Button
+                      style={{ width: "100%", marginLeft: "20px", backgroundColor: "grey" }}
+                      type="primary"
+
+                      className="login-form-button"
+                      onClick={() => {
+                        handlesubmit();
+                      }}
+                    >
+                      back to home
+                    </Button>
+                  </a>
+
+                </Form.Item>
+                <Form.Item
+                  style={{ justifyContent: "right" }}
+                >
+                  <Button
+                    style={{ width: "80%", marginLeft: "100px", backgroundColor: "#279040" }}
+                    type="primary"
+                    htmlType="submit"
+                    className="login-form-button"
+                    onClick={() => {
+                      handlesubmit();
+                    }}
+                  >
+                    Log in
+                  </Button>
+                </Form.Item>
+              </div>
+
               <div style={{ flexDirection: "row", marginLeft: "50px" }}>
 
                 <Link href="/forgotPassword" variant="body2" style={{ alignSelf: "flex-end", marginRight: "20px" }}>
@@ -258,7 +279,7 @@ function SignIn({ history, ...props }) {
         </div>
       </Grid> */}
 
-      </div>
+      </div >
     </div >
   );
 }
