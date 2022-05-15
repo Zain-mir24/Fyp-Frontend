@@ -29,9 +29,9 @@ function Headers(props) {
       <a className="navbar-brand" href="">
         <img
           classNameName="navbar-brand"
-          style={{ height: "60px" }}
+          style={{ height: "40px" }}
           src={globalicon}
-          // style={{ position: "absolute", top: "0" }}
+        // style={{ position: "absolute", top: "0" }}
         />
       </a>
       <button
