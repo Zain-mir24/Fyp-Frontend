@@ -11,8 +11,6 @@ function Chat(props) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  const [donor, setDonor] = useState([]);
-  const [beneficiary, setBeneficiary] = useState([]);
   const socket = useRef();
   const scrollRef = useRef();
 
@@ -51,7 +49,7 @@ function Chat(props) {
     const receiverId = currentChat.member.find(
       (member) => member != props.donorId
     );
-    console.log(receiverId, "yaha we are sending reciever id")
+
     socket.current.emit("sendMessage", {
       senderId: props.donorId,
       receiverId: receiverId,
@@ -72,7 +70,7 @@ function Chat(props) {
     try {
       const res = await axios.get("http://localhost:9000/conversation/");
       setConversation(res.data);
-      console.log(res.data, "conversation");
+      console.log(res.data);
     } catch (e) {
       console.log(e);
     }
@@ -101,45 +99,14 @@ function Chat(props) {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const viewData = async () => {
-    try {
-      const resp = await axios.get("http://localhost:9000/admin/donor");
-      setDonor(resp.data);
-
-      console.log(resp.data, "HELLOsss");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const viewBeneficiary = async () => {
-    try {
-      const resp = await axios.get(
-        "http://localhost:9000/admin/readBeneficiary"
-      );
-      setBeneficiary(resp.data);
-
-      console.log(resp.data, "HELLOsss");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    viewData();
-    viewBeneficiary();
-  }, []);
   return (
     <div className="messenger">
       <div className="chatMenu">
         <div className="chatMenuWr">
-          <h1>
-            Global reach users
-          </h1>
+          <h1>Global reach users</h1>
           {conversation.map((item) => {
             return (
               <div onClick={() => setCurrentChat(item)}>
-
                 <Conversation userId={item.member[0]} />
               </div>
             );
