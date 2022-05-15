@@ -192,15 +192,9 @@ export default function MonthlySupport() {
             },
           ]}
         >
-          <InputNumber
-            style={{ width: "40%" }}
-            defaultValue={1000}
-            min={1000}
-            formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-            parser={value => value.replace(/\$\s?|(,*)/g, '')}
-            required
-            onChange={(value) => {
-              setsourceOfIncome(value);
+          <Input
+            onChange={(e) => {
+              setsourceOfIncome(e.target.value);
             }}
           />
         </Form.Item>
