@@ -21,6 +21,10 @@ function News() {
       const res = await axios.get("http://localhost:9000/admin/LatestNews");
       await setData(res.data);
       console.log(data, "TESTING");
+
+      await setName(res.data[0].name);
+      await setDescription(res.data[0].description);
+      await setFile(res.data[0].file);
     } catch (err) {
       console.log(err);
     }
@@ -41,7 +45,7 @@ function News() {
       >
         <div className="alignNews">
           <h1 className="title">
-            <span style={{ fontSize: "90px" }}>Know</span> Whats Happening{" "}
+            <span className="newsHeading">Know</span> Whats Happening{" "}
           </h1>
           <p style={{ color: "#929292" }}>
             We are making endless efforts to help people <br></br>
@@ -50,19 +54,18 @@ function News() {
             your help !
           </p>
           <a href="/Campaign">
-            <div
+            <button
               style={{
+                marginTop: "10px",
                 borderColor: "green",
                 border: "1px solid #279040",
-                width: "300px",
-                height: "60px",
-                marginLeft: "13em",
+                padding: "10px",
+                textAlign: "center",
+                backgroundColor: "transparent",
               }}
             >
-              <h1 style={{ color: "#279040", paddingTop: "0.3em" }}>
-                Our Campaign
-              </h1>
-            </div>
+              <h1 style={{ color: "#279040" }}>Our Campaign</h1>
+            </button>
           </a>
         </div>
       </div>
@@ -77,7 +80,7 @@ function News() {
                 textTransform: "capitalize",
               }}
             >
-              Never the same again
+              {/* {data[0].name} */}
             </h1>
           ) : (
             <h1
@@ -92,11 +95,10 @@ function News() {
           )}
         </div>
         <div className="row" style={{ padding: "40px 0 70px" }}>
-
-          <div className="col-lg-8 col-md-8 col-xs-12" style={{ flex: 1 }}>
+          <div className="col-lg-8 col-md-12 col-xs-12" style={{ flex: 1 }}>
             {file == "" ? (
               <img
-                src={world}
+                // src={data[0].file}
                 style={{
                   width: "40%",
                   height: "70%",
@@ -142,17 +144,25 @@ function News() {
               <p style={{ fontSize: "20px" }}>{description}</p>
             )}
           </div>
-          <div className="col-lg-4 col-md-4 col-xs-12">
+          <div className="col-lg-4 col-md-12 col-xs-12">
             <div
               style={{
                 backgroundImage: `url(${abouut})`,
                 width: "100%",
-                height: "100%",
+                height: "300px",
                 backgroundSize: "cover",
+                position: "relative",
+                textAlign: "center",
               }}
             >
               {/* <img src={abouut} style={{ width: "100%", height: "70%" }} /> */}
-              <h1 className="Minidetail" style={{ color: "white" }}>
+              <h1
+                style={{
+                  color: "white",
+                  position: "absolute",
+                  top: "30%",
+                }}
+              >
                 This world needs your help, Come join us because we care.
               </h1>
             </div>
