@@ -9,6 +9,11 @@
     display: block;
     margin-top: -70px
 }
+
+.campaign-card{
+    background-color: rgba(0,0,0,0.9); 
+}
+
 .campHead{
     font-style: normal;
     font-weight: 400;

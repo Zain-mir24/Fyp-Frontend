@@ -1,7 +1,17 @@
 import { TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import React, { useEffect, useState } from "react";
-import { Table, Button, Input, Upload, Col, Form, Select, Row, InputNumber } from "antd";
+import {
+  Table,
+  Button,
+  Input,
+  Upload,
+  Col,
+  Form,
+  Select,
+  Row,
+  InputNumber,
+} from "antd";
 
 import { combineReducers } from "@reduxjs/toolkit";
 import { UploadOutlined } from "@ant-design/icons";
@@ -40,7 +50,7 @@ function ChildrenManagment() {
     formData.append("disability", disability);
     formData.append("file", file);
     formData.append("fileName", fileName);
-    console.log(formData)
+    console.log(formData);
     try {
       const res = await axios.post(
         "http://localhost:9000/admin/addchild",
@@ -155,287 +165,287 @@ function ChildrenManagment() {
 
   return (
     <div>
+      <h1 className="heading">Children Managment</h1>
       <div className="row">
-        <div style={{ textAlign: "center" }} s>
-          <h1 className="heading">Children Managment</h1>
-        </div>
         <br /> <br /> <br /> <br />
-        <Row>
-          <Col span={12}>
-            <h3>Add Children</h3>
-            <Form>
-              <Form.Item
-                rules={[
-                  { required: true, message: "Please Enter campaign name" },
-                ]}
-              >
-                <Input
-                  required
-                  placeholder="Child name"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <InputNumber
-                  style={{ width: "80%" }}
-
-                  defaultValue={1}
-                  min={1}
-                  max={17}
-                  formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                  parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                  required
-                  placeholder="Child age"
-                  onChange={(value) => {
-                    setAge(value);
-                  }}
-
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  required
-                  placeholder="gender"
-                  showCount
-                  maxLength={1000}
-                  onChange={(e) => {
-                    setGender(e.target.value);
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <DatePicker
-                  onChange={(date, dateString) => {
-                    setDOB(date);
-                  }}
-                  placeholder="Select Date Of Birth"
-                  style={{ width: "100%" }}
-                />
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(date, dateString) => {
-                    setPOB(date);
-                  }}
-                  placeholder="Select Place Of Birth"
-                  style={{ width: "100%" }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  required
-                  placeholder="Disability"
-                  showCount
-                  maxLength={1000}
-                  onChange={(e) => {
-                    setDisability(e.target.value);
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[{ required: true, message: "Please uplaod doc" }]}
-                onChange={saveFile}
-              >
-                <Upload>
-                  <Button icon={<UploadOutlined />}>
-                    Upload Child's picture
-                  </Button>
-                </Upload>
-              </Form.Item>
-
-              <Button type="primary" onClick={collectData}>
-                Submit
-              </Button>
-            </Form>
-          </Col>
-
-          <Col span={12}>
-            <h3>Update Children</h3>
-            <Form>
-              <Form.Item>
-                <Select
-                  defaultValue="Select Category"
-                  style={{
-                    width: 180,
-                    borderRadius: "0px",
-                    backgroundColor: "transparent",
-                  }}
-                  onChange={handleChange}
-                >
-                  {childrenData.map((item) => {
-                    return <Option value={item._id}>{item.name}</Option>;
-                  })}
-                </Select>
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  { required: true, message: "Please Enter campaign name" },
-                ]}
-              >
-                <Input
-                  required
-                  placeholder="Child name"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input.TextArea
-                  required
-                  placeholder="Child age"
-                  onChange={(e) => {
-                    setAge(e.target.value);
-                  }}
-                  showCount
-                  maxLength={1000}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  required
-                  placeholder="gender"
-                  showCount
-                  maxLength={1000}
-                  onChange={(e) => {
-                    setGender(e.target.value);
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <DatePicker
-                  onChange={(date, dateString) => {
-                    setDOB(date);
-                  }}
-                  placeholder="Select Date Of Birth"
-                  style={{ width: "100%" }}
-                />
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(date, dateString) => {
-                    setPOB(date);
-                  }}
-                  placeholder="Select Place Of Birth"
-                  style={{ width: "100%" }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  required
-                  placeholder="Disability"
-                  showCount
-                  maxLength={1000}
-                  onChange={(e) => {
-                    setDisability(e.target.value);
-                  }}
-                />
-              </Form.Item>
-
-              <Form.Item
-                rules={[{ message: "Please uplaod doc" }]}
-              //   onChange={saveFile}
-              >
-                <Upload>
-                  <Button icon={<UploadOutlined />}>
-                    Upload Child's picture
-                  </Button>
-                </Upload>
-              </Form.Item>
-
-              <Button
-                type="primary"
-                onClick={() => {
-                  updateData();
+        <div className="col-lg-6">
+          <h3>Add Children</h3>
+          <Form>
+            <Form.Item
+              rules={[
+                { required: true, message: "Please Enter campaign name" },
+              ]}
+            >
+              <Input
+                required
+                placeholder="Child name"
+                onChange={(e) => {
+                  setName(e.target.value);
                 }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <InputNumber
+                style={{ width: "80%" }}
+                defaultValue={1}
+                min={1}
+                max={17}
+                formatter={(value) =>
+                  ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
+                parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                required
+                placeholder="Child age"
+                onChange={(value) => {
+                  setAge(value);
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input
+                required
+                placeholder="gender"
+                showCount
+                maxLength={1000}
+                onChange={(e) => {
+                  setGender(e.target.value);
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <DatePicker
+                onChange={(date, dateString) => {
+                  setDOB(date);
+                }}
+                placeholder="Select Date Of Birth"
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input
+                onChange={(date, dateString) => {
+                  setPOB(date);
+                }}
+                placeholder="Select Place Of Birth"
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input
+                required
+                placeholder="Disability"
+                showCount
+                maxLength={1000}
+                onChange={(e) => {
+                  setDisability(e.target.value);
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[{ required: true, message: "Please uplaod doc" }]}
+              onChange={saveFile}
+            >
+              <Upload>
+                <Button icon={<UploadOutlined />}>
+                  Upload Child's picture
+                </Button>
+              </Upload>
+            </Form.Item>
+
+            <Button type="primary" onClick={collectData}>
+              Submit
+            </Button>
+          </Form>
+        </div>
+        <div className="col-lg-6">
+          <h3>Update Children</h3>
+          <Form>
+            <Form.Item>
+              <Select
+                defaultValue="Select Category"
+                style={{
+                  width: 180,
+                  borderRadius: "0px",
+                  backgroundColor: "transparent",
+                }}
+                onChange={handleChange}
               >
-                Submit
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-        <Table scroll={{ x: 1500 }} columns={columns} dataSource={value} />
+                {childrenData.map((item) => {
+                  return <Option value={item._id}>{item.name}</Option>;
+                })}
+              </Select>
+            </Form.Item>
+            <Form.Item
+              rules={[
+                { required: true, message: "Please Enter campaign name" },
+              ]}
+            >
+              <Input
+                required
+                placeholder="Child name"
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input.TextArea
+                required
+                placeholder="Child age"
+                onChange={(e) => {
+                  setAge(e.target.value);
+                }}
+                showCount
+                maxLength={1000}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input
+                required
+                placeholder="gender"
+                showCount
+                maxLength={1000}
+                onChange={(e) => {
+                  setGender(e.target.value);
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <DatePicker
+                onChange={(date, dateString) => {
+                  setDOB(date);
+                }}
+                placeholder="Select Date Of Birth"
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input
+                onChange={(date, dateString) => {
+                  setPOB(date);
+                }}
+                placeholder="Select Place Of Birth"
+                style={{ width: "100%" }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[
+                {
+                  required: true,
+                  message: "Please Enter campaign Description",
+                },
+              ]}
+            >
+              <Input
+                required
+                placeholder="Disability"
+                showCount
+                maxLength={1000}
+                onChange={(e) => {
+                  setDisability(e.target.value);
+                }}
+              />
+            </Form.Item>
+
+            <Form.Item
+              rules={[{ message: "Please uplaod doc" }]}
+              //   onChange={saveFile}
+            >
+              <Upload>
+                <Button icon={<UploadOutlined />}>
+                  Upload Child's picture
+                </Button>
+              </Upload>
+            </Form.Item>
+
+            <Button
+              type="primary"
+              onClick={() => {
+                updateData();
+              }}
+            >
+              Submit
+            </Button>
+          </Form>
+        </div>
+        <Table
+          style={{ paddingTop: "50px" }}
+          scroll={{ x: 1500 }}
+          columns={columns}
+          dataSource={value}
+        />
       </div>
     </div>
   );
