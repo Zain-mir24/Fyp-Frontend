@@ -122,42 +122,42 @@ export default function Campaign() {
               {data == undefined
                 ? null
                 : data.map((item) => {
-                    return (
-                      <div className="col-lg-6" style={{ padding: "4px" }}>
-                        <Card
-                          onClick={() => {
-                            console.log(item.name);
+                  return (
+                    <div className="col-lg-6" style={{ padding: "4px" }}>
+                      <Card
+                        onClick={() => {
+                          console.log(item.name);
 
-                            setCampaign({
-                              ...campaign,
-                              name: item.name,
-                              description: item.description,
-                              img: item.fileName,
-                              donation: item.donation,
-                              cid: item._id,
-                            });
-                            setCheck(false);
+                          setCampaign({
+                            ...campaign,
+                            name: item.name,
+                            description: item.description,
+                            img: item.fileName,
+                            donation: item.donation,
+                            cid: item._id,
+                          });
+                          setCheck(false);
 
-                            getAmount();
-                            viewTeams();
-                          }}
-                          style={{
-                            backgroundColor: "#F5F5F5",
-                          }}
-                          cover={
-                            <img
-                              style={{ height: "250px" }}
-                              src={
-                                "http://localhost:9000/uploads/" + item.fileName
-                              }
-                            />
-                          }
-                        >
-                          <h2 style={{ height: "100px" }}>{item.name}</h2>
-                        </Card>
-                      </div>
-                    );
-                  })}
+                          getAmount();
+                          viewTeams();
+                        }}
+                        style={{
+                          backgroundColor: "#F5F5F5",
+                        }}
+                        cover={
+                          <img
+                            style={{ height: "250px" }}
+                            src={
+                              "http://localhost:9000/uploads/" + item.fileName
+                            }
+                          />
+                        }
+                      >
+                        <h2 style={{ height: "100px" }}>{item.name}</h2>
+                      </Card>
+                    </div>
+                  );
+                })}
             </div>
           </div>
 
@@ -310,11 +310,12 @@ export default function Campaign() {
         <div className="row">
           <div className="col-lg-4 col-sm-4 col-md-4">
             <div
-              className="campaign-card"
+
               style={{
-                background: `linear-gradient(180deg, rgba(0, 0, 0, 0.3), url(${campaignSection1})`,
+                // background: `linear-gradient(180deg, rgba(0, 0, 0, 0.3), url(${campaignSection1})`,
                 backgroundSize: "cover",
                 width: "90%",
+                backgroundImage: `url(${campaignSection1})`,
 
                 height: "300px",
                 borderRadius: "10px",
@@ -338,7 +339,7 @@ export default function Campaign() {
             <h1
               style={{ color: "green", textAlign: "center", fontSize: "60px" }}
             >
-              7000+
+              4000+
             </h1>
           </div>
           <div className="col-lg-4 col-sm-4 col-md-4">
@@ -368,7 +369,7 @@ export default function Campaign() {
             <h1
               style={{ color: "green", textAlign: "center", fontSize: "60px" }}
             >
-              7000+
+              5000+
             </h1>
           </div>
           <div className="col-lg-4 col-sm-4 col-md-4">
@@ -400,7 +401,7 @@ export default function Campaign() {
             <h1
               style={{ color: "green", textAlign: "center", fontSize: "60px" }}
             >
-              7000+
+              9000+
             </h1>
           </div>
         </div>
