@@ -121,56 +121,59 @@ function CampaignDetail(props) {
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-lg-10">
-            <Layout style={{ backgroundColor: "white" }}>
-              <Content>
-                <h1>{campaignname}</h1>
-                <img
-                  src={"http://localhost:9000/uploads/" + props.img}
-                />
+          <div className="col-lg-8">
+            {/* <Layout style={{ backgroundColor: "white" }}> */}
+            <Content>
+              <h1>{campaignname}</h1>
+              <img
+                style={{ height: "400px" }}
+                src={"http://localhost:9000/uploads/" + props.img}
+              />
 
-                {/* <Image
+              {/* <Image
                   src={"https://damp-stream-39096.herokuapp.com/uploads/" + img}
                   style={{ width: "100%", height: "500px" }}
                 /> */}
 
-                <br />
-                <br />
-                <h3>Description</h3>
-                <p>{description}</p>
-                <br />
-                <br />
-              </Content>
-              <Sider style={{ backgroundColor: "white" }}>
-                {" "}
-                <Card
-                  title={"Donation Amount: " + donation + " PKR"}
-                  style={{ width: 300 }}
-                >
-                  <p>Amount Collected: {collection}</p>
-                  Percentage:{" "}
-                  <Progress
-                    style={{ marginLeft: "20px" }}
-                    type="circle"
-                    percent={(collection / donation) * 100}
-                  />
-                </Card>
-                <Input
-                  placeholder="enter donation amount (pkr)"
-                  onChange={(e) => {
-                    setAmount(e.target.value);
-                  }}
-                />
-                <StripeCheckout
-                  stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
-                  token={sendPayment}
-                  name="Donate to campaign"
-                  amount={amount * 100}
-                >
-                  <Button>You are donating{amount}</Button>
-                </StripeCheckout>
-              </Sider>
-            </Layout>
+              <br />
+              <br />
+              <h3>Description</h3>
+              <p>{description}</p>
+              <br />
+              <br />
+            </Content>
+          </div>
+          {/* <Sider style={{ backgroundColor: "white" }}> */}
+          {" "}
+          <div className="col-lg-4">
+            <Card
+              title={"Donation Amount: " + donation + " PKR"}
+              style={{ width: 300 }}
+            >
+              <p>Amount Collected: {collection}</p>
+              Percentage:{" "}
+              <Progress
+                style={{ marginLeft: "20px" }}
+                type="circle"
+                percent={(collection / donation) * 100}
+              />
+            </Card>
+            <Input
+              placeholder="enter donation amount (pkr)"
+              onChange={(e) => {
+                setAmount(e.target.value);
+              }}
+            />
+            <StripeCheckout
+              stripeKey="pk_test_51KM9Y3ExITDpmfWazni9PRIx4s0n0fgT5sKt28GG6254mRAvw5Y2f8Ccg2r7lTzMVx5tugDG0io5mcr8OLGbC38K00M6JTFdIE"
+              token={sendPayment}
+              name="Donate to campaign"
+              amount={amount * 100}
+            >
+              <Button>You are donating{amount}</Button>
+            </StripeCheckout>
+            {/* </Sider> */}
+            {/* </Layout> */}
           </div>
         </div>
         <div>
