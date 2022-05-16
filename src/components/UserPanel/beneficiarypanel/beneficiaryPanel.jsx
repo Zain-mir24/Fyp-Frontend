@@ -11,6 +11,8 @@ import {
   ExclamationCircleFilled,
   CheckCircleFilled,
 } from "@ant-design/icons";
+import Chat from "./Chat"
+
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../store/reducers/User";
 import { CreateContext } from "../../../contexts/Customecontexts";
@@ -24,6 +26,7 @@ import HouseAppeal from "./HouseAppeal";
 import ActiveCampaign from "./ActiveCampaign";
 import Amountmanagement from "./Amountmanagement";
 import "./beneficiary.css";
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -52,15 +55,15 @@ function Beneficiarypanel({ history, ...props }) {
             >
               {user.username}
             </Menu.Item>
-            {/* <Menu.Item
+            <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
-              onClick={(e) => {
-                setContent("home");
+              onClick={() => {
+                setContent("Chat");
               }}
             >
-              Home
-            </Menu.Item> */}
+              Chat
+            </Menu.Item>
             <Menu.Item key="3" icon={<DesktopOutlined />}>
               Loan status
             </Menu.Item>
@@ -160,6 +163,8 @@ function Beneficiarypanel({ history, ...props }) {
               {content == "Monthly Support" ? <MonthlySupport /> : null}
               {content == "House Appeal" ? <HouseAppeal /> : null}
               {content == "ActiveCampaign" ? <ActiveCampaign /> : null}
+              {content == "Chat" ? <Chat donorId={user.userId} /> : null}
+
               {content == "LoanManagement" ? (
                 <Amountmanagement bid={user.userId} />
               ) : null}
