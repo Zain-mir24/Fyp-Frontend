@@ -64,9 +64,9 @@ function Beneficiarypanel({ history, ...props }) {
             >
               Chat
             </Menu.Item>
-            <Menu.Item key="3" icon={<DesktopOutlined />}>
+            {/* <Menu.Item key="3" icon={<DesktopOutlined />}>
               Loan status
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item
               key="9"
