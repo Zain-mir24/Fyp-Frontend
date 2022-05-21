@@ -41,7 +41,7 @@ function HousingSchemePDF(props) {
     }
   };
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <h1>Update Form</h1>
       <Form
         name="normal_login"
