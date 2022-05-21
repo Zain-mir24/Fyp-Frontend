@@ -164,7 +164,7 @@ function ChildrenManagment() {
   }));
 
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <h1 className="heading">Children Managment</h1>
       <div className="row">
         <br /> <br /> <br /> <br />
@@ -421,7 +421,7 @@ function ChildrenManagment() {
 
             <Form.Item
               rules={[{ message: "Please uplaod doc" }]}
-              //   onChange={saveFile}
+            //   onChange={saveFile}
             >
               <Upload>
                 <Button icon={<UploadOutlined />}>

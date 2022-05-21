@@ -28,6 +28,9 @@ function Campaigndonation() {
   useEffect(getData, []);
   return (
     <div>
+      <h1>
+        Our current Campaigns
+      </h1>
       <div className="container">
         <div className="row">
           {content == "campaign" ? (
@@ -43,6 +46,7 @@ function Campaigndonation() {
               return (
                 <div className="col-lg-4">
                   <Card
+
                     onClick={() => {
                       setName(item.name)
                       setDesc(item.description)
@@ -52,7 +56,7 @@ function Campaigndonation() {
                       setContent("campaign");
                     }}
                     hoverable
-                    style={{ width: "340px", padding: "30px" }}
+                    style={{ width: "300px", margin: "20px", height: "500px" }}
                     cover={
                       <img
                         style={{ height: "300px" }}
@@ -63,7 +67,7 @@ function Campaigndonation() {
                   >
                     <Meta
                       title={item.name}
-                      description={item.description.substring(0, 80) + " ..."}
+                      description={item.description.substring(0, 100) + " ..."}
                     />
                   </Card>
                 </div>

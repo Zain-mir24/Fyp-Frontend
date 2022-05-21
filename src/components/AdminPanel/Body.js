@@ -120,10 +120,11 @@ function Body({ history, ...props }) {
   }
 
   return (
-    <div className="row">
+    <div className="row" >
       <Header1 name={user.username} />
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider trigger={null}>
+        <Sider style={{ height: "600px", overflow: "scroll" }}
+          trigger={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item

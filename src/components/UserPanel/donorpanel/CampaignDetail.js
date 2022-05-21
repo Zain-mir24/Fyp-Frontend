@@ -5,7 +5,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { DONATION } from "../../../store/Actions/userAction";
 
 import { Redirect, withRouter } from "react-router";
-import { Layout, Image, Card, Progress, Button, Input } from "antd";
+import { Layout, Image, Card, Progress, Button, Input, InputNumber } from "antd";
 // import 'animate.css/animate.min.css';
 // import { Notify } from "../../homepage/home";
 import axios from "axios";
@@ -174,11 +174,13 @@ function CampaignDetail(props) {
 
 
             {donation < collection ? null : (
-              <Input
+              <InputNumber
                 style={{ border: "1px solid black", width: "40%" }}
+                defaultValue={1000}
+                min={1000}
                 placeholder="enter donation amount (pkr)"
                 onChange={(e) => {
-                  setAmount(e.target.value);
+                  setAmount(e);
                 }}
               />
             )}

@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import Header from "../Headers/Header";
-import { Layout, Image, Card, Progress, Button, Input } from "antd";
+import { Layout, Image, Card, Progress, Button, Input, InputNumber } from "antd";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 const { Sider, Content } = Layout;
@@ -127,10 +127,10 @@ export default function CampaignDetails({ history }) {
             <div className="col-lg-6">
               <h2>{name}</h2>
               <p>{description}</p>
-              {donation < collection ? null : <Input style={{ border: "1px solid black", width: "40%" }}
+              {donation < collection ? null : <InputNumber style={{ border: "1px solid black", width: "40%" }}
                 placeholder="enter donation amount (pkr)"
                 onChange={(e) => {
-                  setAmount(e.target.value);
+                  setAmount(e);
                 }}
               />}
 

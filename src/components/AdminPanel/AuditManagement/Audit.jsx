@@ -3,6 +3,9 @@ import { Form, Input, Button, Checkbox, Select, Table, DatePicker } from "antd";
 import axios from "axios";
 import { Tab } from "@material-ui/icons";
 import "./Audit.css"
+import {
+    UserOutlined,
+} from "@ant-design/icons";
 function Audit() {
     // Creating subAdmin UseStates
     const [subAdmin, setSubAdmin] = useState([])
@@ -18,7 +21,7 @@ function Audit() {
     // Creating Campaigns UseStates
     const [campaigns, setCampaigns] = useState([])
     const [Cid, setCid] = useState("")
-
+    const [id, setId] = useState("")
     // Team creation UseStates
     const [auditTeam, setAuditTeams] = useState([])
     const [count, setCount] = useState(0)
@@ -78,6 +81,17 @@ function Audit() {
             console.log(e)
         }
     }
+    const deleteAudit = async (id) => {
+        try {
+            const res = await axios.delete("http://localhost:9000/Admin/audit/" + id)
+            if (res) {
+                alert('Team has been deleted, refresh to see changes')
+            }
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
     useEffect(() => {
         getSubAdmin()
         getCampaigns()
@@ -87,7 +101,12 @@ function Audit() {
         {
             title: "Name",
             dataIndex: "name",
-            key: "name"
+            key: "name",
+            render: (text, record) => (
+                <p>
+                    <UserOutlined />          {record.name}
+                </p>
+            )
         },
         {
             title: "Location",
@@ -232,15 +251,30 @@ function Audit() {
         {
             title: "Audit member1",
             dataIndex: "Member1",
-            key: "Member1"
+            key: "Member1",
+            render: (text, record) => (
+                <p>
+                    <UserOutlined />   {record.Member1}
+                </p>
+            )
         }, {
             title: "Audit member2",
             dataIndex: "Member2",
-            key: "Member2"
+            key: "Member2",
+            render: (text, record) => (
+                <p>
+                    <UserOutlined />    {record.Member2}
+                </p>
+            )
         }, {
             title: "Audit member3",
             dataIndex: "Member3",
-            key: "Member3"
+            key: "Member3",
+            render: (text, record) => (
+                <p>
+                    <UserOutlined />   {record.Member3}
+                </p>
+            )
         }, {
             title: "Audit member1 email",
             dataIndex: "email1",
@@ -273,14 +307,24 @@ function Audit() {
                     </a> : null
             ),
         },
+        {
+            title: "Delete This Team",
+            dataIndex: "_id",
+            key: "_id",
+            render: (text, record) => {
+                return (
+                    <Button
+                        onClick={() => deleteAudit(record._id)}
+                    >
+                        Delete this team
+                    </Button>
+                )
+
+            }
+        }
     ]
     return (
-        <div>
-            {/* 3 steps are in this module
-          -> Admins 
-          -> campaigns
-          -> the table where we see all the teams assigned to each campaign           
-            */}
+        <div style={{ height: "600px", overflow: "scroll" }}>
             <h1>
                 Enter Team name
                 <Input
@@ -309,6 +353,7 @@ function Audit() {
                 Assigned Teams
             </h1>
             <Table columns={TeamColumn} dataSource={auditTeam} scroll={{ x: 1500 }} />
+
         </div>
     )
 }

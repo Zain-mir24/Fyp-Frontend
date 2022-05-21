@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import Header from "../Headers/Header";
-import { Layout, Image, Card, Progress, Button, Input } from "antd";
+import { Layout, Image, Card, Progress, Button, Input, InputNumber } from "antd";
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import hands from "../../Images/hands.png";
@@ -234,11 +234,13 @@ export default function Campaign() {
                       <h2>{campaign.name}</h2>
                       <p>{campaign.description}</p>
                       {campaign.donation < collection ? null : (
-                        <Input
+                        <InputNumber
                           style={{ border: "1px solid black", width: "40%" }}
                           placeholder="enter donation amount (pkr)"
+                          defaultValue={1000}
+                          min={1000}
                           onChange={(e) => {
-                            setAmount(e.target.value);
+                            setAmount(e);
                           }}
                         />
                       )}

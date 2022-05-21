@@ -11,7 +11,7 @@ function Adminn({ history, ...props }) {
   return (
     <div>
       {user ? (
-        <div><Body /> </div>
+        <div style={{ height: "auto" }}><Body /> </div>
       ) : (
         history.push("/Adminlogin")
       )}

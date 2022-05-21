@@ -61,7 +61,7 @@ function Analytics() {
   }, []);
 
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <h1>Donation per month Analytics</h1>
       <div>
         <Bar

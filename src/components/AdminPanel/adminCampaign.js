@@ -234,7 +234,7 @@ function Foorm() {
   return (
     <div className="container-fluid">
       <h1> Campaign managment </h1>
-      <div className="row">
+      <div className="row" style={{ height: "600px", overflow: "scroll" }}>
         <div className="col-lg-6 col-md-6">
           <Form>
             <h3>Add campaign</h3>

@@ -205,7 +205,7 @@ export default function EstimationPerfoma() {
   ]
 
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <div style={{ textAlign: "center" }}>
         {" "}
         <h1>Estimation Performa</h1>

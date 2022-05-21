@@ -191,7 +191,7 @@ export default function Dailyexpense() {
     }
 
     return (
-        <div>
+        <div style={{ height: "600px", overflow: "scroll" }}>
             <div style={{ textAlign: "center" }}>
                 {" "}
                 <h1>Expense Sheet</h1>

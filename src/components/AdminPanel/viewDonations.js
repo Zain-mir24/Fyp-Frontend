@@ -60,11 +60,12 @@ function ViewDonation() {
 
   return (
     <div>
-      <div className="row">
+      <div className="row" style={{ height: "600px", overflow: "scroll" }}>
         <div style={{ textAlign: "center" }} s>
-          <h1 className="heading">View Donations</h1>
+          <h1 className="heading"> Donations for our campaigns</h1>
+          <br />
         </div>
-        <div>
+        <div className="col-lg-12">
           {data.map((item) => {
             return (
               <div>
