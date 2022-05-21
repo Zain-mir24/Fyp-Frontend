@@ -55,13 +55,14 @@ export default function Campaign() {
       console.log(e);
     }
   };
-  const viewTeams = async () => {
+  const viewTeams = async (cid) => {
     try {
-      const res = await axios.get("http://localhost:9000/Admin/viewAudits");
-      console.log(res.data.view, "viewing Teams");
-      res.data.view.filter((i) => {
-        return i.Cid._id === cid ? setFile(i.fileName) : null;
-      });
+      const res = await axios.get(`http://localhost:9000/User/viewAudit/${cid}`);
+      console.log(res.data.fileName, "viewing Teams");
+      setFile(res.data.fileName)
+      // res.data.view.filter((i) => {
+      //   return i.Cid._id === cid ? setFile(i.fileName) : null;
+      // });
     } catch (e) {
       console.log(e);
     }
@@ -139,7 +140,7 @@ export default function Campaign() {
                           setCheck(false);
 
                           getAmount();
-                          viewTeams();
+                          viewTeams(item._id);
                         }}
                         style={{
                           backgroundColor: "#F5F5F5",

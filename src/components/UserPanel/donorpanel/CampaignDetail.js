@@ -102,6 +102,7 @@ function CampaignDetail(props) {
     try {
       const res = await axios.get(`http://localhost:9000/User/viewAudit/${cid}`)
       // console.log(res.data.fileName)
+      console.log(res.data, "files are here")
       if (!res) {
         console.log("no audit yet")
       } else {
@@ -209,16 +210,22 @@ function CampaignDetail(props) {
           </div>
         </div>
         <div>
-          <h1>
-            Audit will be here
-          </h1>
+
           {Audit ?
-            <a
-              href={
-                "http://localhost:9000/uploads/" + Audit
-              }><Button>
-                Download {Audit} Report
-              </Button></a> : null}
+            <div>
+              <h1>
+                Audit
+              </h1>
+              <a
+                href={
+                  "http://localhost:9000/uploads/" + Audit
+                }><Button>
+                  Download {Audit} Report
+                </Button></a> </div> : <div>
+              <h1>
+                No Audit
+              </h1>
+            </div>}
         </div>
       </div>
     </div>

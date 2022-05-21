@@ -27,7 +27,7 @@ function Campaigndonation() {
 
   useEffect(getData, []);
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <h1>
         Our current Campaigns
       </h1>

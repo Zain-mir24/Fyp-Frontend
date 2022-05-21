@@ -14,7 +14,7 @@ function Changepassword({ history, ...props }) {
     e.preventDefault();
     await axios
       .request({
-        baseURL: "https://damp-stream-39096.herokuapp.com/User",
+        baseURL: "http://localhost:9000/User",
         url: "/changepassword",
         method: "post",
         data: {
@@ -25,10 +25,10 @@ function Changepassword({ history, ...props }) {
         },
       })
       .then((res) => {
-        if (res.status == 201) {
-          history.push("/Signin");
-          console.log("password changed");
-        }
+        alert('password changed')
+        history.push("/Signin");
+        console.log("password changed");
+
       })
       .catch((e) => {
         console.log("passowrd didnt change ", e);
@@ -95,6 +95,6 @@ function Changepassword({ history, ...props }) {
   );
 }
 const mapStateToProps = (state) => ({
-  users: state.user.myuser,
+  users: state.persistedReducer.user.user,
 });
 export default withRouter(connect(mapStateToProps)(Changepassword));
