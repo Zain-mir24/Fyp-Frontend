@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Button, Input, Upload, Col, Form } from "antd";
+import SendEmail from "./SendEmail"
 const axios = require("axios");
+
 function MeetingScheduled() {
     const [data, setData] = useState([])
+    const [content, setContent] = useState()
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const viewingMeeting = async () => {
         try {
@@ -56,18 +61,31 @@ function MeetingScheduled() {
             title: "Child to Adopt",
             dataIndex: "childName",
             key: "childName"
+        }, {
+            title: "Send mail to donor",
+            render: (text, record) => (
+                <div>
+                    <Button onClick={() => {
+                        setName(record.name)
+                        setEmail(record.email)
+                        setContent("mail")
+                    }}>
+                        Create email
+                    </Button>
+                </div>
+            )
         }
     ]
 
     return (
 
         <div className="col-lg-12">
-            <Table
-                title={() => " Meetings Scheduled for adoption"}
-                columns={columns}
-                dataSource={data}
-
-            />
+            {content == "mail" ?
+                <SendEmail name={name} email={email} />
+                : <Table
+                    title={() => " Meetings Scheduled for adoption"}
+                    columns={columns}
+                    dataSource={data} />}
         </div>
     )
 }
