@@ -3,7 +3,7 @@ import { Table, Button, Image } from "antd";
 export default function MonthlySupportDetail(props) {
   console.log(props, "HELL");
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <div style={{ backgroundColor: "white", padding: "50px" }}>
         <div className="container-fluid">
           <div className="row">

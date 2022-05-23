@@ -18,10 +18,10 @@ function SubAdmin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Location, setlocation] = useState("");
-  const [subbAdmin,setSubAdmin]=useState("")
+  const [subbAdmin, setSubAdmin] = useState("")
   const [ID, setId] = useState("");
-   var subAdmin=true
-  
+  var subAdmin = true
+
   useEffect(() => {
     viewsubAdmin();
   }, []);
@@ -54,7 +54,7 @@ function SubAdmin() {
     try {
       const addsubAdmin = await axios.request({
         baseURL: "http://localhost:9000/",
-        url: "admin/updatesubAdmin/"+ID,
+        url: "admin/updatesubAdmin/" + ID,
         method: "patch",
         data: {
           name,
@@ -73,10 +73,10 @@ function SubAdmin() {
       console.log(e);
     }
   };
-  const deletesubAdmin = async(id)=>{
+  const deletesubAdmin = async (id) => {
     try {
       const res = await axios.delete(
-       "http://localhost:9000/admin/deletesubAdmin/" + id
+        "http://localhost:9000/admin/deletesubAdmin/" + id
       );
       if (!res) {
         throw new Error("The campaign doesnt exist");
@@ -84,9 +84,9 @@ function SubAdmin() {
       alert(`SubAdmin has been deleted`);
     } catch (e) {
       console.log(e);
-    } 
+    }
   };
-  const viewsubAdmin = async( )=>{
+  const viewsubAdmin = async () => {
     try {
       const res = await axios.get("http://localhost:9000/admin/viewsubAdmin");
 
@@ -96,11 +96,11 @@ function SubAdmin() {
       console.log(err);
     }
   };
-  const value=subbAdmin==0?null:subbAdmin.map((item)=>({
-    _id:item._id,  
-    name:item.name,
-    email:item.email,
-    Location:item.Location
+  const value = subbAdmin == 0 ? null : subbAdmin.map((item) => ({
+    _id: item._id,
+    name: item.name,
+    email: item.email,
+    Location: item.Location
 
   }))
   const columns = [
@@ -127,7 +127,7 @@ function SubAdmin() {
       key: "Location",
     },
 
-   
+
   ]; const columns1 = [
     {
       title: "id",
@@ -164,197 +164,201 @@ function SubAdmin() {
         </button>
       ),
     },
-   
+
   ];
   return (
-    <div className="row">
+    <div className="container-fluid">
       <h1> SubAdmin Managment</h1>
-      <div className="col-lg-6">
-        <h3>Adding sub Admin</h3>
-        <Row>
-          {/* Adding SubAdmin */}
-          <Col span={12}>
-            <Form>
-              <Form.Item
-                rules={[
-                  { required: true, message: "Please Enter campaign name" },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setName(e.target.value);
+
+      <div className="row" style={{ height: "600px", overflow: "scroll" }}>
+        <div className="col-lg-6">
+          <h3>Adding sub Admin</h3>
+          <Row>
+            {/* Adding SubAdmin */}
+            <Col span={12}>
+              <Form>
+                <Form.Item
+                  rules={[
+                    { required: true, message: "Please Enter campaign name" },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                    required
+                    placeholder=" User name"
+                  />
+                </Form.Item>
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter campaign Description",
+                    },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    required
+                    placeholder="Email"
+                    showCount
+                  />
+                </Form.Item>{" "}
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Loaction of Admin",
+                    },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setlocation(e.target.value);
+                    }}
+                    required
+                    placeholder="Location"
+                    showCount
+                  />
+                </Form.Item>
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter SubAdmin's password",
+                    },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    required
+                    placeholder="Password"
+                  />
+                </Form.Item>
+                <Button
+                  onClick={() => {
+                    handlesubmit();
                   }}
-                  required
-                  placeholder=" User name"
-                />
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setEmail(e.target.value);
+                  type="primary"
+                >
+                  Submit
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </div>
+        <div className="col-lg-6">
+          <h3>updating sub Admin</h3>
+          <Row>
+            {/* updating SubAdmin */}
+            <Col span={12}>
+              <Form>
+                <Form.Item
+                  rules={[
+                    { required: true, message: "Please Enter SubAdmin id" },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setId(e.target.value);
+                    }}
+                    required
+                    placeholder="SubAdmin Id"
+                  />
+                </Form.Item>
+                <Form.Item
+                  rules={[
+                    { required: true, message: "Please Enter SubAdmin name" },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                    required
+                    placeholder=" User name"
+                  />
+                </Form.Item>
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter campaign Description",
+                    },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    required
+                    placeholder="Email"
+                    showCount
+                  />
+                </Form.Item>{" "}
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter Loaction of Admin",
+                    },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setlocation(e.target.value);
+                    }}
+                    required
+                    placeholder="Location"
+                    showCount
+                  />
+                </Form.Item>
+                <Form.Item
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please Enter SubAdmin's password",
+                    },
+                  ]}
+                >
+                  <Input
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    required
+                    placeholder="Password"
+                  />
+                </Form.Item>
+                <Button
+                  onClick={() => {
+                    updatesubAdmin();
                   }}
-                  required
-                  placeholder="Email"
-                  showCount
-                />
-              </Form.Item>{" "}
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter Loaction of Admin",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setlocation(e.target.value);
-                  }}
-                  required
-                  placeholder="Location"
-                  showCount
-                />
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter SubAdmin's password",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  required
-                  placeholder="Password"
-                />
-              </Form.Item>
-              <Button
-                onClick={() => {
-                  handlesubmit();
-                }}
-                type="primary"
-              >
-                Submit
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </div>
-      <div className="col-lg-6">
-        <h3>updating sub Admin</h3>
-        <Row>
-          {/* updating SubAdmin */}
-          <Col span={12}>
-            <Form>
-            <Form.Item
-                rules={[
-                  { required: true, message: "Please Enter SubAdmin id" },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setId(e.target.value);
-                  }}
-                  required
-                  placeholder="SubAdmin Id"
-                />
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  { required: true, message: "Please Enter SubAdmin name" },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                  required
-                  placeholder=" User name"
-                />
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter campaign Description",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  required
-                  placeholder="Email"
-                  showCount
-                />
-              </Form.Item>{" "}
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter Loaction of Admin",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setlocation(e.target.value);
-                  }}
-                  required
-                  placeholder="Location"
-                  showCount
-                />
-              </Form.Item>
-              <Form.Item
-                rules={[
-                  {
-                    required: true,
-                    message: "Please Enter SubAdmin's password",
-                  },
-                ]}
-              >
-                <Input
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  required
-                  placeholder="Password"
-                />
-              </Form.Item>
-              <Button
-                onClick={() => {
-                  updatesubAdmin();
-                }}
-                type="primary"
-              >
-                Submit
-              </Button>
-            </Form>
-          </Col>
-        </Row>
-      </div>
-      <div className="col-lg-12">
-        <Table columns={columns} dataSource={value}title={() => " Viewing subAdmins"} />
-      </div>
-      <div className="col-lg-12">
-        <Table
-          title={() => " Deleting subAdmins"}
-          columns={columns1}
-          dataSource={value}
-        />
+                  type="primary"
+                >
+                  Submit
+                </Button>
+              </Form>
+            </Col>
+          </Row>
+        </div>
+        <div className="col-lg-12">
+          <Table columns={columns} dataSource={value} title={() => " Viewing subAdmins"} />
+        </div>
+        <div className="col-lg-12">
+          <Table
+            title={() => " Deleting subAdmins"}
+            columns={columns1}
+            dataSource={value}
+          />
+        </div>
       </div>
     </div>
+
   );
 }
 

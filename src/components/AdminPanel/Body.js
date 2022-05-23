@@ -123,7 +123,7 @@ function Body({ history, ...props }) {
     <div className="row">
       <Header1 name={user.username} />
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider trigger={null}>
+        <Sider style={{ height: "100vh", overflow: "scroll" }} trigger={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item
@@ -237,7 +237,7 @@ function Body({ history, ...props }) {
               Adopting Children
             </Menu.Item>
             <Menu.Item
-              key="25"
+              key="35"
               icon={<TeamOutlined />}
               onClick={() => {
                 setContent("Chat");

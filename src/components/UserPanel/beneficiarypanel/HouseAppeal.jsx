@@ -133,7 +133,7 @@ export default function HouseAppeal() {
   };
 
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       {" "}
       <Form
         name="normal_login"

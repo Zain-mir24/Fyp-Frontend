@@ -122,7 +122,7 @@ function Neews() {
     <div className="row">
       <div className="col-lg-6">
         <Form>
-          <p>Add News</p>
+          <h1>Add News</h1>
           <Form.Item
             rules={[{ required: true, message: "Please Enter campaign name" }]}
           >
@@ -320,7 +320,7 @@ function AdminCampaign() {
   );
 
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <Neews />
       <br />
       <div className="LatestNews-render">

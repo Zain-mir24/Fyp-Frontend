@@ -57,7 +57,7 @@ function LoanRecovery() {
     }, []);
 
     return (
-        <div>
+        <div style={{ height: "600px", overflow: "scroll" }}>
             {content == "Loan" ? <Table columns={columns} dataSource={data} /> : <RecoverSheet />}
 
         </div>

@@ -6,11 +6,12 @@ import "./styles.css";
 const ref = React.createRef();
 
 function HousingSchemePDF(props) {
-  const [ProposalNo, setProposalNo] = useState();
-  const [needs, setNeeds] = useState();
-  const [outcomes, setOutcomes] = useState();
-  const [communicationFeedback, setCommunicationFeedback] = useState();
+  const [ProposalNo, setProposalNo] = useState(props.ProposalNo);
+  const [needs, setNeeds] = useState(props.needs);
+  const [outcomes, setOutcomes] = useState(props.outcomes);
+  const [communicationFeedback, setCommunicationFeedback] = useState(props.communicationFeedback);
 
+  console.log(props.data, "data")
   var splitStringList = (string) => { };
 
   const getData = async () => {
@@ -40,7 +41,7 @@ function HousingSchemePDF(props) {
     }
   };
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <h1>Update Form</h1>
       <Form
         name="normal_login"
@@ -260,37 +261,41 @@ function HousingSchemePDF(props) {
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Needs</span>{" "}
               <ul className="pdf-list-ul">
-                {props.data.needs === undefined ? (<div>
+                {props.data.needs === null ? (<div>
                   None yet
                 </div>)
-                  : props.data.needs.split("|").map((item) => {
+                  :
+                  props.data.needs.split("|").map((item) => {
                     return (
-                      <div>
+                      < div >
                         <li className="pdf-list-li">{item}</li>
                       </div>
                     );
-                  })}
+                  })
+                }
               </ul>
             </div>
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Outcomes</span>{" "}
               <ul className="pdf-list-ul">
-                {props.data.outcomes === undefined ? (<div>
+                {props.data.outcomes === null ? (<div>
                   None yet
                 </div>)
-                  : props.data.outcomes.split("|").map((item) => {
+                  :
+                  props.data.outcomes.split("|").map((item) => {
                     return (
                       <div>
                         <li className="pdf-list-li">{item}</li>
                       </div>
                     );
-                  })}
+                  })
+                }
               </ul>
             </div>
             <div style={{ display: "flex" }}>
               <span className="Pdf-blueheadings">Communication Feedback</span>{" "}
               <ul className="pdf-list-ul">
-                {props.data.communicationFeedback === undefined ? (<div>
+                {props.data.communicationFeedback === null ? (<div>
                   None yet
                 </div>)
                   : props.data.communicationFeedback.split("|").map((item) => {
@@ -322,8 +327,8 @@ function HousingSchemePDF(props) {
         </div>
 
 
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

@@ -1,16 +1,19 @@
 .conversation{
     background-color: black;
-    width: 50%;
+   
     margin: 10px 0;
     cursor: pointer;
     border-radius: 20px;
 }
 .conversation svg{
     font-size: 20px;
+    margin-right: 10px;
+   
 }
 .conversationName{
-    margin-left: 10px;
-    color: white;
-    margin-bottom: 20px;
+  
+    color:  white;
+    margin-bottom: 10px;
+  margin-left: 10px;
    
 }

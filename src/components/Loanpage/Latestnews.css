@@ -9,6 +9,18 @@
     left: 0;
    
 }
+
+.newsHeading{
+    font-size: 90px;
+}
+
+.alignNews .title{
+    font-family: Cuprum;
+    font-size: 60px;
+    color: #ffffff;
+    font-weight: 400;
+}
+
 .textoverimage{
     position: absolute;
     top: 50%;
@@ -16,12 +28,6 @@
     transform: translate(-50%, -50%);
     text-align: center;
     
-}
-.title{
-    font-family: Cuprum;
-    font-size: 60px;
-    color: #ffffff;
-    font-weight: 400;
 }
 
 .styleImages{
@@ -40,13 +46,11 @@
 }
 .alignNews{
     text-align: center;
-    padding-left: 5em;
     margin: 0;
     position: absolute;
     top: 50%;
-    left:20%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 .centered {
     position: absolute;

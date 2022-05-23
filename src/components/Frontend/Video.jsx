@@ -26,18 +26,18 @@ export default function Video() {
     <div>
       <Header active="social" />
       <div style={{ textAlign: "center", margin: "170px 0 0" }}>
-        <h1 style={{ paddingBottom: "50px" }}>Instagram Gallery</h1>
+        <h1 style={{ paddingBottom: "50px" }}>Social Videos</h1>
       </div>
       <div className="container">
         <div className="row">
-          {linkData.map((item) => {
-            var Data = item.link;
+          {linkData.map((res) => {
+            console.log(res);
             return (
               <div className="col-lg-6">
                 <iframe
                   width="100%"
                   height="300"
-                  src={"https://www.youtube.com/embed/" + { Data }}
+                  src={"https://www.youtube.com/embed/" + res.link}
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -47,10 +47,14 @@ export default function Video() {
             );
           })}
         </div>
-        <InstagramGallery
-          accessToken="IGQVJXZA2d2TUVjWklNTVAzSEl2STZA3VnZADR3NINDZAMcks2SkJLekpCSGpFZATRnc0xPRkVSSTM0eWx6cUJGczREbUd6R3gyQzdSRVBQUDVVT3dHb3RvSjFrQWE3bk9qc2xyNV9RRjI3d2pISDhjWjhCOQZDZD"
-          count={24}
-        />
+
+        <div style={{ textAlign: "center" }}>
+          <h1 style={{ padding: "50px 0 20px" }}>Instagram Gallery</h1>
+          <InstagramGallery
+            accessToken="IGQVJXemFldzlsX1RLejJqNDFUMzZAUdVBxUm5WZA25lcHJ0cU5FN0k5OFJfaElOTWN1R2pwZA3ZAJa1hxaFV6Uklyd2NfQUUyQ1RQajJ1UnZAZAay1pU0w4RG5tMHM5Y0oxU0h1MExzSDF5b2JxdEc1NVVNMAZDZD"
+            count={24}
+          />
+        </div>
       </div>
 
       <Footer />

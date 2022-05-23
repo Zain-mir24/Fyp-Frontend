@@ -128,7 +128,7 @@ export default function Cow() {
   }
 
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <Form.Item label="Select Donor">
         <Select
           defaultValue="Select Donor"

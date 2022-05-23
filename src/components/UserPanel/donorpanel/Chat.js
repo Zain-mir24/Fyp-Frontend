@@ -47,7 +47,6 @@ function Chat(props) {
     const receiverId = currentChat.member.find(
       (member) => member != props.donorId
     );
-    console.log(receiverId)
     socket.current.emit("sendMessage", {
       senderId: props.donorId,
       receiverId: receiverId,
@@ -102,7 +101,7 @@ function Chat(props) {
   return (
     <div className="messenger">
       <div className="chatMenu">
-        <div className="chatMenuWrapper">
+        <div className="chatMenuWr">
           {conversation.map((item) => {
             return (
               <div onClick={() => setCurrentChat(item)}>

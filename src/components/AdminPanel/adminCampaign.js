@@ -1,15 +1,24 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Table, Button, Input, Upload, Col, Form, Select, InputNumber, message } from "antd";
+import {
+  Table,
+  Button,
+  Input,
+  Upload,
+  Col,
+  Form,
+  Select,
+  InputNumber,
+  message,
+} from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { selectUser } from "../../store/reducers/User";
 import { useSelector } from "react-redux";
-import { Store } from 'react-notifications-component';
+import { Store } from "react-notifications-component";
 import { io } from "socket.io-client";
 
 const { Option } = Select;
 const axios = require("axios");
 function Foorm() {
-
   const [camp, setCamp] = useState([]);
   const [name, setName] = useState("");
   const [description, setdesc] = useState("");
@@ -22,10 +31,9 @@ function Foorm() {
   const socket = useRef();
 
   const user = useSelector(selectUser);
-  var userName = user.username
+  var userName = user.username;
 
   const saveFile = (e) => {
-
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
@@ -42,10 +50,10 @@ function Foorm() {
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {
           duration: 5000,
-          onScreen: true
-        }
+          onScreen: true,
+        },
       });
-    })
+    });
     viewCamp();
   }, []);
   const postData = async () => {
@@ -72,10 +80,9 @@ function Foorm() {
       //   message: `Global reach has started  campaign named ${name}`
       // })
 
-
       socket.current.emit("sendnotification", {
-        name
-      })
+        name,
+      });
 
       console.log(res);
     } catch (ex) {
@@ -220,222 +227,236 @@ function Foorm() {
     },
   ];
   function formatNumber(value) {
-    setDonation(Intl.NumberFormat().format(value))
+    setDonation(Intl.NumberFormat().format(value));
     // return new Intl.NumberFormat().format(value);
   }
 
   return (
-    <div className="row">
+    <div className="container-fluid">
       <h1> Campaign managment </h1>
-      <div className="col-lg-6">
-        <Form>
-          <p>Add campaign</p>
-          <Form.Item label="Select Beneficiary">
-            <Select
-              defaultValue="Select Beneficiary"
-              style={{
-                width: 180,
-                borderRadius: "0px",
-                backgroundColor: "transparent",
-              }}
-              onChange={handleChange}
-            >
-              {beneficiary.map((item) => {
-                return <Option value={item._id}>{item.name}</Option>;
-              })}
-            </Select>
-          </Form.Item>
-          <Form.Item
-            rules={[{ required: true, message: "Please Enter campaign name" }]}
-          >
-            <Col span={15}>
-              <Input
-                required
-                placeholder="Campaign name"
-                onChange={(e) => {
-                  setName(e.target.value);
+      <div className="row" style={{ height: "600px", overflow: "scroll" }}>
+        <div className="col-lg-6 col-md-6">
+          <Form>
+            <h3>Add campaign</h3>
+            <Form.Item label="Select Beneficiary">
+              <Select
+                defaultValue="Select Beneficiary"
+                style={{
+                  width: 180,
+                  borderRadius: "0px",
+                  backgroundColor: "transparent",
                 }}
-              />
-            </Col>
-          </Form.Item>
-          <Col span={15}>
-            <Form.Item
-              rules={[
-                {
-                  required: true,
-                  message: "Please Enter campaign Description",
-                },
-              ]}
-            >
-              <Input.TextArea
-                required
-                placeholder="Campaign Description"
-                onChange={(e) => {
-                  setdesc(e.target.value);
-                }}
-                showCount
-                maxLength={1000}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={15}>
-            <Form.Item
-              label="donation needed (RS)"
-              rules={[
-                {
-                  required: true,
-                  message: "Please Enter donation needed",
-                },
-              ]}
-            >
-              <InputNumber
-                style={{ width: "80%" }}
-                defaultValue={1000}
-                min={1000}
-                formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                required
-                onChange={(value) => {
-                  setDonation(value);
-                }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={15}>
-            <Form.Item
-              rules={[{ required: true, message: "Please uplaod doc" }]}
-              onChange={saveFile}
-            >
-              <Upload
-                accept="image/png,image/jpeg,image/jpg"
+                onChange={handleChange}
               >
-                <Button icon={<UploadOutlined />}>Upload image only</Button>
-              </Upload>
+                {beneficiary.map((item) => {
+                  return <Option value={item._id}>{item.name}</Option>;
+                })}
+              </Select>
             </Form.Item>
-          </Col>
-          <Col span={15}>
-            <Form.Item>
-              <Button type="primary" htmlType="submit" onClick={postData}>
-                submit
-              </Button>
+            <Form.Item
+              rules={[
+                { required: true, message: "Please Enter campaign name" },
+              ]}
+            >
+              <Col span={15}>
+                <Input
+                  required
+                  placeholder="Campaign name"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </Col>
             </Form.Item>
-          </Col>
-        </Form>
-      </div>
-      {/* Deleting the campaigns */}
-      <div className="col-lg-6">
-        <Table
-          title={() => " Delete campaigns"}
-          columns={columns}
-          dataSource={camp}
-        />
-      </div>
-
-      {/* Viewing the campaigns */}
-      <div className="col-lg-12">
-        <Table
-          title={() => " All campaigns"}
-          columns={column2}
-          dataSource={camp}
-        />
-      </div>
-      {/* Updating campaingn */}
-      <div className="col-lg-8">
-        <Form>
-          <p>Update campaign</p>
-          <Form.Item
-            rules={[{ required: true, message: "Please Enter campaign name" }]}
-          >
             <Col span={15}>
-              <Input
-                required
-                placeholder="Enter campaign id"
-                onChange={(e) => {
-                  setId(e.target.value);
-                }}
-              />
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Enter campaign Description",
+                  },
+                ]}
+              >
+                <Input.TextArea
+                  required
+                  placeholder="Campaign Description"
+                  onChange={(e) => {
+                    setdesc(e.target.value);
+                  }}
+                  showCount
+                  maxLength={1000}
+                />
+              </Form.Item>
             </Col>
-          </Form.Item>
-          <Form.Item
-            rules={[{ required: true, message: "Please Enter campaign name" }]}
-          >
             <Col span={15}>
-              <Input
-                required
-                placeholder="Campaign name"
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
+              <Form.Item
+                label="donation needed (RS)"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Enter donation needed",
+                  },
+                ]}
+              >
+                <InputNumber
+                  style={{ width: "80%" }}
+                  defaultValue={1000}
+                  min={1000}
+                  formatter={(value) =>
+                    ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                  required
+                  onChange={(value) => {
+                    setDonation(value);
+                  }}
+                />
+              </Form.Item>
             </Col>
-          </Form.Item>
-          <Col span={15}>
-            <Form.Item
-              rules={[
-                {
-                  required: true,
-                  message: "Please Enter campaign Description",
-                },
-              ]}
-            >
-              <Input.TextArea
-                required
-                placeholder="Campaign Description"
-                onChange={(e) => {
-                  setdesc(e.target.value);
-                }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={15}>
-            <Form.Item
-              label="donation needed (RS)"
-              rules={[
-                {
-                  required: true,
-                  message: "Please Enter donation needed",
-                },
-              ]}
-            >
-              <InputNumber
-                style={{ width: "60%" }}
-                defaultValue={1000}
-                min={1000}
-                formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                parser={value => value.replace(/\$\s?|(,*)/g, '')}
-                required
-                onChange={(value) => {
-                  setDonation(value);
-                }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={15}>
-            <Form.Item
-              name="Campaign media"
-              label=" Upload image"
-              onChange={saveFile}
-              rules={[
-                {
-                  required: true,
-                  message: "Please share picture or video for the campaign",
-                },
-              ]}
-            >
-              <Upload accept="image/png">
-                <Button icon={<UploadOutlined />}>Upload media files</Button>
-              </Upload>
-            </Form.Item>
-          </Col>
+            <Col span={15}>
+              <Form.Item
+                rules={[{ required: true, message: "Please uplaod doc" }]}
+                onChange={saveFile}
+              >
+                <Upload accept="image/png,image/jpeg,image/jpg">
+                  <Button icon={<UploadOutlined />}>Upload image only</Button>
+                </Upload>
+              </Form.Item>
+            </Col>
+            <Col span={15}>
+              <Form.Item>
+                <Button type="primary" htmlType="submit" onClick={postData}>
+                  submit
+                </Button>
+              </Form.Item>
+            </Col>
+          </Form>
+        </div>
+        {/* Deleting the campaigns */}
+        <div className="col-lg-6 col-md-6">
+          <Table
+            title={() => " Delete campaigns"}
+            columns={columns}
+            dataSource={camp}
+          />
+        </div>
 
-          <Col span={15}>
-            <Form.Item>
-              <Button type="primary" htmlType="submit" onClick={updateCampaign}>
-                submit
-              </Button>
+        {/* Viewing the campaigns */}
+        <div className="col-lg-12">
+          <Table
+            title={() => " All campaigns"}
+            columns={column2}
+            dataSource={camp}
+          />
+        </div>
+        {/* Updating campaingn */}
+        <div className="col-lg-8">
+          <Form>
+            <p>Update campaign</p>
+            <Form.Item
+              rules={[
+                { required: true, message: "Please Enter campaign name" },
+              ]}
+            >
+              <Col span={15}>
+                <Input
+                  required
+                  placeholder="Enter campaign id"
+                  onChange={(e) => {
+                    setId(e.target.value);
+                  }}
+                />
+              </Col>
             </Form.Item>
-          </Col>
-        </Form>
+            <Form.Item
+              rules={[
+                { required: true, message: "Please Enter campaign name" },
+              ]}
+            >
+              <Col span={15}>
+                <Input
+                  required
+                  placeholder="Campaign name"
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </Col>
+            </Form.Item>
+            <Col span={15}>
+              <Form.Item
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Enter campaign Description",
+                  },
+                ]}
+              >
+                <Input.TextArea
+                  required
+                  placeholder="Campaign Description"
+                  onChange={(e) => {
+                    setdesc(e.target.value);
+                  }}
+                />
+              </Form.Item>
+            </Col>
+            <Col span={15}>
+              <Form.Item
+                label="donation needed (RS)"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please Enter donation needed",
+                  },
+                ]}
+              >
+                <InputNumber
+                  style={{ width: "60%" }}
+                  defaultValue={1000}
+                  min={1000}
+                  formatter={(value) =>
+                    ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }
+                  parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+                  required
+                  onChange={(value) => {
+                    setDonation(value);
+                  }}
+                />
+              </Form.Item>
+            </Col>
+            <Col span={15}>
+              <Form.Item
+                name="Campaign media"
+                label=" Upload image"
+                onChange={saveFile}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please share picture or video for the campaign",
+                  },
+                ]}
+              >
+                <Upload accept="image/png">
+                  <Button icon={<UploadOutlined />}>Upload media files</Button>
+                </Upload>
+              </Form.Item>
+            </Col>
+
+            <Col span={15}>
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  onClick={updateCampaign}
+                >
+                  submit
+                </Button>
+              </Form.Item>
+            </Col>
+          </Form>
+        </div>
       </div>
     </div>
   );

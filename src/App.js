@@ -10,6 +10,7 @@ import Campaign from "./components/Frontend/Campaign";
 import CampaignDetail from "./components/Frontend/CampaignDetails";
 import Userpanel from "./components/UserPanel/Userpanel";
 import Changepassword from "./components/UserPanel/Changepassword";
+import Changeadminpassword from "./components/AdminPanel/ChangePassword"
 import Forgotpassword from "./components/UserPanel/Forgotpassword";
 import Resetpassword from "./components/UserPanel/ResetPassword";
 import Adminlogin from "./components/Signadmin/Adminlogin";
@@ -47,6 +48,7 @@ function App() {
             <Route path="/News" component={News}></Route>
             <Route path="/Audit" component={Audit}></Route>
             <Route path="/changePassword" component={Changepassword}></Route>
+            <Route path="/changeadminPassword" component={Changeadminpassword}></Route>
             <Route path="/forgotPassword" component={Forgotpassword}></Route>
             <Route path="/donationStripe" component={Donation}>
               <Donation />

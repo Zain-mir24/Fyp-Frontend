@@ -33,10 +33,9 @@ export default function Conversation(props) {
 
   return (
     <div className="conversation">
-      <UserOutlined />
-      <span className="conversationName">
-        {donor.name} ({donor.userType})
-      </span>
+      <p className="conversationName">
+        <UserOutlined /> {donor.name} ({donor.userType})
+      </p>
     </div>
   );
 }

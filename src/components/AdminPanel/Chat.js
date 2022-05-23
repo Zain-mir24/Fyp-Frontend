@@ -11,8 +11,6 @@ function Chat(props) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  const [donor, setDonor] = useState([]);
-  const [beneficiary, setBeneficiary] = useState([]);
   const socket = useRef();
   const scrollRef = useRef();
 
@@ -51,7 +49,7 @@ function Chat(props) {
     const receiverId = currentChat.member.find(
       (member) => member != props.donorId
     );
-    console.log(receiverId, "yaha we are sending reciever id");
+
     socket.current.emit("sendMessage", {
       senderId: props.donorId,
       receiverId: receiverId,
@@ -72,7 +70,7 @@ function Chat(props) {
     try {
       const res = await axios.get("http://localhost:9000/conversation/");
       setConversation(res.data);
-      console.log(res.data, "conversation");
+      console.log(res.data);
     } catch (e) {
       console.log(e);
     }
@@ -101,50 +99,19 @@ function Chat(props) {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const viewData = async () => {
-    try {
-      const resp = await axios.get("http://localhost:9000/admin/donor");
-      setDonor(resp.data);
-
-      console.log(resp.data, "HELLOsss");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const viewBeneficiary = async () => {
-    try {
-      const resp = await axios.get(
-        "http://localhost:9000/admin/readBeneficiary"
-      );
-      setBeneficiary(resp.data);
-
-      console.log(resp.data, "HELLOsss");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  useEffect(() => {
-    viewData();
-    viewBeneficiary();
-  }, []);
   return (
-    <div>
-      <div className="messenger row">
-        <div className="chatMenu">
-          <div className="chatMenuWr">
-            <div>
-              <h1>Users</h1>
-            </div>
-            {conversation.map((item) => {
-              return (
-                <div onClick={() => setCurrentChat(item)}>
-                  <Conversation userId={item.member[0]} />
-                </div>
-              );
-            })}
-            {/* <h1>Donors</h1>
+    <div className="messenger">
+      <div className="chatMenu">
+        <div className="chatMenuWr">
+          <h1>Users</h1>
+          {conversation.map((item) => {
+            return (
+              <div onClick={() => setCurrentChat(item)}>
+                <Conversation userId={item.member[0]} />
+              </div>
+            );
+          })}
+          {/* <h1>Donors</h1>
           {donor.map((item) => {
             return (
               <div>
@@ -153,7 +120,6 @@ function Chat(props) {
               </div>
             );
           })}
-
           <h1>Beneficiary</h1>
           {beneficiary.map((item) => {
             return (
@@ -163,78 +129,55 @@ function Chat(props) {
               </div>
             );
           })} */}
-          </div>
         </div>
-        <div className="chatBox">
-          <div className="chatBoxWrap">
-            {currentChat ? (
-              <>
-                <div className="chatBoxTop">
-                  {messages.map((item) => {
-                    console.log(item.sender, "HELLLO");
-                    console.log(props.donorId);
-                    return (
-                      <div ref={scrollRef}>
-                        <Message
-                          message={item}
-                          own={item.sender === props.donorId}
-                        />
-                      </div>
-                    );
-                  })}
-                  {/* <Message />
+      </div>
+      <div className="chatBox">
+        <div className="chatBoxWrap">
+          {currentChat ? (
+            <>
+              <div className="chatBoxTop">
+                {messages.map((item) => {
+                  console.log(item.sender, "HELLLO");
+                  console.log(props.donorId);
+                  return (
+                    <div ref={scrollRef}>
+                      <Message
+                        message={item}
+                        own={item.sender === props.donorId}
+                      />
+                    </div>
+                  );
+                })}
+                {/* <Message />
                 <Message own={true} />
                 <Message /> */}
-                </div>
-              </>
-            ) : (
-              <span>Open A Conversation To Start A Chat</span>
-            )}
+              </div>
+            </>
+          ) : (
+            <span>Open A Conversation To Start A Chat</span>
+          )}
 
-            <div className="chatBoxBottom">
-              <textarea
-                className="messageInput chatMessageInput"
-                placeholder="Write Something here ..............."
-                onChange={(e) => {
-                  setNewMessage(e.target.value);
-                }}
-                value={newMessage}
-              />
-              <button className="chatSubmitButton" onClick={handleSubmit}>
-                Send
-              </button>
-            </div>
+          <div className="chatBoxBottom">
+            <textarea
+              className="messageInput"
+              placeholder="Write Something here ..............."
+              onChange={(e) => {
+                setNewMessage(e.target.value);
+              }}
+              value={newMessage}
+            />
+            <button className="chatSubmitButton" onClick={handleSubmit}>
+              Send
+            </button>
           </div>
         </div>
         <div>
-          <div className="chatMenuWr"></div>
+          <div className="chatBoxWrap"></div>
         </div>
-
-        {/* <div className="chatOnline">
+      </div>
+      {/* <div className="chatOnline">
         <div className="chatOnlinebox">Online</div>
       </div> */}
-      </div>
-      <div
-        style={{
-          marginTop: "50px",
-          height: "500px",
-          backgroundColor: "black",
-          position: "relative",
-        }}
-      >
-        <p
-          style={{
-            color: "white",
-            position: "absolute",
-            fontSize: "70px",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          CHAT SYSTEM
-        </p>
-      </div>
     </div>
   );
 }
