@@ -55,7 +55,7 @@ export default function AmountDetail(props) {
     },
   ];
   return (
-    <div>
+    <div style={{ height: "600px", overflow: "scroll" }}>
       <div style={{ textAlign: "center" }}>
         <h1>{props.title}</h1>
       </div>

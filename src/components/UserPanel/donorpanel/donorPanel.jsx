@@ -82,7 +82,7 @@ function DonorPanel({ history, ...props }) {
             >
               Show cow Donations
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="7"
               icon={<DesktopOutlined />}
               onClick={(e) => {
@@ -90,7 +90,7 @@ function DonorPanel({ history, ...props }) {
               }}
             >
               Show Rickshaw
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="8"
               icon={<DesktopOutlined />}
@@ -134,9 +134,9 @@ function DonorPanel({ history, ...props }) {
               {content == "Show Donations" ? (
                 <ShowDonation donorId={User.userId} />
               ) : null}
-              {content == "Show Rickshaw" ? (
+              {/* {content == "Show Rickshaw" ? (
                 <ShowRickshaw donorId={User.userId} />
-              ) : null}
+              ) : null} */}
               {content == "Show Previous" ? (
                 <PreviousRecord userId={User.userId} />
               ) : null}

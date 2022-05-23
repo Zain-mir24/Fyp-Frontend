@@ -30,7 +30,8 @@ function RecoverSheet() {
         }
     ]
     return (
-        <div>RecoverSheet
+        <div style={{ height: "600px", overflow: "scroll" }}
+        >RecoverSheet
             <Form>
                 <Form.Item>
                     <Input placeholder="Name" />
