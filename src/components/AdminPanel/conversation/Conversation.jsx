@@ -11,7 +11,6 @@ import {
   CheckCircleFilled,
   IdcardOutlined,
   MoneyCollectOutlined,
-
 } from "@ant-design/icons";
 export default function Conversation(props) {
   const [donor, setDonor] = useState("");
@@ -35,7 +34,9 @@ export default function Conversation(props) {
   return (
     <div className="conversation">
       <UserOutlined />
-      <span className="conversationName">{donor.name}</span>
+      <span className="conversationName">
+        {donor.name} ({donor.userType})
+      </span>
     </div>
   );
 }
