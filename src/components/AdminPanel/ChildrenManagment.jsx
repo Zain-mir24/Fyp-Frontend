@@ -285,7 +285,7 @@ function ChildrenManagment() {
               rules={[{ required: true, message: "Please uplaod doc" }]}
               onChange={saveFile}
             >
-              <Upload>
+              <Upload accept="image/png,image/jpg,image/jpeg">
                 <Button icon={<UploadOutlined />}>
                   Upload Child's picture
                 </Button>
@@ -423,7 +423,7 @@ function ChildrenManagment() {
               rules={[{ message: "Please uplaod doc" }]}
             //   onChange={saveFile}
             >
-              <Upload>
+              <Upload accept="image/png,image/jpg,image/jpeg">
                 <Button icon={<UploadOutlined />}>
                   Upload Child's picture
                 </Button>

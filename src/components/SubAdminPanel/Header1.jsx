@@ -3,15 +3,15 @@ import "./Header.css"
 function Header1(props) {
   return (
     <div className="container-fluid">
-    <div className="row header ">
-      <div className="col-lg-6  leftHeading">Global reach</div>
-      <div className="col-lg-6">
-        <div className="  rightHeading">
-          user {props.name} 
+      <div className="row header ">
+        <div className="col-lg-6  leftHeading">Global reach</div>
+        <div className="col-lg-6">
+          <div className="  rightHeading">
+            Admin {props.name}
+          </div>
         </div>
       </div>
     </div>
-  </div>
   )
 }
 

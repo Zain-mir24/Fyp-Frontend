@@ -7,7 +7,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../store/reducers/User";
 
 import { CreateContext } from "../../../contexts/Customecontexts";
-
+import PreviousRecord from "./PreviousRecord";
 import { Redirect, withRouter } from "react-router";
 import Campaigndonation from "./Campaigndonation";
 import Chat from "./Chat";
@@ -80,7 +80,7 @@ function DonorPanel({ history, ...props }) {
                 setContent("Show Donations");
               }}
             >
-              Show Donations
+              Show cow Donations
             </Menu.Item>
             <Menu.Item
               key="7"
@@ -90,6 +90,15 @@ function DonorPanel({ history, ...props }) {
               }}
             >
               Show Rickshaw
+            </Menu.Item>
+            <Menu.Item
+              key="8"
+              icon={<DesktopOutlined />}
+              onClick={(e) => {
+                setContent("Show Previous");
+              }}
+            >
+              Show previous donation record
             </Menu.Item>
 
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
@@ -127,6 +136,9 @@ function DonorPanel({ history, ...props }) {
               ) : null}
               {content == "Show Rickshaw" ? (
                 <ShowRickshaw donorId={User.userId} />
+              ) : null}
+              {content == "Show Previous" ? (
+                <PreviousRecord userId={User.userId} />
               ) : null}
             </div>
           </Content>

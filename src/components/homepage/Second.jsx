@@ -42,25 +42,30 @@ const Second = () => {
           data.map((item) => {
             return (
               <div className="col-lg-4">
-                <a href="/News">
-                  <Card
-                    style={{
-                      backgroundColor: "#F5F5F5",
+                <div style={{ padding: "5px", borderRadius: "5px" }}>
 
-                    }}
-                    cover={
-                      <img
-                        style={{ height: "250px" }}
-                        src={"http://localhost:9000/uploads/" + item.file} />
-                    }
-                  >
+                  <a href="/News">
+                    <Card
+                      style={{
+                        backgroundColor: "#F5F5F5",
 
-                    <h1 className="downText">
-                      {item.name}
+                      }}
+                      cover={
+                        <img
+                          style={{ height: "250px" }}
+                          src={"http://localhost:9000/uploads/" + item.file} />
+                      }
+                    >
 
-                    </h1>
-                  </Card>
-                </a>
+                      <h1 className="downText">
+                        {item.name}
+
+                      </h1>
+                    </Card>
+                  </a>
+
+                </div>
+
               </div>
 
             )

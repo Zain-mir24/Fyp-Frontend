@@ -97,7 +97,7 @@ function Body({ history, ...props }) {
         <Sider trigger={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item
+            {/* <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
 
@@ -113,7 +113,7 @@ function Body({ history, ...props }) {
               }}
             >
               Users
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="4"
               icon={<CheckCircleFilled />}

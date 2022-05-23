@@ -127,7 +127,7 @@ function Body({ history, ...props }) {
           trigger={null}>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-            <Menu.Item
+            {/* <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
               onClick={(e) => {
@@ -135,7 +135,7 @@ function Body({ history, ...props }) {
               }}
             >
               Super Admin panel
-            </Menu.Item>
+            </Menu.Item> */}
 
             {/* <Menu.Item
               key="3"
