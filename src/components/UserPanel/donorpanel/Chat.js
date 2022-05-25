@@ -112,7 +112,7 @@ function Chat(props) {
         </div>
       </div>
       <div className="chatBox">
-        <div className="chatBoxWrapper">
+        <div className="chatBoxWrap">
           {currentChat ? (
             <>
               <div className="chatBoxTop">
@@ -146,12 +146,14 @@ function Chat(props) {
               }}
               value={newMessage}
             />
-            <button onClick={handleSubmit}>Send</button>
+            <button className="chatSubmitButton" onClick={handleSubmit}>
+              Send
+            </button>
           </div>
         </div>
       </div>
-      <div className="chatOnline">
-        <div className="chatOnlineWrapper">Online</div>
+      <div>
+        <div className="chatBoxWrap"></div>
       </div>
     </div>
   );
