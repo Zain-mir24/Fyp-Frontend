@@ -128,6 +128,8 @@ export default function CampaignDetails({ history }) {
               <h2>{name}</h2>
               <p>{description}</p>
               {donation < collection ? null : <InputNumber style={{ border: "1px solid black", width: "40%" }}
+                formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                parser={value => value.replace(/\$\s?|(,*)/g, '')}
                 placeholder="enter donation amount (pkr)"
                 onChange={(e) => {
                   setAmount(e);

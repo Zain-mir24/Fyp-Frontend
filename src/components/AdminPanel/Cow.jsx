@@ -15,6 +15,8 @@ import {
   Rate,
   Table,
 } from "antd";
+import PhoneInput from 'react-phone-number-input'
+
 import axios from "axios";
 const { Option } = Select;
 const { TextArea } = Input;
@@ -160,9 +162,13 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setDonatedAmount(e.target.value);
+              setDonatedAmount(e);
             }}
           />
         </Form.Item>
@@ -205,10 +211,9 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              setCell(e.target.value);
-            }}
+          <PhoneInput
+            style={{ width: "30%" }}
+            onChange={setCell}
           />
         </Form.Item>
         <Form.Item
