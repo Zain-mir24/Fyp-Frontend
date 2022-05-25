@@ -236,6 +236,8 @@ export default function Campaign() {
                       <p>{campaign.description}</p>
                       {campaign.donation < collection ? null : (
                         <InputNumber
+                          formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                          parser={value => value.replace(/\$\s?|(,*)/g, '')}
                           style={{ border: "1px solid black", width: "40%" }}
                           placeholder="enter donation amount (pkr)"
                           defaultValue={1000}

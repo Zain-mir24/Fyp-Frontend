@@ -179,6 +179,9 @@ function CampaignDetail(props) {
                 style={{ border: "1px solid black", width: "40%" }}
                 defaultValue={1000}
                 min={1000}
+                formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                parser={value => value.replace(/\$\s?|(,*)/g, '')}
+
                 placeholder="enter donation amount (pkr)"
                 onChange={(e) => {
                   setAmount(e);

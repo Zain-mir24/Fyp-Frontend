@@ -15,6 +15,8 @@ import {
   Rate,
   Table,
 } from "antd";
+import PhoneInput from 'react-phone-number-input'
+
 import axios from "axios";
 const { Option } = Select;
 const { TextArea } = Input;
@@ -152,6 +154,7 @@ export default function Cow() {
         }}
       >
         <Form.Item
+          name="Donor Donated Amount: "
           label="Donor Donated Amount: "
           rules={[
             {
@@ -160,13 +163,18 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setDonatedAmount(e.target.value);
+              setDonatedAmount(e);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Deserver Name: "
           label="Deserver Name: "
           rules={[
             {
@@ -182,6 +190,7 @@ export default function Cow() {
           />
         </Form.Item>
         <Form.Item
+          name='CNIC: '
           label="CNIC: "
           rules={[
             {
@@ -191,12 +200,14 @@ export default function Cow() {
           ]}
         >
           <Input
+            placeholder="enter without dash"
             onChange={(e) => {
               setCnic(e.target.value);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Cell: "
           label="Cell: "
           rules={[
             {
@@ -205,13 +216,13 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
-            onChange={(e) => {
-              setCell(e.target.value);
-            }}
+          <PhoneInput
+            style={{ width: "30%" }}
+            onChange={setCell}
           />
         </Form.Item>
         <Form.Item
+          name="Status / Category: "
           label="Status / Category: "
           rules={[
             {
@@ -297,6 +308,7 @@ export default function Cow() {
         </div>
         <br /> <br />
         <Form.Item
+          name="AccountNo: "
           label="AccountNo: "
           rules={[
             {
@@ -312,6 +324,7 @@ export default function Cow() {
           />
         </Form.Item>
         <Form.Item
+          name="Source Of Income: "
           label="Source Of Income: "
           rules={[
             {
@@ -327,6 +340,7 @@ export default function Cow() {
           />
         </Form.Item>
         <Form.Item
+          name="Cow Price: "
           label="Cow Price: "
           rules={[
             {
@@ -335,13 +349,18 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setCowPrice(e.target.value);
+              setCowPrice(e);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Cow Owner: "
           label="Cow Owner: "
           rules={[
             {
@@ -357,6 +376,7 @@ export default function Cow() {
           />
         </Form.Item>
         <Form.Item
+          name="Final Price: "
           label="Final Price: "
           rules={[
             {
@@ -365,13 +385,18 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setFinalPrice(e.target.value);
+              setFinalPrice(e);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Expected Income: "
           label="Expected Income: "
           rules={[
             {
@@ -380,14 +405,19 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setExpectedIncome(e.target.value);
+              setExpectedIncome(e);
             }}
           />
         </Form.Item>
         <Form.Item
-          label="Approx Milk: "
+          name="Approx Milk in litre: "
+          label="Approx Milk in litre: "
           rules={[
             {
               required: true,
@@ -402,6 +432,7 @@ export default function Cow() {
           />
         </Form.Item>
         <Form.Item
+          name="SalePricePerLitre: "
           label="SalePricePerLitre: "
           rules={[
             {
@@ -410,13 +441,18 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setSalePricePerLitre(e.target.value);
+              setSalePricePerLitre(e);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Food Expense Of Cow: "
           label="Food Expense Of Cow: "
           rules={[
             {
@@ -425,13 +461,18 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setFoodExpenseOfCow(e.target.value);
+              setFoodExpenseOfCow(e);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Saving Per Day: "
           label="Saving Per Day: "
           rules={[
             {
@@ -440,13 +481,19 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setSavingPerDay(e.target.value);
+              setSavingPerDay(e);
             }}
           />
         </Form.Item>
         <Form.Item
+          name="Saving Per Month: "
           label="Saving Per Month: "
           rules={[
             {
@@ -455,9 +502,13 @@ export default function Cow() {
             },
           ]}
         >
-          <Input
+          <InputNumber
+            formatter={(value) =>
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
             onChange={(e) => {
-              setSavingPerMonth(e.target.value);
+              setSavingPerMonth(e);
             }}
           />
         </Form.Item>
@@ -473,6 +524,6 @@ export default function Cow() {
           </Button>
         </Form.Item>
       </Form>
-    </div>
+    </div >
   );
 }

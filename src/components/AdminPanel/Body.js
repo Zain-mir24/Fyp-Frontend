@@ -292,7 +292,7 @@ function Body({ history, ...props }) {
               Housing Scheme
             </Menu.Item>
 
-            <Menu.Item
+            {/* <Menu.Item
               key="19"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -309,7 +309,7 @@ function Body({ history, ...props }) {
               }}
             >
               Daily expense Sheet
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="24"
               icon={<MoneyCollectOutlined />}
@@ -319,7 +319,7 @@ function Body({ history, ...props }) {
             >
               Cow
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="25"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -327,8 +327,8 @@ function Body({ history, ...props }) {
               }}
             >
               Masjid
-            </Menu.Item>
-            <Menu.Item
+            </Menu.Item> */}
+            {/* <Menu.Item
               key="26"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -336,7 +336,7 @@ function Body({ history, ...props }) {
               }}
             >
               Rickshaw
-            </Menu.Item>
+            </Menu.Item> */}
 
             <Menu.Item
               key="21"
