@@ -238,7 +238,7 @@ function Foorm() {
         <div className="col-lg-6 col-md-6">
           <Form>
             <h3>Add campaign</h3>
-            <Form.Item label="Select Beneficiary">
+            {/* <Form.Item label="Select Beneficiary">
               <Select
                 defaultValue="Select Beneficiary"
                 style={{
@@ -252,7 +252,7 @@ function Foorm() {
                   return <Option value={item._id}>{item.name}</Option>;
                 })}
               </Select>
-            </Form.Item>
+            </Form.Item> */}
             <Form.Item
               rules={[
                 { required: true, message: "Please Enter campaign name" },

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button } from "antd";
+import { Table, Button, Form } from "antd";
 import { Select } from "antd";
 
 const { Option } = Select;
@@ -11,6 +11,7 @@ require("dotenv").config({ debug: process.env.DEBUG });
 
 function AppealedLoans() {
   const [Loans, SetLoans] = useState([]);
+  const [filterLoan, setFilterLoan] = useState([]);
   const [id, setID] = useState();
   useEffect(() => {
     viewData();
@@ -25,6 +26,20 @@ function AppealedLoans() {
       });
 
       SetLoans(
+        res.data.map((i) => ({
+          status: i.status,
+          key: i._id,
+          Cname: i.name,
+          bname: i.bid.name,
+          amountneeded: i.Loanamount,
+          description: i.loandescription,
+          loanType: i.loanType,
+          fileName: i.fileName,
+          isApproved: i.isApproved.toString(),
+        }))
+      );
+
+      setFilterLoan(
         res.data.map((i) => ({
           status: i.status,
           key: i._id,
@@ -89,18 +104,12 @@ function AppealedLoans() {
       key: "file",
       columnWidth: 32,
       render: (text, record) => {
-        console.log(record.fileName, "render")
-        return (
-          record.fileName ?
-            <a
-              href={
-                "http://localhost:9000/uploads/" + record.fileName
-              }
-              download
-            >
-              <Button  >Download </Button>
-            </a> : null
-        )
+        console.log(record.fileName, "render");
+        return record.fileName ? (
+          <a href={"http://localhost:9000/uploads/" + record.fileName} download>
+            <Button>Download </Button>
+          </a>
+        ) : null;
       },
     },
     // {
@@ -124,9 +133,47 @@ function AppealedLoans() {
       ),
     },
   ];
+
+  const handleChange = (value) => {
+    SetLoans(
+      filterLoan.filter((item) => {
+        console.log(item.loanType, "USE");
+        if (item.loanType === value || "All" === value) {
+          return item;
+        }
+      })
+    );
+  };
+
   return (
     <div>
-      <Table columns={columns} dataSource={Loans} scroll={{ y: 1100, x: 1900 }} />
+      <h1>Loan Appeals </h1>
+      <Form.Item label="Filter Loan Type">
+        <Select
+          defaultValue="All"
+          style={{
+            width: 180,
+            borderRadius: "0px",
+            backgroundColor: "transparent",
+          }}
+          onChange={handleChange}
+        >
+          <Option value={"All"}>All</Option>;
+          <Option value={"6 month installment plan"}>
+            6 month installment plan
+          </Option>
+          ;
+          <Option value={"12 month installment plan"}>
+            12 month installment plan
+          </Option>
+          ;<Option value={"Fullcash"}>Fullcash</Option>;
+        </Select>
+      </Form.Item>
+      <Table
+        columns={columns}
+        dataSource={Loans}
+        scroll={{ y: 1100, x: 1900 }}
+      />
     </div>
   );
 }
