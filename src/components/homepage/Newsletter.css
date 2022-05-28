@@ -2,8 +2,8 @@
     background-image: url("../../Images/worldmap.png");
     background-color: #F5F5F5;
     border-radius: 5px;
-    margin-top: -10px;
-    padding: 20px;
+    margin-top: 10px;
+    padding-top: 20px;
 }
 .inTouch{
         margin-left: auto;
