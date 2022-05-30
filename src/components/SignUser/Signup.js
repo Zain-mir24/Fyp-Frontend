@@ -120,7 +120,7 @@ export default function SignUp({ history, ...props }) {
                     name="email"
                     autoComplete="email"
                     value={getEmail}
-                    required={true}
+                    // required={true}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </Grid>
@@ -138,7 +138,7 @@ export default function SignUp({ history, ...props }) {
                     value={getPassword}
                     inputProps={{ minLength: 7 }}
                     minLength={7}
-                    required={true}
+                    // required={true}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Grid>

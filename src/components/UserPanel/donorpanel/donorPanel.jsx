@@ -102,7 +102,7 @@ function DonorPanel({ history, ...props }) {
             </Menu.Item>
 
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
-              <Menu.Item key="5">
+              {/* <Menu.Item key="5">
                 <Button
                   onClick={(e) => {
                     history.push("/changePassword");
@@ -110,7 +110,7 @@ function DonorPanel({ history, ...props }) {
                 >
                   Changepassword
                 </Button>
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>
