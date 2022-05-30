@@ -16,6 +16,8 @@ import { UploadOutlined } from "@ant-design/icons";
 import { connect, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
+import url from "../../../config/axios"
+
 import "dotenv/config";
 
 const axios = require("axios");
@@ -50,8 +52,8 @@ function LoanAppeal(props) {
     formData.append("isApproved", false);
 
     try {
-      const res = await axios.post(
-        "http://localhost:9000/beneficiary/addloanappeal",
+      const res = await url.post(
+        "/beneficiary/addloanappeal",
         formData
       );
       console.log(res, "Successfully send");
@@ -66,8 +68,8 @@ function LoanAppeal(props) {
 
   const viewData = async () => {
     try {
-      const resp = await axios.get(
-        "http://localhost:9000/admin/viewLoanAppeals/" + props.userId.userId
+      const resp = await url.get(
+        "/admin/viewLoanAppeals/" + props.userId.userId
       );
       setData(
         resp.data.map((i) => ({
@@ -126,7 +128,7 @@ function LoanAppeal(props) {
       render: (text, record) => {
         console.log(record.fileName, "render");
         return record.fileName ? (
-          <a href={"http://localhost:9000/uploads/" + record.fileName} download>
+          <a href={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName} download>
             <Button>Download </Button>
           </a>
         ) : null;

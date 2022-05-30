@@ -4,6 +4,7 @@ import { Form, Input, Button } from "antd";
 import { withRouter } from "react-router";
 import axios from "axios";
 import { selectUser } from "../../store/reducers/User";
+import url from "../../config/axios"
 function Changepassword({ history, ...props }) {
   const [oldpass, setoldpass] = useState("");
   const [newpass, setnewpass] = useState("");
@@ -12,18 +13,15 @@ function Changepassword({ history, ...props }) {
   const email = user.getEmail;
   const checkpassword = async (e) => {
     e.preventDefault();
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/User",
-        url: "/changepassword",
-        method: "post",
-        data: {
-          email,
-          oldpass,
-          newpass,
-          confirmpass,
-        },
-      })
+    await url.post(
+      "/User/changepassword"
+      , {
+        email,
+        oldpass,
+        newpass,
+        confirmpass,
+      },
+    )
       .then((res) => {
         alert('password changed')
         history.push("/Signin");

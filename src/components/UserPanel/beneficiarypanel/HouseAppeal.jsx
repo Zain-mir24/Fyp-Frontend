@@ -16,6 +16,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { connect, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
+import url from "../../../config/axios"
 import PhoneInput from 'react-phone-number-input'
 
 const axios = require("axios");
@@ -105,8 +106,8 @@ export default function HouseAppeal() {
     formData.append("fileName4", fileName4);
     formData.append("family", JSON.stringify(family));
     try {
-      const res = await axios.post(
-        "http://localhost:9000/admin/addhousingScheme",
+      const res = await url.post(
+        "/admin/addhousingScheme",
         formData
       );
       console.log(res, "Successfully send");

@@ -5,6 +5,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import MaskedInput from 'antd-mask-input'
 import axios from 'axios'
 import { selectUser } from "../../../store/reducers/User";
+import url from "../../../config/axios"
 
 function AppointmentApp(props) {
     console.log(props.id, "Child ID")
@@ -17,11 +18,9 @@ function AppointmentApp(props) {
 
     const ScheduleMeeting = async () => {
         try {
-            await axios.request({
-                baseURL: "http://localhost:9000/User",
-                url: "/appointmentCreate",
-                method: "post",
-                data: {
+            await url.post(
+                "/User/appointmentCreate",
+                {
                     name: user.username,
                     email: user.getEmail,
                     PhoneNumber: PN,
@@ -29,7 +28,7 @@ function AppointmentApp(props) {
                     SlotDate: DDate,
                     childId: props.id
                 },
-            })
+            )
             alert(`your meeting is scheduled`)
             console.log("Meeting Scheduled")
         } catch (e) {

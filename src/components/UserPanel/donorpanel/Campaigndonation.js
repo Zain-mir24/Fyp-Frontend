@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card } from "antd";
 import axios from "axios";
 import CampaignDetail from "./CampaignDetail";
+import url from "../../../config/axios"
 const { Meta } = Card;
 
 function Campaigndonation() {
@@ -15,8 +16,8 @@ function Campaigndonation() {
 
   const getData = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/viewCampaigns"
+      const res = await url.get(
+        "/admin/viewCampaigns"
       );
       await setData(res.data.campaign);
       console.log(res);
@@ -61,7 +62,7 @@ function Campaigndonation() {
                       <img
                         style={{ height: "300px" }}
                         alt="example"
-                        src={"http://localhost:9000/uploads/" + item.fileName}
+                        src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.fileName}
                       />
                     }
                   >

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form, Select, Row } from "antd";
 
 import axios from "axios";
-
+import url from "../../../config/axios"
 
 function PreviousRecord(props) {
     const [data, setData] = useState([]);
@@ -10,7 +10,7 @@ function PreviousRecord(props) {
 
     const getData = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/admin/Donations/" + id);
+            const res = await url.get("/admin/Donations/" + id);
             await setData(res.data);
         } catch (err) {
             console.log(err);

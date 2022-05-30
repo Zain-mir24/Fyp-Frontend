@@ -3,21 +3,20 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { Form, Input, Button } from "antd";
 import { withRouter, useParams } from "react-router";
 import axios from "axios";
+import url from "../../config/axios"
 import { selectUser } from "../../store/reducers/User";
 
 function ResetPassword() {
   const [pass, newPass] = useState("");
   const { _id, token } = useParams();
   const senddata = async (e) => {
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/User",
-        url: `/resetpassword/${_id}/${token}`,
-        method: "post",
-        data: {
-          pass,
-        },
-      })
+    await url.post(
+      "http://localhost:9000/User/resetpassword/" + _id + "/" + token,
+
+      {
+        pass,
+      },
+    )
       .then((res) => {
         alert("Password has been updated");
       })

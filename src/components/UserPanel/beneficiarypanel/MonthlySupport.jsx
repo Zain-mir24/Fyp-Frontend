@@ -17,6 +17,8 @@ import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
 import PhoneInput from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
+import url from "../../../config/axios"
+
 const axios = require("axios");
 
 export default function MonthlySupport() {
@@ -108,8 +110,8 @@ export default function MonthlySupport() {
     formData.append("deathcertificatename", deathcertificatename)
     formData.append("totalamountdonation", totalamountdonation)
     try {
-      const res = await axios.post(
-        "http://localhost:9000/User/MonthlyAppeal",
+      const res = await url.post(
+        "/User/MonthlyAppeal",
         formData
       );
       console.log(res, "Successfully send");

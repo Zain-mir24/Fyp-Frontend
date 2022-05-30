@@ -124,7 +124,7 @@ function Beneficiarypanel({ history, ...props }) {
               Loan record
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title="User Setting">
-              <Menu.Item>
+              {/* <Menu.Item>
                 <Button>My profile</Button>
               </Menu.Item>
               <Menu.Item key="5">
@@ -135,7 +135,7 @@ function Beneficiarypanel({ history, ...props }) {
                 >
                   Changepassword
                 </Button>
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item>
                 <Button onClick={(e) => logout(e)}>logout</Button>
               </Menu.Item>

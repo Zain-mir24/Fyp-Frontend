@@ -5,6 +5,8 @@ import { withRouter, useParams } from "react-router";
 import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import "./verify.css";
 import axios from "axios";
+import url from "../../config/axios"
+
 import { addingUser } from "../../store/reducers/User";
 const dotenv = require("dotenv");
 dotenv.config();
@@ -13,18 +15,16 @@ function AddUser({ history }) {
   const dispatch = useDispatch();
   console.log(name, "this is the name");
   const senddata = async (e) => {
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/User",
-        url: `/signup/${_id}/${token}`,
-        method: "post",
-        data: {
-          name,
-          email,
-          password,
-          userType,
-        },
-      })
+    await url.post(
+      "http://localhost:9000/User/resetpassword/" + _id + "/" + token,
+
+      {
+        name,
+        email,
+        password,
+        userType,
+      },
+    )
       .then(async (res) => {
         alert(`You Are Verified`);
         history.push("/Signin");

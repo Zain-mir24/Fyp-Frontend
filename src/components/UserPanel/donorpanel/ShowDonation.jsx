@@ -16,15 +16,15 @@ import {
   Table,
 } from "antd";
 import axios from "axios";
-
+import url from "../../../config/axios"
 export default function ShowDonation(props) {
   const [donor, setDonor] = useState();
   console.log(props.donorId, "this is donor id")
   let id = props.donorId
   const viewData = async () => {
     try {
-      const resp = await axios.get(
-        "http://localhost:9000/admin/viewDonorCowDetail/" + id
+      const resp = await url.get(
+        "/admin/viewDonorCowDetail/" + id
       );
       setDonor(resp.data);
 

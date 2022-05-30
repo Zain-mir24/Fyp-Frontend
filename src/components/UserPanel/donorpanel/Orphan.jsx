@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form } from "antd";
 import axios from "axios";
 import AppointmentApp from "./AppointmentApp";
+import url from "../../../config/axios"
 export default function Orphan() {
   const [Content, setContent] = useState("");
   const [name, setName] = useState("")
@@ -9,12 +10,11 @@ export default function Orphan() {
 
   const [Maindata, setMaindata] = useState();
   const renderChildrenData = async () => {
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/User",
-        url: "/viewChildren",
-        method: "get",
-      })
+    await url
+      .get(
+        "/User/viewChildren"
+
+      )
       .then((res) => {
         console.log(res.data[0].fileName)
         setMaindata(
@@ -43,7 +43,7 @@ export default function Orphan() {
         console.log(record)
         return (
           <div style={{ width: "40%" }}>
-            <img src={"http://localhost:9000/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
+            <img src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
           </div>
         );
       },

@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined, UploadOutlined } from "@ant-design/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Redirect, withRouter } from "react-router";
 import { selectUser } from "../../../store/reducers/User";
+import url from "../../../config/axios"
 require("dotenv").config({ debug: process.env.DEBUG });
 const axios = require("axios");
 
@@ -27,7 +28,7 @@ function CampaignAppeal() {
     formData.append("fileName", fileName);
     formData.append("amountneeded", donation);
     try {
-      const res = await axios.post(
+      const res = await url.post(
         "http://localhost:9000/beneficiary/addCampaignappeal",
         formData
       );

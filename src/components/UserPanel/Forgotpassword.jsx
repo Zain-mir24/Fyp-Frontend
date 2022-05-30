@@ -4,21 +4,19 @@ import { Form, Input, Button } from "antd";
 import { withRouter } from "react-router";
 import axios from "axios";
 import { selectUser } from "../../store/reducers/User";
+import url from "../../config/axios"
 const dotenv = require("dotenv");
 dotenv.config();
 function Forgotpassword({ history }) {
   const [email, newEmail] = useState("");
 
   const sendlink = async (e) => {
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/User",
-        url: "/forgotpassword",
-        method: "post",
-        data: {
-          email,
-        },
-      })
+    await url.post(
+      "/User/forgotpassword",
+      {
+        email,
+      }
+    )
       .then((res) => {
         alert('Correct credentials')
         history.push("/Signin");

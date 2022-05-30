@@ -14,7 +14,7 @@ import StripeCheckout from "react-stripe-checkout";
 import { Store } from 'react-notifications-component';
 import Home from "../../homepage/home"
 import { io } from "socket.io-client";
-
+import url from "../../../config/axios"
 const { Footer, Sider, Content } = Layout;
 const dotenv = require("dotenv");
 dotenv.config();
@@ -58,8 +58,8 @@ function CampaignDetail(props) {
   console.log(props);
   const getAmount = async () => {
     try {
-      const result = await axios.get(
-        `http://localhost:9000/donation/viewDonation/${cid}`
+      const result = await url.get(
+        `/donation/viewDonation/${cid}`
       );
       if (!result) {
         console.log("error fetching data");
@@ -78,8 +78,8 @@ function CampaignDetail(props) {
       userId: userId
     };
 
-    return axios
-      .post("http://localhost:9000/stripe/pay", body)
+    return url
+      .post("/stripe/pay", body)
       .then(async (res) => {
         console.log(res, "Response from sending data");
         socket.current.emit("sendDonation", {
@@ -100,7 +100,7 @@ function CampaignDetail(props) {
   };
   const getCID = async () => {
     try {
-      const res = await axios.get(`http://localhost:9000/User/viewAudit/${cid}`)
+      const res = await url.get(`/User/viewAudit/${cid}`)
       // console.log(res.data.fileName)
       console.log(res.data, "files are here")
       if (!res) {
@@ -128,7 +128,7 @@ function CampaignDetail(props) {
               <h1>{campaignname}</h1>
               <img
                 style={{ height: "400px" }}
-                src={"http://localhost:9000/uploads/" + props.img}
+                src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.img}
               />
 
               {/* <Image
@@ -221,7 +221,7 @@ function CampaignDetail(props) {
               </h1>
               <a
                 href={
-                  "http://localhost:9000/uploads/" + Audit
+                  "https://cryptic-taiga-42129.herokuapp.com/uploads/" + Audit
                 }><Button>
                   Download {Audit} Report
                 </Button></a> </div> : <div>
