@@ -21,7 +21,7 @@ const Second = () => {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/LatestNews");
+      const res = await axios.get("https://cryptic-taiga-42129.herokuapp.com/admin/LatestNews");
       await setData(res.data);
       console.log(data, "TESTING");
     } catch (err) {
@@ -53,7 +53,7 @@ const Second = () => {
                       cover={
                         <img
                           style={{ height: "250px" }}
-                          src={"http://localhost:9000/uploads/" + item.file} />
+                          src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.file} />
                       }
                     >
 

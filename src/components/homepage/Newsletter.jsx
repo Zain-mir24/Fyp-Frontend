@@ -12,7 +12,7 @@ export default function Newsletter() {
   const [email, setEmail] = useState("");
   const onSearch = async () => {
     try {
-      await axios.post("http://localhost:9000/adminPanel/saveEmail", {
+      await axios.post("https://cryptic-taiga-42129.herokuapp.com/adminPanel/saveEmail", {
         Email: email,
       });
       alert("your email has been added to our newsletter");

@@ -13,7 +13,7 @@ export default function Video() {
   const getLinkData = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:9000/admin/viewYoutubeDetail"
+        "https://cryptic-taiga-42129.herokuapp.com/admin/viewYoutubeDetail"
       );
       setLinkData(res.data);
       console.log(res);
