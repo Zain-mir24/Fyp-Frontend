@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "antd";
+import url from "../../config/axios";
 
 const axios = require("axios");
 
@@ -12,11 +13,7 @@ function AppealedCampaigns() {
   }, []);
   const viewData = async () => {
     try {
-      const res = await axios({
-        url: "http://localhost:9000/admin/viewcampaignAppeals",
-        method: "GET",
-        responseType: "stream",
-      });
+      const res = await url.get("/admin/viewcampaignAppeals");
 
       setcampaigndata(
         res.data.appeal.map((i) => ({
@@ -64,7 +61,7 @@ function AppealedCampaigns() {
       render: (text, record) => (
         <a
           href={
-            "http://localhost:9000/uploads/" + record.file
+            "https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.file
           }
           download
         >

@@ -12,6 +12,7 @@ import {
 } from "antd";
 import { useEffect } from "react";
 import HousingSchemePDF from "./HousingSchemePDF";
+import url from "../../config/axios"
 const axios = require("axios");
 function HousingScheme() {
   const [record, setRecord] = useState();
@@ -22,8 +23,8 @@ function HousingScheme() {
 
   const viewData = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/viewhousingscheme"
+      const res = await url.get(
+        "/admin/viewhousingscheme"
       );
       setData(res.data);
 

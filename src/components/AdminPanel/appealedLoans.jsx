@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Form } from "antd";
 import { Select } from "antd";
+import url from "../../config/axios";
 
 const { Option } = Select;
 const defaultStatus = ["Approve", "Reject", "Pending"];
@@ -19,11 +20,7 @@ function AppealedLoans() {
   }, []);
   const viewData = async () => {
     try {
-      const res = await axios({
-        url: "http://localhost:9000/admin/viewLoanAppeals",
-        method: "GET",
-        responseType: "stream",
-      });
+      const res = await url.get("/admin/viewLoanAppeals");
 
       SetLoans(
         res.data.map((i) => ({
@@ -61,8 +58,8 @@ function AppealedLoans() {
 
   const handleStatusChange = async (value, id) => {
     try {
-      const update = await axios.patch(
-        "http://localhost:9000/admin/updateLoan/" + id,
+      const update = await url.patch(
+        "/admin/updateLoan/" + id,
         { status: value },
         (err, res) => {
           if (err) {
@@ -72,7 +69,7 @@ function AppealedLoans() {
           }
         }
       );
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const columns = [
@@ -108,7 +105,7 @@ function AppealedLoans() {
       render: (text, record) => {
         console.log(record.fileName, "render");
         return record.fileName ? (
-          <a href={"http://localhost:9000/uploads/" + record.fileName} download>
+          <a href={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName} download>
             <Button>Download </Button>
           </a>
         ) : null;

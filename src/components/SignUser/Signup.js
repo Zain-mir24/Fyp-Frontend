@@ -12,6 +12,8 @@ import Paper from "@material-ui/core/Paper";
 import "./Signup.css";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
+import url from "../../config/axios";
+
 import Box from "@material-ui/core/Box";
 import { connect, useDispatch } from "react-redux";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -19,8 +21,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from "axios";
-const dotenv = require("dotenv");
-dotenv.config();
+// const dotenv = require("dotenv");
+// dotenv.config();
 // singup form for new users
 export default function SignUp({ history, ...props }) {
   const classes = useStyles();

@@ -11,6 +11,8 @@ import {
   DatePicker,
 } from "antd";
 import { useEffect } from "react";
+import url from "../../config/axios"
+
 const axios = require("axios");
 
 export default function Amountmanagment(props) {
@@ -36,8 +38,8 @@ export default function Amountmanagment(props) {
 
   const sendData = async () => {
     try {
-      const res = await axios.post(
-        "http://localhost:9000/admin/addAmountDetail/" + bid,
+      const res = await url.post(
+        "/admin/addAmountDetail/" + bid,
         {
           bid: bid,
           Date: date,
@@ -62,8 +64,8 @@ export default function Amountmanagment(props) {
 
   const viewData = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/viewamountDetail/" + bid
+      const res = await url.get(
+        "/admin/viewamountDetail/" + bid
       );
       setData(res.data);
 

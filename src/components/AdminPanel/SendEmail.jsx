@@ -2,14 +2,15 @@ import { React, useState, useEffect } from "react";
 import { Form, Input, Button, Checkbox, Select, Table } from "antd";
 import axios from "axios";
 import brother from "../../Images/brother.png"
+import url from "../../config/axios";
+
 const { Option } = Select;
 
 export default function Email(props) {
     const [data, setData] = useState([]);
 
     async function collectData() {
-        axios
-            .get("http://localhost:9000/adminPanel/displayEmail")
+        url.get("/adminPanel/displayEmail")
             .then((response) => {
                 setData(response.data);
             });
@@ -17,8 +18,8 @@ export default function Email(props) {
     const deleteCategory = async (id) => {
         try {
             console.log(id, "HE::");
-            const res = await axios.delete(
-                "http://localhost:9000/adminPanel/deleteEmail/" + id
+            const res = await url.delete(
+                "/adminPanel/deleteEmail/" + id
             );
             alert("Email Deleted");
             console.log(res);
@@ -63,32 +64,19 @@ export default function Email(props) {
     const onFinish = async (values) => {
         console.log(values.Message);
         console.log("Success:", values);
-        await axios
-            .request({
-                baseURL: "http://localhost:9000/adminPanel",
-                url: "/sendEmail",
-                method: "post",
-                data: {
-                    from: "zainzz123@outlook.com",
-                    subject: values.Subject,
-                    category: values.category,
-                    message: values.Message,
-                    email: props.email
-                },
-            })
+        await url.post(
+            "adminPanel/sendEmail", {
+            from: "zainzz123@outlook.com",
+            subject: values.Subject,
+            category: values.category,
+            message: values.Message,
+            email: props.email
+        },
+        )
             .then((response) => {
                 alert(`Email sent to donor`)
                 console.log(response, "Successfully sent");
             });
-        //   axios.post("http://localhost:9000/adminPanel/sendAllEmail",
-        //   {
-        //       from:values.From,
-        //       subject:values.Subject,
-        //       category:values.category
-
-        //   }).then((response)=>{
-        //       console.log(response)
-        //   })
     };
 
     const onFinishFailed = (errorInfo) => {

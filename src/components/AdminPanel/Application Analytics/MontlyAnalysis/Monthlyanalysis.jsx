@@ -2,12 +2,13 @@ import React, { useState, useRef, useEffect } from 'react'
 
 import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 import axios from 'axios'
+import url from "../../../../config/axios"
 
 function Monthlyanalysis() {
     const [monthly, setMonthly] = useState()
     const getMonthlyData = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/admin/Monthlydonation");
+            const res = await url.get("/admin/Monthlydonation");
 
             setMonthly(res.data)
 

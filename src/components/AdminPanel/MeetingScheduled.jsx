@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Button, Input, Upload, Col, Form } from "antd";
 import SendEmail from "./SendEmail"
+import url from "../../config/axios";
+
 const axios = require("axios");
 
 function MeetingScheduled() {
@@ -11,7 +13,7 @@ function MeetingScheduled() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const viewingMeeting = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/User/appointments")
+            const res = await url.get("/User/appointments")
             console.log(res.data)
             setData(res.data.map((d) => {
                 let obj = { ...d, childName: d.childId.name, fileName: d.childId.fileName }
@@ -51,7 +53,7 @@ function MeetingScheduled() {
                 console.log(record)
                 return (
                     <div style={{ width: "40%" }}>
-                        <img src={"http://localhost:9000/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
+                        <img src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
                     </div>
                 );
             },

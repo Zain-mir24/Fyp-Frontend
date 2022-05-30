@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
 import { Bar, getDatasetAtEvent } from 'react-chartjs-2';
+import url from "../../../../config/axios"
 
 
 function PredictionMontlhy() {
@@ -16,7 +17,7 @@ function PredictionMontlhy() {
         var average = 0
         var sum = 0;
         try {
-            const res = await axios.get("http://localhost:9000/admin/Predictionanalysis");
+            const res = await url.get("/admin/Predictionanalysis");
             for (let i = 0; i < res.data.length; i++) {
                 sum = 0;
                 for (let j = 0; j < res.data[i].Donation.length; j++) {

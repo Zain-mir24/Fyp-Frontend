@@ -15,6 +15,7 @@ import { selectUser } from "../../store/reducers/User";
 import { useSelector } from "react-redux";
 import { Store } from "react-notifications-component";
 import { io } from "socket.io-client";
+import url from "../../config/axios";
 
 const { Option } = Select;
 const axios = require("axios");
@@ -66,9 +67,10 @@ function Foorm() {
     formData.append("fileName", fileName);
 
     try {
-      const res = await axios.post(
-        "http://localhost:9000/admin/addCampaign",
+      const res = await url.post(
+        "/admin/addCampaign",
         formData
+
         // {
         //   headers: { Authorization: `Bearer ${user.verifToken}` },
         // }
@@ -79,7 +81,7 @@ function Foorm() {
       // await axios.post("http://localhost:9000/User/sendnotification", {
       //   message: `Global reach has started  campaign named ${name}`
       // })
-
+      alert(`A campaign has created`)
       socket.current.emit("sendnotification", {
         name,
       });
@@ -89,9 +91,10 @@ function Foorm() {
       console.log(ex);
     }
   };
+  // admin/viewCampaigns
   const viewCamp = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
+      const res = await url.get("/admin/viewCampaigns")
       console.log(res.data);
       setCamp(
         res.data.campaign.map((i) => ({
@@ -106,15 +109,15 @@ function Foorm() {
       console.log(e);
     }
 
-    try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/readBeneficiary"
-      );
-      console.log(res.data);
-      await setbeneficiary(res.data);
-    } catch (e) {
-      console.log(e);
-    }
+    // try {
+    //   const res = await axios.get(
+    //     "http://localhost:9000/admin/readBeneficiary"
+    //   );
+    //   console.log(res.data);
+    //   await setbeneficiary(res.data);
+    // } catch (e) {
+    //   console.log(e);
+    // }
   };
 
   function handleChange(value) {
@@ -124,8 +127,8 @@ function Foorm() {
 
   const deleteCamp = async (id) => {
     try {
-      const res = await axios.delete(
-        "http://localhost:9000/admin/Deletecampaign/" + id,
+      const res = await url.delete(
+        "/admin/Deletecampaign/" + id,
         {
           headers: { Authorization: `Bearer ${user.verifToken}` },
         }
@@ -149,12 +152,13 @@ function Foorm() {
     formData.append("fileName", fileName);
     console.log(formData, "This is the form at the frontend");
     try {
-      const res = await axios.patch(
-        "http://localhost:9000/admin/updateCampaign/" + ID,
+      const res = await url.patch(
+        "/admin/updateCampaign/" + ID,
         {
           headers: { Authorization: `Bearer ${user.verifToken}` },
-        },
+        }, {
         formData
+      }
       );
       if (!res) {
         throw new Error("Could not update the campaign");

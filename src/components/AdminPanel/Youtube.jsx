@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 
 import axios from "axios";
+import url from "../../config/axios";
 
 export default function Youtube() {
   const [link, setLink] = useState("");
@@ -9,8 +10,8 @@ export default function Youtube() {
 
   const getLinkData = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/viewYoutubeDetail"
+      const res = await url.get(
+        "/admin/viewYoutubeDetail"
       );
       setLinkData(res.data);
       console.log(res);
@@ -20,8 +21,8 @@ export default function Youtube() {
   };
   const deleteYoutubeLink = async (id) => {
     try {
-      const res = axios.delete(
-        "http://localhost:9000/admin/deleteYoutubeDetail/" + id
+      const res = url.delete(
+        "/admin/deleteYoutubeDetail/" + id
       );
       console.log(res);
       alert(`Video has been Deleted`);
@@ -63,8 +64,8 @@ export default function Youtube() {
 
   const postData = async (e) => {
     try {
-      const res = await axios.post(
-        "http://localhost:9000/admin/addYoutubeDetail",
+      const res = await url.post(
+        "/admin/addYoutubeDetail",
         {
           link: link,
         }

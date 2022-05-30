@@ -16,6 +16,7 @@ import {
   Table,
 } from "antd";
 import PhoneInput from 'react-phone-number-input'
+import url from "../../config/axios"
 
 import axios from "axios";
 const { Option } = Select;
@@ -50,7 +51,7 @@ export default function Cow() {
 
   const viewData = async () => {
     try {
-      const resp = await axios.get("http://localhost:9000/admin/donor");
+      const resp = await url.get("/admin/donor");
       setDonor(resp.data);
 
       console.log(resp.data, "HELLOsss");
@@ -58,19 +59,19 @@ export default function Cow() {
       console.log(e);
     }
   };
-  const viewAI = async () => {
-    try {
-      const resp = await axios.get("http://localhost:5000");
-      console.log(resp);
+  // const viewAI = async () => {
+  //   try {
+  //     const resp = await url.get("http://localhost:5000");
+  //     console.log(resp);
 
-      console.log(resp.data, "HELLOsss");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  //     console.log(resp.data, "HELLOsss");
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   useEffect(() => {
     viewData();
-    viewAI();
+    // viewAI();
   }, []);
 
   function handleChange(value) {
@@ -102,8 +103,8 @@ export default function Cow() {
 
     try {
       console.log(obj);
-      const res = await axios.post(
-        "http://localhost:9000/admin/addCowDetail",
+      const res = await url.post(
+        "/admin/addCowDetail",
         obj
       );
       console.log(res, "Successfully send");

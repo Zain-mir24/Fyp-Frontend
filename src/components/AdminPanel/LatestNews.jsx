@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 import { combineReducers } from "@reduxjs/toolkit";
 import { UploadOutlined } from "@ant-design/icons";
+import url from "../../config/axios";
 
 const { Option } = Select;
 const axios = require("axios");
@@ -30,8 +31,8 @@ function Neews() {
     formData.append("fileName", fileName);
     formData.append("category", assignCategory);
     try {
-      const res = await axios.post(
-        "http://localhost:9000/admin/addNews",
+      const res = await url.post(
+        "/admin/addNews",
         formData
       );
       alert(`News has been Created`);
@@ -48,7 +49,7 @@ function Neews() {
     formData.append("name", name);
     try {
       console.log(formData, "TESTING");
-      const res = await axios.post("http://localhost:9000/admin/addcategory", {
+      const res = await url.post("/admin/addcategory", {
         name: category,
       });
       console.log(res);
@@ -59,7 +60,7 @@ function Neews() {
 
   const getCategory = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/sendcategory");
+      const res = await url.get("/admin/sendcategory");
       await setCategoryData(res.data);
       console.log(res);
     } catch (e) {
@@ -74,8 +75,8 @@ function Neews() {
 
   const deleteCategory = async (id) => {
     try {
-      const res = axios.delete(
-        "http://localhost:9000/admin/deletecategory/" + id
+      const res = url.delete(
+        "/admin/deletecategory/" + id
       );
       console.log(res);
     } catch (e) {
@@ -129,7 +130,7 @@ function Neews() {
             <Col span={15}>
               <Input
                 required
-                placeholder="Campaign name"
+                placeholder="News name"
                 onChange={(e) => {
                   setName(e.target.value);
                 }}
@@ -141,13 +142,13 @@ function Neews() {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter campaign Description",
+                  message: "Please Enter News Description",
                 },
               ]}
             >
               <Input.TextArea
                 required
-                placeholder="Campaign Description"
+                placeholder="News Description"
                 onChange={(e) => {
                   setdesc(e.target.value);
                 }}
@@ -162,6 +163,7 @@ function Neews() {
               onChange={saveFile}
             >
               <Upload
+                maxCount={1}
                 accept="image/png,image/jpeg,image/jpg"
               >
                 <Button icon={<UploadOutlined />}>Upload media files</Button>
@@ -221,8 +223,8 @@ function AdminCampaign() {
   // const [categoryy, setcategoryy] = useState("");
   const getData = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/latestnews"
+      const res = await url.get(
+        "/admin/latestnews"
       );
       setData(res.data);
       console.log(res.data, "TESTING");
@@ -233,8 +235,8 @@ function AdminCampaign() {
 
   const deleteData = async (id) => {
     try {
-      const res = await axios.delete(
-        "http://localhost:9000/admin/deleteNews/" + id
+      const res = await url.delete(
+        "/admin/deleteNews/" + id
       );
       alert("Campaign Deleted");
 
@@ -254,8 +256,8 @@ function AdminCampaign() {
     // catch(e){
     //   console.log(e);
     // }
-    axios
-      .get("https://damp-stream-39096.herokuapp.com/admin/sendcategory/" + id)
+    url
+      .get("/admin/sendcategory/" + id)
       .then((res) => {
         console.log(res.data.name, "HELLOOOOO");
         return res.data.name;

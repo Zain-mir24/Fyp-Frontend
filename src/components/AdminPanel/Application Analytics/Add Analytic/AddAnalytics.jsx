@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
-import { Select, Input, Button } from 'antd';
+import {
+    Select, Input, Button,
+    InputNumber,
+} from 'antd';
+import url from "../../../../config/axios";
 
 const { Option } = Select;
 
@@ -19,8 +23,8 @@ function AddAnalytics() {
     }
     const sendMonthly = async () => {
         try {
-            const res = await axios.post(
-                "http://localhost:9000/admin/Monthlydonation",
+            const res = await url.post(
+                "/admin/Monthlydonation",
                 {
                     Month: Month,
                     Donation: Donation
@@ -37,8 +41,8 @@ function AddAnalytics() {
     }
     const sendCity = async () => {
         try {
-            const res = await axios.post(
-                "http://localhost:9000/admin/Citydonation",
+            const res = await url.post(
+                "/admin/Citydonation",
                 {
                     City: City,
                     Donation: donation2
@@ -84,11 +88,15 @@ function AddAnalytics() {
                     <h2>
                         Select donation amount for that month
                     </h2>
-                    <Input
+                    <InputNumber
+                        formatter={(value) =>
+                            ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        }
+                        parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
                         required
                         placeholder="Enter Donation Data"
                         onChange={(e) => {
-                            setDonation(e.target.value);
+                            setDonation(e);
                         }}
                     />
                 </div>
@@ -123,11 +131,15 @@ function AddAnalytics() {
                     <h2>
                         Select donation amount for City
                     </h2>
-                    <Input
+                    <InputNumber
+                        formatter={(value) =>
+                            ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        }
+                        parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
                         required
                         placeholder="Enter Donation Data"
                         onChange={(e) => {
-                            setDonation2(e.target.value);
+                            setDonation2(e);
                         }}
                     />
                 </div>

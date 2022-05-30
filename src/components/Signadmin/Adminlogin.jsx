@@ -6,24 +6,20 @@ import { withRouter } from "react-router";
 import { connect, useDispatch } from "react-redux";
 import { LOGIN_USER } from "../../store/Actions/userAction";
 import axios from "axios";
+import url from "../../config/axios";
 
 import "./Signin.css"
-const dotenv = require("dotenv");
-dotenv.config({ debug: process.env.DEBUG });
+// const dotenv = require("dotenv");
+// dotenv.config({ debug: process.env.DEBUG });
 function Adminlogin({ history, ...props }) {
   const [getEmail, setEmail] = useState("");
   const [getPassword, setPassword] = useState("");
   const dispatch = useDispatch();
   const handlesubmit = async (e) => {
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/admin",
-        url: "/login",
-        method: "post",
-        data: {
-          getEmail,
-          getPassword,
-        },
+    await url
+      .post("/admin/login", {
+        getEmail,
+        getPassword,
       })
       .then((res) => {
         console.log(res);

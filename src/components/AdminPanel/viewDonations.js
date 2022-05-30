@@ -9,6 +9,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { DatePicker, Space } from "antd";
 import "./Panel.css";
 import axios from "axios";
+import url from "../../config/axios";
 
 const { Option } = Select;
 
@@ -20,7 +21,7 @@ function ViewDonation() {
 
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/Donations");
+      const res = await url.get("/admin/Donations");
 
       await setData(res.data);
       console.log(res.data, "TESTING");

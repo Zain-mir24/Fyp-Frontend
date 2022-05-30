@@ -11,8 +11,10 @@ import {
   Radio,
 } from "antd";
 import axios from "axios";
-const dotenv = require("dotenv");
-dotenv.config({ debug: process.env.DEBUG });
+import url from "../../config/axios";
+
+// const dotenv = require("dotenv");
+// dotenv.config({ debug: process.env.DEBUG });
 function SubAdmin() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,18 +29,15 @@ function SubAdmin() {
   }, []);
   const handlesubmit = async (e) => {
     try {
-      const addsubAdmin = await axios.request({
-        baseURL: "http://localhost:9000/",
-        url: "admin/SubAdminadd",
-        method: "post",
-        data: {
-          name,
-          email,
-          password,
-          subAdmin,
-          Location,
-        },
-      });
+      const addsubAdmin = await url.post(
+        "admin/SubAdminadd", {
+        name,
+        email,
+        password,
+        subAdmin,
+        Location,
+      },
+      );
       if (!addsubAdmin) {
         console.log("There was an error");
       } else {
@@ -52,18 +51,17 @@ function SubAdmin() {
 
   const updatesubAdmin = async (e) => {
     try {
-      const addsubAdmin = await axios.request({
-        baseURL: "http://localhost:9000/",
-        url: "admin/updatesubAdmin/" + ID,
-        method: "patch",
-        data: {
+      const addsubAdmin = await url.patch(
+
+        "admin/updatesubAdmin/" + ID,
+        {
           name,
           email,
           password,
           Location,
           SubAdmin: true,
         },
-      });
+      );
       if (!addsubAdmin) {
         console.log("There was an error");
       } else {
@@ -75,8 +73,8 @@ function SubAdmin() {
   };
   const deletesubAdmin = async (id) => {
     try {
-      const res = await axios.delete(
-        "http://localhost:9000/admin/deletesubAdmin/" + id
+      const res = await url.delete(
+        "/admin/deletesubAdmin/" + id
       );
       if (!res) {
         throw new Error("The campaign doesnt exist");
@@ -88,7 +86,7 @@ function SubAdmin() {
   };
   const viewsubAdmin = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/viewsubAdmin");
+      const res = await url.get("/admin/viewsubAdmin");
 
       await setSubAdmin(res.data);
       console.log(res.data, "TESTING");

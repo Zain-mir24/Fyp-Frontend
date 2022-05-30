@@ -9,6 +9,8 @@ import CityAnalysis from "./CityAnalytics/CityAnalysis";
 import { UserAnalytics } from "./UserAnalytics/UserAnalytics";
 import Prediction from "./Prediction/PredictionMontlhy";
 import FindingDonor from "./FindingDonor/Finding";
+import url from "../../../config/axios";
+
 function Analytics() {
   const chartRef = useRef();
   const onClick = (event) => {
@@ -21,8 +23,8 @@ function Analytics() {
 
   const getMonthlyData = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/admin/Monthlydonation"
+      const res = await url.get(
+        "/admin/Monthlydonation"
       );
       // console.log(res.data)
       for (let i = 0; i < res.data.length; i++) {

@@ -12,6 +12,7 @@ import {
   Row,
   InputNumber,
 } from "antd";
+import url from "../../config/axios";
 
 import { combineReducers } from "@reduxjs/toolkit";
 import { UploadOutlined } from "@ant-design/icons";
@@ -52,8 +53,8 @@ function ChildrenManagment() {
     formData.append("fileName", fileName);
     console.log(formData);
     try {
-      const res = await axios.post(
-        "http://localhost:9000/admin/addchild",
+      const res = await url.post(
+        "/admin/addchild",
         formData,
         {
           headers: { Authorization: `Bearer ${user.verifToken}` },
@@ -71,7 +72,7 @@ function ChildrenManagment() {
 
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/viewChildren");
+      const res = await url.get("/admin/viewChildren");
 
       await setChildrenData(res.data);
       console.log(res.data, "TESTING");
@@ -81,8 +82,8 @@ function ChildrenManagment() {
   };
 
   async function updateData() {
-    const res = await axios.patch(
-      "http://localhost:9000/admin/updatechild/" + updateID,
+    const res = await url.patch(
+      "/admin/updatechild/" + updateID,
       {
         name: name,
         age: age,
@@ -97,8 +98,8 @@ function ChildrenManagment() {
 
   const deleteData = async (cid) => {
     try {
-      const res = await axios.delete(
-        "http://localhost:9000/admin/deleteChildren/" + cid
+      const res = await url.delete(
+        "/admin/deleteChildren/" + cid
       );
       alert("Children data Deleted");
 
@@ -423,7 +424,9 @@ function ChildrenManagment() {
               rules={[{ message: "Please uplaod doc" }]}
             //   onChange={saveFile}
             >
-              <Upload accept="image/png,image/jpg,image/jpeg">
+              <Upload
+                maxCount={1}
+                accept="image/png,image/jpg,image/jpeg">
                 <Button icon={<UploadOutlined />}>
                   Upload Child's picture
                 </Button>

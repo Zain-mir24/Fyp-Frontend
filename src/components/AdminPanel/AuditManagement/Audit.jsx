@@ -3,6 +3,8 @@ import { Form, Input, Button, Checkbox, Select, Table, DatePicker } from "antd";
 import axios from "axios";
 import { Tab } from "@material-ui/icons";
 import "./Audit.css"
+import url from "../../../config/axios";
+
 import {
     UserOutlined,
 } from "@ant-design/icons";
@@ -28,7 +30,7 @@ function Audit() {
     const [campCount, setcampCount] = useState(0)
     const getSubAdmin = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/Admin/viewsubAdmin")
+            const res = await url.get("/Admin/viewsubAdmin")
             console.log(res.data, "viewing SubAdmins")
             setSubAdmin(res.data)
         } catch (e) {
@@ -37,7 +39,7 @@ function Audit() {
     }
     const getCampaigns = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/Admin/viewCampaigns")
+            const res = await url.get("/Admin/viewCampaigns")
             console.log(res.data.campaign, "viewing Campaigns")
             setCampaigns(res.data.campaign)
             // setSubAdmin(res.data)
@@ -47,7 +49,7 @@ function Audit() {
     }
     const createTeams = async () => {
         try {
-            const res = await axios.post("http://localhost:9000/Admin/createAudit", {
+            const res = await url.post("/Admin/createAudit", {
                 auditTeamname,
                 Sid,
                 Sid2,
@@ -66,7 +68,7 @@ function Audit() {
 
     const viewTeams = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/Admin/viewAudits")
+            const res = await url.get("/Admin/viewAudits")
             console.log(res.data.view, "viewing Teams")
             setAuditTeams(res.data.view.map((i) => {
                 let obj = {
@@ -83,7 +85,7 @@ function Audit() {
     }
     const deleteAudit = async (id) => {
         try {
-            const res = await axios.delete("http://localhost:9000/Admin/audit/" + id)
+            const res = await url.delete("/Admin/audit/" + id)
             if (res) {
                 alert('Team has been deleted, refresh to see changes')
             }
@@ -299,7 +301,7 @@ function Audit() {
                 record.fileName ?
                     <a
                         href={
-                            "http://localhost:9000/uploads/" + record.fileName
+                            "https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName
                         }
                         download
                     >

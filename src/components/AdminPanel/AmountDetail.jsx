@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Button } from "antd";
 import Amountmanagment from "./Amountmanagment";
+import url from "../../config/axios"
 export default function AmountDetail(props) {
   const [users, setUsers] = useState();
   const [bid, setBid] = useState("");
@@ -9,10 +10,9 @@ export default function AmountDetail(props) {
   var array = [];
   const viewData = async () => {
     try {
-      const res = await axios({
-        url: "http://localhost:9000/admin/users",
-        method: "GET",
-      });
+      const res = await url.get(
+        "/admin/users"
+      );
       console.log(res.data);
       setUsers(res.data.filter((user) => user.userType == "beneficiary"));
     } catch (e) {

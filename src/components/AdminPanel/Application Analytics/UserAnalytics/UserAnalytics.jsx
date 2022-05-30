@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios'
+import url from "../../../../config/axios"
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
@@ -11,8 +13,8 @@ export function UserAnalytics() {
     const [donors, setDonors] = useState(0)
     const getData = async () => {
         try {
-            const getBen = await axios.get("http://localhost:9000/admin/readBeneficiary")
-            const getDon = await axios.get("http://localhost:9000/admin/readDonor")
+            const getBen = await url.get("/admin/readBeneficiary")
+            const getDon = await url.get("/admin/readDonor")
             console.log(getBen.data.length)
             setBeneficiary(getBen.data.length)
             console.log(getDon.data.length)

@@ -1,14 +1,16 @@
 import { React, useState, useEffect } from "react";
 import { Form, Input, Button, Checkbox, Select, Table } from "antd";
 import axios from "axios";
+import url from "../../config/axios";
+
 const { Option } = Select;
 
 export default function Email() {
   const [data, setData] = useState([]);
 
   async function collectData() {
-    axios
-      .get("http://localhost:9000/adminPanel/displayEmail")
+    url
+      .get("/adminPanel/displayEmail")
       .then((response) => {
         setData(response.data);
       });
@@ -16,8 +18,8 @@ export default function Email() {
   const deleteCategory = async (id) => {
     try {
       console.log(id, "HE::");
-      const res = await axios.delete(
-        "http://localhost:9000/adminPanel/deleteEmail/" + id
+      const res = await url.delete(
+        "/adminPanel/deleteEmail/" + id
       );
       alert("Email Deleted");
       console.log(res);
@@ -62,19 +64,16 @@ export default function Email() {
   const onFinish = async (values) => {
     console.log(values.Message);
     console.log("Success:", values);
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/adminPanel",
-        url: "/sendAllEmail",
-        method: "post",
-        data: {
-          from: "zainzz123@outlook.com",
-          subject: values.Subject,
-          category: values.category,
-          message: values.Message,
-        },
-      })
+    await url.post("/adminPanel/sendAllEmail",
+      {
+        from: "zainzz123@outlook.com",
+        subject: values.Subject,
+        category: values.category,
+        message: values.Message,
+      },
+    )
       .then((response) => {
+        alert(` email sent `)
         console.log(response);
       });
     //   axios.post("http://localhost:9000/adminPanel/sendAllEmail",

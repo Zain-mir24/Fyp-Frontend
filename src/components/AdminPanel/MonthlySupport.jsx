@@ -4,6 +4,8 @@ import { Table, Button } from "antd";
 import { Select } from "antd";
 import MonthlySupportDetail from "./MonthlySupportDetail";
 import axios from "axios";
+import url from "../../config/axios";
+
 const { Option } = Select;
 
 export default function MonthlySupport() {
@@ -17,11 +19,7 @@ export default function MonthlySupport() {
   }, []);
   const viewData = async () => {
     try {
-      const res = await axios({
-        url: "http://localhost:9000/admin/viewmonthlyAppeal",
-        method: "GET",
-        responseType: "stream",
-      });
+      const res = await url.get("/admin/viewmonthlyAppeal");
       console.log(res, "response of monthly")
       SetLoans(
         // res.data.map((i) => ({

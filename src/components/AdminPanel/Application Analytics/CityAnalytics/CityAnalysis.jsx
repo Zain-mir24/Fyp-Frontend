@@ -5,6 +5,7 @@ import { Chart } from 'react-chartjs-2'
 import axios from 'axios'
 import { Table, Button, Input, Upload, Col, Form, Select } from "antd";
 import Cityanalysis from './CityTable';
+import url from "../../../../config/axios"
 
 
 
@@ -19,7 +20,7 @@ function CityAnalysis() {
     let data = [];
     const getCityData = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/admin/Citydonation");
+            const res = await url.get("/admin/Citydonation");
             for (let i = 0; i < res.data.length; i++) {
                 Labels.push(res.data[i].City)
                 data.push(res.data[i].Donation)

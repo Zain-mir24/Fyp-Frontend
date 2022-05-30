@@ -12,14 +12,16 @@ import {
 } from "antd";
 import axios from 'axios'
 import RecoverSheet from "./RecoverSheet";
+import url from "../../config/axios"
+
 function LoanRecovery() {
     const [data, setData] = useState();
     const [content, setContent] = useState("Loan")
 
     const viewData = async () => {
         try {
-            const res = await axios.get(
-                "http://localhost:9000/admin/readBeneficiary"
+            const res = await url.get(
+                "/admin/readBeneficiary"
             );
             setData(res.data);
 

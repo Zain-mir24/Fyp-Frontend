@@ -23,7 +23,7 @@ function HousingSchemePDF(props) {
     console.log(ProposalNo, "HELLO");
     try {
       const res = await axios.patch(
-        "http://localhost:9000/admin/updatehousingscheme/" + props.data._id,
+        "https://cryptic-taiga-42129.herokuapp.com/admin/updatehousingscheme/" + props.data._id,
         {
           ProposalNo: ProposalNo,
           needs: needs,
@@ -308,19 +308,19 @@ function HousingSchemePDF(props) {
               </ul>
             </div>
             <Image
-              src={"http://localhost:9000/uploads/" + props.data.fileName}
+              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName}
               download
             />
             <Image
-              src={"http://localhost:9000/uploads/" + props.data.fileName2}
+              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName2}
               download
             />
             <Image
-              src={"http://localhost:9000/uploads/" + props.data.fileName3}
+              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName3}
               download
             />
             <Image
-              src={"http://localhost:9000/uploads/" + props.data.fileName4}
+              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName4}
               download
             />
           </div>
