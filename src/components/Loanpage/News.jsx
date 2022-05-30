@@ -18,7 +18,7 @@ function News() {
   const [file, setFile] = useState("");
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/LatestNews");
+      const res = await axios.get("https://cryptic-taiga-42129.herokuapp.com/admin/LatestNews");
       await setData(res.data);
       console.log(data, "TESTING");
 
@@ -117,7 +117,7 @@ function News() {
                 cover={
                   <img
                     style={{ width: "350px", height: "300px" }}
-                    src={"http://localhost:9000/uploads/" + file}
+                    src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + file}
                   />
                 }
               ></Card>
@@ -188,7 +188,7 @@ function News() {
                     cover={
                       <img
                         style={{ height: "250px" }}
-                        src={"http://localhost:9000/uploads/" + item.file}
+                        src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.file}
                       />
                     }
                   >

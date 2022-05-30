@@ -31,7 +31,7 @@ export default function Campaign() {
   var cid = campaign.cid;
   const getData = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/admin/viewCampaigns");
+      const res = await axios.get("https://cryptic-taiga-42129.herokuapp.com/admin/viewCampaigns");
       await setData(res.data.campaign);
       console.log(res.data.campaign);
     } catch (e) {
@@ -42,7 +42,7 @@ export default function Campaign() {
     try {
       console.log(cid);
       const result = await axios.get(
-        `http://localhost:9000/donation/viewDonation/${cid}`
+        `https://cryptic-taiga-42129.herokuapp.com/donation/viewDonation/${cid}`
       );
       if (!result) {
         console.log("error fetching data");
@@ -57,7 +57,7 @@ export default function Campaign() {
   };
   const viewTeams = async (cid) => {
     try {
-      const res = await axios.get(`http://localhost:9000/User/viewAudit/${cid}`);
+      const res = await axios.get(`https://cryptic-taiga-42129.herokuapp.com/User/viewAudit/${cid}`);
       console.log(res.data.fileName, "viewing Teams");
       setFile(res.data.fileName)
       // res.data.view.filter((i) => {
@@ -78,7 +78,7 @@ export default function Campaign() {
     };
 
     return axios
-      .post("http://localhost:9000/stripe/pay", body)
+      .post("https://cryptic-taiga-42129.herokuapp.com/stripe/pay", body)
       .then((res) => {
         console.log(res);
       })
@@ -149,7 +149,7 @@ export default function Campaign() {
                           <img
                             style={{ height: "250px" }}
                             src={
-                              "http://localhost:9000/uploads/" + item.fileName
+                              "https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.fileName
                             }
                           />
                         }
@@ -227,7 +227,7 @@ export default function Campaign() {
                   <div className="row">
                     <div className="col-lg-6">
                       <Image
-                        src={"http://localhost:9000/uploads/" + campaign.img}
+                        src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + campaign.img}
                         style={{ width: "100%" }}
                       />
                     </div>
@@ -273,7 +273,7 @@ export default function Campaign() {
                         <div>
                           <h2>Audit for this Campaign</h2>
                           <a
-                            href={"http://localhost:9000/uploads/" + file}
+                            href={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + file}
                             download
                           >
                             <Button
