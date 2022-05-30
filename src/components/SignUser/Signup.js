@@ -20,6 +20,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+
 import axios from "axios";
 // const dotenv = require("dotenv");
 // dotenv.config();
@@ -32,18 +33,14 @@ export default function SignUp({ history, ...props }) {
   const [type, setType] = useState("");
   const handlesubmit = async (e) => {
     e.preventDefault();
-    await axios
-      .request({
-        baseURL: "http://localhost:9000/User",
-        url: "/Signup",
-        method: "post",
-        data: {
-          name: getname,
-          email: getEmail,
-          password: getPassword,
-          userType: type,
-        },
-      })
+    await url.post(
+      "/User/Signup", {
+      name: getname,
+      email: getEmail,
+      password: getPassword,
+      userType: type,
+    },
+    )
       .then((res) => {
         alert(`${getname} \n 
         You have recieved veirfication email. Check your mail`);

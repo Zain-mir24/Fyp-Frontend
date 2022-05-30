@@ -34,7 +34,7 @@ function DonorPanel({ history, ...props }) {
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+        <Sider >
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item

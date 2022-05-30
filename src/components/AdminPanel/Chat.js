@@ -3,6 +3,7 @@ import "./chat.css";
 import Conversation from "./conversation/Conversation";
 import Message from "./message/Message";
 import axios from "axios";
+import url from "../../config/axios"
 import { io } from "socket.io-client";
 
 function Chat(props) {
@@ -56,7 +57,7 @@ function Chat(props) {
     });
 
     try {
-      const res = await axios.post("http://localhost:9000/message", message);
+      const res = await url.post("/message", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
       console.log(res);
@@ -67,7 +68,7 @@ function Chat(props) {
 
   const getConversation = async () => {
     try {
-      const res = await axios.get("http://localhost:9000/conversation/");
+      const res = await url.get("/conversation/");
       setConversation(res.data);
       console.log(res.data);
     } catch (e) {
@@ -77,8 +78,8 @@ function Chat(props) {
 
   const getMessages = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:9000/message/" + currentChat._id
+      const res = await url.get(
+        "/message/" + currentChat._id
       );
       setMessages(res.data);
     } catch (e) {

@@ -6,12 +6,12 @@ import axios from "axios";
 import url from "../../config/axios"
 import { selectUser } from "../../store/reducers/User";
 
-function ResetPassword() {
+function ResetPassword(history) {
   const [pass, newPass] = useState("");
   const { _id, token } = useParams();
   const senddata = async (e) => {
     await url.post(
-      "http://localhost:9000/User/resetpassword/" + _id + "/" + token,
+      "/User/resetpassword/" + _id + "/" + token,
 
       {
         pass,
@@ -19,6 +19,7 @@ function ResetPassword() {
     )
       .then((res) => {
         alert("Password has been updated");
+        history.push("/Signin")
       })
       .catch((e) => {
         console.log("error", e);
