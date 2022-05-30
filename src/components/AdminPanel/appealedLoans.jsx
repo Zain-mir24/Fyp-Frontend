@@ -60,17 +60,19 @@ function AppealedLoans() {
   };
 
   const handleStatusChange = async (value, id) => {
-    const update = await axios.patch(
-      "http://localhost:9000/admin/updateLoan/" + id,
-      { status: value },
-      (err, res) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(res);
+    try {
+      const update = await axios.patch(
+        "http://localhost:9000/admin/updateLoan/" + id,
+        { status: value },
+        (err, res) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(res);
+          }
         }
-      }
-    );
+      );
+    } catch (e) {}
   };
 
   const columns = [
