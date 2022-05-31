@@ -215,7 +215,7 @@ function CampaignDetail(props) {
         <div>
 
           {Audit ?
-            <div>
+            <div style={{ height: "200px" }}>
               <h1>
                 Audit
               </h1>
