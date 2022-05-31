@@ -105,7 +105,7 @@ function AppealedLoans() {
       render: (text, record) => {
         console.log(record.fileName, "render");
         return record.fileName ? (
-          <a href={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName} download>
+          <a href={"http://localhost:9000/uploads/" + record.fileName} download>
             <Button>Download </Button>
           </a>
         ) : null;

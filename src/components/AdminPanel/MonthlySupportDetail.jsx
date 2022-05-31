@@ -98,7 +98,7 @@ export default function MonthlySupportDetail(props) {
           </div>
         </div>
         <a
-          href={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.bformname}
+          href={"http://localhost:9000/uploads/" + props.data.bformname}
           download
         >
           <Button
@@ -115,7 +115,7 @@ export default function MonthlySupportDetail(props) {
         <br /> <br />
         <a
           href={
-            "https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.deathcertificatename
+            "http://localhost:9000/uploads/" + props.data.deathcertificatename
           }
           download
         >

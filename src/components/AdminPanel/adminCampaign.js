@@ -221,7 +221,7 @@ function Foorm() {
       render: (text, record) => (
         <a
           href={
-            "https://damp-stream-39096.herokuapp.com/uploads/" + record.file
+            "http://localhost:9000/uploads/" + record.file
           }
           download
         >

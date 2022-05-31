@@ -149,7 +149,7 @@ export default function Campaign() {
                           <img
                             style={{ height: "250px" }}
                             src={
-                              "https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.fileName
+                              "http://localhost:9000/uploads/" + item.fileName
                             }
                           />
                         }
@@ -227,7 +227,7 @@ export default function Campaign() {
                   <div className="row">
                     <div className="col-lg-6">
                       <Image
-                        src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + campaign.img}
+                        src={"http://localhost:9000/uploads/" + campaign.img}
                         style={{ width: "100%" }}
                       />
                     </div>
@@ -273,7 +273,7 @@ export default function Campaign() {
                         <div>
                           <h2>Audit for this Campaign</h2>
                           <a
-                            href={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + file}
+                            href={"http://localhost:9000/uploads/" + file}
                             download
                           >
                             <Button

@@ -53,7 +53,7 @@ const Second = () => {
                       cover={
                         <img
                           style={{ height: "250px" }}
-                          src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.file} />
+                          src={"http://localhost:9000/uploads/" + item.file} />
                       }
                     >
 

@@ -301,7 +301,7 @@ function Audit() {
                 record.fileName ?
                     <a
                         href={
-                            "https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName
+                            "http://localhost:9000/uploads/" + record.fileName
                         }
                         download
                     >

@@ -117,7 +117,7 @@ function News() {
                 cover={
                   <img
                     style={{ width: "350px", height: "300px" }}
-                    src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + file}
+                    src={"http://localhost:9000/uploads/" + file}
                   />
                 }
               ></Card>
@@ -188,7 +188,7 @@ function News() {
                     cover={
                       <img
                         style={{ height: "250px" }}
-                        src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.file}
+                        src={"http://localhost:9000/uploads/" + item.file}
                       />
                     }
                   >

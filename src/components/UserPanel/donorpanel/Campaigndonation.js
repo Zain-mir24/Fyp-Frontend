@@ -62,7 +62,7 @@ function Campaigndonation() {
                       <img
                         style={{ height: "300px" }}
                         alt="example"
-                        src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + item.fileName}
+                        src={"http://localhost:9000/uploads/" + item.fileName}
                       />
                     }
                   >
