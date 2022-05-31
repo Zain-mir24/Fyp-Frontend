@@ -4,6 +4,7 @@ import { AudioOutlined } from "@ant-design/icons";
 import world from "../../Images/worldmap.png"
 import "./Newsletter.css"
 import axios from "axios";
+import url from "../../config/axios"
 const { Title } = Typography;
 
 const { Search } = Input;
@@ -12,7 +13,7 @@ export default function Newsletter() {
   const [email, setEmail] = useState("");
   const onSearch = async () => {
     try {
-      await axios.post("https://cryptic-taiga-42129.herokuapp.com/adminPanel/saveEmail", {
+      await url.post("/adminPanel/saveEmail", {
         Email: email,
       });
       alert("your email has been added to our newsletter");

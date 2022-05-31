@@ -1,8 +1,19 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Image } from "antd";
+import { Form, Input, Button } from "antd";
 import axios from "axios";
 import Pdf from "react-to-pdf";
+import url from "../../config/axios"
 import "./styles.css";
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  PDFViewer,
+  Image,
+
+} from "@react-pdf/renderer";
 const ref = React.createRef();
 
 function HousingSchemePDF(props) {
@@ -22,8 +33,8 @@ function HousingSchemePDF(props) {
     // formData.append("communicationFeedback", communicationFeedback);
     console.log(ProposalNo, "HELLO");
     try {
-      const res = await axios.patch(
-        "https://cryptic-taiga-42129.herokuapp.com/admin/updatehousingscheme/" + props.data._id,
+      const res = await url.patch(
+        "/admin/updatehousingscheme/" + props.data._id,
         {
           ProposalNo: ProposalNo,
           needs: needs,
@@ -40,6 +51,32 @@ function HousingSchemePDF(props) {
       console.log(ex);
     }
   };
+
+  const styles = StyleSheet.create({
+    page: {
+      backgroundColor: "#fff",
+      color: "white",
+      padding: "20px"
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+    },
+    viewer: {
+      width: window.innerWidth, //the pdf viewer will take up all of the width and height
+      height: window.innerHeight,
+    },
+    heading: {
+      color: "blue"
+    },
+    content: {
+      color: "black"
+    },
+    headingView: {
+      flexDirection: "row",
+      padding: "20px 0"
+    }
+  });
   return (
     <div style={{ height: "600px", overflow: "scroll" }}>
       <h1>Update Form</h1>
@@ -126,10 +163,107 @@ function HousingSchemePDF(props) {
           </Button>
         </Form.Item>
       </Form>
-      <Pdf targetRef={ref} filename="code-example.pdf">
+      {/* <Pdf targetRef={ref} filename="code-example.pdf">
         {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-      </Pdf>
-      <div ref={ref} style={{ backgroundColor: "white", padding: "50px" }}>
+      </Pdf> */}
+      <PDFViewer style={styles.viewer}><Document>
+        {/*render a single page*/}
+        <Page size="A4" style={styles.page}>
+          <View style={{ flexDirection: "row" }}>
+            <Image src="/Images/GlobalReach.png" style={{ width: "40%" }} />
+            <View style={{ width: "30%" }}></View>
+            <Text style={{ color: "black", fontSize: "16px" }}>ISLAMABAD OFFICE: {"\n"}
+              House No 15, Block‐3, {"\n"}502 Colony
+              Quarters,{"\n"}
+              Adyala Road {"\n"}  Rawalpindi, Pakistan. </Text>
+
+          </View>
+          <View style={{ padding: "30px" }}></View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Proposal number: </Text><Text style={styles.content}> {props.data.ProposalNo ? props.data.ProposalNo : "not verified"}</Text>
+
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Name: </Text><Text style={styles.content}> {props.data.Deservername}</Text>
+
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>CNIC: </Text><Text style={styles.content}> {props.data.cnic}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Cell: </Text><Text style={styles.content}> {props.data.cell}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Address: </Text><Text style={styles.content}> {props.data.address}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Guardian: </Text><Text style={styles.content}> {props.data.Guardian}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Status: </Text><Text style={styles.content}> {props.data.Status}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Guardian: </Text><Text style={styles.content}> {props.data.Guardian}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Source Of Income: </Text><Text style={styles.content}> {props.data.Sourceofincome}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Monthly Income: </Text><Text style={styles.content}> {props.data.Monthlyincome}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Estimated Cost: </Text><Text style={styles.content}> {props.data.EstimatedCost}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Plot Dimension: </Text><Text style={styles.content}> {props.data.PlotDimensions}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Family Details</Text>
+          </View>
+          {props.data?.family.map((item) => {
+            return (
+              <View style={styles.headingView}>
+                <Text style={styles.heading}>Name: {item.name} </Text><Text style={styles.content}> Age | {item.age} </Text>
+              </View>
+            )
+          })}
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Construction Details: </Text><Text style={styles.content}> {props.data.constructionDetails}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Estimated Time frame: </Text><Text style={styles.content}> {props.data.EstimatedTimeFrame}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Needs: </Text><Text style={styles.content}> {props.data.needs}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Outcomes: </Text><Text style={styles.content}> {props.data.outcomes}</Text>
+          </View>
+          <View style={styles.headingView}>
+            <Text style={styles.heading}>Communicationfeedback: </Text><Text style={styles.content}> {props.data.communicationFeedback}</Text>
+          </View>
+          <Image
+            src={"http://localhost:9000/uploads/" + props.data.fileName}
+            download
+          />
+          <Image
+            src={"http://localhost:9000/uploads/" + props.data.fileName2}
+            download
+          />
+          <Image
+            src={"http://localhost:9000/uploads/" + props.data.fileName3}
+            download
+          />
+          <Image
+            src={"http://localhost:9000/uploads/" + props.data.fileName4}
+            download
+          />
+
+
+
+        </Page>
+      </Document></PDFViewer>
+      {/* <div ref={ref} style={{ backgroundColor: "white", padding: "50px" }}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-6">
@@ -307,19 +441,19 @@ function HousingSchemePDF(props) {
                   })}
               </ul>
             </div>
-            <Image
+            <img
               src={"http://localhost:9000/uploads/" + props.data.fileName}
               download
             />
-            <Image
+            <img
               src={"http://localhost:9000/uploads/" + props.data.fileName2}
               download
             />
-            <Image
+            <img
               src={"http://localhost:9000/uploads/" + props.data.fileName3}
               download
             />
-            <Image
+            <img
               src={"http://localhost:9000/uploads/" + props.data.fileName4}
               download
             />
@@ -327,7 +461,7 @@ function HousingSchemePDF(props) {
         </div>
 
 
-      </div >
+      </div > */}
     </div >
   );
 }

@@ -6,14 +6,15 @@ import axios from "axios";
 import Footer from "../Footer/Footer";
 import Header from "../Headers/Header";
 import "./insta.css";
+import url from "../../config/axios"
 
 export default function Video() {
   const [linkData, setLinkData] = useState([]);
 
   const getLinkData = async () => {
     try {
-      const res = await axios.get(
-        "https://cryptic-taiga-42129.herokuapp.com/admin/viewYoutubeDetail"
+      const res = await url.get(
+        "/admin/viewYoutubeDetail"
       );
       setLinkData(res.data);
       console.log(res);

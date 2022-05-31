@@ -9,7 +9,7 @@ import campaignSection2 from "../../Images/campaignSection2.jpg";
 import campaignSection3 from "../../Images/campaignSection3.jpg";
 import StripeCheckout from "react-stripe-checkout";
 import abouut from "../../Images/abouut.png";
-
+import url from "../../config/axios"
 import Campaignrender from "./Campaignrender";
 import { borderRadius } from "@mui/material/node_modules/@mui/system";
 const { Meta } = Card;
@@ -31,7 +31,7 @@ export default function Campaign() {
   var cid = campaign.cid;
   const getData = async () => {
     try {
-      const res = await axios.get("https://cryptic-taiga-42129.herokuapp.com/admin/viewCampaigns");
+      const res = await url.get("/admin/viewCampaigns");
       await setData(res.data.campaign);
       console.log(res.data.campaign);
     } catch (e) {
@@ -41,8 +41,8 @@ export default function Campaign() {
   const getAmount = async () => {
     try {
       console.log(cid);
-      const result = await axios.get(
-        `https://cryptic-taiga-42129.herokuapp.com/donation/viewDonation/${cid}`
+      const result = await url.get(
+        `/donation/viewDonation/${cid}`
       );
       if (!result) {
         console.log("error fetching data");
@@ -57,7 +57,7 @@ export default function Campaign() {
   };
   const viewTeams = async (cid) => {
     try {
-      const res = await axios.get(`https://cryptic-taiga-42129.herokuapp.com/User/viewAudit/${cid}`);
+      const res = await url.get(`/User/viewAudit/${cid}`);
       console.log(res.data.fileName, "viewing Teams");
       setFile(res.data.fileName)
       // res.data.view.filter((i) => {
@@ -77,8 +77,8 @@ export default function Campaign() {
       userId: null,
     };
 
-    return axios
-      .post("https://cryptic-taiga-42129.herokuapp.com/stripe/pay", body)
+    return url
+      .post("/stripe/pay", body)
       .then((res) => {
         console.log(res);
       })
@@ -196,7 +196,7 @@ export default function Campaign() {
               <div className="container">
                 <div className="row">
                   {campaign.donation <= collection ? (
-                    <div className="col-lg-6" style={{ textAlign: "right" }}>
+                    <div className="col-lg-6" >
                       <button
                         style={{
                           background: "transparent",
@@ -208,12 +208,12 @@ export default function Campaign() {
                       </button>
                     </div>
                   ) : (
-                    <div className="col-lg-6" style={{ textAlign: "right" }}>
+                    <div className="col-lg-6" >
                       <button
                         style={{
                           background: "transparent",
                           border: "2px solid green",
-                          padding: "5px 10px",
+                          padding: "5px 0px",
                         }}
                       >
                         Amount To Be Collected: {campaign.donation - collection}{" "}
@@ -271,6 +271,7 @@ export default function Campaign() {
 
                       {file ? (
                         <div>
+                          <br></br>
                           <h2>Audit for this Campaign</h2>
                           <a
                             href={"http://localhost:9000/uploads/" + file}

@@ -8,6 +8,7 @@ import world from "../../Images/newWorld.jpeg";
 import abouut from "../../Images/abouut.png";
 import { Button } from "antd";
 import axios from "axios";
+import url from "../../config/axios"
 // import { Carousel } from 'react-responsive-carousel';
 const { Meta } = Card;
 
@@ -18,7 +19,7 @@ function News() {
   const [file, setFile] = useState("");
   const getData = async () => {
     try {
-      const res = await axios.get("https://cryptic-taiga-42129.herokuapp.com/admin/LatestNews");
+      const res = await url.get("/admin/LatestNews");
       await setData(res.data);
       console.log(data, "TESTING");
 

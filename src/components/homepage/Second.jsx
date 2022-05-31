@@ -5,6 +5,7 @@ import { FaFileArchive } from "react-icons/fa";
 import { laptop, tablet } from "./responsive";
 import { Card } from "antd";
 import axios from "axios";
+import url from "../../config/axios"
 import uncle from "../../Images/uncle.png"
 import "./Second.css"
 import { height } from "@mui/material/node_modules/@mui/system";
@@ -21,7 +22,7 @@ const Second = () => {
   const [data, setData] = useState([]);
   const getData = async () => {
     try {
-      const res = await axios.get("https://cryptic-taiga-42129.herokuapp.com/admin/LatestNews");
+      const res = await url.get("/admin/LatestNews");
       await setData(res.data);
       console.log(data, "TESTING");
     } catch (err) {
