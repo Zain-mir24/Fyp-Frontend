@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+
 import { FaHandshake, FaLink, FaBus } from "react-icons/fa";
 import { tablet } from "./responsive";
-import "./first.css"
-import global from "../../Images/globalicon.png"
+import "./first.css";
+import global from "../../Images/globalicon.png";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,41 +40,52 @@ const First = () => {
     },
   });
   return (
-    <Container>
+    <Container style={{ padding: "50px 0" }}>
       <h1 style={{ textAlign: "center" }}>
-        <span style={{ fontSize: "50px" }}> Why </span>choose global reach
+        <span style={{ fontSize: "50px" }}> Why </span>
+        choose global reach
       </h1>
+      <br />
+      <br />
+      <br />
       <div className="row">
         <div className="col-lg-4 col-sm-4 col-xs-4 offerDiv">
-          <img src={global}>
-          </img>
-          <h1>
-            We offer
-          </h1>
+          <i
+            class="fa fa-dollar"
+            style={{ color: "green", fontSize: "60px" }}
+          ></i>
+          <br />
+          <br />
+          <h1>We Donate</h1>
           <p style={{ width: "100%", textAlign: "center" }}>
-            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue <br></br>amet blandit id tem
-
+            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue{" "}
+            <br></br>amet blandit id tem
           </p>
         </div>
         <div className="col-lg-4 col-sm-4 col-xs-4 offerDiv">
-          <img src={global}>
-          </img>
-          <h1>
-            We offer
-          </h1>
+          <i
+            class="fa fa-heart"
+            style={{ color: "green", fontSize: "60px" }}
+          ></i>
+          <br />
+          <br />
+          <h1>We Care</h1>
           <p style={{ width: "100%", textAlign: "center" }}>
-            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue <br></br>amet blandit id tem
-
+            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue{" "}
+            <br></br>amet blandit id tem
           </p>
         </div>
         <div className="col-lg-4 col-sm-4 col-xs-4 offerDiv">
-          <img src={global}>
-          </img>
-          <h1>
-            We offer
-          </h1>
+          <i
+            class="fa fa-truck"
+            style={{ color: "green", fontSize: "60px" }}
+          ></i>
+          <br />
+          <br />
+          <h1>We offer</h1>
           <p style={{ width: "100%", textAlign: "center" }}>
-            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue <br></br>amet blandit id tem
+            consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue{" "}
+            <br></br>amet blandit id tem
           </p>
         </div>
       </div>
@@ -83,29 +95,8 @@ const First = () => {
 
 export default First;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/* <Wrapper>
+{
+  /* <Wrapper>
         <BoxContainer>
           <Box1
             first={first}
@@ -226,4 +217,5 @@ export default First;
           </Text>
           <Info>{textDetails[num].info}</Info>
         </TextContainer>
-      </LowerContainer> */}
+      </LowerContainer> */
+}

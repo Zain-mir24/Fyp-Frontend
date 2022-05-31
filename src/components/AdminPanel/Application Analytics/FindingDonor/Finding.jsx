@@ -10,7 +10,7 @@ export default function Finding() {
       const getBen = await axios.get("http://localhost:5000");
 
       setFind(getBen.data);
-      console.log(getBen.data);
+      console.log(getBen.data, "Data");
     } catch (e) {
       console.log(e);
     }
