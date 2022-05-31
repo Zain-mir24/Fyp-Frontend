@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Input, Button } from "antd";
 import axios from "axios";
 import Pdf from "react-to-pdf";
+import url from "../../config/axios"
 import "./styles.css";
 import {
   Document,
@@ -32,8 +33,8 @@ function HousingSchemePDF(props) {
     // formData.append("communicationFeedback", communicationFeedback);
     console.log(ProposalNo, "HELLO");
     try {
-      const res = await axios.patch(
-        "https://cryptic-taiga-42129.herokuapp.com/admin/updatehousingscheme/" + props.data._id,
+      const res = await url.patch(
+        "/admin/updatehousingscheme/" + props.data._id,
         {
           ProposalNo: ProposalNo,
           needs: needs,
