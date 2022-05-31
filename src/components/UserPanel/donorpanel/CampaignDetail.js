@@ -128,7 +128,7 @@ function CampaignDetail(props) {
               <h1>{campaignname}</h1>
               <img
                 style={{ height: "400px" }}
-                src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.img}
+                src={"http://localhost:9000/uploads/" + props.img}
               />
 
               {/* <Image
@@ -221,7 +221,7 @@ function CampaignDetail(props) {
               </h1>
               <a
                 href={
-                  "https://cryptic-taiga-42129.herokuapp.com/uploads/" + Audit
+                  "http://localhost:9000/uploads/" + Audit
                 }><Button>
                   Download {Audit} Report
                 </Button></a> </div> : <div>

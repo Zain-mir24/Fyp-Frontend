@@ -61,7 +61,7 @@ function AppealedCampaigns() {
       render: (text, record) => (
         <a
           href={
-            "https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.file
+            "http://localhost:9000/uploads/" + record.file
           }
           download
         >

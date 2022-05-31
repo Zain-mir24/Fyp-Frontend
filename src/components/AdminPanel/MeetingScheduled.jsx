@@ -53,7 +53,7 @@ function MeetingScheduled() {
                 console.log(record)
                 return (
                     <div style={{ width: "40%" }}>
-                        <img src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
+                        <img src={"http://localhost:9000/uploads/" + record.fileName} style={{ height: '20%', width: '100%' }} />
                     </div>
                 );
             },

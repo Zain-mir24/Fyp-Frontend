@@ -308,19 +308,19 @@ function HousingSchemePDF(props) {
               </ul>
             </div>
             <Image
-              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName}
+              src={"http://localhost:9000/uploads/" + props.data.fileName}
               download
             />
             <Image
-              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName2}
+              src={"http://localhost:9000/uploads/" + props.data.fileName2}
               download
             />
             <Image
-              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName3}
+              src={"http://localhost:9000/uploads/" + props.data.fileName3}
               download
             />
             <Image
-              src={"https://cryptic-taiga-42129.herokuapp.com/uploads/" + props.data.fileName4}
+              src={"http://localhost:9000/uploads/" + props.data.fileName4}
               download
             />
           </div>
