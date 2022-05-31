@@ -5,7 +5,7 @@ import { Tab } from "@material-ui/icons";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../store/reducers/User";
 import { UploadOutlined, DownloadOutlined } from "@ant-design/icons";
-
+import url from "../../config/axios"
 import { Redirect, withRouter } from "react-router";
 function Audit() {
     const [auditTeam, setAuditTeams] = useState([])
@@ -19,7 +19,7 @@ function Audit() {
     };
     const viewTeams = async () => {
         try {
-            const res = await axios.get("http://localhost:9000/Admin/viewAudits")
+            const res = await url.get("/Admin/viewAudits")
             let obj;
             let array = []
             console.log(res.data.view, "viewing Teams")
@@ -55,9 +55,8 @@ function Audit() {
         formData.append("file", file);
         formData.append("fileName", fileName);
         try {
-            const res = axios.post("http://localhost:9000/Admin/UploadReport",
+            const res = await url.post("/Admin/UploadReport",
                 formData
-
             )
             if (!res) {
                 console.log("Couldnt add")
@@ -111,7 +110,7 @@ function Audit() {
             title: "Report",
             render: (key, record) => (
                 <a href={
-                    "http://localhost:9000/uploads/" + record.fileName
+                    "https://cryptic-taiga-42129.herokuapp.com/uploads/" + record.fileName
                 }
                     download>
                     <Button icon={<DownloadOutlined />}>
@@ -129,7 +128,9 @@ function Audit() {
                     rules={[{ required: true, message: "Please uplaod doc" }]}
                     onChange={saveFile}
                 >
-                    <Upload>
+                    <Upload
+                        maxCount={1}
+                    >
                         <Button icon={<UploadOutlined />}>
                             upload
                         </Button>
