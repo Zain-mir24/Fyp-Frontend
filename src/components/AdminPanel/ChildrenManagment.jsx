@@ -286,7 +286,9 @@ function ChildrenManagment() {
               rules={[{ required: true, message: "Please uplaod doc" }]}
               onChange={saveFile}
             >
-              <Upload accept="image/png,image/jpg,image/jpeg">
+              <Upload
+                maxCount={1}
+                accept="image/png,image/jpg,image/jpeg">
                 <Button icon={<UploadOutlined />}>
                   Upload Child's picture
                 </Button>
@@ -303,7 +305,7 @@ function ChildrenManagment() {
           <Form>
             <Form.Item>
               <Select
-                defaultValue="Select Category"
+                defaultValue="Select Children"
                 style={{
                   width: 180,
                   borderRadius: "0px",
@@ -318,7 +320,7 @@ function ChildrenManagment() {
             </Form.Item>
             <Form.Item
               rules={[
-                { required: true, message: "Please Enter campaign name" },
+                { required: true, message: "Please Enter  name" },
               ]}
             >
               <Input
@@ -334,7 +336,7 @@ function ChildrenManagment() {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter campaign Description",
+                  message: "Please Enter child age",
                 },
               ]}
             >
@@ -353,7 +355,7 @@ function ChildrenManagment() {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter campaign Description",
+                  message: "Please Enter gender",
                 },
               ]}
             >
@@ -372,7 +374,7 @@ function ChildrenManagment() {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter campaign Description",
+                  message: "Please Enter DOB",
                 },
               ]}
             >
@@ -405,7 +407,7 @@ function ChildrenManagment() {
               rules={[
                 {
                   required: true,
-                  message: "Please Enter campaign Description",
+                  message: "Please Enter if the child has disability",
                 },
               ]}
             >

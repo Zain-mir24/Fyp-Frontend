@@ -97,7 +97,8 @@ export default function MonthlySupportDetail(props) {
             </div>
           </div>
         </div>
-        <a
+
+        {props.data.bformname ? <a
           href={"http://localhost:9000/uploads/" + props.data.bformname}
           download
         >
@@ -111,25 +112,26 @@ export default function MonthlySupportDetail(props) {
           >
             Download BForm
           </Button>
-        </a>
+        </a> : null}
         <br /> <br />
-        <a
-          href={
-            "http://localhost:9000/uploads/" + props.data.deathcertificatename
-          }
-          download
-        >
-          <Button
-            style={{
-              width: "100%",
-              wordWrap: "break-word",
-              whiteSpace: "normal",
-              height: "100%",
-            }}
+        {props.data.deathcertificatename ?
+          <a
+            href={
+              "http://localhost:9000/uploads/" + props.data.deathcertificatename
+            }
+            download
           >
-            Download Death Certificate
-          </Button>
-        </a>
+            <Button
+              style={{
+                width: "100%",
+                wordWrap: "break-word",
+                whiteSpace: "normal",
+                height: "100%",
+              }}
+            >
+              Download Death Certificate
+            </Button>
+          </a> : null}
       </div>
     </div>
   );
