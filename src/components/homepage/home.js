@@ -28,9 +28,10 @@ function SignIn() {
       <LatestNews />
       <First />
       {/* <Wedo /> */}
+      <Second />
+
       <Background />
 
-      <Second />
       <Newsletter />
       <BackTop />
       <Footer />

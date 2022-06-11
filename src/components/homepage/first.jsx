@@ -3,7 +3,13 @@ import styled from "styled-components";
 import { FaHandshake, FaLink, FaBus } from "react-icons/fa";
 import { tablet } from "./responsive";
 import "./first.css"
-import global from "../../Images/globalicon.png"
+
+import global from "../../Images/dollar.png"
+import Education from "../../Images/Education.png"
+import Food from "../../Images/FoodShelter.png"
+import Medicine from "../../Images/Medicine.png"
+import brush from "../../Images/brush.png"
+import World from "../../Images/worldmap.png"
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,36 +17,104 @@ const Container = styled.div`
 `;
 
 const First = () => {
-  const [first, setFirst] = useState(true);
-  const [second, setSecond] = useState(false);
-  const [third, setThird] = useState(false);
-  const [num, setNum] = useState(0);
-  const [stylingObject, setStylingObject] = useState({
-    aniamtor: {
-      animation: "animate 0.5s  forwards",
-    },
-  });
-  const [color1, setColor1] = useState({
-    color: {
-      color: "white",
-      fontSize: "30px",
-    },
-  });
-  const [color2, setColor2] = useState({
-    color: {
-      color: "#62be1e",
-      fontSize: "30px",
-    },
-  });
-  const [color3, setColor3] = useState({
-    color: {
-      color: "#62be1e",
-      fontSize: "30px",
-    },
-  });
+
   return (
     <Container>
-      <h1 style={{ textAlign: "center" }}>
+      <div className="row" style={{ backgroundImage: `url(${World})` }}>
+        <div className="col-lg-6">
+          <div style={{ padding: "30px" }}>
+
+
+            <h1 style={{ textAlign: "left" }}>
+              <span style={{ fontSize: "50px", fontFamily: "Sansation" }}> Why ?</span><br>
+              </br>choose global reach
+            </h1>
+            <p style={{ justifyContent: "left" }}>
+              consectetur adipiscing elit. Lectus eget scelerisque augue amet blandit id tem.
+              consectetur adipiscing elit. Lectus eget scelerisque augue amet blandit id tem.
+              consectetur adipiscing elit. Lectus eget           </p>
+            <p style={{ justifyContent: "left" }}>
+              scelerisque augue amet blandit id tem.scelerisque augue amet blandit id temscelerisque augue amet blandit id tem
+
+            </p>
+          </div>
+
+        </div>
+        <div className="col-lg-6">
+          <div className="row">
+            <div className="col-lg-6" style={{ textAlign: "center" }}>
+              <div style={{ padding: "50px" }}>
+
+                <img src={global} />
+                <p style={{ fontSize: "20px" }}>
+                  Global Funding
+                </p>
+                <p>
+                  consectetur adipiscing elit. Lectus eget sce
+
+
+
+                </p>
+              </div>
+
+            </div>
+            <div className="col-lg-6" style={{ textAlign: "center" }}>
+              <div style={{ padding: "50px" }}>
+
+                <img src={Food} />
+                <p style={{ fontSize: "20px" }}>
+                  Food & Shelter
+                </p>
+                <p>
+                  consectetur adipiscing elit. Lectus eget sce
+
+
+
+                </p>
+              </div>
+
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-6" style={{ textAlign: "center" }}>
+              <div style={{ padding: "50px" }}>
+
+                <img src={Education} />
+                <p style={{ fontSize: "20px" }}>
+                  Education
+
+                </p>
+                <p>
+                  consectetur adipiscing elit. Lectus eget sce
+
+
+
+                </p>
+              </div>
+
+            </div>
+            <div className="col-lg-6" style={{ textAlign: "center", backgroundImage: `url(${brush})` }}>
+              <div style={{ padding: "50px" }}>
+                <img src={Medicine} />
+                <p style={{ fontSize: "20px", color: "white" }}>
+                  Medical Treatment
+                </p>
+                <p style={{ color: "white" }}>
+                  consectetur adipiscing elit. <br />Lectus eget sce
+
+
+
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      {/* <h1 style={{ textAlign: "center" }}>
         <span style={{ fontSize: "50px" }}> Why </span>choose global reach
       </h1>
       <div className="row">
@@ -76,7 +150,7 @@ const First = () => {
             consectetur adipiscing elit.<br></br> Lectus eget scelerisque augue <br></br>amet blandit id tem
           </p>
         </div>
-      </div>
+      </div> */}
     </Container>
   );
 };
