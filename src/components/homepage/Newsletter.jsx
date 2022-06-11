@@ -51,17 +51,17 @@ export default function Newsletter() {
               className="inTouch"
 
             >
-              <h1 style={{ textAlign: "center", color: "white", fontSize: "40px", marginLeft: "auto", marginRight: "auto" }}>
+              {/* <h1 style={{ textAlign: "center", color: "white", fontSize: "40px", marginLeft: "auto", marginRight: "auto" }}>
                 Get in touch
               </h1>
               <h3 style={{ textAlign: "center", color: "white" }}>
                 Enter your email so we can send you latest news of our organization
-              </h3>
+              </h3> */}
               <div className="col-lg-12">
                 <Form>
                   <Form.Item
                     name={['user', 'email']}
-
+                    style={{ color: "white" }}
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
@@ -80,6 +80,11 @@ export default function Newsletter() {
                       placeholder="input your email"
                       allowClear
                       size="medium"
+                      className="antd-input"
+                      bordered={false}
+                      theme="dark"
+
+
 
                     />
                   </Form.Item>

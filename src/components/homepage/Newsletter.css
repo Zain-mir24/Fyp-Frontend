@@ -16,6 +16,10 @@
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.54);
 }
+.antd-input{
+    background-color: #929292;
+    border-bottom: 1px solid white;
+}
 @media (max-width:900px){
     .mainNews{
         background-image: url("../../Images/Blur.png");
