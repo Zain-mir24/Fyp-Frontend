@@ -10,6 +10,7 @@ import { UserAnalytics } from "./UserAnalytics/UserAnalytics";
 import Prediction from "./Prediction/PredictionMontlhy";
 import FindingDonor from "./FindingDonor/Finding";
 import url from "../../../config/axios";
+import brother from "../../../Images/brother.png"
 
 function Analytics() {
   const chartRef = useRef();
@@ -63,9 +64,14 @@ function Analytics() {
   }, []);
 
   return (
-    <div style={{ height: "600px", overflow: "scroll" }}>
-      <h1>Donation per month Analytics</h1>
-      <div>
+    <div className="row" style={{ height: "600px", overflow: "scroll", backgroundImage: `url(${brother}) ` }}>
+
+      <div className="col-lg-6"
+
+      >
+        <h1 style={{ color: "white" }}>Donation per month Analytics</h1>
+
+
         <Bar
           onClick={onClick}
           ref={chartRef}
@@ -82,13 +88,31 @@ function Analytics() {
             },
           }}
         />
+        <Monthlyanalysis />
+
+      </div>
+      <div className="col-lg-6">
+        <CityAnalysis />
+
+      </div>
+      <div className="col-lg-6">
+        <Prediction />
+
       </div>
 
-      <Monthlyanalysis />
-      <Prediction />
-      <CityAnalysis />
-      <UserAnalytics />
-      <FindingDonor />
+      <div className="col-lg-6">
+        <UserAnalytics />
+
+      </div>
+      <div className="col-lg-6">
+        <FindingDonor />
+
+      </div>
+
+
+
+
+
     </div>
   );
 }

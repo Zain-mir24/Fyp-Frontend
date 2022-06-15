@@ -168,7 +168,7 @@ function CampaignDetail(props) {
                 <Progress
                   style={{ marginLeft: "20px" }}
                   type="circle"
-                  percent={(collection / donation) * 100}
+                  percent={((collection / donation) * 100).toFixed(2)}
                 />
               </Card>}
 

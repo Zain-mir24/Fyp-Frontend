@@ -48,13 +48,13 @@ export default function Finding() {
   }, []);
   return (
     <div style={{ marginTop: "-35px", textAlign: "center" }}>
-      <h1>Potential Donor</h1>
+      <h1 style={{ color: "white" }}>Potential Donor</h1>
       <div className="col-lg-6">
         <Pie data={data} />
         <br />
         <p>
-          <b>Total Donor Data:</b> {find[0]} <br />
-          <b>Percentage of Potential Donors:</b> {find[3]} %
+          <b style={{ color: "white" }}>Total Donor Data:</b> {find[0]} <br />
+          <b style={{ color: "white" }}>Percentage of Potential Donors:</b> {find[3]} %
         </p>
       </div>
       <br /> <br />

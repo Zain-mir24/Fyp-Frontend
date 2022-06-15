@@ -54,7 +54,7 @@ function PredictionMontlhy() {
     return (
 
         <div>
-            <h1>
+            <h1 style={{ color: "white" }}>
                 Estimated revenue
             </h1>
             <Bar

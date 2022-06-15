@@ -19,6 +19,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { selectUser } from "../../store/reducers/User";
 import { useSelector } from "react-redux";
 import { DatePicker, Space } from "antd";
+import moment from 'moment';
 import "./Panel.css";
 import axios from "axios";
 
@@ -161,7 +162,7 @@ function ChildrenManagment() {
     name: item.name,
     gender: item.gender,
     age: item.age,
-    DOB: item.DOB,
+    DOB: moment(item.DOB).format('DD-MM-YYYY'),
   }));
 
   return (

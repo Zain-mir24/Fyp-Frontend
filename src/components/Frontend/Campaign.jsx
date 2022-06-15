@@ -124,7 +124,7 @@ export default function Campaign() {
                 ? null
                 : data.map((item) => {
                   return (
-                    <div className="col-lg-6" style={{ padding: "4px" }}>
+                    <div className="col-lg-6" style={{ padding: "7px" }}>
                       <Card
                         onClick={() => {
                           console.log(item.name);

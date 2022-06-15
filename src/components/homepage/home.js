@@ -24,7 +24,7 @@ function SignIn() {
   return (
     <div>
       <Header active="home" />
-      <SocialIcons />
+      {/* <SocialIcons /> */}
       <LatestNews />
       <First />
       {/* <Wedo /> */}

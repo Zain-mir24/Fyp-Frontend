@@ -51,10 +51,10 @@ export default function Video() {
 
         <div style={{ textAlign: "center" }}>
           <h1 style={{ padding: "50px 0 20px" }}>Instagram Gallery</h1>
-          <InstagramGallery
+          {/* <InstagramGallery
             accessToken="IGQVJXemFldzlsX1RLejJqNDFUMzZAUdVBxUm5WZA25lcHJ0cU5FN0k5OFJfaElOTWN1R2pwZA3ZAJa1hxaFV6Uklyd2NfQUUyQ1RQajJ1UnZAZAay1pU0w4RG5tMHM5Y0oxU0h1MExzSDF5b2JxdEc1NVVNMAZDZD"
             count={24}
-          />
+          /> */}
         </div>
       </div>
 

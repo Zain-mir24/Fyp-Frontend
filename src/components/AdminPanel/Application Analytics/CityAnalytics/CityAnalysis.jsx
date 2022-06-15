@@ -52,7 +52,7 @@ function CityAnalysis() {
 
     return (
         <div>
-            <h1>
+            <h1 style={{ color: "white" }}>
                 Donation per City Analytics
             </h1>
             <div>
@@ -64,12 +64,26 @@ function CityAnalysis() {
                         title: {
                             display: true,
                             text: 'Average Employee Salary per Month',
-                            fontSize: 20
+                            fontSize: 20,
+
                         },
-                        legend: {
-                            display: true,
-                            position: 'right'
+                        plugins: {
+                            legend: {
+                                display: true,
+                                // position: 'right',
+                                labels: {
+                                    // This more specific font property overrides the global property
+                                    font: {
+                                        // size: 20,
+                                        family: "Segoe UI",
+                                        weight: "bolder",
+                                        fontColor: "white"
+
+                                    }
+                                }
+                            }
                         }
+                        ,
                     }}
                 />
             </div>
