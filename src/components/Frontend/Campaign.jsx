@@ -1,6 +1,14 @@
 import { React, useEffect, useState } from "react";
 import Header from "../Headers/Header";
-import { Layout, Image, Card, Progress, Button, Input, InputNumber } from "antd";
+import {
+  Layout,
+  Image,
+  Card,
+  Progress,
+  Button,
+  Input,
+  InputNumber,
+} from "antd";
 import axios from "axios";
 import Footer from "../Footer/Footer";
 import hands from "../../Images/hands.png";
@@ -9,7 +17,7 @@ import campaignSection2 from "../../Images/campaignSection2.jpg";
 import campaignSection3 from "../../Images/campaignSection3.jpg";
 import StripeCheckout from "react-stripe-checkout";
 import abouut from "../../Images/abouut.png";
-import url from "../../config/axios"
+import url from "../../config/axios";
 import Campaignrender from "./Campaignrender";
 import { borderRadius } from "@mui/material/node_modules/@mui/system";
 const { Meta } = Card;
@@ -41,9 +49,7 @@ export default function Campaign() {
   const getAmount = async () => {
     try {
       console.log(cid);
-      const result = await url.get(
-        `/donation/viewDonation/${cid}`
-      );
+      const result = await url.get(`/donation/viewDonation/${cid}`);
       if (!result) {
         console.log("error fetching data");
       }
@@ -59,7 +65,7 @@ export default function Campaign() {
     try {
       const res = await url.get(`/User/viewAudit/${cid}`);
       console.log(res.data.fileName, "viewing Teams");
-      setFile(res.data.fileName)
+      setFile(res.data.fileName);
       // res.data.view.filter((i) => {
       //   return i.Cid._id === cid ? setFile(i.fileName) : null;
       // });
@@ -97,7 +103,7 @@ export default function Campaign() {
           height: "500px",
           width: "100%",
           position: "relative",
-          backgroundSize: "contain",
+          backgroundSize: "cover",
         }}
         className=" containerFluid"
       >
@@ -113,9 +119,12 @@ export default function Campaign() {
           </p>
         </div>
       </div>
-
       <div className="container-fluid">
-        <h1 style={{ fontSize: "60px", textAlign: "center" }}>Campaigns</h1>
+        <h1
+          style={{ fontSize: "60px", textAlign: "center", padding: "30px 0" }}
+        >
+          Campaigns
+        </h1>
 
         <div className="row">
           <div className="col-lg-6">
@@ -123,42 +132,42 @@ export default function Campaign() {
               {data == undefined
                 ? null
                 : data.map((item) => {
-                  return (
-                    <div className="col-lg-6" style={{ padding: "4px" }}>
-                      <Card
-                        onClick={() => {
-                          console.log(item.name);
+                    return (
+                      <div className="col-lg-6" style={{ padding: "4px" }}>
+                        <Card
+                          onClick={() => {
+                            console.log(item.name);
 
-                          setCampaign({
-                            ...campaign,
-                            name: item.name,
-                            description: item.description,
-                            img: item.fileName,
-                            donation: item.donation,
-                            cid: item._id,
-                          });
-                          setCheck(false);
+                            setCampaign({
+                              ...campaign,
+                              name: item.name,
+                              description: item.description,
+                              img: item.fileName,
+                              donation: item.donation,
+                              cid: item._id,
+                            });
+                            setCheck(false);
 
-                          getAmount();
-                          viewTeams(item._id);
-                        }}
-                        style={{
-                          backgroundColor: "#F5F5F5",
-                        }}
-                        cover={
-                          <img
-                            style={{ height: "250px" }}
-                            src={
-                              "http://localhost:9000/uploads/" + item.fileName
-                            }
-                          />
-                        }
-                      >
-                        <h2 style={{ height: "100px" }}>{item.name}</h2>
-                      </Card>
-                    </div>
-                  );
-                })}
+                            getAmount();
+                            viewTeams(item._id);
+                          }}
+                          style={{
+                            backgroundColor: "#F5F5F5",
+                          }}
+                          cover={
+                            <img
+                              style={{ height: "250px" }}
+                              src={
+                                "http://localhost:9000/uploads/" + item.fileName
+                              }
+                            />
+                          }
+                        >
+                          <h2 style={{ height: "100px" }}>{item.name}</h2>
+                        </Card>
+                      </div>
+                    );
+                  })}
             </div>
           </div>
 
@@ -196,7 +205,7 @@ export default function Campaign() {
               <div className="container">
                 <div className="row">
                   {campaign.donation <= collection ? (
-                    <div className="col-lg-6" >
+                    <div className="col-lg-6">
                       <button
                         style={{
                           background: "transparent",
@@ -208,7 +217,7 @@ export default function Campaign() {
                       </button>
                     </div>
                   ) : (
-                    <div className="col-lg-6" >
+                    <div className="col-lg-6">
                       <button
                         style={{
                           background: "transparent",
@@ -236,8 +245,10 @@ export default function Campaign() {
                       <p>{campaign.description}</p>
                       {campaign.donation < collection ? null : (
                         <InputNumber
-                          formatter={value => ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
-                          parser={value => value.replace(/\$\s?|(,*)/g, '')}
+                          formatter={(value) =>
+                            ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                          }
+                          parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
                           style={{ border: "1px solid black", width: "40%" }}
                           placeholder="enter donation amount (pkr)"
                           defaultValue={1000}
@@ -310,13 +321,14 @@ export default function Campaign() {
             )}
           </div>
         </div>
-        <h1 style={{ textAlign: "center", fontSize: "60px" }}>
+        <h1
+          style={{ textAlign: "center", fontSize: "60px", padding: "40px 0" }}
+        >
           Our achievments
         </h1>
         <div className="row">
           <div className="col-lg-4 col-sm-4 col-md-4">
             <div
-
               style={{
                 // background: `linear-gradient(180deg, rgba(0, 0, 0, 0.3), url(${campaignSection1})`,
                 backgroundSize: "cover",
@@ -412,6 +424,8 @@ export default function Campaign() {
           </div>
         </div>
       </div>
+      <br />
+      <br /> <br />
       <Footer />
     </div>
   );

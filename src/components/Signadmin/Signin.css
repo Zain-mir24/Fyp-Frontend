@@ -2,8 +2,9 @@
 .main{
     text-align: center;
     background-image: url("../../Images/Loginbackend.jpg");
-    height:690px;
-    width:100em;
+    height:100vh ;
+    width:100%;
+    background-size: cover;
 }
 .bbutton{
     background-color: #20DF7F;

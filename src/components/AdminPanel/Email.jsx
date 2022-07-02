@@ -9,18 +9,14 @@ export default function Email() {
   const [data, setData] = useState([]);
 
   async function collectData() {
-    url
-      .get("/adminPanel/displayEmail")
-      .then((response) => {
-        setData(response.data);
-      });
+    url.get("/adminPanel/displayEmail").then((response) => {
+      setData(response.data);
+    });
   }
   const deleteCategory = async (id) => {
     try {
       console.log(id, "HE::");
-      const res = await url.delete(
-        "/adminPanel/deleteEmail/" + id
-      );
+      const res = await url.delete("/adminPanel/deleteEmail/" + id);
       alert("Email Deleted");
       console.log(res);
     } catch (e) {
@@ -64,16 +60,15 @@ export default function Email() {
   const onFinish = async (values) => {
     console.log(values.Message);
     console.log("Success:", values);
-    await url.post("/adminPanel/sendAllEmail",
-      {
+    await url
+      .post("/adminPanel/sendAllEmail", {
         from: "zainzz123@outlook.com",
         subject: values.Subject,
         category: values.category,
         message: values.Message,
-      },
-    )
+      })
       .then((response) => {
-        alert(` email sent `)
+        alert(` email sent `);
         console.log(response);
       });
     //   axios.post("http://localhost:9000/adminPanel/sendAllEmail",
@@ -154,7 +149,7 @@ export default function Email() {
         >
           <Input />
         </Form.Item>
-        <Form.Item
+        {/* <Form.Item
           name="category"
           label="Category"
           rules={[{ required: true }]}
@@ -169,7 +164,7 @@ export default function Email() {
             <Option value="Beneficiary">Beneficiary</Option>
             <Option value="All">All</Option>
           </Select>
-        </Form.Item>
+        </Form.Item> */}
 
         <Form.Item
           wrapperCol={{
