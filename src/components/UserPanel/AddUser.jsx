@@ -5,7 +5,7 @@ import { withRouter, useParams } from "react-router";
 import { ADD_USER, LOGIN_USER } from "../../store/Actions/userAction";
 import "./verify.css";
 import axios from "axios";
-import url from "../../config/axios"
+import url from "../../config/axios";
 
 import { addingUser } from "../../store/reducers/User";
 const dotenv = require("dotenv");
@@ -15,16 +15,17 @@ function AddUser({ history }) {
   const dispatch = useDispatch();
   console.log(name, "this is the name");
   const senddata = async (e) => {
-    await url.post(
-      "http://localhost:9000/User/resetpassword/" + _id + "/" + token,
+    await url
+      .post(
+        "/User/resetpassword/" + _id + "/" + token,
 
-      {
-        name,
-        email,
-        password,
-        userType,
-      },
-    )
+        {
+          name,
+          email,
+          password,
+          userType,
+        }
+      )
       .then(async (res) => {
         alert(`You Are Verified`);
         history.push("/Signin");
@@ -43,20 +44,26 @@ function AddUser({ history }) {
       });
   };
   return (
-    <div className="mainVerify" style={{ position: "relative", alignItems: "center", justifyContent: "center", height: "600px" }}>
-      <Row >
-        <Col span={24}
-        >
+    <div
+      className="mainVerify"
+      style={{
+        position: "relative",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "600px",
+      }}
+    >
+      <Row>
+        <Col span={24}>
           <Card
-
             bordered={false}
-            style={{ width: "300px", left: "40%", position: "absolute", textAlign: "center" }}
-            cover={
-              <img
-                alt="example"
-                src="/Images/Verify.png"
-              />
-            }
+            style={{
+              width: "300px",
+              left: "40%",
+              position: "absolute",
+              textAlign: "center",
+            }}
+            cover={<img alt="example" src="/Images/Verify.png" />}
           >
             <Button
               style={{ backgroundColor: "#A2FFC8", marginTop: "50px" }}
@@ -66,12 +73,9 @@ function AddUser({ history }) {
             >
               VERIFY THE EMAIL
             </Button>
-
           </Card>
         </Col>
-
       </Row>
-
     </div>
   );
 }
