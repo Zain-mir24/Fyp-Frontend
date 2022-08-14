@@ -1,10 +1,15 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { ADD_USER, DONATION, LOGIN_USER, LOGOUT_USER } from "../Actions/userAction";
+import {
+  ADD_USER,
+  DONATION,
+  LOGIN_USER,
+  LOGOUT_USER,
+} from "../Actions/userAction";
 import { apiBegan, apiFail } from "../Actions/Apiaction";
 let lastid = 0;
 const initialState = {
   users: [],
-  user: null
+  user: null,
   // donation: false
 };
 export const userReducer = createReducer(initialState, {
@@ -31,7 +36,8 @@ export const selectUser = (state) => state.persistedReducer.user.user;
 //Action Creators
 
 //User signup url
-const url = "/User/Signup/:_id/:token";
+const url =
+  "https://pacific-refuge-71507.herokuapp.com/User/Signup/:_id/:token";
 export const addingUser = (user) =>
   apiBegan({
     onStart: apiBegan.type,
@@ -41,7 +47,7 @@ export const addingUser = (user) =>
     onSuccess: ADD_USER.type,
   });
 //Admin signup url
-const adminurl = "Admin/Signup";
+const adminurl = "https://pacific-refuge-71507.herokuapp.com/Admin/Signup";
 export const addingAdmin = (admin) =>
   apiBegan({
     onStart: apiBegan.type,
