@@ -17,7 +17,7 @@ function AddUser({ history }) {
   const senddata = async (e) => {
     await url
       .post(
-        "/User/resetpassword/" + _id + "/" + token,
+        "/User/signup/" + _id + "/" + token,
 
         {
           name,

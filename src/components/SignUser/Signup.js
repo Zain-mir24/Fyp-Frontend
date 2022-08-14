@@ -33,19 +33,18 @@ export default function SignUp({ history, ...props }) {
   const [type, setType] = useState("");
   const handlesubmit = async (e) => {
     e.preventDefault();
-    await url.post(
-      "/User/Signup", {
-      name: getname,
-      email: getEmail,
-      password: getPassword,
-      userType: type,
-    },
-    )
+    await url
+      .post("/User/Signup", {
+        name: getname,
+        email: getEmail,
+        password: getPassword,
+        userType: type,
+      })
       .then((res) => {
         alert(`${getname} \n 
         You have recieved veirfication email. Check your mail`);
         console.log("email sent");
-        res.status(201).send("email sent");
+        // res.status(201).send("email sent");
       })
       .catch((e) => {
         console.log("My error", e);
