@@ -34,7 +34,7 @@ function DonorPanel({ history, ...props }) {
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
-        <Sider >
+        <Sider>
           <div className="logo" />
           <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
             <Menu.Item
@@ -55,7 +55,7 @@ function DonorPanel({ history, ...props }) {
             >
               Campaigns
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="3"
               icon={<DesktopOutlined />}
               onClick={(e) => {
@@ -63,7 +63,7 @@ function DonorPanel({ history, ...props }) {
               }}
             >
               Chat
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="4"
               icon={<DesktopOutlined />}

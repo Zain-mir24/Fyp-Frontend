@@ -218,7 +218,7 @@ function Body({ history, ...props }) {
             >
               Manage audit
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="11"
               icon={<CheckCircleFilled />}
               onClick={() => {
@@ -226,7 +226,7 @@ function Body({ history, ...props }) {
               }}
             >
               Application Analytics
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="12"
               icon={<TeamOutlined />}
@@ -236,7 +236,7 @@ function Body({ history, ...props }) {
             >
               Adopting Children
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="35"
               icon={<TeamOutlined />}
               onClick={() => {
@@ -244,7 +244,7 @@ function Body({ history, ...props }) {
               }}
             >
               Chat
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="13"
               icon={<MoneyCollectOutlined />}
@@ -264,7 +264,7 @@ function Body({ history, ...props }) {
               SubAdmin Maagment
             </Menu.Item>
             {/* Replace monthly support with Add Analytics */}
-            <Menu.Item
+            {/* <Menu.Item
               key="15"
               icon={<MoneyCollectOutlined />}
               onClick={() => {
@@ -272,7 +272,7 @@ function Body({ history, ...props }) {
               }}
             >
               Add Analytics
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item
               key="16"
               icon={<MoneyCollectOutlined />}

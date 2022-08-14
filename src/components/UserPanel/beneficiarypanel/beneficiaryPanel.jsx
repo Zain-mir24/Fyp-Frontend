@@ -11,7 +11,7 @@ import {
   ExclamationCircleFilled,
   CheckCircleFilled,
 } from "@ant-design/icons";
-import Chat from "./Chat"
+import Chat from "./Chat";
 
 import { connect, useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../../store/reducers/User";
@@ -55,7 +55,7 @@ function Beneficiarypanel({ history, ...props }) {
             >
               {user.username}
             </Menu.Item>
-            <Menu.Item
+            {/* <Menu.Item
               key="2"
               icon={<DesktopOutlined />}
               onClick={() => {
@@ -63,7 +63,7 @@ function Beneficiarypanel({ history, ...props }) {
               }}
             >
               Chat
-            </Menu.Item>
+            </Menu.Item> */}
             {/* <Menu.Item key="3" icon={<DesktopOutlined />}>
               Loan status
             </Menu.Item> */}
